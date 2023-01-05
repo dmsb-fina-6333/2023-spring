@@ -33,7 +33,7 @@ I will maintain these notebooks on this website but everything else on Canvas (a
 
 ## JupyterLab
 
-I suggest you run JupyterLab on Research Computing's Open OnDemand (OOD) service: <https://ood.discovery.neu.edu/pun/sys/dashboard/>.
+I suggest you run JupyterLab on Research Computing's Open OnDemand (OOD) service: <https://ood.discovery.neu.edu>.
 This service is fast, reliable, available everywhere, and can access a shared folder of course notebooks.
 You can log into OOD with your Northeastern username and password and start a JupyterLab session under "My Interactive Sessions".
 
