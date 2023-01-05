@@ -1,0 +1,21 @@
+name: fina-6333
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - jupyterlab
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - seaborn
+  - statsmodels
+  - pip
+  - pip:
+      - ghp-import
+      - jupyter-book
+      - jupyterlab-git
+      - otter-grader
+      - pandas-datareader
+      - requests-cache
+      - yfinance

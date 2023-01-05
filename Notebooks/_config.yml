@@ -1,0 +1,27 @@
+title: FINA 6333 for Spring 2023
+author: Richard Herron
+logo: DMSB_100th_LogoMark_CMYK_Horiz.jpg
+only_build_toc_files: true
+
+latex:
+  latex_documents:
+    targetname: book.tex
+
+execute:
+  exclude_patterns: []
+
+bibtex_bibfiles: 
+  - references.bib
+
+repository:
+  url: https://gitlab.com/dmsb-fina-6333/2023-spring
+  path_to_book: Notebooks
+  branch: main
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+

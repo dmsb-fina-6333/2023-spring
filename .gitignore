@@ -1,0 +1,20 @@
+*.csv
+*.ods
+*.odt
+*.pickle
+*.sqlite
+*.zip
+*checkpoint*
+*solution*
+*submission*
+/Canvas
+/Data
+/DataCamp
+/Grades
+# /Notebooks
+/Office\ Hours
+/Projects
+/Quizzes
+/Research\ Computing
+/Syllabus
+/Teammates
