@@ -12,3 +12,6 @@ parts:
     - file: mckinney_04_lecture
       sections:
       - file: mckinney_04_practice
+  - caption: Quizzes
+    chapters:
+    - file: quiz-01
