@@ -5,7 +5,9 @@ logo: DMSB_100th_LogoMark_CMYK_Horiz.jpg
 only_build_toc_files: true
 
 execute:
-  exclude_patterns: []
+  exclude_patterns:
+    - 'quiz_*'
+    - 'project_*'
 
 html:
   use_repository_button: true
