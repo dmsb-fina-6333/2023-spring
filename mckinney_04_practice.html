@@ -136,6 +136,11 @@ const thebe_selector_output = ".output, .cell_output"
      McKinney Chapter 2 - Practice (Blank)
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_03.html">
+     McKinney Chapter 2 - Practice (Section 03, Monday 2:45 PM)
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -396,8 +401,8 @@ title="Print to PDF"
 <h1>McKinney Chapter 4 - Practice (Blank)<a class="headerlink" href="#mckinney-chapter-4-practice-blank" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-%precision 4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="o">%</span><span class="k">precision</span> 4
 </pre></div>
 </div>
 </div>
@@ -424,8 +429,8 @@ Write a function that mimic Excel’s <code class="docutils literal notranslate"
 Replace the negative values in <code class="docutils literal notranslate"><span class="pre">data</span></code> with -1 and positive values with +1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(42)
-data = np.random.randn(7, 7)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -439,8 +444,8 @@ Write a function that calculates the internal rate of return given an numpy arra
 Write a function <code class="docutils literal notranslate"><span class="pre">returns()</span></code> that accepts <em>NumPy arrays</em> of prices and dividends and returns a <em>NumPy array</em> of returns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>prices = np.array([100, 150, 100, 50, 100, 150, 100, 150])
-dividends = np.array([1, 1, 1, 1, 2, 2, 2, 2])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">])</span>
+<span class="n">dividends</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -454,7 +459,7 @@ Rescale and shift numbers so that they cover the range [0, 1]</p>
 Output: <code class="docutils literal notranslate"><span class="pre">[0.75,</span> <span class="pre">0.0,</span> <span class="pre">0.5,</span> <span class="pre">1.0,</span> <span class="pre">0.5]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>numbers = np.array([18.5, 17.0, 18.0, 19.0, 18.0])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">18.5</span><span class="p">,</span> <span class="mf">17.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">,</span> <span class="mf">19.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

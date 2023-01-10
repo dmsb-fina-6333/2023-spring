@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="McKinney Chapter 3 - Practice (Blank)" href="mckinney_03_practice.html" />
-    <link rel="prev" title="McKinney Chapter 2 - Practice (Blank)" href="mckinney_02_practice.html" />
+    <link rel="prev" title="McKinney Chapter 2 - Practice (Section 03, Monday 2:45 PM)" href="mckinney_02_practice_03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -132,6 +132,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="mckinney_02_practice.html">
      McKinney Chapter 2 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_03.html">
+     McKinney Chapter 2 - Practice (Section 03, Monday 2:45 PM)
     </a>
    </li>
   </ul>
@@ -627,7 +632,7 @@ A tuple is ordered, so we can subset or slice it with a numerical index.
 We will surround tuples with parentheses but the parentheses are not always required.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup = (4, 5, 6)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +640,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 <p><em><strong>Python is zero-indexed, so zero accesses the first element in <code class="docutils literal notranslate"><span class="pre">tup</span></code>!</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup[0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -647,7 +652,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup[1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -659,7 +664,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nested_tup = ((4, 5, 6), (7, 8))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nested_tup</span> <span class="o">=</span> <span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -667,7 +672,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 <p><em><strong>Python is zero-indexed!</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nested_tup[0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nested_tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -679,7 +684,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nested_tup[0][0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nested_tup</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -691,14 +696,14 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup = tuple(&#39;string&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span>
 </pre></div>
 </div>
 </div>
@@ -710,7 +715,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup[0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -722,14 +727,14 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup = tuple([&#39;foo&#39;, [1, 2], True])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="kc">True</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span>
 </pre></div>
 </div>
 </div>
@@ -741,7 +746,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># tup[2] = False # gives an error, because tuples are immutable (unchangeable)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tup[2] = False # gives an error, because tuples are immutable (unchangeable)</span>
 </pre></div>
 </div>
 </div>
@@ -751,7 +756,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span>
 </pre></div>
 </div>
 </div>
@@ -767,7 +772,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 <p>Tuples are immutable, but we can combine two tuples into a new tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(1, 2) + (1, 2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -779,7 +784,7 @@ We will surround tuples with parentheses but the parentheses are not always requ
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(4, None, &#39;foo&#39;) + (6, 0) + (&#39;bar&#39;,)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,)</span>
 </pre></div>
 </div>
 </div>
@@ -797,7 +802,7 @@ that many copies of the tuple:</p>
 The output of <code class="docutils literal notranslate"><span class="pre">tup</span> <span class="pre">+</span> <span class="pre">tup</span></code> should be the same as the output of <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">tup</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(&#39;foo&#39;, &#39;bar&#39;) * 4
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </div>
@@ -809,7 +814,7 @@ The output of <code class="docutils literal notranslate"><span class="pre">tup</
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(&#39;foo&#39;, &#39;bar&#39;) + (&#39;foo&#39;, &#39;bar&#39;) + (&#39;foo&#39;, &#39;bar&#39;) + (&#39;foo&#39;, &#39;bar&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -827,15 +832,15 @@ unpack the value on the righthand side of the equals sign.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup = (4, 5, 6)
-a, b, c = tup
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">tup</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -847,7 +852,7 @@ a, b, c = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -859,7 +864,7 @@ a, b, c = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>c
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
 </pre></div>
 </div>
 </div>
@@ -871,14 +876,14 @@ a, b, c = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(d, e, f) = (7, 8, 9) # the parentheses are optional but helpful!
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="c1"># the parentheses are optional but helpful!</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>
 </pre></div>
 </div>
 </div>
@@ -890,7 +895,7 @@ a, b, c = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>e
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span>
 </pre></div>
 </div>
 </div>
@@ -902,7 +907,7 @@ a, b, c = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span>
 </pre></div>
 </div>
 </div>
@@ -914,7 +919,7 @@ a, b, c = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># g, h = 10, 11, 12 # ValueError: too many values to unpack (expected 2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># g, h = 10, 11, 12 # ValueError: too many values to unpack (expected 2)</span>
 </pre></div>
 </div>
 </div>
@@ -922,15 +927,15 @@ a, b, c = tup
 <p>We can unpack nested tuples!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tup = 4, 5, (6, 7)
-a, b, (c, d) = tup
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tup</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">=</span> <span class="n">tup</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -942,7 +947,7 @@ a, b, (c, d) = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -954,7 +959,7 @@ a, b, (c, d) = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>c
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span>
 </pre></div>
 </div>
 </div>
@@ -966,7 +971,7 @@ a, b, (c, d) = tup
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span>
 </pre></div>
 </div>
 </div>
@@ -986,8 +991,8 @@ number of occurrences of a value.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = (1, 2, 2, 2, 3, 4, 2)
-a.count(2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1006,16 +1011,16 @@ a.count(2)
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list = [2, 3, 7, None]
-tup = (&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;)
-b_list = list(tup)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;baz&#39;</span><span class="p">)</span>
+<span class="n">b_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span>
 </pre></div>
 </div>
 </div>
@@ -1027,7 +1032,7 @@ b_list = list(tup)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1040,7 +1045,7 @@ b_list = list(tup)
 <p><em><strong>Pyhon is zero-indexed!</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list[0]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1058,14 +1063,14 @@ b_list = list(tup)
 <p>The <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method appends an element to the list <em>in place</em> without reassigning the list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list.append(&#39;dwarf&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;dwarf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1081,14 +1086,14 @@ The insertion index must be between 0 and the length of the list, inclusive.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list.insert(1, &#39;red&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1100,7 +1105,7 @@ The insertion index must be between 0 and the length of the list, inclusive.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list.index(&#39;red&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1112,14 +1117,14 @@ The insertion index must be between 0 and the length of the list, inclusive.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list[b_list.index(&#39;red&#39;)] = &#39;blue&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="p">[</span><span class="n">b_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1135,7 +1140,7 @@ particular index.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list.pop(2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1147,7 +1152,7 @@ particular index.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1164,14 +1169,14 @@ If we do not want to remove the 2 element, we should use <code class="docutils l
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list.append(&#39;foo&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1183,14 +1188,14 @@ If we do not want to remove the 2 element, we should use <code class="docutils l
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list.remove(&#39;foo&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1202,7 +1207,7 @@ If we do not want to remove the 2 element, we should use <code class="docutils l
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;dwarf&#39; in b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dwarf&#39;</span> <span class="ow">in</span> <span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1214,7 +1219,7 @@ If we do not want to remove the 2 element, we should use <code class="docutils l
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;dwarf&#39; not in b_list
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dwarf&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">b_list</span>
 </pre></div>
 </div>
 </div>
@@ -1232,7 +1237,7 @@ If we do not want to remove the 2 element, we should use <code class="docutils l
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[4, None, &#39;foo&#39;] + [7, 8, (2, 3)]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1245,15 +1250,15 @@ If we do not want to remove the 2 element, we should use <code class="docutils l
 <p>The <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method adds its argument as the last element in a list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>xx = [4, None, &#39;foo&#39;]
-xx.append([7, 8, (2, 3)])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">]</span>
+<span class="n">xx</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>xx
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xx</span>
 </pre></div>
 </div>
 </div>
@@ -1268,15 +1273,15 @@ xx.append([7, 8, (2, 3)])
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = [4, None, &#39;foo&#39;]
-x.extend([7, 8, (2, 3)])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">]</span>
+<span class="n">x</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
 </pre></div>
 </div>
 </div>
@@ -1295,15 +1300,15 @@ x.extend([7, 8, (2, 3)])
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [7, 2, 5, 1, 3]
-a.sort()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
 </pre></div>
 </div>
 </div>
@@ -1320,15 +1325,15 @@ a.sort()
 The built-in function may already solve your problem faster with fewer bugs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = [&#39;saw&#39;, &#39;small&#39;, &#39;He&#39;, &#39;foxes&#39;, &#39;six&#39;]
-b.sort()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;saw&#39;</span><span class="p">,</span> <span class="s1">&#39;small&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="s1">&#39;foxes&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b # Python is case sensitive, so &quot;He&quot; sorts before &quot;foxes&quot;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="c1"># Python is case sensitive, so &quot;He&quot; sorts before &quot;foxes&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1340,14 +1345,14 @@ b.sort()
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b.sort(key=len)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
 </pre></div>
 </div>
 </div>
@@ -1368,14 +1373,14 @@ b.sort()
 The necessary consequence of zero-indexing is that start:stop is inclusive on the left edge (start) and exclusive on the right edge (stop).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq = [7, 2, 3, 7, 5, 6, 0, 1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1387,7 +1392,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1399,7 +1404,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[1:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1411,7 +1416,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[3:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1426,7 +1431,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[:5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1438,7 +1443,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[3:]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1453,7 +1458,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span>
 </pre></div>
 </div>
 </div>
@@ -1465,7 +1470,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[-1:]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1477,7 +1482,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[-4:]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1489,7 +1494,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[-4:-1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1501,7 +1506,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[-6:-2]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1516,7 +1521,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span>
 </pre></div>
 </div>
 </div>
@@ -1528,7 +1533,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[::2]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1540,7 +1545,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[1::2]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1556,7 +1561,7 @@ The necessary consequence of zero-indexing is that start:stop is inclusive on th
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq[::-1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1581,14 +1586,14 @@ curly braces {} and colons to separate keys and values.</p>
 Dictionaries are handy for passing named arguments and returning named results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>empty_dict = {}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">empty_dict</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>empty_dict
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">empty_dict</span>
 </pre></div>
 </div>
 </div>
@@ -1601,14 +1606,14 @@ Dictionaries are handy for passing named arguments and returning named results.<
 <p>A dictionary is a set of key-value pairs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1 = {&#39;a&#39;: &#39;some value&#39;, &#39;b&#39;: [1, 2, 3, 4]}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="s1">&#39;some value&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1[&#39;a&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1620,14 +1625,14 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1[7] = &#39;an integer&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;an integer&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span>
 </pre></div>
 </div>
 </div>
@@ -1640,7 +1645,7 @@ Dictionaries are handy for passing named arguments and returning named results.<
 <p>We access dictionary values by key names instead of key positions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1[&#39;b&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1652,7 +1657,7 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;b&#39; in d1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;b&#39;</span> <span class="ow">in</span> <span class="n">d1</span>
 </pre></div>
 </div>
 </div>
@@ -1667,21 +1672,21 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1[5] = &#39;some value&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;some value&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1[&#39;dummy&#39;] = &#39;another value&#39;
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="p">[</span><span class="s1">&#39;dummy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;another value&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span>
 </pre></div>
 </div>
 </div>
@@ -1697,14 +1702,14 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>del d1[5]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">del</span> <span class="n">d1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span>
 </pre></div>
 </div>
 </div>
@@ -1719,14 +1724,14 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ret = d1.pop(&#39;dummy&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;dummy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ret
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ret</span>
 </pre></div>
 </div>
 </div>
@@ -1738,7 +1743,7 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span>
 </pre></div>
 </div>
 </div>
@@ -1753,7 +1758,7 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1.keys()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1765,7 +1770,7 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1.values()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1780,14 +1785,14 @@ Dictionaries are handy for passing named arguments and returning named results.<
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1.update({&#39;b&#39;: &#39;foo&#39;, &#39;c&#39;: 12})
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>d1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span>
 </pre></div>
 </div>
 </div>
@@ -1819,7 +1824,7 @@ Dictionaries are handy for passing named arguments and returning named results.<
 <p>List comprehensions are very <a class="reference external" href="https://blog.startifact.com/posts/older/what-is-pythonic.html">Pythonic</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings = [&#39;a&#39;, &#39;as&#39;, &#39;bat&#39;, &#39;car&#39;, &#39;dove&#39;, &#39;python&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;bat&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;dove&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1827,12 +1832,12 @@ Dictionaries are handy for passing named arguments and returning named results.<
 <p>We could use a for loop to capitalize the strings in <code class="docutils literal notranslate"><span class="pre">strings</span></code> and keep only strings with lengths greater than two.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>caps = []
-for x in strings:
-    if len(x) &gt; 2:
-        caps.append(x.upper())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">caps</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">strings</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">caps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 
-caps
+<span class="n">caps</span>
 </pre></div>
 </div>
 </div>
@@ -1846,7 +1851,7 @@ caps
 The general format for a list comprehension is <code class="docutils literal notranslate"><span class="pre">[operation</span> <span class="pre">on</span> <span class="pre">x</span> <span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">list</span> <span class="pre">if</span> <span class="pre">condition]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[x.upper() for x in strings if len(x) &gt; 2]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">strings</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1860,11 +1865,11 @@ The general format for a list comprehension is <code class="docutils literal not
 Write a for-loop and the equivalent list comprehension that squares the integers from 1 to 10.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>squares = []
-for i in range(1, 11):
-    squares.append(i ** 2)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">squares</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
     
-squares
+<span class="n">squares</span>
 </pre></div>
 </div>
 </div>
@@ -1876,7 +1881,7 @@ squares
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>[i**2 for i in range(1, 11)]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -1911,8 +1916,8 @@ squares
 <p>Here is the basic syntax for a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def mult_by_two(x):
-    return 2*x
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mult_by_two</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
 </pre></div>
 </div>
 </div>
@@ -1923,11 +1928,11 @@ squares
 In reality, the function <code class="docutils literal notranslate"><span class="pre">f()</span></code> below returns one object, a tuple, that we can unpack to multiple objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f():
-    a = 5
-    b = 6
-    c = 7
-    return a, b, c
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span>
 </pre></div>
 </div>
 </div>
@@ -1935,18 +1940,18 @@ In reality, the function <code class="docutils literal notranslate"><span class=
 <p>If we want to return multiple objects with names or labels, we can return a dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f():
-    a = 5
-    b = 6
-    c = 7
-    return {&#39;a&#39; : a, &#39;b&#39; : b, &#39;c&#39; : c}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span> <span class="p">:</span> <span class="n">c</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f()[&#39;a&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">()[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1969,15 +1974,15 @@ In reality, the function <code class="docutils literal notranslate"><span class=
 For example, we could use a lambda function to sort <code class="docutils literal notranslate"><span class="pre">strings</span></code> by the number of unique letters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings = [&#39;foo&#39;, &#39;card&#39;, &#39;bar&#39;, &#39;aaaa&#39;, &#39;abab&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;card&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;aaaa&#39;</span><span class="p">,</span> <span class="s1">&#39;abab&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings.sort()
-strings
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">strings</span>
 </pre></div>
 </div>
 </div>
@@ -1989,8 +1994,8 @@ strings
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings.sort(key=len)
-strings
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+<span class="n">strings</span>
 </pre></div>
 </div>
 </div>
@@ -2002,8 +2007,8 @@ strings
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings.sort(key=lambda x: x[-1])
-strings
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">strings</span>
 </pre></div>
 </div>
 </div>
@@ -2016,7 +2021,7 @@ strings
 <p>How can I sort by the <em>second</em> letter in each string?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings[2][1]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2028,8 +2033,8 @@ strings
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>strings.sort(key=lambda x: x[1])
-strings
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strings</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">strings</span>
 </pre></div>
 </div>
 </div>
@@ -2072,11 +2077,11 @@ strings
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="mckinney_02_practice.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="mckinney_02_practice_03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">McKinney Chapter 2 - Practice (Blank)</p>
+            <p class="prev-next-title">McKinney Chapter 2 - Practice (Section 03, Monday 2:45 PM)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="mckinney_03_practice.html" title="next page">
