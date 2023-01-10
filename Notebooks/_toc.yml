@@ -6,6 +6,7 @@ parts:
     - file: mckinney_02_lecture
       sections:
       - file: mckinney_02_practice
+      - file: mckinney_02_practice_03
     - file: mckinney_03_lecture
       sections:
       - file: mckinney_03_practice
