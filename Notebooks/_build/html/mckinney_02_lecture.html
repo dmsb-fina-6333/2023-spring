@@ -679,18 +679,18 @@ For non-Python programmers, white space is often Python’s defining feature.
 Here is a for loop with an if block that shows how Python uses white space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">pivot</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">greater</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>array = [1, 2, 3]
+pivot = 2
+less = []
+greater = []
 
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> is less than </span><span class="si">{</span><span class="n">pivot</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">less</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>        
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> is NOT less than </span><span class="si">{</span><span class="n">pivot</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-        <span class="n">greater</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+for x in array:
+    if x &lt; pivot:
+        print(f&#39;{x} is less than {pivot}&#39;)
+        less.append(x)        
+    else:
+        print(f&#39;{x} is NOT less than {pivot}&#39;)
+        greater.append(x)
 </pre></div>
 </div>
 </div>
@@ -704,7 +704,7 @@ Here is a for loop with an if block that shows how Python uses white space.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">less</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>less
 </pre></div>
 </div>
 </div>
@@ -716,7 +716,7 @@ Here is a for loop with an if block that shows how Python uses white space.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">greater</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>greater
 </pre></div>
 </div>
 </div>
@@ -739,7 +739,7 @@ These f-string print statements are easy to use, and I do not want to teach old 
 We can quickly comment/un-comment lines of code with the <code class="docutils literal notranslate"><span class="pre">&lt;Ctrl&gt;-/</span></code> shortcut.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5 + 5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># 5 + 5
 </pre></div>
 </div>
 </div>
@@ -766,15 +766,15 @@ We can quickly comment/un-comment lines of code with the <code class="docutils l
 <p>We can write a function that adds two numbers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_numbers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def add_numbers(a, b):
+    return a + b
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>add_numbers(5, 5)
 </pre></div>
 </div>
 </div>
@@ -787,15 +787,15 @@ We can quickly comment/un-comment lines of code with the <code class="docutils l
 <p>We can write a function that adds two strings separated by a space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_strings</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def add_strings(a, b):
+    return a + &#39; &#39; + b
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">add_strings</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>add_strings(&#39;5&#39;, &#39;5&#39;)
 </pre></div>
 </div>
 </div>
@@ -811,18 +811,18 @@ In the example below, we use the <code class="docutils literal notranslate"><spa
 The <code class="docutils literal notranslate"><span class="pre">print()</span></code> line prints to the console or “standard output”, but its output is not assigned or captured.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_strings_2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="n">string_to_print</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="s1">&#39; (this is from the print statement)&#39;</span>
-    <span class="n">string_to_return</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="s1">&#39; (this is from the return statement)&#39;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">string_to_print</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">string_to_return</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def add_strings_2(a, b):
+    string_to_print = a + &#39; &#39; + b + &#39; (this is from the print statement)&#39;
+    string_to_return = a + &#39; &#39; + b + &#39; (this is from the return statement)&#39;
+    print(string_to_print)
+    return string_to_return
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returned</span> <span class="o">=</span> <span class="n">add_strings_2</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>returned = add_strings_2(&#39;5&#39;, &#39;5&#39;)
 </pre></div>
 </div>
 </div>
@@ -834,7 +834,7 @@ The <code class="docutils literal notranslate"><span class="pre">print()</span><
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returned</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>returned
 </pre></div>
 </div>
 </div>
@@ -852,14 +852,14 @@ The <code class="docutils literal notranslate"><span class="pre">print()</span><
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2, 3]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
 </pre></div>
 </div>
 </div>
@@ -874,14 +874,14 @@ This same object is the list <code class="docutils literal notranslate"><span cl
 If we change <code class="docutils literal notranslate"><span class="pre">a</span></code>, we also change <code class="docutils literal notranslate"><span class="pre">b</span></code>, because these variables or names refer to the <em>same</em> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = a
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
 </pre></div>
 </div>
 </div>
@@ -895,7 +895,7 @@ If we change <code class="docutils literal notranslate"><span class="pre">a</spa
 We will learn more about lists (and tuples and dictionaries) in chapter 3 of McKinney.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a is b
 </pre></div>
 </div>
 </div>
@@ -908,14 +908,14 @@ We will learn more about lists (and tuples and dictionaries) in chapter 3 of McK
 <p><em><strong>If we modify <code class="docutils literal notranslate"><span class="pre">a</span></code> by appending a 4, we change <code class="docutils literal notranslate"><span class="pre">b</span></code> because <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> refer to the same list.</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a.append(4)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
 </pre></div>
 </div>
 </div>
@@ -927,7 +927,7 @@ We will learn more about lists (and tuples and dictionaries) in chapter 3 of McK
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
 </pre></div>
 </div>
 </div>
@@ -940,14 +940,14 @@ We will learn more about lists (and tuples and dictionaries) in chapter 3 of McK
 <p><em><strong>Likewise, if we modify <code class="docutils literal notranslate"><span class="pre">b</span></code> by appending a 5, we change <code class="docutils literal notranslate"><span class="pre">a</span></code>, too!</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b.append(5)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
 </pre></div>
 </div>
 </div>
@@ -959,7 +959,7 @@ We will learn more about lists (and tuples and dictionaries) in chapter 3 of McK
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b
 </pre></div>
 </div>
 </div>
@@ -986,7 +986,7 @@ We will learn more about lists (and tuples and dictionaries) in chapter 3 of McK
 For example, we can reassign <code class="docutils literal notranslate"><span class="pre">a</span></code> from a list to an integer to a string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a
 </pre></div>
 </div>
 </div>
@@ -998,7 +998,7 @@ For example, we can reassign <code class="docutils literal notranslate"><span cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(a)
 </pre></div>
 </div>
 </div>
@@ -1010,8 +1010,8 @@ For example, we can reassign <code class="docutils literal notranslate"><span cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 5
+type(a)
 </pre></div>
 </div>
 </div>
@@ -1023,8 +1023,8 @@ For example, we can reassign <code class="docutils literal notranslate"><span cl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = &#39;foo&#39;
+type(a)
 </pre></div>
 </div>
 </div>
@@ -1039,7 +1039,7 @@ For example, the code  returns either <code class="docutils literal notranslate"
 However, <code class="docutils literal notranslate"><span class="pre">'5'</span> <span class="pre">+</span> <span class="pre">5</span></code> returns an error in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &#39;5&#39; + 5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># &#39;5&#39; + 5
 </pre></div>
 </div>
 </div>
@@ -1047,10 +1047,10 @@ However, <code class="docutils literal notranslate"><span class="pre">'5'</span>
 <p>However, Python implicitly converts integers to floats.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mf">4.5</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="si">}</span><span class="s1">, b is </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 4.5
+b = 2
+print(f&#39;a is {type(a)}, b is {type(b)}&#39;)
+a / b
 </pre></div>
 </div>
 </div>
@@ -1071,7 +1071,7 @@ However, <code class="docutils literal notranslate"><span class="pre">'5'</span>
 <p>If we want integer division (or floor division), we have to use <code class="docutils literal notranslate"><span class="pre">//</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">//</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 // 2
 </pre></div>
 </div>
 </div>
@@ -1083,7 +1083,7 @@ However, <code class="docutils literal notranslate"><span class="pre">'5'</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 / 2
 </pre></div>
 </div>
 </div>
@@ -1099,14 +1099,14 @@ However, <code class="docutils literal notranslate"><span class="pre">'5'</span>
 <p>We can use tab completion to list attributes (characteristics stored inside objects) and methods (functions associated with objects).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = &#39;foo&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a.capitalize()
 </pre></div>
 </div>
 </div>
@@ -1126,7 +1126,7 @@ However, <code class="docutils literal notranslate"><span class="pre">'5'</span>
 The basic syntax uses the module name as the prefix to separate module items from our current namespace.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas
 </pre></div>
 </div>
 </div>
@@ -1134,7 +1134,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 <p>The <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">as</span></code> syntax lets us define an abbreviated prefix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 </pre></div>
 </div>
 </div>
@@ -1142,14 +1142,14 @@ The basic syntax uses the module name as the prefix to separate module items fro
 <p>We can also import one or more items from a package into our namespace with the following syntaxes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pandas import DataFrame
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span> <span class="k">as</span> <span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from pandas import DataFrame as df
 </pre></div>
 </div>
 </div>
@@ -1160,7 +1160,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 <p>Binary operators work like Excel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">-</span> <span class="mi">7</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 - 7
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1172,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span> <span class="o">+</span> <span class="mf">21.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>12 + 21.5
 </pre></div>
 </div>
 </div>
@@ -1184,7 +1184,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">&lt;=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 &lt;= 2
 </pre></div>
 </div>
 </div>
@@ -1197,16 +1197,16 @@ The basic syntax uses the module name as the prefix to separate module items fro
 <p>We can operate during an assignment to avoid two names referring to the same object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
-<span class="n">c</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1, 2, 3]
+b = a
+c = list(a)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a is b
 </pre></div>
 </div>
 </div>
@@ -1218,7 +1218,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="n">c</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a is c
 </pre></div>
 </div>
 </div>
@@ -1231,7 +1231,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 <p>Here <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> have the same <em>values</em> but are not the same object!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">==</span> <span class="n">c</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a == c
 </pre></div>
 </div>
 </div>
@@ -1243,7 +1243,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">c</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a is not c
 </pre></div>
 </div>
 </div>
@@ -1256,7 +1256,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 <p>In Python, <code class="docutils literal notranslate"><span class="pre">=</span></code> is the assignment operator, <code class="docutils literal notranslate"><span class="pre">==</span></code> tests equality, and <code class="docutils literal notranslate"><span class="pre">!=</span></code> tests inequality.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">==</span> <span class="n">c</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a == c
 </pre></div>
 </div>
 </div>
@@ -1268,7 +1268,7 @@ The basic syntax uses the module name as the prefix to separate module items fro
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">!=</span> <span class="n">c</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a != c
 </pre></div>
 </div>
 </div>
@@ -1308,7 +1308,7 @@ be modified.</p>
 <p>Lists are mutable, so we can modify them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list = [&#39;foo&#39;, 2, [4, 5]]
 </pre></div>
 </div>
 </div>
@@ -1316,7 +1316,7 @@ be modified.</p>
 <p><em><strong>Python is zero-indexed! The first element has a zero subscript <code class="docutils literal notranslate"><span class="pre">[0]</span></code>!</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list[0]
 </pre></div>
 </div>
 </div>
@@ -1328,7 +1328,7 @@ be modified.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list[2]
 </pre></div>
 </div>
 </div>
@@ -1340,7 +1340,7 @@ be modified.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list[2][0]
 </pre></div>
 </div>
 </div>
@@ -1352,7 +1352,7 @@ be modified.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list[2] = (3, 4)
 </pre></div>
 </div>
 </div>
@@ -1360,7 +1360,7 @@ be modified.</p>
 <p>Tuples are <em>immutable</em>, so we cannot modify them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_tuple = (3, 5, (4, 5))
 </pre></div>
 </div>
 </div>
@@ -1368,7 +1368,7 @@ be modified.</p>
 <p>The Python interpreter returns an error if we try to modify <code class="docutils literal notranslate"><span class="pre">a_tuple</span></code> because tuples are immutable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a_tuple[1] = &#39;four&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># a_tuple[1] = &#39;four&#39;
 </pre></div>
 </div>
 </div>
@@ -1377,14 +1377,14 @@ be modified.</p>
 Tuples do not require <code class="docutils literal notranslate"><span class="pre">()</span></code>, but <code class="docutils literal notranslate"><span class="pre">()</span></code> improve readability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test = 1, 2, 3
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(test)
 </pre></div>
 </div>
 </div>
@@ -1417,8 +1417,8 @@ Tuples do not require <code class="docutils literal notranslate"><span class="pr
 So, <code class="docutils literal notranslate"><span class="pre">ival</span> <span class="pre">**</span> <span class="pre">6</span></code> is <span class="math notranslate nohighlight">\(17239781^6\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ival</span> <span class="o">=</span> <span class="mi">17239871</span>
-<span class="n">ival</span> <span class="o">**</span> <span class="mi">6</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ival = 17239871
+ival ** 6
 </pre></div>
 </div>
 </div>
@@ -1431,14 +1431,14 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>Floats (decimal numbers) are 64-bit in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fval</span> <span class="o">=</span> <span class="mf">7.243</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fval = 7.243
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">fval</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(fval)
 </pre></div>
 </div>
 </div>
@@ -1451,7 +1451,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>Dividing integers yields a float, if necessary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>3 / 2
 </pre></div>
 </div>
 </div>
@@ -1464,7 +1464,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>We have to use <code class="docutils literal notranslate"><span class="pre">//</span></code> if we want C-style integer division (i.e., <span class="math notranslate nohighlight">\(3 / 2 = 1\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>3 // 2
 </pre></div>
 </div>
 </div>
@@ -1483,7 +1483,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>Python is case sensitive, so we must type Booleans as <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="ow">and</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>True and True
 </pre></div>
 </div>
 </div>
@@ -1495,7 +1495,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(5 &gt; 1) and (10 &gt; 5)
 </pre></div>
 </div>
 </div>
@@ -1507,7 +1507,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="ow">or</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>False or True
 </pre></div>
 </div>
 </div>
@@ -1519,7 +1519,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">5</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="mi">10</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(5 &gt; 1) or (10 &gt; 5)
 </pre></div>
 </div>
 </div>
@@ -1532,7 +1532,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>We can substitute <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> for <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">|</span></code> for <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">&amp;</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>True &amp; True
 </pre></div>
 </div>
 </div>
@@ -1544,7 +1544,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">|</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>False | True
 </pre></div>
 </div>
 </div>
@@ -1560,14 +1560,14 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>We can “recast” variables to change their types.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;3.14159&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>s = &#39;3.14159&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(s)
 </pre></div>
 </div>
 </div>
@@ -1579,7 +1579,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1 + float(s)
 </pre></div>
 </div>
 </div>
@@ -1591,14 +1591,14 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fval</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fval = float(s)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">fval</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(fval)
 </pre></div>
 </div>
 </div>
@@ -1610,7 +1610,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="n">fval</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(fval)
 </pre></div>
 </div>
 </div>
@@ -1623,7 +1623,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>Zero is Boolean <code class="docutils literal notranslate"><span class="pre">False</span></code>, and all other values are Boolean <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bool(0)
 </pre></div>
 </div>
 </div>
@@ -1635,7 +1635,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bool(1)
 </pre></div>
 </div>
 </div>
@@ -1647,7 +1647,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">bool</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bool(-1)
 </pre></div>
 </div>
 </div>
@@ -1660,7 +1660,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <p>We can recast the string <code class="docutils literal notranslate"><span class="pre">'5'</span></code> to an integer or the integer <code class="docutils literal notranslate"><span class="pre">5</span></code> to a string to prevent the <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">'5'</span></code> error above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>5 + int(&#39;5&#39;)
 </pre></div>
 </div>
 </div>
@@ -1672,7 +1672,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;5&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>str(5) + &#39;5&#39;
 </pre></div>
 </div>
 </div>
@@ -1689,8 +1689,8 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <code class="docutils literal notranslate"><span class="pre">None</span></code> is like <code class="docutils literal notranslate"><span class="pre">#N/A</span></code> or <code class="docutils literal notranslate"><span class="pre">=na()</span></code> in Excel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="n">a</span> <span class="ow">is</span> <span class="kc">None</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = None
+a is None
 </pre></div>
 </div>
 </div>
@@ -1702,8 +1702,8 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">b</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>b = 5
+b is not None
 </pre></div>
 </div>
 </div>
@@ -1715,7 +1715,7 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(None)
 </pre></div>
 </div>
 </div>
@@ -1737,14 +1737,14 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 <h3>if, elif, and else<a class="headerlink" href="#if-elif-and-else" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = -1
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>type(x)
 </pre></div>
 </div>
 </div>
@@ -1756,8 +1756,8 @@ So, <code class="docutils literal notranslate"><span class="pre">ival</span> <sp
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s negative&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>if x &lt; 0:
+    print(&quot;It&#39;s negative&quot;)
 </pre></div>
 </div>
 </div>
@@ -1773,15 +1773,15 @@ However, in the previous code cell, we use double quotes to differentiate betwee
 <code class="docutils literal notranslate"><span class="pre">elif</span></code> continues an <code class="docutils literal notranslate"><span class="pre">if</span></code> block, and <code class="docutils literal notranslate"><span class="pre">else</span></code> runs if the other conditions are not met.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It&#39;s negative&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Equal to zero&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Positive but smaller than 5&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Positive and larger than or equal to 5&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 10
+if x &lt; 0:
+    print(&quot;It&#39;s negative&quot;)
+elif x == 0:
+    print(&#39;Equal to zero&#39;)
+elif 0 &lt; x &lt; 5:
+    print(&#39;Positive but smaller than 5&#39;)
+else:
+    print(&#39;Positive and larger than or equal to 5&#39;)
 </pre></div>
 </div>
 </div>
@@ -1794,12 +1794,12 @@ However, in the previous code cell, we use double quotes to differentiate betwee
 <p>We can combine comparisons with <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">c</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Made it&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = 5
+b = 7
+c = 8
+d = 4
+if a &lt; b or c &gt; d:
+    print(&#39;Made it&#39;)
 </pre></div>
 </div>
 </div>
@@ -1818,19 +1818,19 @@ The <code class="docutils literal notranslate"><span class="pre">continue</span>
 There are equivalent abbreviations for subtraction, multiplication, and division (<code class="docutils literal notranslate"><span class="pre">-=</span></code>, <code class="docutils literal notranslate"><span class="pre">*=</span></code>, and <code class="docutils literal notranslate"><span class="pre">/=</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequence</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Alex&#39;</span><span class="p">]</span>
-<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">continue</span>
-    <span class="n">total</span> <span class="o">+=</span> <span class="n">value</span> <span class="c1"># the += operator is equivalent to &quot;total = total + value&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sequence = [1, 2, None, 4, None, 5, &#39;Alex&#39;]
+total = 0
+for value in sequence:
+    if value is None or type(value) is str:
+        continue
+    total += value # the += operator is equivalent to &quot;total = total + value&quot;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total
 </pre></div>
 </div>
 </div>
@@ -1843,19 +1843,19 @@ There are equivalent abbreviations for subtraction, multiplication, and division
 <p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> keyword exits the loop altogether.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequence</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">total_until_5</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">total_until_5</span> <span class="o">+=</span> <span class="n">value</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sequence = [1, 2, 0, 4, 6, 5, 2, 1]
+total_until_5 = 0
+for value in sequence:
+    if value == 5:
+        break
+    total_until_5 += value
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_until_5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total_until_5
 </pre></div>
 </div>
 </div>
@@ -1879,7 +1879,7 @@ integers.</p>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>range(10)
 </pre></div>
 </div>
 </div>
@@ -1892,7 +1892,7 @@ integers.</p>
 <p>We can cast a range to a list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(10))
 </pre></div>
 </div>
 </div>
@@ -1904,7 +1904,7 @@ integers.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(1, 10))
 </pre></div>
 </div>
 </div>
@@ -1916,7 +1916,7 @@ integers.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(1, 10, 1))
 </pre></div>
 </div>
 </div>
@@ -1928,7 +1928,7 @@ integers.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(0, 20, 2))
 </pre></div>
 </div>
 </div>
@@ -1942,7 +1942,7 @@ integers.</p>
 The following is an empty list because we cannot count from 5 to 0 by steps of +1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(5, 0))
 </pre></div>
 </div>
 </div>
@@ -1955,7 +1955,7 @@ The following is an empty list because we cannot count from 5 to 0 by steps of +
 <p>However, we can count from 5 to 0 in steps of -1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>list(range(5, 0, -1))
 </pre></div>
 </div>
 </div>
@@ -1968,9 +1968,9 @@ The following is an empty list because we cannot count from 5 to 0 by steps of +
 <p>For loops have the following syntax in many other programming languages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">seq</span><span class="p">)):</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>seq = [1, 2, 3, 4]
+for i in range(len(seq)):
+    val = seq[i]
 </pre></div>
 </div>
 </div>
@@ -1979,8 +1979,8 @@ The following is an empty list because we cannot count from 5 to 0 by steps of +
 The following code cell is equivalent to the previous code cell and more “Pythonic”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="n">i</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in seq:
+    val = i
 </pre></div>
 </div>
 </div>
@@ -1992,8 +1992,8 @@ The following code cell is equivalent to the previous code cell and more “Pyth
 We can complete simple comparisons on one line in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;Non-negative&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;Negative&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = 5
+value = &#39;Non-negative&#39; if x &gt;= 0 else &#39;Negative&#39;
 </pre></div>
 </div>
 </div>

@@ -120,17 +120,29 @@ tup
 tup
 
 
+# In[14]:
+
+
+tup[1].append(3)
+
+
+# In[15]:
+
+
+tup
+
+
 # > You can concatenate tuples using the + operator to produce longer tuples:
 # 
 # Tuples are immutable, but we can combine two tuples into a new tuple.
 
-# In[14]:
+# In[16]:
 
 
 (1, 2) + (1, 2)
 
 
-# In[15]:
+# In[17]:
 
 
 (4, None, 'foo') + (6, 0) + ('bar',)
@@ -142,13 +154,13 @@ tup
 # This multiplication behavior is the logical extension of the addition behavior above.
 # The output of `tup + tup` should be the same as the output of `2 * tup`.
 
-# In[16]:
+# In[18]:
 
 
 ('foo', 'bar') * 4
 
 
-# In[17]:
+# In[19]:
 
 
 ('foo', 'bar') + ('foo', 'bar') + ('foo', 'bar') + ('foo', 'bar')
@@ -159,56 +171,56 @@ tup
 # > If you try to assign to a tuple-like expression of variables, Python will attempt to
 # unpack the value on the righthand side of the equals sign.
 
-# In[18]:
+# In[20]:
 
 
 tup = (4, 5, 6)
 a, b, c = tup
 
 
-# In[19]:
+# In[21]:
 
 
 a
 
 
-# In[20]:
+# In[22]:
 
 
 b
 
 
-# In[21]:
+# In[23]:
 
 
 c
 
 
-# In[22]:
+# In[24]:
 
 
 (d, e, f) = (7, 8, 9) # the parentheses are optional but helpful!
 
 
-# In[23]:
+# In[25]:
 
 
 d
 
 
-# In[24]:
+# In[26]:
 
 
 e
 
 
-# In[25]:
+# In[27]:
 
 
 f
 
 
-# In[26]:
+# In[28]:
 
 
 # g, h = 10, 11, 12 # ValueError: too many values to unpack (expected 2)
@@ -216,32 +228,32 @@ f
 
 # We can unpack nested tuples!
 
-# In[27]:
+# In[29]:
 
 
 tup = 4, 5, (6, 7)
 a, b, (c, d) = tup
 
 
-# In[28]:
+# In[30]:
 
 
 a
 
 
-# In[29]:
+# In[31]:
 
 
 b
 
 
-# In[30]:
+# In[32]:
 
 
 c
 
 
-# In[31]:
+# In[33]:
 
 
 d
@@ -253,7 +265,7 @@ d
 # methods. A particularly useful one (also available on lists) is count, which counts the
 # number of occurrences of a value.
 
-# In[32]:
+# In[34]:
 
 
 a = (1, 2, 2, 2, 3, 4, 2)
@@ -264,7 +276,7 @@ a.count(2)
 
 # > In contrast with tuples, lists are variable-length and their contents can be modified in-place. You can define them using square brackets [ ] or using the list type function.
 
-# In[33]:
+# In[35]:
 
 
 a_list = [2, 3, 7, None]
@@ -272,13 +284,13 @@ tup = ('foo', 'bar', 'baz')
 b_list = list(tup)
 
 
-# In[34]:
+# In[36]:
 
 
 a_list
 
 
-# In[35]:
+# In[37]:
 
 
 b_list
@@ -286,7 +298,7 @@ b_list
 
 # ***Pyhon is zero-indexed!***
 
-# In[36]:
+# In[38]:
 
 
 a_list[0]
@@ -298,25 +310,10 @@ a_list[0]
 # 
 # The `.append()` method appends an element to the list *in place* without reassigning the list.
 
-# In[37]:
-
-
-b_list.append('dwarf')
-
-
-# In[38]:
-
-
-b_list
-
-
-# > Using insert you can insert an element at a specific location in the list.
-# The insertion index must be between 0 and the length of the list, inclusive.
-
 # In[39]:
 
 
-b_list.insert(1, 'red')
+b_list.append('dwarf')
 
 
 # In[40]:
@@ -325,19 +322,34 @@ b_list.insert(1, 'red')
 b_list
 
 
+# > Using insert you can insert an element at a specific location in the list.
+# The insertion index must be between 0 and the length of the list, inclusive.
+
 # In[41]:
 
 
-b_list.index('red')
+b_list.insert(1, 'red')
 
 
 # In[42]:
 
 
-b_list[b_list.index('red')] = 'blue'
+b_list
 
 
 # In[43]:
+
+
+b_list.index('red')
+
+
+# In[44]:
+
+
+b_list[b_list.index('red')] = 'blue'
+
+
+# In[45]:
 
 
 b_list
@@ -346,13 +358,13 @@ b_list
 # > The inverse operation to insert is pop, which removes and returns an element at a
 # particular index.
 
-# In[44]:
+# In[46]:
 
 
 b_list.pop(2)
 
 
-# In[45]:
+# In[47]:
 
 
 b_list
@@ -363,22 +375,10 @@ b_list
 
 # > Elements can be removed by value with remove, which locates the first such value and removes it from the list.
 
-# In[46]:
-
-
-b_list.append('foo')
-
-
-# In[47]:
-
-
-b_list
-
-
 # In[48]:
 
 
-b_list.remove('foo')
+b_list.append('foo')
 
 
 # In[49]:
@@ -390,10 +390,22 @@ b_list
 # In[50]:
 
 
-'dwarf' in b_list
+b_list.remove('foo')
 
 
 # In[51]:
+
+
+b_list
+
+
+# In[52]:
+
+
+'dwarf' in b_list
+
+
+# In[53]:
 
 
 'dwarf' not in b_list
@@ -403,7 +415,7 @@ b_list
 
 # > Similar to tuples, adding two lists together with + concatenates them.
 
-# In[52]:
+# In[54]:
 
 
 [4, None, 'foo'] + [7, 8, (2, 3)]
@@ -411,14 +423,14 @@ b_list
 
 # The `.append()` method adds its argument as the last element in a list.
 
-# In[53]:
+# In[55]:
 
 
 xx = [4, None, 'foo']
 xx.append([7, 8, (2, 3)])
 
 
-# In[54]:
+# In[56]:
 
 
 xx
@@ -426,14 +438,14 @@ xx
 
 # > If you have a list already defined, you can append multiple elements to it using the extend method.
 
-# In[55]:
+# In[57]:
 
 
 x = [4, None, 'foo']
 x.extend([7, 8, (2, 3)])
 
 
-# In[56]:
+# In[58]:
 
 
 x
@@ -445,14 +457,14 @@ x
 
 # > You can sort a list in-place (without creating a new object) by calling its sort function.
 
-# In[57]:
+# In[59]:
 
 
 a = [7, 2, 5, 1, 3]
 a.sort()
 
 
-# In[58]:
+# In[60]:
 
 
 a
@@ -463,26 +475,38 @@ a
 # Before you write your own solution to a problem, read the docstring (help file) of the built-in function.
 # The built-in function may already solve your problem faster with fewer bugs.
 
-# In[59]:
+# In[61]:
 
 
 b = ['saw', 'small', 'He', 'foxes', 'six']
 b.sort()
 
 
-# In[60]:
+# In[62]:
 
 
 b # Python is case sensitive, so "He" sorts before "foxes"
 
 
-# In[61]:
+# In[63]:
+
+
+len(b[0])
+
+
+# In[64]:
+
+
+len(b[1])
+
+
+# In[65]:
 
 
 b.sort(key=len)
 
 
-# In[62]:
+# In[66]:
 
 
 b
@@ -497,31 +521,32 @@ b
 # Recall that Python is zero-indexed, so the first element has an index of 0.
 # The necessary consequence of zero-indexing is that start:stop is inclusive on the left edge (start) and exclusive on the right edge (stop).
 
-# In[63]:
+# In[67]:
 
 
 seq = [7, 2, 3, 7, 5, 6, 0, 1]
+seq
 
 
-# In[64]:
+# In[68]:
 
 
 seq[5]
 
 
-# In[65]:
+# In[69]:
 
 
 seq[:5]
 
 
-# In[66]:
+# In[70]:
 
 
 seq[1:5]
 
 
-# In[67]:
+# In[71]:
 
 
 seq[3:5]
@@ -529,13 +554,13 @@ seq[3:5]
 
 # > Either the start or stop can be omitted, in which case they default to the start of the sequence and the end of the sequence, respectively.
 
-# In[68]:
+# In[72]:
 
 
 seq[:5]
 
 
-# In[69]:
+# In[73]:
 
 
 seq[3:]
@@ -543,31 +568,31 @@ seq[3:]
 
 # > Negative indices slice the sequence relative to the end.
 
-# In[70]:
+# In[74]:
 
 
 seq
 
 
-# In[71]:
+# In[75]:
 
 
 seq[-1:]
 
 
-# In[72]:
+# In[76]:
 
 
 seq[-4:]
 
 
-# In[73]:
+# In[77]:
 
 
 seq[-4:-1]
 
 
-# In[74]:
+# In[78]:
 
 
 seq[-6:-2]
@@ -575,19 +600,19 @@ seq[-6:-2]
 
 # > A step can also be used after a second colon to, say, take every other element.
 
-# In[75]:
+# In[79]:
 
 
-seq
+seq[:]
 
 
-# In[76]:
+# In[80]:
 
 
 seq[::2]
 
 
-# In[77]:
+# In[81]:
 
 
 seq[1::2]
@@ -597,7 +622,7 @@ seq[1::2]
 
 # > A clever use of this is to pass -1, which has the useful effect of reversing a list or tuple.
 
-# In[78]:
+# In[82]:
 
 
 seq[::-1]
@@ -615,39 +640,34 @@ seq[::-1]
 # Elements in dictionaries have names, while elements in tuples and lists have numerical indices.
 # Dictionaries are handy for passing named arguments and returning named results.
 
-# In[79]:
+# In[83]:
 
 
 empty_dict = {}
-
-
-# In[80]:
-
-
 empty_dict
 
 
 # A dictionary is a set of key-value pairs.
 
-# In[81]:
+# In[84]:
 
 
 d1 = {'a': 'some value', 'b': [1, 2, 3, 4]}
 
 
-# In[82]:
+# In[85]:
 
 
 d1['a']
 
 
-# In[83]:
+# In[86]:
 
 
 d1[7] = 'an integer'
 
 
-# In[84]:
+# In[87]:
 
 
 d1
@@ -655,13 +675,13 @@ d1
 
 # We access dictionary values by key names instead of key positions.
 
-# In[85]:
+# In[88]:
 
 
 d1['b']
 
 
-# In[86]:
+# In[89]:
 
 
 'b' in d1
@@ -669,46 +689,28 @@ d1['b']
 
 # > You can delete values either using the del keyword or the pop method (which simultaneously returns the value and deletes the key).
 
-# In[87]:
+# In[90]:
 
 
 d1[5] = 'some value'
 
 
-# In[88]:
+# In[91]:
 
 
 d1['dummy'] = 'another value'
 
 
-# In[89]:
-
-
-d1
-
-
-# In[90]:
-
-
-del d1[5]
-
-
-# In[91]:
-
-
-d1
-
-
 # In[92]:
 
 
-ret = d1.pop('dummy')
+d1
 
 
 # In[93]:
 
 
-ret
+del d1[5]
 
 
 # In[94]:
@@ -717,15 +719,33 @@ ret
 d1
 
 
+# In[95]:
+
+
+ret = d1.pop('dummy')
+
+
+# In[96]:
+
+
+ret
+
+
+# In[97]:
+
+
+d1
+
+
 # > The keys and values method give you iterators of the dict’s keys and values, respectively. While the key-value pairs are not in any particular order, these functions output the keys and values in the same order.
 
-# In[95]:
+# In[98]:
 
 
 d1.keys()
 
 
-# In[96]:
+# In[99]:
 
 
 d1.values()
@@ -733,13 +753,19 @@ d1.values()
 
 # > You can merge one dict into another using the update method.
 
-# In[97]:
+# In[100]:
+
+
+d1
+
+
+# In[101]:
 
 
 d1.update({'b': 'foo', 'c': 12})
 
 
-# In[98]:
+# In[102]:
 
 
 d1
@@ -758,13 +784,13 @@ d1
 # > result = []
 # > for val in collection:
 # >     if condition:
-# >     result.append(expr)
+# >         result.append(expr)
 # > ```
 # > The filter condition can be omitted, leaving only the expression.
 # 
 # List comprehensions are very [Pythonic](https://blog.startifact.com/posts/older/what-is-pythonic.html).
 
-# In[99]:
+# In[103]:
 
 
 strings = ['a', 'as', 'bat', 'car', 'dove', 'python']
@@ -772,7 +798,7 @@ strings = ['a', 'as', 'bat', 'car', 'dove', 'python']
 
 # We could use a for loop to capitalize the strings in `strings` and keep only strings with lengths greater than two.
 
-# In[100]:
+# In[104]:
 
 
 caps = []
@@ -786,7 +812,7 @@ caps
 # A list comprehension is a more Pythonic solution and replaces four lines of code with one.
 # The general format for a list comprehension is `[operation on x for x in list if condition]`
 
-# In[101]:
+# In[105]:
 
 
 [x.upper() for x in strings if len(x) > 2]
@@ -795,7 +821,7 @@ caps
 # Here is another example.
 # Write a for-loop and the equivalent list comprehension that squares the integers from 1 to 10.
 
-# In[102]:
+# In[106]:
 
 
 squares = []
@@ -805,7 +831,7 @@ for i in range(1, 11):
 squares
 
 
-# In[103]:
+# In[107]:
 
 
 [i**2 for i in range(1, 11)]
@@ -835,7 +861,7 @@ squares
 # 
 # Here is the basic syntax for a function:
 
-# In[104]:
+# In[108]:
 
 
 def mult_by_two(x):
@@ -847,19 +873,25 @@ def mult_by_two(x):
 # We can write Python functions that return multiple objects.
 # In reality, the function `f()` below returns one object, a tuple, that we can unpack to multiple objects.
 
-# In[105]:
+# In[109]:
 
 
 def f():
     a = 5
     b = 6
     c = 7
-    return a, b, c
+    return (a, b, c)
+
+
+# In[110]:
+
+
+f()
 
 
 # If we want to return multiple objects with names or labels, we can return a dictionary.
 
-# In[106]:
+# In[111]:
 
 
 def f():
@@ -869,7 +901,13 @@ def f():
     return {'a' : a, 'b' : b, 'c' : c}
 
 
-# In[107]:
+# In[112]:
+
+
+f()
+
+
+# In[113]:
 
 
 f()['a']
@@ -884,27 +922,27 @@ f()['a']
 # Lambda functions are very Pythonic and let us to write simple functions on the fly.
 # For example, we could use a lambda function to sort `strings` by the number of unique letters.
 
-# In[108]:
+# In[114]:
 
 
 strings = ['foo', 'card', 'bar', 'aaaa', 'abab']
 
 
-# In[109]:
+# In[115]:
 
 
 strings.sort()
 strings
 
 
-# In[110]:
+# In[116]:
 
 
 strings.sort(key=len)
 strings
 
 
-# In[111]:
+# In[117]:
 
 
 strings.sort(key=lambda x: x[-1])
@@ -913,13 +951,25 @@ strings
 
 # How can I sort by the *second* letter in each string?
 
-# In[112]:
+# In[118]:
+
+
+strings
+
+
+# In[119]:
+
+
+strings[2]
+
+
+# In[120]:
 
 
 strings[2][1]
 
 
-# In[113]:
+# In[121]:
 
 
 strings.sort(key=lambda x: x[1])
