@@ -414,7 +414,7 @@ Extract the year, month, and day from an integer 8-digit date (i.e., YYYYMMDD fo
 Try <code class="docutils literal notranslate"><span class="pre">20080915</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1234</span> <span class="o">/</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1234 / 100
 </pre></div>
 </div>
 </div>
@@ -426,7 +426,7 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1234</span> <span class="o">//</span> <span class="mi">100</span> <span class="c1"># // is integer division</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1234 // 100 # // is integer division
 </pre></div>
 </div>
 </div>
@@ -438,7 +438,7 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1234</span> <span class="o">%</span> <span class="mi">100</span> <span class="c1"># % is modulo (or remainder) division</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1234 % 100 # % is modulo (or remainder) division
 </pre></div>
 </div>
 </div>
@@ -450,35 +450,35 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ymd</span> <span class="o">=</span> <span class="mi">20080915</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ymd = 20080915
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">//</span> <span class="mi">10_000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>year = ymd // 10_000
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">month</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymd</span> <span class="o">%</span> <span class="mi">10_000</span><span class="p">)</span> <span class="o">//</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>month = (ymd % 10_000) // 100
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">%</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>day = ymd % 100
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(year, month, day)
 </pre></div>
 </div>
 </div>
@@ -490,7 +490,7 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(year, month, day)
 </pre></div>
 </div>
 </div>
@@ -502,7 +502,7 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(year, month, day, sep=&#39;/&#39;)
 </pre></div>
 </div>
 </div>
@@ -514,7 +514,7 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;year is </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">, month is </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s1">, day is </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&#39;year is {year}, month is {month}, day is {day}&#39;)
 </pre></div>
 </div>
 </div>
@@ -528,25 +528,25 @@ Try <code class="docutils literal notranslate"><span class="pre">20080915</span>
 Use your answer above to write a function <code class="docutils literal notranslate"><span class="pre">date</span></code> that accepts an integer 8-digit date argument and returns a tuple of the year, month, and date (e.g., <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">(year,</span> <span class="pre">month,</span> <span class="pre">date)</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">date</span><span class="p">(</span><span class="n">ymd</span><span class="p">):</span>
-    <span class="n">year</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">//</span> <span class="mi">10_000</span>
-    <span class="n">month</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymd</span> <span class="o">%</span> <span class="mi">10_000</span><span class="p">)</span> <span class="o">//</span> <span class="mi">100</span>
-    <span class="n">day</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">%</span> <span class="mi">100</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def date(ymd):
+    year = ymd // 10_000
+    month = (ymd % 10_000) // 100
+    day = ymd % 100
+    return (year, month, day)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parsed_date</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">20080915</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>parsed_date = date(20080915)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parsed_date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>parsed_date
 </pre></div>
 </div>
 </div>
@@ -560,20 +560,20 @@ Use your answer above to write a function <code class="docutils literal notransl
 Rewrite <code class="docutils literal notranslate"><span class="pre">date</span></code> to accept an 8-digit date as an integer or string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">date</span><span class="p">(</span><span class="n">ymd</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="n">ymd</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span>
-    <span class="n">year</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">//</span> <span class="mi">10_000</span>
-    <span class="n">month</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymd</span> <span class="o">%</span> <span class="mi">10_000</span><span class="p">)</span> <span class="o">//</span> <span class="mi">100</span>
-    <span class="n">day</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">%</span> <span class="mi">100</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def date(ymd):
+    if type(ymd) is str:
+        ymd = int(ymd)
+    year = ymd // 10_000
+    month = (ymd % 10_000) // 100
+    day = ymd % 100
+    return (year, month, day)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="p">(</span><span class="s1">&#39;20080915&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date(&#39;20080915&#39;)
 </pre></div>
 </div>
 </div>
@@ -585,7 +585,7 @@ Rewrite <code class="docutils literal notranslate"><span class="pre">date</span>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="p">(</span><span class="mi">20080915</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date(20080915)
 </pre></div>
 </div>
 </div>
@@ -600,14 +600,14 @@ Finally, rewrite <code class="docutils literal notranslate"><span class="pre">da
 Return a list of tuples of year, month, and date.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ymds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20080915</span><span class="p">,</span> <span class="s1">&#39;20080916&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ymds = [20080915, &#39;20080916&#39;]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ymds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ymds[0]
 </pre></div>
 </div>
 </div>
@@ -619,7 +619,7 @@ Return a list of tuples of year, month, and date.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ymds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ymds[1]
 </pre></div>
 </div>
 </div>
@@ -631,8 +631,8 @@ Return a list of tuples of year, month, and date.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ymd</span> <span class="ow">in</span> <span class="n">ymds</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for ymd in ymds:
+    print(ymd)
 </pre></div>
 </div>
 </div>
@@ -645,23 +645,23 @@ Return a list of tuples of year, month, and date.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">date</span><span class="p">(</span><span class="n">ymds</span><span class="p">):</span>
-    <span class="n">parsed_dates</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">ymd</span> <span class="ow">in</span> <span class="n">ymds</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span><span class="p">:</span>
-            <span class="n">ymd</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">//</span> <span class="mi">10_000</span>
-        <span class="n">month</span> <span class="o">=</span> <span class="p">(</span><span class="n">ymd</span> <span class="o">%</span> <span class="mi">10_000</span><span class="p">)</span> <span class="o">//</span> <span class="mi">100</span>
-        <span class="n">day</span> <span class="o">=</span> <span class="n">ymd</span> <span class="o">%</span> <span class="mi">100</span>
-        <span class="n">parsed_dates</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">parsed_dates</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def date(ymds):
+    parsed_dates = []
+    for ymd in ymds:
+        if type(ymd) is str:
+            ymd = int(ymd)
+        year = ymd // 10_000
+        month = (ymd % 10_000) // 100
+        day = ymd % 100
+        parsed_dates.append((year, month, day))
+    return parsed_dates
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="p">(</span><span class="n">ymds</span><span class="o">=</span><span class="n">ymds</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date(ymds=ymds)
 </pre></div>
 </div>
 </div>
@@ -675,8 +675,8 @@ Return a list of tuples of year, month, and date.</p>
 Write a for loop that prints the squares of integers from 1 to 10.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(1, 11):
+    print(i**2, end=&#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -692,9 +692,9 @@ The default ‘\n’ inserts a new line after value, making the output too long.
 Write a for loop that prints the squares of <em>even</em> integers from 1 to 10.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(1, 11):
+    if i % 2 == 0:
+        print(i**2, end=&#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -708,16 +708,16 @@ Write a for loop that prints the squares of <em>even</em> integers from 1 to 10.
 Write a for loop that sums the squares of integers from 1 to 10.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total = 0
+for i in range(1, 11):
+    total += i**2
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total
 </pre></div>
 </div>
 </div>
@@ -732,18 +732,18 @@ Write a for loop that sums the squares of integers from 1 to 10.</p>
 Write a for loop that sums the squares of integers from 1 to 10 but stops before the sum exceeds 50.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">total</span> <span class="o">+</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="k">break</span>
-    <span class="n">total</span> <span class="o">+=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total = 0
+for i in range(1, 11):
+    if (total + i**2) &gt; 50:
+        break
+    total += i**2
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>total
 </pre></div>
 </div>
 </div>
@@ -761,7 +761,7 @@ For numbers that are multiples of both three and five print “FizzBuzz”.
 More <a class="reference external" href="https://blog.codinghorror.com/why-cant-programmers-program/">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>6 % 3 == 0
 </pre></div>
 </div>
 </div>
@@ -773,17 +773,17 @@ More <a class="reference external" href="https://blog.codinghorror.com/why-cant-
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
-    <span class="n">is_mult_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">is_mult_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">is_mult_3</span> <span class="ow">and</span> <span class="n">is_mult_5</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;FizzBuzz&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">is_mult_3</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fizz&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">is_mult_5</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Buzz&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(1, 101):
+    is_mult_3 = (i % 3 == 0)
+    is_mult_5 = (i % 5 == 0)
+    if is_mult_3 and is_mult_5:
+        print(&#39;FizzBuzz&#39;, end=&#39; &#39;)
+    elif is_mult_3:
+        print(&#39;Fizz&#39;, end=&#39; &#39;)
+    elif is_mult_5:
+        print(&#39;Buzz&#39;, end=&#39; &#39;)
+    else:
+        print(i, end=&#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -797,10 +797,10 @@ More <a class="reference external" href="https://blog.codinghorror.com/why-cant-
 Use ternary expressions to make your FizzBuzz code more compact.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
-    <span class="n">is_mult_3</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">is_mult_5</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fizz&#39;</span><span class="o">*</span><span class="n">is_mult_3</span> <span class="o">+</span> <span class="s1">&#39;Buzz&#39;</span><span class="o">*</span><span class="n">is_mult_5</span> <span class="k">if</span> <span class="n">is_mult_3</span> <span class="ow">or</span> <span class="n">is_mult_5</span> <span class="k">else</span> <span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for i in range(1, 101):
+    is_mult_3 = (i % 3 == 0)
+    is_mult_5 = (i % 5 == 0)
+    print(&#39;Fizz&#39;*is_mult_3 + &#39;Buzz&#39;*is_mult_5 if is_mult_3 or is_mult_5 else i, end=&#39; &#39;)
 </pre></div>
 </div>
 </div>
@@ -823,16 +823,16 @@ For example, <code class="docutils literal notranslate"><span class="pre">triang
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">triangle</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def triangle(N):
+    for i in range(1, N):
+        print(str(i) * i)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">triangle</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>triangle(6)
 </pre></div>
 </div>
 </div>
@@ -849,7 +849,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">triang
 <p>The solution above works because a multiplying a string by <code class="docutils literal notranslate"><span class="pre">i</span></code> concatenates <code class="docutils literal notranslate"><span class="pre">i</span></code> copies of the string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Test&#39;</span> <span class="o">+</span> <span class="s1">&#39;Test&#39;</span> <span class="o">+</span> <span class="s1">&#39;Test&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;Test&#39; + &#39;Test&#39; + &#39;Test&#39;
 </pre></div>
 </div>
 </div>
@@ -861,7 +861,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">triang
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Test&#39;</span> <span class="o">*</span> <span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>&#39;Test&#39; * 3
 </pre></div>
 </div>
 </div>
@@ -890,18 +890,18 @@ Output: <code class="docutils literal notranslate"><span class="pre">[0,1]</span
 <p>I saw this question on <a class="reference external" href="https://leetcode.com/problems/two-sum/description/">LeetCode</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">two_sum</span><span class="p">(</span><span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def two_sum(nums, target):
+    for i in range(1, len(nums)):
+        for j in range(i):
+            if nums[i] + nums[j] == target:
+                return [j, i]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_sum</span><span class="p">(</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">15</span><span class="p">],</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>two_sum(nums = [2,7,11,15], target = 9)
 </pre></div>
 </div>
 </div>
@@ -913,7 +913,7 @@ Output: <code class="docutils literal notranslate"><span class="pre">[0,1]</span
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_sum</span><span class="p">(</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>two_sum(nums = [3,2,4], target = 6)
 </pre></div>
 </div>
 </div>
@@ -925,7 +925,7 @@ Output: <code class="docutils literal notranslate"><span class="pre">[0,1]</span
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">two_sum</span><span class="p">(</span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>two_sum(nums = [3,3], target = 6)
 </pre></div>
 </div>
 </div>
@@ -954,21 +954,21 @@ Explanation: In this case, no transactions are done and the max profit = 0.</p>
 <p>I saw this question on <a class="reference external" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/">LeetCode</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max_profit</span><span class="p">(</span><span class="n">prices</span><span class="p">):</span>
-        <span class="n">min_price</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">max_profit</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">price</span> <span class="ow">in</span> <span class="n">prices</span><span class="p">:</span>
-            <span class="n">min_price</span> <span class="o">=</span> <span class="n">price</span> <span class="k">if</span> <span class="n">price</span> <span class="o">&lt;</span> <span class="n">min_price</span> <span class="k">else</span> <span class="n">min_price</span>
-            <span class="n">profit</span> <span class="o">=</span> <span class="n">price</span> <span class="o">-</span> <span class="n">min_price</span>
-            <span class="n">max_profit</span> <span class="o">=</span> <span class="n">profit</span> <span class="k">if</span> <span class="n">profit</span> <span class="o">&gt;</span> <span class="n">max_profit</span> <span class="k">else</span> <span class="n">max_profit</span>
-        <span class="k">return</span> <span class="n">max_profit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def max_profit(prices):
+        min_price = prices[0]
+        max_profit = 0
+        for price in prices:
+            min_price = price if price &lt; min_price else min_price
+            profit = price - min_price
+            max_profit = profit if profit &gt; max_profit else max_profit
+        return max_profit
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_profit</span><span class="p">(</span><span class="n">prices</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>max_profit(prices=[7,1,5,3,6,4])
 </pre></div>
 </div>
 </div>
@@ -980,7 +980,7 @@ Explanation: In this case, no transactions are done and the max profit = 0.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_profit</span><span class="p">(</span><span class="n">prices</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>max_profit(prices=[7,6,4,3,1])
 </pre></div>
 </div>
 </div>
