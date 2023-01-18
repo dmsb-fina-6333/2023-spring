@@ -12,6 +12,8 @@ parts:
     - file: mckinney_03_lecture
       sections:
       - file: mckinney_03_practice
+      - file: mckinney_03_practice_04
+      - file: mckinney_03_practice_02
     - file: mckinney_04_lecture
       sections:
       - file: mckinney_04_practice

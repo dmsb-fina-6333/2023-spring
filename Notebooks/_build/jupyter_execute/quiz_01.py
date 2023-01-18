@@ -85,7 +85,6 @@ grader.check("q2")
 def fun_3(start, stop):
 
 
-
 # In[ ]:
 
 
