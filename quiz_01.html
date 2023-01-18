@@ -167,6 +167,16 @@ const thebe_selector_output = ".output, .cell_output"
      McKinney Chapter 3 - Practice (Blank)
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_04.html">
+     McKinney Chapter 3 - Practice (Section 04, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_02.html">
+     McKinney Chapter 3 - Practice (Section 02, Wednesday 2:45 PM)
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -499,9 +509,9 @@ title="Print to PDF"
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Initialize Otter
-import otter
-grader = otter.Notebook(&quot;quiz_01.ipynb&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize Otter</span>
+<span class="kn">import</span> <span class="nn">otter</span>
+<span class="n">grader</span> <span class="o">=</span> <span class="n">otter</span><span class="o">.</span><span class="n">Notebook</span><span class="p">(</span><span class="s2">&quot;quiz_01.ipynb&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -540,14 +550,14 @@ The first and last values in <code class="docutils literal notranslate"><span cl
 <p><em>Points:</em> 30</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>...
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grader.check(&quot;q1&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q1&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -560,14 +570,14 @@ This <code class="docutils literal notranslate"><span class="pre">int_2</span></
 <p><em>Points:</em> 30</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>...
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grader.check(&quot;q2&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -585,15 +595,15 @@ The autograder will not show you hidden test results until after the due date, a
 <p><em>Points:</em> 40</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def fun_3(start, stop):
-...
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun_3</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">):</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>grader.check(&quot;q3&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grader</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;q3&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -605,8 +615,8 @@ The autograder will not show you hidden test results until after the due date, a
 <p>Make sure you have run all cells in your notebook in order before running the cell below, so that all images/graphs appear in the output. The cell below will generate a zip file for you to submit. <strong>Please save before exporting!</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Save your notebook first, then run this cell to export your submission.
-grader.export(pdf=False, run_tests=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save your notebook first, then run this cell to export your submission.</span>
+<span class="n">grader</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">pdf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">run_tests</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
