@@ -389,17 +389,30 @@ nums(nums=[1,1,1,2,2,3], k=2)
 # Input: `["aba", "no"]` \
 # Output: `[True, False]`
 
+# In[49]:
+
+
+def is_palindrome(x):
+    return [list(y) == list(y)[::-1] for y in x]
+
+
+# In[50]:
+
+
+is_palindrome(["aba", "no"])
+
+
 # ***Practice:***
 # Write a function `returns()` that accepts lists of prices and dividends and returns a list of returns.
 
-# In[49]:
+# In[51]:
 
 
 prices = [100, 150, 100, 50, 100, 150, 100, 150]
 dividends = [1, 1, 1, 1, 2, 2, 2, 2]
 
 
-# In[50]:
+# In[52]:
 
 
 def returns(p, d):
@@ -414,7 +427,7 @@ def returns(p, d):
     return r
 
 
-# In[51]:
+# In[53]:
 
 
 returns(p=prices, d=dividends)
@@ -424,7 +437,7 @@ returns(p=prices, d=dividends)
 # Rewrite the function `returns()` so it returns lists of returns, capital gains yields, and dividend yields.
 # How can we return these lists?
 
-# In[52]:
+# In[54]:
 
 
 def returns(p, d):
@@ -443,7 +456,7 @@ def returns(p, d):
     return {'r': r, 'cg': cg, 'dy': dy}
 
 
-# In[53]:
+# In[55]:
 
 
 returns(p=prices, d=dividends)
@@ -455,13 +468,13 @@ returns(p=prices, d=dividends)
 # Input: `[18.5, 17.0, 18.0, 19.0, 18.0]` \
 # Output: `[0.75, 0.0, 0.5, 1.0, 0.5]`
 
-# In[54]:
+# In[56]:
 
 
 numbers = [18.5, 17.0, 18.0, 19.0, 18.0]
 
 
-# In[55]:
+# In[57]:
 
 
 def rescale(x):
@@ -470,7 +483,7 @@ def rescale(x):
     return [(x - x_min) / (x_max - x_min) for x in x]
 
 
-# In[56]:
+# In[58]:
 
 
 rescale(numbers)

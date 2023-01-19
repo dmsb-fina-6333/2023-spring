@@ -291,27 +291,22 @@ l5_alt = [x**2 for x in range(1, 101) if x%2 != 0]
 # In[42]:
 
 
-l5 == l5_altl1[-41]
+l5 == l5_alt[-41]
 
 
 # ***Practice:***
 # Use a lambda function to sort `strings` by the last letter.
 
-# In[ ]:
+# In[43]:
 
 
 strings = ['card', 'aaaa', 'foo', 'bar', 'abab']
 
 
-# In[ ]:
+# In[44]:
 
 
 strings.sort(key=lambda x: x[-1])
-
-
-# In[ ]:
-
-
 strings
 
 
@@ -332,7 +327,7 @@ strings
 # 
 # I saw this question on [LeetCode](https://leetcode.com/problems/kth-largest-element-in-an-array/).
 
-# In[ ]:
+# In[45]:
 
 
 def nums(x, k):
@@ -341,7 +336,7 @@ def nums(x, k):
     return x_copy[-k]
 
 
-# In[ ]:
+# In[46]:
 
 
 nums(x=[3,2,1,5,6,4], k=2)
@@ -363,7 +358,7 @@ nums(x=[3,2,1,5,6,4], k=2)
 # 
 # I saw this question on [LeetCode](https://leetcode.com/problems/top-k-frequent-elements/).
 
-# In[ ]:
+# In[47]:
 
 
 def nums(nums, k):
@@ -376,7 +371,7 @@ def nums(nums, k):
     return [x[0] for x in sorted(counts.items(), key=lambda x: x[1], reverse=True)[:k]]
 
 
-# In[ ]:
+# In[48]:
 
 
 nums(nums=[1,1,1,2,2,3], k=2)
@@ -388,17 +383,30 @@ nums(nums=[1,1,1,2,2,3], k=2)
 # Input: `["aba", "no"]` \
 # Output: `[True, False]`
 
+# In[49]:
+
+
+def is_palindrome(x):
+    return [list(y) == list(y)[::-1] for y in x]
+
+
+# In[50]:
+
+
+is_palindrome(["aba", "no"])
+
+
 # ***Practice:***
 # Write a function `returns()` that accepts lists of prices and dividends and returns a list of returns.
 
-# In[ ]:
+# In[51]:
 
 
 prices = [100, 150, 100, 50, 100, 150, 100, 150]
 dividends = [1, 1, 1, 1, 2, 2, 2, 2]
 
 
-# In[ ]:
+# In[52]:
 
 
 def returns(p, d):
@@ -413,7 +421,7 @@ def returns(p, d):
     return rts
 
 
-# In[ ]:
+# In[53]:
 
 
 returns(p=prices, d=dividends)
@@ -423,7 +431,7 @@ returns(p=prices, d=dividends)
 # Rewrite the function `returns()` so it returns lists of returns, capital gains yields, and dividend yields.
 # How can we return these lists?
 
-# In[ ]:
+# In[54]:
 
 
 def returns(p, d):
@@ -442,7 +450,7 @@ def returns(p, d):
     return {'rt':rts, 'dy':dys, 'cg':cgs}
 
 
-# In[ ]:
+# In[55]:
 
 
 returns(p=prices, d=dividends)
@@ -454,13 +462,13 @@ returns(p=prices, d=dividends)
 # Input: `[18.5, 17.0, 18.0, 19.0, 18.0]` \
 # Output: `[0.75, 0.0, 0.5, 1.0, 0.5]`
 
-# In[ ]:
+# In[56]:
 
 
 numbers = [18.5, 17.0, 18.0, 19.0, 18.0]
 
 
-# In[ ]:
+# In[57]:
 
 
 def rescale(x):
@@ -469,7 +477,7 @@ def rescale(x):
     return [(x - x_min) / (x_max - x_min) for x in x]
 
 
-# In[ ]:
+# In[58]:
 
 
 rescale(numbers)
