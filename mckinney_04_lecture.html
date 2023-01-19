@@ -686,7 +686,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>85.9 ms ± 12.8 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.3 ms ± 152 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -698,7 +698,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.63 ms ± 131 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169 µs ± 935 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -818,7 +818,7 @@ Recall that Jupyter Notebooks provides tab completion.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4967141530112327
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4967
 </pre></div>
 </div>
 </div>
@@ -833,7 +833,7 @@ This abbreviated notation is similar to what you will see in math and econometri
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4967141530112327
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4967
 </pre></div>
 </div>
 </div>
@@ -884,7 +884,7 @@ We could coerce these values to integers but would lose information.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 7, 8, 0, 1], dtype=int64)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 7, 8, 0, 1])
 </pre></div>
 </div>
 </div>
@@ -942,7 +942,7 @@ We could coerce these values to integers but would lose information.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int32&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int64&#39;)
 </pre></div>
 </div>
 </div>
@@ -1617,7 +1617,7 @@ Boolean indexing in Python is like combining <code class="docutils literal notra
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  1,   2,   4,   8,  16,  32,  64, 128, 256, 512], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  1,   2,   4,   8,  16,  32,  64, 128, 256, 512])
 </pre></div>
 </div>
 </div>
@@ -1672,7 +1672,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5792128155073915
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5792
 </pre></div>
 </div>
 </div>
@@ -1750,7 +1750,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1, 2.2, 1.3, 1.4, 2.5]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1000, 2.2000, 1.3000, 1.4000, 2.5000]
 </pre></div>
 </div>
 </div>
@@ -1794,7 +1794,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.17129856144182892
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.1713
 </pre></div>
 </div>
 </div>
@@ -1806,7 +1806,7 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.4259712288365787
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-3.4260
 </pre></div>
 </div>
 </div>
@@ -1832,7 +1832,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6322920615871914
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6323
 </pre></div>
 </div>
 </div>
@@ -1856,7 +1856,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.19555649128308902
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.1956
 </pre></div>
 </div>
 </div>
@@ -1870,7 +1870,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1,  3,  6, 10, 15, 21, 28], dtype=int32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  1,  3,  6, 10, 15, 21, 28])
 </pre></div>
 </div>
 </div>
@@ -1900,7 +1900,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2],
        [ 3,  5,  7],
-       [ 9, 12, 15]], dtype=int32)
+       [ 9, 12, 15]])
 </pre></div>
 </div>
 </div>
@@ -1914,7 +1914,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  0,   0,   0],
        [  3,  12,  60],
-       [  6,  42, 336]], dtype=int32)
+       [  6,  42, 336]])
 </pre></div>
 </div>
 </div>
@@ -1959,7 +1959,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.46
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4600
 </pre></div>
 </div>
 </div>

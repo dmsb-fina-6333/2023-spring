@@ -838,7 +838,7 @@ Create a list <code class="docutils literal notranslate"><span class="pre">l4</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.5 µs ± 575 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.3 µs ± 185 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -856,7 +856,7 @@ Here is the pseudo code for a list comprehension:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.2 µs ± 695 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.2 µs ± 31.2 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -989,6 +989,26 @@ Output: <code class="docutils literal notranslate"><span class="pre">[1]</span><
 Test whether the given strings are palindromes</p>
 <p>Input: <code class="docutils literal notranslate"><span class="pre">[&quot;aba&quot;,</span> <span class="pre">&quot;no&quot;]</span></code> <br />
 Output: <code class="docutils literal notranslate"><span class="pre">[True,</span> <span class="pre">False]</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_palindrome</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">y</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_palindrome</span><span class="p">([</span><span class="s2">&quot;aba&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[True, False]
+</pre></div>
+</div>
+</div>
+</div>
 <p><em><strong>Practice:</strong></em>
 Write a function <code class="docutils literal notranslate"><span class="pre">returns()</span></code> that accepts lists of prices and dividends and returns a list of returns.</p>
 <div class="cell docutils container">
