@@ -63,7 +63,7 @@ my_list[:5]
 my_arr[:5]
 
 
-# If we want to double each of the values in `my_list` we have to use a for loop or a list comprehension.
+# If we want to double each value in `my_list` we have to use a for loop or a list comprehension.
 
 # In[7]:
 
@@ -77,7 +77,7 @@ my_arr[:5]
 # [2 * x for x in my_list] # list comprehension to double each value
 
 
-# However, we can just multiply `my_arr` by two because math "just works" with NumPy.
+# However, we can multiply `my_arr` by two because math "just works" with NumPy.
 
 # In[9]:
 
@@ -99,7 +99,7 @@ get_ipython().run_line_magic('timeit', '[x * 2 for x in my_list]')
 get_ipython().run_line_magic('timeit', 'my_arr * 2')
 
 
-# The NumPy version is few hundred times faster than the list version.
+# The NumPy version is a hundred times faster than the list version.
 # The NumPy version is also faster to type, read, and troubleshoot, which are typically more important.
 # Our time is more valuable than the computer time!
 
@@ -107,35 +107,28 @@ get_ipython().run_line_magic('timeit', 'my_arr * 2')
 
 # > One of the key features of NumPy is its N-dimensional array object, or ndarray, which is a fast, flexible container for large datasets in Python. Arrays enable you to perform mathematical operations on whole blocks of data using similar syntax to the equivalent operations between scalar elements.
 # 
-# We can generate random data to explore NumPy arrays.
-# Whenever we use random data, we should set the random number seed with `np.random.seed(42)`, which makes our random numbers repeatable.
-# Because we set the random number seed just before we generate `data`, your `data` and my `data` will be identical.
+# We generate random data to explore NumPy arrays.
+# Whenever we generate random data, we should set the random number seed with `np.random.seed(42)`, which makes our random numbers repeatable.
+# If we use the same random number seed, our random numbers will be the same.
 
 # In[12]:
 
 
 np.random.seed(42)
 data = np.random.randn(2, 3)
-
-
-# In[13]:
-
-
 data
 
 
-# Multiplying `data` by 10 multiplies each element in `data` by 10, and adding `data` to itself does element-wise addition.
-# The compromise to achieve this common-sense behavior is that NumPy arrays must contain homogeneous data types (e.g., all floats or all integers).
+# Multiplying `data` by 10 multiplies each element in `data` by 10, and adding `data` to itself adds each element to itself (i.e., element-wise addition).
+# To achieve this common-sense behavior, NumPy arrays must contain homogeneous data types (e.g., all floats or all integers).
 
-# In[14]:
+# In[13]:
 
 
 data * 10
 
 
-# Addition in NumPy is also elementwise.
-
-# In[15]:
+# In[14]:
 
 
 data_2 = data + data
@@ -144,48 +137,54 @@ data_2 = data + data
 # NumPy arrays have attributes.
 # Recall that Jupyter Notebooks provides tab completion.
 
-# In[16]:
+# In[15]:
 
 
 data.ndim
 
 
-# In[17]:
+# In[16]:
 
 
 data.shape
 
 
-# In[18]:
+# In[17]:
 
 
 data.dtype
 
 
-# We access or slice elements in a NumPy array the same way as lists and tuples: `[]`
+# We access or slice elements in a NumPy array using `[]`, the same as we slice lists and tuples.
 
-# In[19]:
+# In[18]:
 
 
 data[0]
 
 
-# We can chain `[]`s.
+# As with list and tuples, we can chain `[]`s.
+
+# In[19]:
+
+
+data[0][0]
+
+
+# However, with NumPy arrays. we can replace $n$ chained `[]`s with one pair of `[]`s containing $n$ values separated by commas.
+# For example, `[i][j]` becomes `[i, j]`, `[i][j][k]` becomes `[i, j, k]`.
+# This abbreviated notation is similar to what you see in your math and econometrics courses.
 
 # In[20]:
 
 
-data[0][0] # zero row, then the zero element in the zero row
+data[0, 0] # zero row, zero column
 
-
-# However, with NumPy arrays. we can combine a chain inside one pair of `[]`s.
-# For example, `[i][j]` becomes `[i, j]`, `[i][j][k]` becomes `[i, j, k]`.
-# This abbreviated notation is similar to what you will see in math and econometrics courses.
 
 # In[21]:
 
 
-data[0, 0] # zero row, zero column
+data[0][0] == data[0, 0]
 
 
 # ### Creating ndarrays
@@ -197,15 +196,10 @@ data[0, 0] # zero row, zero column
 
 data1 = [6, 7.5, 8, 0, 1]
 arr1 = np.array(data1)
-
-
-# In[23]:
-
-
 arr1
 
 
-# In[24]:
+# In[23]:
 
 
 arr1.dtype
@@ -214,7 +208,7 @@ arr1.dtype
 # Here `np.array()` casts the values in `data1` to floats becuase NumPy arrays must have homogenous data types.
 # We could coerce these values to integers but would lose information.
 
-# In[25]:
+# In[24]:
 
 
 np.array(data1, dtype=np.int64)
@@ -222,32 +216,27 @@ np.array(data1, dtype=np.int64)
 
 # We can coerce or cast a list-of-lists to a two-dimensional NumPy array.
 
-# In[26]:
+# In[25]:
 
 
 data2 = [[1, 2, 3, 4], [5, 6, 7, 8]]
 arr2 = np.array(data2)
-
-
-# In[27]:
-
-
 arr2
 
 
-# In[28]:
+# In[26]:
 
 
 arr2.ndim
 
 
-# In[29]:
+# In[27]:
 
 
 arr2.shape
 
 
-# In[30]:
+# In[28]:
 
 
 arr2.dtype
@@ -255,27 +244,27 @@ arr2.dtype
 
 # There are several other ways to create NumPy arrays.
 
-# In[31]:
+# In[29]:
 
 
 np.zeros(10)
 
 
-# In[32]:
+# In[30]:
 
 
 np.zeros((3, 6))
 
 
-# The `np.arange()` function is similar to Python's built-in `range()`, but it creates an array directly.
+# The `np.arange()` function is similar to Python's built-in `range()` but creates an array directly.
 
-# In[33]:
+# In[31]:
 
 
 np.array(range(15))
 
 
-# In[34]:
+# In[32]:
 
 
 np.arange(15)
@@ -296,7 +285,7 @@ np.arange(15)
 
 # > Arrays are important because they enable you to express batch operations on data without writing any for loops. NumPy users call this vectorization. Any arithmetic operations between equal-size arrays applies the operation element-wise
 
-# In[35]:
+# In[33]:
 
 
 arr = np.array([[1., 2., 3.], [4., 5., 6.]])
@@ -305,7 +294,7 @@ arr
 
 # NumPy array addition is elementwise.
 
-# In[36]:
+# In[34]:
 
 
 arr + arr
@@ -313,7 +302,7 @@ arr + arr
 
 # NumPy array multiplication is elementwise.
 
-# In[37]:
+# In[35]:
 
 
 arr * arr
@@ -321,7 +310,7 @@ arr * arr
 
 # NumPy array division is elementwise.
 
-# In[38]:
+# In[36]:
 
 
 1 / arr
@@ -329,15 +318,15 @@ arr * arr
 
 # NumPy powers are elementwise, too.
 
-# In[39]:
+# In[37]:
 
 
-arr ** 0.5
+arr ** 2
 
 
 # We can also raise a single value to an array!
 
-# In[40]:
+# In[38]:
 
 
 2 ** arr
@@ -347,33 +336,33 @@ arr ** 0.5
 
 # One-dimensional array index and slice the same as lists.
 
-# In[41]:
+# In[39]:
 
 
 arr = np.arange(10)
 arr
 
 
-# In[42]:
+# In[40]:
 
 
 arr[5]
 
 
-# In[43]:
+# In[41]:
 
 
 arr[5:8]
 
 
-# In[44]:
+# In[42]:
 
 
 equiv_list = list(range(10))
 equiv_list
 
 
-# In[45]:
+# In[43]:
 
 
 equiv_list[5:8]
@@ -381,16 +370,16 @@ equiv_list[5:8]
 
 # We have to jump through some hoops if we want to replace elements 5, 6, and 7 in `equiv_list` with the value 12.
 
-# In[46]:
+# In[44]:
 
 
 equiv_list[5:8] = [12] * 3
 equiv_list
 
 
-# However, this operation is easy with a NumPy array!
+# However, this operation is easy with the NumPy array `arr`!
 
-# In[47]:
+# In[45]:
 
 
 arr[5:8] = 12
@@ -401,42 +390,57 @@ arr
 # 
 # > As you can see, if you assign a scalar value to a slice, as in `arr[5:8] = 12`, the value is propagated (or broadcasted henceforth) to the entire selection. An important first distinction from Python’s built-in lists is that array slices are views on the original array. This means that the data is not copied, and any modifications to the view will be reflected in the source array.
 
-# In[48]:
+# In[46]:
 
 
 arr_slice = arr[5:8]
 arr_slice
 
 
-# In[49]:
+# In[47]:
 
 
 x = arr_slice
 x
 
 
-# In[50]:
+# In[48]:
 
 
 x is arr_slice
 
 
-# In[51]:
+# In[49]:
 
 
 y = x.copy()
 
 
-# In[52]:
+# In[50]:
 
 
 y is arr_slice
 
 
-# In[53]:
+# In[51]:
 
 
 arr_slice[1] = 12345
+arr_slice
+
+
+# In[52]:
+
+
+arr
+
+
+# The `:` slices every element in `arr_slice`.
+
+# In[53]:
+
+
+arr_slice[:] = 64
 arr_slice
 
 
@@ -446,38 +450,23 @@ arr_slice
 arr
 
 
-# The `:` slices every element in `arr_slice`.
-
-# In[55]:
-
-
-arr_slice[:] = 64
-arr_slice
-
-
-# In[56]:
-
-
-arr
-
-
 # > If you want a copy of a slice of an ndarray instead of a view, you will need to explicitly copy the array-for example, `arr[5:8].copy()`.
 
-# In[57]:
+# In[55]:
 
 
 arr_slice_2 = arr[5:8].copy()
 arr_slice_2
 
 
-# In[58]:
+# In[56]:
 
 
 arr_slice_2[:] = 2001
 arr_slice_2
 
 
-# In[59]:
+# In[57]:
 
 
 arr
@@ -487,20 +476,20 @@ arr
 
 # We can slice across two or more dimensions, including the `[i, j]` notation.
 
-# In[60]:
+# In[58]:
 
 
 arr2d = np.array([[1,2,3], [4,5,6], [7,8,9]])
 arr2d
 
 
-# In[61]:
+# In[59]:
 
 
 arr2d[:2]
 
 
-# In[62]:
+# In[60]:
 
 
 arr2d[:2, 1:]
@@ -508,13 +497,13 @@ arr2d[:2, 1:]
 
 # A colon (`:`) by itself selects the entire dimension and is necessary to slice higher dimensions.
 
-# In[63]:
+# In[61]:
 
 
 arr2d[:, :1]
 
 
-# In[64]:
+# In[62]:
 
 
 arr2d[:2, 1:] = 0
@@ -529,7 +518,7 @@ arr2d
 # We can use Booleans (`True`s and `False`s) to slice arrays, too.
 # Boolean indexing in Python is like combining `index()` and `match()` in Excel.
 
-# In[65]:
+# In[63]:
 
 
 names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
@@ -537,13 +526,13 @@ np.random.seed(42)
 data = np.random.randn(7, 4)
 
 
-# In[66]:
+# In[64]:
 
 
 names
 
 
-# In[67]:
+# In[65]:
 
 
 data
@@ -551,13 +540,13 @@ data
 
 # Here `names` provides seven names for the seven rows in `data`.
 
-# In[68]:
+# In[66]:
 
 
 names == 'Bob'
 
 
-# In[69]:
+# In[67]:
 
 
 data[names == 'Bob']
@@ -565,7 +554,7 @@ data[names == 'Bob']
 
 # We can combine Boolean slicing with `:` slicing.
 
-# In[70]:
+# In[68]:
 
 
 data[names == 'Bob', 2:]
@@ -573,7 +562,7 @@ data[names == 'Bob', 2:]
 
 # We can use `~` to invert a Boolean.
 
-# In[71]:
+# In[69]:
 
 
 cond = names == 'Bob'
@@ -582,7 +571,7 @@ data[~cond]
 
 # For NumPy arrays, we must use `&` and `|` instead of `and` and `or`.
 
-# In[72]:
+# In[70]:
 
 
 cond = (names == 'Bob') | (names == 'Will')
@@ -591,13 +580,13 @@ data[cond]
 
 # We can also create a Boolean for each element.
 
-# In[73]:
+# In[71]:
 
 
 data < 0
 
 
-# In[74]:
+# In[72]:
 
 
 data[data < 0] = 0
@@ -608,13 +597,13 @@ data
 
 # > A universal function, or ufunc, is a function that performs element-wise operations on data in ndarrays. You can think of them as fast vectorized wrappers for simple functions that take one or more scalar values and produce one or more scalar results.
 
-# In[75]:
+# In[73]:
 
 
 arr = np.arange(10)
 
 
-# In[76]:
+# In[74]:
 
 
 np.sqrt(arr)
@@ -622,7 +611,7 @@ np.sqrt(arr)
 
 # Like above, we can raise a single value to a NumPy array of powers.
 
-# In[77]:
+# In[75]:
 
 
 2**arr
@@ -630,7 +619,7 @@ np.sqrt(arr)
 
 # `np.exp(x)` is $e^x$.
 
-# In[78]:
+# In[76]:
 
 
 np.exp(arr)
@@ -640,7 +629,7 @@ np.exp(arr)
 # These "unary" functions operate on one array and return a new array with the same shape.
 # There are also "binary" functions that operate on two arrays and return one array.
 
-# In[79]:
+# In[77]:
 
 
 np.random.seed(42)
@@ -648,7 +637,7 @@ x = np.random.randn(8)
 y = np.random.randn(8)
 
 
-# In[80]:
+# In[78]:
 
 
 np.maximum(x, y)
@@ -657,9 +646,9 @@ np.maximum(x, y)
 # ***Be careful!
 # Function names are not the whole story.
 # Check your output and read the docstring!***
-# For example, `np.max()` returns the maximum of an array (instead of the elementwise maximum of two arrays for `np.maximum()`.
+# For example, `np.max()` returns the maximum of an array, instead of the elementwise maximum of two arrays for `np.maximum()`.
 
-# In[81]:
+# In[79]:
 
 
 np.max(x)
@@ -707,7 +696,7 @@ np.max(x)
 
 # NumPy's `where()` is an if-else statement that operates like Excel's `if()`.
 
-# In[82]:
+# In[80]:
 
 
 xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
@@ -715,7 +704,7 @@ yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
 cond = np.array([True, False, True, True, False])
 
 
-# In[83]:
+# In[81]:
 
 
 np.where(cond, xarr, yarr)
@@ -723,15 +712,16 @@ np.where(cond, xarr, yarr)
 
 # We could use a list comprehension, instead, but the list comprehension is takes longer to type, read, and troubleshoot.
 
-# In[84]:
+# In[82]:
 
 
-[(x if c else y) for x, y, c in zip(xarr, yarr, cond)]
+np.array([(x if c else y) for x, y, c in zip(xarr, yarr, cond)])
 
 
-# We could also use `np.select()`.
+# We could also use `np.select()` here, but it is overkill to test one condition.
+# `np.select()` lets us test more more than one condition and provides a default value if no condition is met.
 
-# In[85]:
+# In[83]:
 
 
 np.select(
@@ -740,28 +730,26 @@ np.select(
 )
 
 
-# `np.select()` is more complex than `np.where()`, but lets us test more than two conditions and provide a default value if no condition is met.
-
 # ### Mathematical and Statistical Methods
 
 # > A set of mathematical functions that compute statistics about an entire array or about the data along an axis are accessible as methods of the array class. You can use aggregations (often called reductions) like sum, mean, and std (standard deviation) either by calling the array instance method or using the top-level NumPy function.
 # 
 # We will use these aggregations extensively in pandas.
 
-# In[86]:
+# In[84]:
 
 
 np.random.seed(42)
 arr = np.random.randn(5, 4)
 
 
-# In[87]:
+# In[85]:
 
 
 arr.mean()
 
 
-# In[88]:
+# In[86]:
 
 
 arr.sum()
@@ -770,25 +758,25 @@ arr.sum()
 # The aggregation methods above aggregated the whole array.
 # We can use the `axis` argument to aggregate columns (`axis=0`) and rows (`axis=1`).
 
-# In[89]:
+# In[87]:
 
 
 arr.mean(axis=1)
 
 
-# In[90]:
+# In[88]:
 
 
 arr[0].mean()
 
 
-# In[91]:
+# In[89]:
 
 
 arr.mean(axis=0)
 
 
-# In[92]:
+# In[90]:
 
 
 arr[:, 0].mean()
@@ -796,7 +784,7 @@ arr[:, 0].mean()
 
 # The `.cumsum()` method returns the sum of all previous elements.
 
-# In[93]:
+# In[91]:
 
 
 arr = np.array([0, 1, 2, 3, 4, 5, 6, 7])
@@ -805,20 +793,20 @@ arr.cumsum()
 
 # We can use the `.cumsum()` method along the axis of a multi-dimension array, too.
 
-# In[94]:
+# In[92]:
 
 
 arr = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
 arr
 
 
-# In[95]:
+# In[93]:
 
 
 arr.cumsum(axis=0)
 
 
-# In[96]:
+# In[94]:
 
 
 arr.cumprod(axis=1)
@@ -836,38 +824,38 @@ arr.cumprod(axis=1)
 
 # ### Methods for Boolean Arrays
 
-# In[97]:
+# In[95]:
 
 
 np.random.seed(42)
 arr = np.random.randn(100)
 
 
-# In[98]:
+# In[96]:
 
 
 (arr > 0).sum() # Number of positive values
 
 
-# In[99]:
+# In[97]:
 
 
 (arr > 0).mean() # percentage of positive values
 
 
-# In[100]:
+# In[98]:
 
 
 bools = np.array([False, False, True, False])
 
 
-# In[101]:
+# In[99]:
 
 
 bools.any()
 
 
-# In[102]:
+# In[100]:
 
 
 bools.all()

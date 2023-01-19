@@ -249,7 +249,7 @@ l4 == l4_quiz1
 
 
 # ---
-# New question: Can we use `if else if` with a list comprehension?
+# New question: Can we use ternary expressions (i.e., inline `if else`) with a list comprehension?
 # 
 # I suggest writing a function to make this more obvious, but here is an example.
 # We can try squaring `x` if `x` is even, but cubing `x` if `x` is odd.
@@ -266,6 +266,8 @@ l4_new_question = [x**2 if (x%2 == 0) else x**3 for x in range(1, 101)]
 
 print(l4_new_question)
 
+
+# ---
 
 # ***Practice:***
 # Create a list `l5` that contains the squares of ***odd*** integers from 1 to 100.
