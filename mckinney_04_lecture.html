@@ -195,6 +195,21 @@ const thebe_selector_output = ".output, .cell_output"
      McKinney Chapter 4 - Practice (Blank)
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_03.html">
+     McKinney Chapter 4 - Practice (Section 03, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_04.html">
+     McKinney Chapter 4 - Practice (Section 04, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_02.html">
+     McKinney Chapter 4 - Practice (Section 02, Wednesday 2:45 PM)
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -650,7 +665,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 </div>
-<p>If we want to double each of the values in <code class="docutils literal notranslate"><span class="pre">my_list</span></code> we have to use a for loop or a list comprehension.</p>
+<p>If we want to double each value in <code class="docutils literal notranslate"><span class="pre">my_list</span></code> we have to use a for loop or a list comprehension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_list * 2 # concatenates two copies of my_list</span>
@@ -665,7 +680,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 </div>
-<p>However, we can just multiply <code class="docutils literal notranslate"><span class="pre">my_arr</span></code> by two because math “just works” with NumPy.</p>
+<p>However, we can multiply <code class="docutils literal notranslate"><span class="pre">my_arr</span></code> by two because math “just works” with NumPy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_arr</span> <span class="o">*</span> <span class="mi">2</span>
@@ -686,7 +701,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.3 ms ± 152 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.7 ms ± 584 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -698,12 +713,12 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169 µs ± 935 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169 µs ± 677 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>The NumPy version is few hundred times faster than the list version.
+<p>The NumPy version is a hundred times faster than the list version.
 The NumPy version is also faster to type, read, and troubleshoot, which are typically more important.
 Our time is more valuable than the computer time!</p>
 </section>
@@ -712,20 +727,14 @@ Our time is more valuable than the computer time!</p>
 <blockquote>
 <div><p>One of the key features of NumPy is its N-dimensional array object, or ndarray, which is a fast, flexible container for large datasets in Python. Arrays enable you to perform mathematical operations on whole blocks of data using similar syntax to the equivalent operations between scalar elements.</p>
 </div></blockquote>
-<p>We can generate random data to explore NumPy arrays.
-Whenever we use random data, we should set the random number seed with <code class="docutils literal notranslate"><span class="pre">np.random.seed(42)</span></code>, which makes our random numbers repeatable.
-Because we set the random number seed just before we generate <code class="docutils literal notranslate"><span class="pre">data</span></code>, your <code class="docutils literal notranslate"><span class="pre">data</span></code> and my <code class="docutils literal notranslate"><span class="pre">data</span></code> will be identical.</p>
+<p>We generate random data to explore NumPy arrays.
+Whenever we generate random data, we should set the random number seed with <code class="docutils literal notranslate"><span class="pre">np.random.seed(42)</span></code>, which makes our random numbers repeatable.
+If we use the same random number seed, our random numbers will be the same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -736,8 +745,8 @@ Because we set the random number seed just before we generate <code class="docut
 </div>
 </div>
 </div>
-<p>Multiplying <code class="docutils literal notranslate"><span class="pre">data</span></code> by 10 multiplies each element in <code class="docutils literal notranslate"><span class="pre">data</span></code> by 10, and adding <code class="docutils literal notranslate"><span class="pre">data</span></code> to itself does element-wise addition.
-The compromise to achieve this common-sense behavior is that NumPy arrays must contain homogeneous data types (e.g., all floats or all integers).</p>
+<p>Multiplying <code class="docutils literal notranslate"><span class="pre">data</span></code> by 10 multiplies each element in <code class="docutils literal notranslate"><span class="pre">data</span></code> by 10, and adding <code class="docutils literal notranslate"><span class="pre">data</span></code> to itself adds each element to itself (i.e., element-wise addition).
+To achieve this common-sense behavior, NumPy arrays must contain homogeneous data types (e.g., all floats or all integers).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">*</span> <span class="mi">10</span>
@@ -751,7 +760,6 @@ The compromise to achieve this common-sense behavior is that NumPy arrays must c
 </div>
 </div>
 </div>
-<p>Addition in NumPy is also elementwise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_2</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="n">data</span>
@@ -797,7 +805,7 @@ Recall that Jupyter Notebooks provides tab completion.</p>
 </div>
 </div>
 </div>
-<p>We access or slice elements in a NumPy array the same way as lists and tuples: <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p>We access or slice elements in a NumPy array using <code class="docutils literal notranslate"><span class="pre">[]</span></code>, the same as we slice lists and tuples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -810,10 +818,10 @@ Recall that Jupyter Notebooks provides tab completion.</p>
 </div>
 </div>
 </div>
-<p>We can chain <code class="docutils literal notranslate"><span class="pre">[]</span></code>s.</p>
+<p>As with list and tuples, we can chain <code class="docutils literal notranslate"><span class="pre">[]</span></code>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># zero row, then the zero element in the zero row</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -823,9 +831,9 @@ Recall that Jupyter Notebooks provides tab completion.</p>
 </div>
 </div>
 </div>
-<p>However, with NumPy arrays. we can combine a chain inside one pair of <code class="docutils literal notranslate"><span class="pre">[]</span></code>s.
+<p>However, with NumPy arrays. we can replace <span class="math notranslate nohighlight">\(n\)</span> chained <code class="docutils literal notranslate"><span class="pre">[]</span></code>s with one pair of <code class="docutils literal notranslate"><span class="pre">[]</span></code>s containing <span class="math notranslate nohighlight">\(n\)</span> values separated by commas.
 For example, <code class="docutils literal notranslate"><span class="pre">[i][j]</span></code> becomes <code class="docutils literal notranslate"><span class="pre">[i,</span> <span class="pre">j]</span></code>, <code class="docutils literal notranslate"><span class="pre">[i][j][k]</span></code> becomes <code class="docutils literal notranslate"><span class="pre">[i,</span> <span class="pre">j,</span> <span class="pre">k]</span></code>.
-This abbreviated notation is similar to what you will see in math and econometrics courses.</p>
+This abbreviated notation is similar to what you see in your math and econometrics courses.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># zero row, zero column</span>
@@ -834,6 +842,18 @@ This abbreviated notation is similar to what you will see in math and econometri
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4967
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -847,13 +867,7 @@ This abbreviated notation is similar to what you will see in math and econometri
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span>
+<span class="n">arr1</span>
 </pre></div>
 </div>
 </div>
@@ -894,13 +908,7 @@ We could coerce these values to integers but would lose information.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
 <span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2</span>
+<span class="n">arr2</span>
 </pre></div>
 </div>
 </div>
@@ -974,7 +982,7 @@ We could coerce these values to integers but would lose information.</p>
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function is similar to Python’s built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code>, but it creates an array directly.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function is similar to Python’s built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> but creates an array directly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
@@ -1075,13 +1083,13 @@ We could coerce these values to integers but would lose information.</p>
 <p>NumPy powers are elementwise, too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">**</span> <span class="mf">0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 1.4142, 1.7321],
-       [2.    , 2.2361, 2.4495]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  4.,  9.],
+       [16., 25., 36.]])
 </pre></div>
 </div>
 </div>
@@ -1180,7 +1188,7 @@ We could coerce these values to integers but would lose information.</p>
 </div>
 </div>
 </div>
-<p>However, this operation is easy with a NumPy array!</p>
+<p>However, this operation is easy with the NumPy array <code class="docutils literal notranslate"><span class="pre">arr</span></code>!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
@@ -1664,7 +1672,7 @@ There are also “binary” functions that operate on two arrays and return one 
 <p><em><strong>Be careful!
 Function names are not the whole story.
 Check your output and read the docstring!</strong></em>
-For example, <code class="docutils literal notranslate"><span class="pre">np.max()</span></code> returns the maximum of an array (instead of the elementwise maximum of two arrays for <code class="docutils literal notranslate"><span class="pre">np.maximum()</span></code>.</p>
+For example, <code class="docutils literal notranslate"><span class="pre">np.max()</span></code> returns the maximum of an array, instead of the elementwise maximum of two arrays for <code class="docutils literal notranslate"><span class="pre">np.maximum()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -1745,17 +1753,18 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 <p>We could use a list comprehension, instead, but the list comprehension is takes longer to type, read, and troubleshoot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[(</span><span class="n">x</span> <span class="k">if</span> <span class="n">c</span> <span class="k">else</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span><span class="p">,</span> <span class="n">cond</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">x</span> <span class="k">if</span> <span class="n">c</span> <span class="k">else</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xarr</span><span class="p">,</span> <span class="n">yarr</span><span class="p">,</span> <span class="n">cond</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.1000, 2.2000, 1.3000, 1.4000, 2.5000]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.1, 2.2, 1.3, 1.4, 2.5])
 </pre></div>
 </div>
 </div>
 </div>
-<p>We could also use <code class="docutils literal notranslate"><span class="pre">np.select()</span></code>.</p>
+<p>We could also use <code class="docutils literal notranslate"><span class="pre">np.select()</span></code> here, but it is overkill to test one condition.
+<code class="docutils literal notranslate"><span class="pre">np.select()</span></code> lets us test more more than one condition and provides a default value if no condition is met.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
@@ -1771,7 +1780,6 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">np.select()</span></code> is more complex than <code class="docutils literal notranslate"><span class="pre">np.where()</span></code>, but lets us test more than two conditions and provide a default value if no condition is met.</p>
 </section>
 <section id="mathematical-and-statistical-methods">
 <h3>Mathematical and Statistical Methods<a class="headerlink" href="#mathematical-and-statistical-methods" title="Permalink to this headline">#</a></h3>
