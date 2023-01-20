@@ -68,7 +68,7 @@ my_arr[:5]
 # In[7]:
 
 
-# my_list * 2 # concatenates two copies of my_list
+len(my_list * 2) # concatenates two copies of my_list
 
 
 # In[8]:
@@ -132,6 +132,7 @@ data * 10
 
 
 data_2 = data + data
+data_2
 
 
 # NumPy arrays have attributes.
@@ -261,10 +262,16 @@ np.zeros((3, 6))
 # In[31]:
 
 
-np.array(range(15))
+list(range(15))
 
 
 # In[32]:
+
+
+np.array(range(15))
+
+
+# In[33]:
 
 
 np.arange(15)
@@ -285,16 +292,22 @@ np.arange(15)
 
 # > Arrays are important because they enable you to express batch operations on data without writing any for loops. NumPy users call this vectorization. Any arithmetic operations between equal-size arrays applies the operation element-wise
 
-# In[33]:
+# In[34]:
 
 
 arr = np.array([[1., 2., 3.], [4., 5., 6.]])
 arr
 
 
+# In[35]:
+
+
+arr.shape
+
+
 # NumPy array addition is elementwise.
 
-# In[34]:
+# In[36]:
 
 
 arr + arr
@@ -302,7 +315,7 @@ arr + arr
 
 # NumPy array multiplication is elementwise.
 
-# In[35]:
+# In[37]:
 
 
 arr * arr
@@ -310,7 +323,7 @@ arr * arr
 
 # NumPy array division is elementwise.
 
-# In[36]:
+# In[38]:
 
 
 1 / arr
@@ -318,7 +331,7 @@ arr * arr
 
 # NumPy powers are elementwise, too.
 
-# In[37]:
+# In[39]:
 
 
 arr ** 2
@@ -326,7 +339,7 @@ arr ** 2
 
 # We can also raise a single value to an array!
 
-# In[38]:
+# In[40]:
 
 
 2 ** arr
@@ -336,33 +349,33 @@ arr ** 2
 
 # One-dimensional array index and slice the same as lists.
 
-# In[39]:
+# In[41]:
 
 
 arr = np.arange(10)
 arr
 
 
-# In[40]:
+# In[42]:
 
 
 arr[5]
 
 
-# In[41]:
+# In[43]:
 
 
 arr[5:8]
 
 
-# In[42]:
+# In[44]:
 
 
 equiv_list = list(range(10))
 equiv_list
 
 
-# In[43]:
+# In[45]:
 
 
 equiv_list[5:8]
@@ -370,7 +383,14 @@ equiv_list[5:8]
 
 # We have to jump through some hoops if we want to replace elements 5, 6, and 7 in `equiv_list` with the value 12.
 
-# In[44]:
+# In[46]:
+
+
+# TypeError: can only assign an iterable
+# equiv_list[5:8] = 12
+
+
+# In[47]:
 
 
 equiv_list[5:8] = [12] * 3
@@ -379,7 +399,7 @@ equiv_list
 
 # However, this operation is easy with the NumPy array `arr`!
 
-# In[45]:
+# In[48]:
 
 
 arr[5:8] = 12
@@ -390,46 +410,46 @@ arr
 # 
 # > As you can see, if you assign a scalar value to a slice, as in `arr[5:8] = 12`, the value is propagated (or broadcasted henceforth) to the entire selection. An important first distinction from Python’s built-in lists is that array slices are views on the original array. This means that the data is not copied, and any modifications to the view will be reflected in the source array.
 
-# In[46]:
+# In[49]:
 
 
 arr_slice = arr[5:8]
 arr_slice
 
 
-# In[47]:
+# In[50]:
 
 
 x = arr_slice
 x
 
 
-# In[48]:
+# In[51]:
 
 
 x is arr_slice
 
 
-# In[49]:
+# In[52]:
 
 
 y = x.copy()
 
 
-# In[50]:
+# In[53]:
 
 
 y is arr_slice
 
 
-# In[51]:
+# In[54]:
 
 
 arr_slice[1] = 12345
 arr_slice
 
 
-# In[52]:
+# In[55]:
 
 
 arr
@@ -437,14 +457,14 @@ arr
 
 # The `:` slices every element in `arr_slice`.
 
-# In[53]:
+# In[56]:
 
 
 arr_slice[:] = 64
 arr_slice
 
 
-# In[54]:
+# In[57]:
 
 
 arr
@@ -452,21 +472,21 @@ arr
 
 # > If you want a copy of a slice of an ndarray instead of a view, you will need to explicitly copy the array-for example, `arr[5:8].copy()`.
 
-# In[55]:
+# In[58]:
 
 
 arr_slice_2 = arr[5:8].copy()
 arr_slice_2
 
 
-# In[56]:
+# In[59]:
 
 
 arr_slice_2[:] = 2001
 arr_slice_2
 
 
-# In[57]:
+# In[60]:
 
 
 arr
@@ -476,20 +496,20 @@ arr
 
 # We can slice across two or more dimensions, including the `[i, j]` notation.
 
-# In[58]:
+# In[61]:
 
 
 arr2d = np.array([[1,2,3], [4,5,6], [7,8,9]])
 arr2d
 
 
-# In[59]:
+# In[62]:
 
 
 arr2d[:2]
 
 
-# In[60]:
+# In[63]:
 
 
 arr2d[:2, 1:]
@@ -497,13 +517,13 @@ arr2d[:2, 1:]
 
 # A colon (`:`) by itself selects the entire dimension and is necessary to slice higher dimensions.
 
-# In[61]:
+# In[64]:
 
 
 arr2d[:, :1]
 
 
-# In[62]:
+# In[65]:
 
 
 arr2d[:2, 1:] = 0
@@ -518,7 +538,7 @@ arr2d
 # We can use Booleans (`True`s and `False`s) to slice arrays, too.
 # Boolean indexing in Python is like combining `index()` and `match()` in Excel.
 
-# In[63]:
+# In[66]:
 
 
 names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
@@ -526,13 +546,13 @@ np.random.seed(42)
 data = np.random.randn(7, 4)
 
 
-# In[64]:
+# In[67]:
 
 
 names
 
 
-# In[65]:
+# In[68]:
 
 
 data
@@ -540,13 +560,13 @@ data
 
 # Here `names` provides seven names for the seven rows in `data`.
 
-# In[66]:
+# In[69]:
 
 
 names == 'Bob'
 
 
-# In[67]:
+# In[70]:
 
 
 data[names == 'Bob']
@@ -554,7 +574,7 @@ data[names == 'Bob']
 
 # We can combine Boolean slicing with `:` slicing.
 
-# In[68]:
+# In[71]:
 
 
 data[names == 'Bob', 2:]
@@ -562,7 +582,7 @@ data[names == 'Bob', 2:]
 
 # We can use `~` to invert a Boolean.
 
-# In[69]:
+# In[72]:
 
 
 cond = names == 'Bob'
@@ -571,7 +591,7 @@ data[~cond]
 
 # For NumPy arrays, we must use `&` and `|` instead of `and` and `or`.
 
-# In[70]:
+# In[73]:
 
 
 cond = (names == 'Bob') | (names == 'Will')
@@ -580,13 +600,13 @@ data[cond]
 
 # We can also create a Boolean for each element.
 
-# In[71]:
+# In[74]:
 
 
 data < 0
 
 
-# In[72]:
+# In[75]:
 
 
 data[data < 0] = 0
@@ -597,13 +617,14 @@ data
 
 # > A universal function, or ufunc, is a function that performs element-wise operations on data in ndarrays. You can think of them as fast vectorized wrappers for simple functions that take one or more scalar values and produce one or more scalar results.
 
-# In[73]:
+# In[76]:
 
 
 arr = np.arange(10)
+arr
 
 
-# In[74]:
+# In[77]:
 
 
 np.sqrt(arr)
@@ -611,7 +632,7 @@ np.sqrt(arr)
 
 # Like above, we can raise a single value to a NumPy array of powers.
 
-# In[75]:
+# In[78]:
 
 
 2**arr
@@ -619,7 +640,7 @@ np.sqrt(arr)
 
 # `np.exp(x)` is $e^x$.
 
-# In[76]:
+# In[79]:
 
 
 np.exp(arr)
@@ -629,7 +650,7 @@ np.exp(arr)
 # These "unary" functions operate on one array and return a new array with the same shape.
 # There are also "binary" functions that operate on two arrays and return one array.
 
-# In[77]:
+# In[80]:
 
 
 np.random.seed(42)
@@ -637,7 +658,19 @@ x = np.random.randn(8)
 y = np.random.randn(8)
 
 
-# In[78]:
+# In[81]:
+
+
+x
+
+
+# In[82]:
+
+
+y
+
+
+# In[83]:
 
 
 np.maximum(x, y)
@@ -648,7 +681,7 @@ np.maximum(x, y)
 # Check your output and read the docstring!***
 # For example, `np.max()` returns the maximum of an array, instead of the elementwise maximum of two arrays for `np.maximum()`.
 
-# In[79]:
+# In[84]:
 
 
 np.max(x)
@@ -696,7 +729,7 @@ np.max(x)
 
 # NumPy's `where()` is an if-else statement that operates like Excel's `if()`.
 
-# In[80]:
+# In[85]:
 
 
 xarr = np.array([1.1, 1.2, 1.3, 1.4, 1.5])
@@ -704,7 +737,7 @@ yarr = np.array([2.1, 2.2, 2.3, 2.4, 2.5])
 cond = np.array([True, False, True, True, False])
 
 
-# In[81]:
+# In[86]:
 
 
 np.where(cond, xarr, yarr)
@@ -712,7 +745,7 @@ np.where(cond, xarr, yarr)
 
 # We could use a list comprehension, instead, but the list comprehension is takes longer to type, read, and troubleshoot.
 
-# In[82]:
+# In[87]:
 
 
 np.array([(x if c else y) for x, y, c in zip(xarr, yarr, cond)])
@@ -721,7 +754,7 @@ np.array([(x if c else y) for x, y, c in zip(xarr, yarr, cond)])
 # We could also use `np.select()` here, but it is overkill to test one condition.
 # `np.select()` lets us test more more than one condition and provides a default value if no condition is met.
 
-# In[83]:
+# In[88]:
 
 
 np.select(
@@ -736,20 +769,21 @@ np.select(
 # 
 # We will use these aggregations extensively in pandas.
 
-# In[84]:
+# In[89]:
 
 
 np.random.seed(42)
 arr = np.random.randn(5, 4)
+arr
 
 
-# In[85]:
+# In[90]:
 
 
 arr.mean()
 
 
-# In[86]:
+# In[91]:
 
 
 arr.sum()
@@ -758,25 +792,25 @@ arr.sum()
 # The aggregation methods above aggregated the whole array.
 # We can use the `axis` argument to aggregate columns (`axis=0`) and rows (`axis=1`).
 
-# In[87]:
+# In[92]:
 
 
 arr.mean(axis=1)
 
 
-# In[88]:
+# In[93]:
 
 
 arr[0].mean()
 
 
-# In[89]:
+# In[94]:
 
 
 arr.mean(axis=0)
 
 
-# In[90]:
+# In[95]:
 
 
 arr[:, 0].mean()
@@ -784,7 +818,7 @@ arr[:, 0].mean()
 
 # The `.cumsum()` method returns the sum of all previous elements.
 
-# In[91]:
+# In[96]:
 
 
 arr = np.array([0, 1, 2, 3, 4, 5, 6, 7])
@@ -793,20 +827,20 @@ arr.cumsum()
 
 # We can use the `.cumsum()` method along the axis of a multi-dimension array, too.
 
-# In[92]:
+# In[97]:
 
 
 arr = np.array([[0, 1, 2], [3, 4, 5], [6, 7, 8]])
 arr
 
 
-# In[93]:
+# In[98]:
 
 
 arr.cumsum(axis=0)
 
 
-# In[94]:
+# In[99]:
 
 
 arr.cumprod(axis=1)
@@ -824,38 +858,46 @@ arr.cumprod(axis=1)
 
 # ### Methods for Boolean Arrays
 
-# In[95]:
+# In[100]:
 
 
 np.random.seed(42)
 arr = np.random.randn(100)
+arr
 
 
-# In[96]:
+# In[101]:
+
+
+arr > 0
+
+
+# In[102]:
 
 
 (arr > 0).sum() # Number of positive values
 
 
-# In[97]:
+# In[103]:
 
 
 (arr > 0).mean() # percentage of positive values
 
 
-# In[98]:
+# In[104]:
 
 
 bools = np.array([False, False, True, False])
+bools
 
 
-# In[99]:
+# In[105]:
 
 
 bools.any()
 
 
-# In[100]:
+# In[106]:
 
 
 bools.all()

@@ -41,7 +41,7 @@ data
 # Your `npmts()` should accept arguments `c1`, `r`, and `g` that represent  $C_1$, $r$, and $g$.
 # The present value of a growing perpetuity is $PV = \frac{C_1}{r - g}$, and the present value of a growing annuity is $PV = \frac{C_1}{r - g}\left[ 1 - \left( \frac{1 + g}{1 + r} \right)^t \right]$.
 
-# ### Write a function that calculates the internal rate of return given an numpy array of cash flows.
+# ### Write a function that calculates the internal rate of return given a NumPy array of cash flows.
 
 # ### Write a function `returns()` that accepts *NumPy arrays* of prices and dividends and returns a *NumPy array* of returns.
 
