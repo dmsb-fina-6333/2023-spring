@@ -668,7 +668,12 @@ First, we create a list and array with values from 0 to 999,999.</p>
 <p>If we want to double each value in <code class="docutils literal notranslate"><span class="pre">my_list</span></code> we have to use a for loop or a list comprehension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_list * 2 # concatenates two copies of my_list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">my_list</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># concatenates two copies of my_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000000
 </pre></div>
 </div>
 </div>
@@ -701,7 +706,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.7 ms ± 584 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.8 ms ± 249 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -713,7 +718,7 @@ First, we create a list and array with values from 0 to 999,999.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>169 µs ± 677 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>177 µs ± 5.99 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -763,6 +768,13 @@ To achieve this common-sense behavior, NumPy arrays must contain homogeneous dat
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_2</span> <span class="o">=</span> <span class="n">data</span> <span class="o">+</span> <span class="n">data</span>
+<span class="n">data_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.9934, -0.2765,  1.2954],
+       [ 3.0461, -0.4683, -0.4683]])
 </pre></div>
 </div>
 </div>
@@ -985,6 +997,18 @@ We could coerce these values to integers but would lose information.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function is similar to Python’s built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> but creates an array directly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1034,6 +1058,18 @@ We could coerce these values to integers but would lose information.</p>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1., 2., 3.],
        [4., 5., 6.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 3)
 </pre></div>
 </div>
 </div>
@@ -1175,6 +1211,14 @@ We could coerce these values to integers but would lose information.</p>
 </div>
 </div>
 <p>We have to jump through some hoops if we want to replace elements 5, 6, and 7 in <code class="docutils literal notranslate"><span class="pre">equiv_list</span></code> with the value 12.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TypeError: can only assign an iterable</span>
+<span class="c1"># equiv_list[5:8] = 12</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">equiv_list</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span>
@@ -1600,6 +1644,12 @@ Boolean indexing in Python is like combining <code class="docutils literal notra
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
 </pre></div>
 </div>
 </div>
@@ -1652,6 +1702,32 @@ There are also “binary” functions that operate on two arrays and return one 
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.4967, -0.1383,  0.6477,  1.523 , -0.2342, -0.2341,  1.5792,
+        0.7674])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.4695,  0.5426, -0.4634, -0.4657,  0.242 , -1.9133, -1.7249,
+       -0.5623])
 </pre></div>
 </div>
 </div>
@@ -1791,6 +1867,16 @@ For example, <code class="docutils literal notranslate"><span class="pre">np.max
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.4967, -0.1383,  0.6477,  1.523 ],
+       [-0.2342, -0.2341,  1.5792,  0.7674],
+       [-0.4695,  0.5426, -0.4634, -0.4657],
+       [ 0.242 , -1.9133, -1.7249, -0.5623],
+       [-1.0128,  0.3142, -0.908 , -1.4123]])
 </pre></div>
 </div>
 </div>
@@ -1944,6 +2030,49 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.4967, -0.1383,  0.6477,  1.523 , -0.2342, -0.2341,  1.5792,
+        0.7674, -0.4695,  0.5426, -0.4634, -0.4657,  0.242 , -1.9133,
+       -1.7249, -0.5623, -1.0128,  0.3142, -0.908 , -1.4123,  1.4656,
+       -0.2258,  0.0675, -1.4247, -0.5444,  0.1109, -1.151 ,  0.3757,
+       -0.6006, -0.2917, -0.6017,  1.8523, -0.0135, -1.0577,  0.8225,
+       -1.2208,  0.2089, -1.9597, -1.3282,  0.1969,  0.7385,  0.1714,
+       -0.1156, -0.3011, -1.4785, -0.7198, -0.4606,  1.0571,  0.3436,
+       -1.763 ,  0.3241, -0.3851, -0.6769,  0.6117,  1.031 ,  0.9313,
+       -0.8392, -0.3092,  0.3313,  0.9755, -0.4792, -0.1857, -1.1063,
+       -1.1962,  0.8125,  1.3562, -0.072 ,  1.0035,  0.3616, -0.6451,
+        0.3614,  1.538 , -0.0358,  1.5646, -2.6197,  0.8219,  0.087 ,
+       -0.299 ,  0.0918, -1.9876, -0.2197,  0.3571,  1.4779, -0.5183,
+       -0.8085, -0.5018,  0.9154,  0.3288, -0.5298,  0.5133,  0.0971,
+        0.9686, -0.7021, -0.3277, -0.3921, -1.4635,  0.2961,  0.2611,
+        0.0051, -0.2346])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False,  True,  True, False, False,  True,  True, False,
+        True, False, False,  True, False, False, False, False,  True,
+       False, False,  True, False,  True, False, False,  True, False,
+        True, False, False, False,  True, False, False,  True, False,
+        True, False, False,  True,  True,  True, False, False, False,
+       False, False,  True,  True, False,  True, False, False,  True,
+        True,  True, False, False,  True,  True, False, False, False,
+       False,  True,  True, False,  True,  True, False,  True,  True,
+       False,  True, False,  True,  True, False,  True, False, False,
+        True,  True, False, False, False,  True,  True, False,  True,
+        True,  True, False, False, False, False,  True,  True,  True,
+       False])
 </pre></div>
 </div>
 </div>
@@ -1975,6 +2104,12 @@ We can use the <code class="docutils literal notranslate"><span class="pre">axis
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bools</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="n">bools</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False,  True, False])
 </pre></div>
 </div>
 </div>
