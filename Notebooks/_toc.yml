@@ -20,6 +20,12 @@ parts:
       - file: mckinney_04_practice_03
       - file: mckinney_04_practice_04
       - file: mckinney_04_practice_02
+    - file: mckinney_05_lecture
+      sections:
+      - file: mckinney_05_practice
+      - file: mckinney_05_practice_03
+      - file: mckinney_05_practice_04
+      - file: mckinney_05_practice_02
   - caption: Quizzes
     chapters:
     - file: quiz_01
