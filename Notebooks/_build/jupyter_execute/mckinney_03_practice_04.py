@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # McKinney Chapter 3 - Practice (Section 04, Wednesday 11:45 AM)
+# # McKinney Chapter 3 - Practice (Section 4, Wednesday 11:45 AM)
 
-# ***Practice:***
-# Swap the values assigned to `a` and `b` using a third variable `c`.
+# ## Practice
+
+# ### Swap the values assigned to `a` and `b` using a third variable `c`.
 
 # In[1]:
 
@@ -78,8 +79,7 @@ del c
 get_ipython().run_line_magic('who', '')
 
 
-# ***Practice:***
-# Swap the values assigned to `a` and `b` ***without*** using a third variable `c`.
+# ### Swap the values assigned to `a` and `b` ***without*** using a third variable `c`.
 
 # In[13]:
 
@@ -117,8 +117,7 @@ b, a = a, b
 print(f'a is {a} and b is {b}')
 
 
-# ***Practice:***
-# What is the output of the following code and why?
+# ### What is the output of the following code and why?
 
 # In[19]:
 
@@ -156,8 +155,7 @@ print(f'a is {a} and b is {b}')
 1, 1, 1 == 1, 1, 1
 
 
-# ***Practice:*** 
-# Create a list `l1` of integers from 1 to 100.
+# ### Create a list `l1` of integers from 1 to 100.
 
 # In[25]:
 
@@ -178,8 +176,8 @@ l1[:5]
 l1[5:10]
 
 
-# ***Practice:*** 
-# Slice `l1` to create a list of integers from 60 to 50 (inclusive).
+# ### Slice `l1` to create a list of integers from 60 to 50 (inclusive).
+
 # Name this list `l2`.
 
 # In[28]:
@@ -210,8 +208,7 @@ l2.reverse()
 l2
 
 
-# ***Practice:***
-# Create a list `l3` of odd integers from 1 to 21.
+# ### Create a list `l3` of odd integers from 1 to 21.
 
 # In[32]:
 
@@ -225,8 +222,7 @@ list(range(1, 22, 2))
 l1[0:21:2]
 
 
-# ***Practice:***
-# Create a list `l4` of the squares of integers from 1 to 100.
+# ### Create a list `l4` of the squares of integers from 1 to 100.
 
 # In[34]:
 
@@ -269,8 +265,7 @@ print(l4_new_question)
 
 # ---
 
-# ***Practice:***
-# Create a list `l5` that contains the squares of ***odd*** integers from 1 to 100.
+# ### Create a list `l5` that contains the squares of ***odd*** integers from 1 to 100.
 
 # In[39]:
 
@@ -296,8 +291,7 @@ l5_alt = [x**2 for x in range(1, 101) if x%2 != 0]
 l5 == l5_alt[-41]
 
 
-# ***Practice:***
-# Use a lambda function to sort `strings` by the last letter.
+# ### Use a lambda function to sort `strings` by the last letter.
 
 # In[43]:
 
@@ -312,9 +306,8 @@ strings.sort(key=lambda x: x[-1])
 strings
 
 
-# ***Practice:***
-# Given an integer array `nums` and an integer `k`, return the $k^{th}$ largest element in the array.
-# 
+# ### Given an integer array `nums` and an integer `k`, return the $k^{th}$ largest element in the array.
+
 # Note that it is the $k^{th}$ largest element in the sorted order, not the $k^{th}$ distinct element.
 # 
 # Example 1:
@@ -344,8 +337,8 @@ def nums(x, k):
 nums(x=[3,2,1,5,6,4], k=2)
 
 
-# ***Practice:***
-# Given an integer array `nums` and an integer `k`, return the `k` most frequent elements. 
+# ### Given an integer array `nums` and an integer `k`, return the `k` most frequent elements. 
+
 # You may return the answer in any order.
 # 
 # Example 1:
@@ -379,9 +372,8 @@ def nums(nums, k):
 nums(nums=[1,1,1,2,2,3], k=2)
 
 
-# ***Practice:***
-# Test whether the given strings are palindromes
-# 
+# ### Test whether the given strings are palindromes.
+
 # Input: `["aba", "no"]` \
 # Output: `[True, False]`
 
@@ -398,8 +390,7 @@ def is_palindrome(x):
 is_palindrome(["aba", "no"])
 
 
-# ***Practice:***
-# Write a function `returns()` that accepts lists of prices and dividends and returns a list of returns.
+# ### Write a function `returns()` that accepts lists of prices and dividends and returns a list of returns.
 
 # In[51]:
 
@@ -429,9 +420,7 @@ def returns(p, d):
 returns(p=prices, d=dividends)
 
 
-# ***Practice:***
-# Rewrite the function `returns()` so it returns lists of returns, capital gains yields, and dividend yields.
-# How can we return these lists?
+# ### Rewrite the function `returns()` so it returns lists of returns, capital gains yields, and dividend yields.
 
 # In[54]:
 
@@ -458,9 +447,8 @@ def returns(p, d):
 returns(p=prices, d=dividends)
 
 
-# ***Practice:***
-# Rescale and shift numbers so that they cover the range `[0, 1]`
-# 
+# ### Rescale and shift numbers so that they cover the range `[0, 1]`.
+
 # Input: `[18.5, 17.0, 18.0, 19.0, 18.0]` \
 # Output: `[0.75, 0.0, 0.5, 1.0, 0.5]`
 

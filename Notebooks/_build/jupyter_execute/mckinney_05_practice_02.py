@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # McKinney Chapter 5 - Practice (Section 02, Wednesday 2:45 PM)
+# # McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)
 
 # In[1]:
 

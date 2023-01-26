@@ -488,6 +488,8 @@ data = pd.DataFrame(
     columns=['one', 'two', 'three', 'four']
 )
 
+data
+
 
 # Indexing one column returns a series.
 
@@ -638,30 +640,66 @@ s2 = pd.Series([-2.1, 3.6, -1.5, 4, 3.1], index=['a', 'c', 'e', 'f', 'g'])
 # In[72]:
 
 
-s1 + s2
+s1
 
 
 # In[73]:
+
+
+s2
+
+
+# In[74]:
+
+
+s1 + s2
+
+
+# In[75]:
 
 
 df1 = pd.DataFrame(np.arange(9.).reshape((3, 3)), columns=list('bcd'), index=['Ohio', 'Texas', 'Colorado'])
 df2 = pd.DataFrame(np.arange(12.).reshape((4, 3)), columns=list('bde'), index=['Utah', 'Ohio', 'Texas', 'Oregon'])
 
 
-# In[74]:
+# In[76]:
+
+
+df1
+
+
+# In[77]:
+
+
+df2
+
+
+# In[78]:
 
 
 df1 + df2
 
 
-# In[75]:
+# In[79]:
 
 
 df1 = pd.DataFrame({'A': [1, 2]})
 df2 = pd.DataFrame({'B': [3, 4]})
 
 
-# In[76]:
+# In[80]:
+
+
+df1
+
+
+# In[81]:
+
+
+df2
+
+
+# In[82]:
 
 
 df1 - df2
@@ -669,7 +707,7 @@ df1 - df2
 
 # #### Arithmetic methods with fill values
 
-# In[77]:
+# In[83]:
 
 
 df1 = pd.DataFrame(np.arange(12.).reshape((3, 4)), columns=list('abcd'))
@@ -677,19 +715,19 @@ df2 = pd.DataFrame(np.arange(20.).reshape((4, 5)), columns=list('abcde'))
 df2.loc[1, 'b'] = np.nan
 
 
-# In[78]:
+# In[84]:
 
 
 df1
 
 
-# In[79]:
+# In[85]:
 
 
 df2
 
 
-# In[80]:
+# In[86]:
 
 
 df1 + df2
@@ -698,7 +736,7 @@ df1 + df2
 # We can specify a fill value for `NaN` values.
 # Note that pandas fills would-be `NaN` values in each data frame *before* the arithmetic operation.
 
-# In[81]:
+# In[87]:
 
 
 df1.add(df2, fill_value=0)
@@ -706,20 +744,20 @@ df1.add(df2, fill_value=0)
 
 # #### Operations between DataFrame and Series
 
-# In[82]:
+# In[88]:
 
 
 arr = np.arange(12.).reshape((3, 4))
 arr
 
 
-# In[83]:
+# In[89]:
 
 
 arr[0]
 
 
-# In[84]:
+# In[90]:
 
 
 arr - arr[0]
@@ -727,7 +765,7 @@ arr - arr[0]
 
 # Arithmetic operations between series and data frames behave the same as the example above.
 
-# In[85]:
+# In[91]:
 
 
 frame = pd.DataFrame(
@@ -739,55 +777,55 @@ frame = pd.DataFrame(
 series = frame.iloc[0]
 
 
-# In[86]:
-
-
-frame
-
-
-# In[87]:
-
-
-series
-
-
-# In[88]:
-
-
-frame - series
-
-
-# In[89]:
-
-
-series2 = pd.Series(range(3), index=['b', 'e', 'f'])
-
-
-# In[90]:
-
-
-frame
-
-
-# In[91]:
-
-
-series2
-
-
 # In[92]:
 
 
-frame + series2
+frame
 
 
 # In[93]:
 
 
-series3 = frame['d']
+series
 
 
 # In[94]:
+
+
+frame - series
+
+
+# In[95]:
+
+
+series2 = pd.Series(range(3), index=['b', 'e', 'f'])
+
+
+# In[96]:
+
+
+frame
+
+
+# In[97]:
+
+
+series2
+
+
+# In[98]:
+
+
+frame + series2
+
+
+# In[99]:
+
+
+series3 = frame['d']
+
+
+# In[100]:
 
 
 frame.sub(series3, axis='index')
@@ -795,7 +833,7 @@ frame.sub(series3, axis='index')
 
 # ### Function Application and Mapping
 
-# In[95]:
+# In[101]:
 
 
 np.random.seed(42)
@@ -808,7 +846,7 @@ frame = pd.DataFrame(
 frame
 
 
-# In[96]:
+# In[102]:
 
 
 frame.abs()
@@ -818,13 +856,13 @@ frame.abs()
 
 # Note that we can use anonymous (lambda) functions "on the fly":
 
-# In[97]:
+# In[103]:
 
 
 frame.apply(lambda x: x.max() - x.min())
 
 
-# In[98]:
+# In[104]:
 
 
 frame.apply(lambda x: x.max() - x.min(), axis=1)
@@ -833,13 +871,13 @@ frame.apply(lambda x: x.max() - x.min(), axis=1)
 # However, under the hood, the `.apply()` is basically a `for` loop and much slowly than optimized, built-in methods.
 # Here is an example of the speed costs of `.apply()`:
 
-# In[99]:
+# In[105]:
 
 
 get_ipython().run_line_magic('timeit', "frame['e'].abs()")
 
 
-# In[100]:
+# In[106]:
 
 
 get_ipython().run_line_magic('timeit', "frame['e'].apply(np.abs)")
@@ -847,7 +885,7 @@ get_ipython().run_line_magic('timeit', "frame['e'].apply(np.abs)")
 
 # ## Summarizing and Computing Descriptive Statistics
 
-# In[101]:
+# In[107]:
 
 
 df = pd.DataFrame(
@@ -859,19 +897,19 @@ df = pd.DataFrame(
 df
 
 
-# In[102]:
+# In[108]:
 
 
 df.sum()
 
 
-# In[103]:
+# In[109]:
 
 
 df.sum(axis=1)
 
 
-# In[104]:
+# In[110]:
 
 
 df.mean(axis=1, skipna=False)
@@ -879,7 +917,7 @@ df.mean(axis=1, skipna=False)
 
 # The `.idxmax()` method returns the label for the maximum observation.
 
-# In[105]:
+# In[111]:
 
 
 df.idxmax()
@@ -887,7 +925,7 @@ df.idxmax()
 
 # The `.describe()` returns summary statistics for each numerical column in a data frame.
 
-# In[106]:
+# In[112]:
 
 
 df.describe()
@@ -895,7 +933,7 @@ df.describe()
 
 # For non-numerical data, `.describe()` returns alternative summary statistics.
 
-# In[107]:
+# In[113]:
 
 
 obj = pd.Series(['a', 'a', 'b', 'c'] * 4)
@@ -910,7 +948,7 @@ obj.describe()
 # 
 # We can install these two functions with the `%pip` magic:
 
-# In[108]:
+# In[114]:
 
 
 # %pip install yfinance requests-cache
@@ -919,7 +957,7 @@ obj.describe()
 # If we are running Python locally, we only need to run the `%pip` magic once.
 # If we are running Python in the cloud, we may need to run the `%pip` magic once *per login*.
 
-# In[109]:
+# In[115]:
 
 
 import yfinance as yf
@@ -927,29 +965,35 @@ import requests_cache
 session = requests_cache.CachedSession(expire_after='1D')
 
 
-# In[110]:
+# In[116]:
 
 
 tickers = yf.Tickers('AAPL IBM MSFT GOOG', session=session)
 
 
-# In[111]:
+# In[117]:
 
 
 prices = tickers.history(period='max', auto_adjust=False)
 
 
-# In[112]:
+# In[118]:
 
 
 prices.index = prices.index.tz_localize(None)
+
+
+# In[119]:
+
+
+prices['Adj Close']
 
 
 # The `prices` data frames contains daily data for AAPL, IBM, MSFT, and GOOG.
 # The `Adj Close` column provides a reverse-engineered daily closing price that accounts for dividends paid and stock splits (and reverse splits).
 # As a result, the `.pct_change()` in `Adj Close` considers both price changes (i.e., capital gains) and dividends, so $R_t = \frac{(P_t + D_t) - P_{t-1}}{P_{t-1}} = \frac{\text{Adj Close}_t - \text{Adj Close}_{t-1}}{\text{Adj Close}_{t-1}}.$
 
-# In[113]:
+# In[120]:
 
 
 returns = prices['Adj Close'].pct_change().dropna()
@@ -958,7 +1002,7 @@ returns
 
 # We multiply by 252 to annualize mean daily returns because means grow linearly with time and there are (about) 252 trading days per year.
 
-# In[114]:
+# In[121]:
 
 
 returns.mean().mul(252)
@@ -966,7 +1010,7 @@ returns.mean().mul(252)
 
 # We multiply by $\sqrt{252}$ to annualize the standard deviation of daily returns because variances grow linearly with time, there are (about) 252 trading days per year, and the standard deviation is the square root of the variance.
 
-# In[115]:
+# In[122]:
 
 
 returns.std().mul(np.sqrt(252))
@@ -976,7 +1020,7 @@ returns.std().mul(np.sqrt(252))
 
 # We can calculate pairwise correlations.
 
-# In[116]:
+# In[123]:
 
 
 returns['MSFT'].corr(returns['IBM'])
@@ -984,14 +1028,20 @@ returns['MSFT'].corr(returns['IBM'])
 
 # We can also calculate correlation matrices.
 
-# In[117]:
+# In[124]:
 
 
 returns.corr()
 
 
-# In[118]:
+# In[125]:
 
 
 returns.corr().loc['MSFT', 'IBM']
+
+
+# In[ ]:
+
+
+
 

@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # McKinney Chapter 2 - Practice (Section 03, Monday 2:45 PM)
+# # McKinney Chapter 2 - Practice (Section 3, Monday 2:45 PM)
 
-# ***Practice:*** 
-# Extract the year, month, and day from an integer 8-digit date (i.e., YYYYMMDD format) using `//` (integer division) and `%` (modulo division).
+# ## Practice
+
+# ### Extract the year, month, and day from an integer 8-digit date (i.e., YYYYMMDD format) using `//` (integer division) and `%` (modulo division).
+
 # Try `20080915`.
 
 # In[1]:
@@ -49,8 +51,7 @@ day = ymd % 100
 (year, month, day)
 
 
-# ***Practice:***
-# Use your answer above to write a function `date` that accepts an integer 8-digit date argument and returns a tuple of the year, month, and date (e.g., `return (year, month, date)`)
+# ### Use your answer above to write a function `date` that accepts an integer 8-digit date argument and returns a tuple of the year, month, and date (e.g., `return (year, month, date)`).
 
 # In[8]:
 
@@ -68,8 +69,7 @@ def date(ymd):
 date(20080915)
 
 
-# ***Practice:***
-# Rewrite `date` to accept an 8-digit date as an integer or string.
+# ### Rewrite `date` to accept an 8-digit date as an integer or string.
 
 # In[10]:
 
@@ -89,9 +89,7 @@ def date(ymd):
 date(20080915)
 
 
-# ***Practice:***
-# Finally, rewrite `date` to accept a list of 8-digit dates as integers or strings.
-# Return a list of tuples of year, month, and date.
+# ### Finally, rewrite `date` to accept a list of 8-digit dates as integers or strings.
 
 # In[12]:
 
@@ -122,8 +120,7 @@ date(20080915)
 date([20080915, '20080915'])
 
 
-# ***Practice:***
-# Write a for loop that prints the squares of integers from 1 to 10.
+# ### Write a for loop that prints the squares of integers from 1 to 10.
 
 # In[15]:
 
@@ -135,8 +132,7 @@ for i in range(1, 11):
 # Above, I change the `end` argument from the default '\n' to ' '.
 # The default '\n' inserts a new line after value, making the output too long.
 
-# ***Practice:***
-# Write a for loop that prints the squares of *even* integers from 1 to 10.
+# ### Write a for loop that prints the squares of *even* integers from 1 to 10.
 
 # In[16]:
 
@@ -146,8 +142,7 @@ for i in range(1, 11):
         print(i**2, end=' ')
 
 
-# ***Practice:*** 
-# Write a for loop that sums the squares of integers from 1 to 10.
+# ### Write a for loop that sums the squares of integers from 1 to 10.
 
 # In[17]:
 
@@ -165,8 +160,7 @@ total
 
 # Above, I use `total += i`, which is equivalent to `total = total + i`.
 
-# ***Practice:*** 
-# Write a for loop that sums the squares of integers from 1 to 10 but stops before the sum exceeds 50.
+# ### Write a for loop that sums the squares of integers from 1 to 10 but stops before the sum exceeds 50.
 
 # In[19]:
 
@@ -184,7 +178,8 @@ for i in range(1, 11):
 total
 
 
-# ***Practice:*** 
+# ### FizzBuzz 
+
 # Write a for loop that prints the numbers from 1 to 100. 
 # For multiples of three print "Fizz" instead of the number.
 # For multiples of five print "Buzz". 
@@ -207,8 +202,7 @@ for i in range(1, 101):
         print(i, end=' ')
 
 
-# ***Practice:*** 
-# Use ternary expressions to make your FizzBuzz code more compact.
+# ### Use ternary expressions to make your FizzBuzz code more compact.
 
 # In[22]:
 
@@ -221,7 +215,8 @@ for i in range(1, 101):
 
 # The solution above is shorter and uses from neat tricks, but I consider the previous solution easier to read and troubleshoot.
 
-# ***Practice:***
+# ### Triangle
+
 # Write a function `triangle` that accepts a positive integer $N$ and prints a numerical triangle of height $N-1$.
 # For example, `triangle(N=6)` should print:
 # 
@@ -261,7 +256,8 @@ triangle(6)
 'Test' * 3
 
 
-# ***Practice:***
+# ### Two Sum
+
 # Write a function `two_sum` that does the following.
 # 
 # Given an array of integers `nums` and an integer `target`, return the indices of the two numbers that add up to target.
@@ -320,8 +316,8 @@ two_sum(nums = [3,3], target = 6)
 
 # We can write more efficient code once we learn other data structures in chapter 3 of McKinney!
 
-# ***Practice:***
-# 
+# ### Best Time
+
 # Write a function `best_time` that solves the following.
 # 
 # You are given an array `prices` where `prices[i]` is the price of a given stock on the $i^{th}$ day.

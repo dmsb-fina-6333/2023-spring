@@ -3,43 +3,40 @@
 
 # # McKinney Chapter 2 - Practice (Blank)
 
-# ***Practice:*** 
-# Extract the year, month, and day from an integer 8-digit date (i.e., YYYYMMDD format) using `//` (integer division) and `%` (modulo division).
+# ## Practice
+
+# ### Extract the year, month, and day from an integer 8-digit date (i.e., YYYYMMDD format) using `//` (integer division) and `%` (modulo division).
+
 # Try `20080915`.
 
-# ***Practice:***
-# Use your answer above to write a function `date` that accepts an integer 8-digit date argument and returns a tuple of the year, month, and date (e.g., `return (year, month, date)`)
+# ### Use your answer above to write a function `date` that accepts an integer 8-digit date argument and returns a tuple of the year, month, and date (e.g., `return (year, month, date)`).
 
-# ***Practice:***
-# Rewrite `date` to accept an 8-digit date as an integer or string.
+# ### Rewrite `date` to accept an 8-digit date as an integer or string.
 
-# ***Practice:***
-# Finally, rewrite `date` to accept a list of 8-digit dates as integers or strings.
+# ### Finally, rewrite `date` to accept a list of 8-digit dates as integers or strings.
+
 # Return a list of tuples of year, month, and date.
 
-# ***Practice:***
-# Write a for loop that prints the squares of integers from 1 to 10.
+# ### Write a for loop that prints the squares of integers from 1 to 10.
 
-# ***Practice:***
-# Write a for loop that prints the squares of *even* integers from 1 to 10.
+# ### Write a for loop that prints the squares of *even* integers from 1 to 10.
 
-# ***Practice:*** 
-# Write a for loop that sums the squares of integers from 1 to 10.
+# ### Write a for loop that sums the squares of integers from 1 to 10.
 
-# ***Practice:*** 
-# Write a for loop that sums the squares of integers from 1 to 10 but stops before the sum exceeds 50.
+# ### Write a for loop that sums the squares of integers from 1 to 10 but stops before the sum exceeds 50.
 
-# ***Practice:*** 
+# ### FizzBuzz
+
 # Write a for loop that prints the numbers from 1 to 100. 
 # For multiples of three print "Fizz" instead of the number.
 # For multiples of five print "Buzz". 
 # For numbers that are multiples of both three and five print "FizzBuzz".
 # More [here](https://blog.codinghorror.com/why-cant-programmers-program/).
 
-# ***Practice:*** 
-# Use ternary expressions to make your FizzBuzz code more compact.
+# ### Use ternary expressions to make your FizzBuzz code more compact.
 
-# ***Practice:***
+# ### Triangle
+
 # Write a function `triangle` that accepts a positive integer $N$ and prints a numerical triangle of height $N-1$.
 # For example, `triangle(N=6)` should print:
 # 
@@ -51,7 +48,8 @@
 # 55555
 # ```
 
-# ***Practice:***
+# ### Two Sum
+
 # Write a function `two_sum` that does the following.
 # 
 # Given an array of integers `nums` and an integer `target`, return the indices of the two numbers that add up to target.
@@ -80,8 +78,8 @@
 # 
 # I saw this question on [LeetCode](https://leetcode.com/problems/two-sum/description/).
 
-# ***Practice:***
-# 
+# ### Best Time
+
 # Write a function `best_time` that solves the following.
 # 
 # You are given an array `prices` where `prices[i]` is the price of a given stock on the $i^{th}$ day.
