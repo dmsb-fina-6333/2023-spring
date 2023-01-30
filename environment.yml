@@ -1,0 +1,16 @@
+name: fina-6333
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scipy
+  - pip
+  - pip:
+    - otter-grader
+    - yfinance
+    - pandas-datareader
+    - requests-cache
