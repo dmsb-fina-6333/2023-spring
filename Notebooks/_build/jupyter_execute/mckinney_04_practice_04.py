@@ -101,6 +101,29 @@ get_ipython().run_line_magic('timeit', 'np.array([i**2 for i in range(0, 100_001
 get_ipython().run_line_magic('timeit', 'np.arange(0, 100_001, 2, dtype=np.int64)**2')
 
 
+# ---
+
+# ***Note:***
+# On some platforms, `np.arange(0, 100_001, 2)` returns an array of 32-bit integers.
+# If we square this array of 32-bit integers, we get the wrong answer because the large values (e.g., $100,000^2$) are too large to represent as 32-bit integers.
+# Since we know that we need 54-bit integers for this calculation, we should explcitly set either `dtype='int64'` or `dtype=np.int64`.
+
+# In[14]:
+
+
+np.arange(0, 100_001, 2, dtype='int64')**2
+
+
+# In[15]:
+
+
+np.arange(0, 100_001, 2, dtype=np.int64)**2
+
+
+# This [StackOverflow answer](https://stackoverflow.com/a/1970697/334755) is this best explanation I have found of this behavior.
+
+# ---
+
 # ### Write a function that mimic Excel's `pv` function.
 
 # Here is how we call Excel's `pv` function:
@@ -113,7 +136,7 @@ get_ipython().run_line_magic('timeit', 'np.arange(0, 100_001, 2, dtype=np.int64)
 # Present value of a lump sum `fv`:
 # $PV_{fv} = \frac{fv}{(1+rate)^{nper}}$
 
-# In[14]:
+# In[16]:
 
 
 def pv(rate, nper, pmt=None, fv=None, type='END'):
@@ -139,7 +162,7 @@ def pv(rate, nper, pmt=None, fv=None, type='END'):
     return pv
 
 
-# In[15]:
+# In[17]:
 
 
 pv(rate=0.1, nper=10, pmt=100, fv=1000, type='END')
@@ -147,7 +170,7 @@ pv(rate=0.1, nper=10, pmt=100, fv=1000, type='END')
 
 # ### Write a function that mimic Excel's `fv` function.
 
-# In[16]:
+# In[18]:
 
 
 def fv(rate, nper, pmt=None, pv=None, type = 'END'):
@@ -169,7 +192,7 @@ def fv(rate, nper, pmt=None, pv=None, type = 'END'):
         print('Please enter END or BGN for the type argument')
 
 
-# In[17]:
+# In[19]:
 
 
 fv(rate=0.1, nper=10, pmt=100, pv=-1000, type='END')
@@ -177,7 +200,7 @@ fv(rate=0.1, nper=10, pmt=100, pv=-1000, type='END')
 
 # ### Replace the negative values in `data` with -1 and positive values with +1.
 
-# In[18]:
+# In[20]:
 
 
 np.random.seed(42)
@@ -185,7 +208,7 @@ data = np.random.randn(7, 7)
 data
 
 
-# In[19]:
+# In[21]:
 
 
 data_c = data.copy()
@@ -195,19 +218,19 @@ data_c[data_c > 0] = +1
 data_c
 
 
-# In[20]:
+# In[22]:
 
 
 data
 
 
-# In[21]:
+# In[23]:
 
 
 np.where(data < 0, -1, np.where(data > 0, +1, data))
 
 
-# In[22]:
+# In[24]:
 
 
 np.select(
@@ -230,14 +253,14 @@ np.select(
 # 
 # ***We do not need to accept an argument `c1` because $C_1$ cancels out!***
 
-# In[23]:
+# In[25]:
 
 
 def npmts(x, r, g):
     return np.log(1-x) / np.log((1 + g) / (1 + r))
 
 
-# In[24]:
+# In[26]:
 
 
 npmts(0.5, 0.1, 0.05)
@@ -247,7 +270,7 @@ npmts(0.5, 0.1, 0.05)
 
 # Here are some data where the $IRR$ is obvious!
 
-# In[25]:
+# In[27]:
 
 
 c = np.array([-100, 110])
@@ -256,7 +279,7 @@ irr = 0.1
 
 # We want to replicate the following calculation with NumPy:
 
-# In[26]:
+# In[28]:
 
 
 c[0]/(1+irr)**0 + c[1]/(1+irr)**1
@@ -264,7 +287,7 @@ c[0]/(1+irr)**0 + c[1]/(1+irr)**1
 
 # The following NumPy code calculates the present value interest factor for each cash flow:
 
-# In[27]:
+# In[29]:
 
 
 1 / (1 + irr)**np.arange(len(c)) # present value interest factor
@@ -272,7 +295,7 @@ c[0]/(1+irr)**0 + c[1]/(1+irr)**1
 
 # The following NumPy code calculates the present value for each cash flow:
 
-# In[28]:
+# In[30]:
 
 
 c / (1 + irr)**np.arange(len(c)) # present value of each cash flow
@@ -280,7 +303,7 @@ c / (1 + irr)**np.arange(len(c)) # present value of each cash flow
 
 # We sum these present values of each cash flow to calculate the net present value:
 
-# In[29]:
+# In[31]:
 
 
 (c / (1 + irr)**np.arange(len(c))).sum()
@@ -293,7 +316,7 @@ c / (1 + irr)**np.arange(len(c)) # present value of each cash flow
 # 1. Using a `while` to try different discount rates until our answer is within some tolerance
 # 1. Using NumPy to perform repetitive calculations without a `for` loop
 
-# In[30]:
+# In[32]:
 
 
 def irr(c, guess=0, tol=0.0001, inc=0.0001):
@@ -306,13 +329,13 @@ def irr(c, guess=0, tol=0.0001, inc=0.0001):
     return irr
 
 
-# In[31]:
+# In[33]:
 
 
 c = np.array([-100, 110])
 
 
-# In[32]:
+# In[34]:
 
 
 irr(c)
@@ -320,21 +343,21 @@ irr(c)
 
 # ### Write a function `returns()` that accepts *NumPy arrays* of prices and dividends and returns a *NumPy array* of returns.
 
-# In[33]:
+# In[35]:
 
 
 prices = np.array([100, 150, 100, 50, 100, 150, 100, 150])
 dividends = np.array([1, 1, 1, 1, 2, 2, 2, 2])
 
 
-# In[34]:
+# In[36]:
 
 
 def returns(p, d):
     return (p[1:] - p[:-1] + d[1:]) / p[:-1]
 
 
-# In[35]:
+# In[37]:
 
 
 returns(p=prices, d=dividends)
@@ -342,7 +365,7 @@ returns(p=prices, d=dividends)
 
 # ### Rewrite the function `returns()` so it returns *NumPy arrays* of returns, capital gains yields, and dividend yields.
 
-# In[36]:
+# In[38]:
 
 
 def returns(p, d):
@@ -352,7 +375,7 @@ def returns(p, d):
     return {'r': r, 'cg': cg, 'dy': dy}
 
 
-# In[37]:
+# In[39]:
 
 
 returns(p=prices, d=dividends)
@@ -363,13 +386,13 @@ returns(p=prices, d=dividends)
 # Input: `np.array([18.5, 17.0, 18.0, 19.0, 18.0])` \
 # Output: `np.array([0.75, 0.0, 0.5, 1.0, 0.5])`
 
-# In[38]:
+# In[40]:
 
 
 numbers = np.array([18.5, 17.0, 18.0, 19.0, 18.0])
 
 
-# In[39]:
+# In[41]:
 
 
 (numbers - numbers.min()) / (numbers.max() - numbers.min())
@@ -385,7 +408,7 @@ numbers = np.array([18.5, 17.0, 18.0, 19.0, 18.0])
 # 
 # Use the output of `returns()` to compare your functions with NumPy's `.var()` and `.std()` methods.
 
-# In[40]:
+# In[42]:
 
 
 np.random.seed(42)
@@ -393,7 +416,7 @@ r = np.random.randn(1_000_000)
 r
 
 
-# In[41]:
+# In[43]:
 
 
 def var(x, ddof=0):
@@ -401,56 +424,56 @@ def var(x, ddof=0):
     return ((x - x.mean())**2).sum() / (N - ddof)
 
 
-# In[42]:
+# In[44]:
 
 
 r.var()
 
 
-# In[43]:
+# In[45]:
 
 
 var(r)
 
 
-# In[44]:
+# In[46]:
 
 
 np.allclose(r.var(), var(r))
 
 
-# In[45]:
+# In[47]:
 
 
 np.allclose(r.var(ddof=1), var(r, ddof=1))
 
 
-# In[46]:
+# In[48]:
 
 
 def std(x, ddof=0):
     return np.sqrt(var(x=x, ddof=ddof))
 
 
-# In[47]:
+# In[49]:
 
 
 r.std()
 
 
-# In[48]:
+# In[50]:
 
 
 std(r)
 
 
-# In[49]:
+# In[51]:
 
 
 np.allclose(r.std(), std(r))
 
 
-# In[50]:
+# In[52]:
 
 
 np.allclose(r.std(ddof=1), std(r, ddof=1))
