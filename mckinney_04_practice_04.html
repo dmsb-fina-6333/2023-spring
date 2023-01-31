@@ -192,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="mckinney_04_practice.html">
-     Practice
+     McKinney Chapter 4 - Practice (Blank)
     </a>
    </li>
    <li class="toctree-l2">
@@ -973,7 +973,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.6 ms ± 123 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.8 ms ± 11.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -985,7 +985,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.1 ms ± 5.26 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.1 ms ± 111 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -997,12 +997,45 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20 µs ± 64.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19.7 µs ± 291 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<p><em><strong>Note:</strong></em>
+On some platforms, <code class="docutils literal notranslate"><span class="pre">np.arange(0,</span> <span class="pre">100_001,</span> <span class="pre">2)</span></code> returns an array of 32-bit integers.
+If we square this array of 32-bit integers, we get the wrong answer because the large values (e.g., <span class="math notranslate nohighlight">\(100,000^2\)</span>) are too large to represent as 32-bit integers.
+Since we know that we need 54-bit integers for this calculation, we should explcitly set either <code class="docutils literal notranslate"><span class="pre">dtype='int64'</span></code> or <code class="docutils literal notranslate"><span class="pre">dtype=np.int64</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100_001</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([          0,           4,          16, ...,  9999200016,
+        9999600004, 10000000000])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100_001</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([          0,           4,          16, ...,  9999200016,
+        9999600004, 10000000000])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This <a class="reference external" href="https://stackoverflow.com/a/1970697/334755">StackOverflow answer</a> is this best explanation I have found of this behavior.</p>
 </section>
+<hr class="docutils" />
 <section id="write-a-function-that-mimic-excel-s-pv-function">
 <h3>Write a function that mimic Excel’s <code class="docutils literal notranslate"><span class="pre">pv</span></code> function.<a class="headerlink" href="#write-a-function-that-mimic-excel-s-pv-function" title="Permalink to this headline">#</a></h3>
 <p>Here is how we call Excel’s <code class="docutils literal notranslate"><span class="pre">pv</span></code> function:

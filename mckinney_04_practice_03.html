@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="McKinney Chapter 4 - Practice (Section 4, Wednesday 11:45 AM)" href="mckinney_04_practice_04.html" />
-    <link rel="prev" title="Practice" href="mckinney_04_practice.html" />
+    <link rel="prev" title="McKinney Chapter 4 - Practice (Blank)" href="mckinney_04_practice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -192,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="mckinney_04_practice.html">
-     Practice
+     McKinney Chapter 4 - Practice (Blank)
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -1013,7 +1013,7 @@ List comprehensions look like: <code class="docutils literal notranslate"><span 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.2 ms ± 26.2 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.3 ms ± 167 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -1025,12 +1025,45 @@ List comprehensions look like: <code class="docutils literal notranslate"><span 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.2 µs ± 192 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.2 µs ± 276 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<p><em><strong>Note:</strong></em>
+On some platforms, <code class="docutils literal notranslate"><span class="pre">np.arange(0,</span> <span class="pre">100_001,</span> <span class="pre">2)</span></code> returns an array of 32-bit integers.
+If we square this array of 32-bit integers, we get the wrong answer because the large values (e.g., <span class="math notranslate nohighlight">\(100,000^2\)</span>) are too large to represent as 32-bit integers.
+Since we know that we need 54-bit integers for this calculation, we should explcitly set either <code class="docutils literal notranslate"><span class="pre">dtype='int64'</span></code> or <code class="docutils literal notranslate"><span class="pre">dtype=np.int64</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100_001</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int64&#39;</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([          0,           4,          16, ...,  9999200016,
+        9999600004, 10000000000])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100_001</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([          0,           4,          16, ...,  9999200016,
+        9999600004, 10000000000])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This <a class="reference external" href="https://stackoverflow.com/a/1970697/334755">StackOverflow answer</a> is this best explanation I have found of this behavior.</p>
 </section>
+<hr class="docutils" />
 <section id="write-a-function-that-mimic-excel-s-pv-function">
 <h3>Write a function that mimic Excel’s <code class="docutils literal notranslate"><span class="pre">pv</span></code> function.<a class="headerlink" href="#write-a-function-that-mimic-excel-s-pv-function" title="Permalink to this headline">#</a></h3>
 <p>Here is how we call Excel’s <code class="docutils literal notranslate"><span class="pre">pv</span></code> function:
@@ -1578,7 +1611,7 @@ The pandas equivalents return <em>sample</em> statistics (denominators of <span 
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Practice</p>
+            <p class="prev-next-title">McKinney Chapter 4 - Practice (Blank)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="mckinney_04_practice_04.html" title="next page">
