@@ -192,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="mckinney_04_practice.html">
-     Practice
+     McKinney Chapter 4 - Practice (Blank)
     </a>
    </li>
    <li class="toctree-l2">
@@ -463,6 +463,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#announcements">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#practice">
    Practice
   </a>
@@ -547,6 +552,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#announcements">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#practice">
    Practice
   </a>
@@ -623,6 +633,25 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="mckinney-chapter-5-practice-section-3-monday-2-45-pm">
 <h1>McKinney Chapter 5 - Practice (Section 3, Monday 2:45 PM)<a class="headerlink" href="#mckinney-chapter-5-practice-section-3-monday-2-45-pm" title="Permalink to this headline">#</a></h1>
+<section id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Due soon</p>
+<ul>
+<li><p>11:59 PM on Friday, 2/3: Quiz 2</p></li>
+<li><p>11:59 PM on Friday, 2/3: 10,000 XP on DataCamp</p></li>
+<li><p>Project groups</p>
+<ul>
+<li><p>9 AM on Monday, 2/6: I will open groups on Canvas</p></li>
+<li><p>9 AM on Monday, 2/13: I will close groups and post project 1</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="practice">
+<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -647,10 +676,10 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="s1">&#39;AAPL IBM MSFT GOOG&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="n">prices</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">prices</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">returns</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="s1">&#39;AAPL IBM MSFT GOOG&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span> <span class="c1"># initiates a tickers object</span>
+<span class="n">prices</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># downloads history data</span>
+<span class="n">prices</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="c1"># removes time zone data from index</span>
+<span class="n">returns</span> <span class="o">=</span> <span class="n">prices</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="c1"># calculates returns and drops dates with missing returns</span>
 <span class="n">returns</span>
 </pre></div>
 </div>
@@ -746,20 +775,6 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-01-20</th>
-      <td>0.0192</td>
-      <td>0.0572</td>
-      <td>0.0041</td>
-      <td>0.0357</td>
-    </tr>
-    <tr>
-      <th>2023-01-23</th>
-      <td>0.0235</td>
-      <td>0.0194</td>
-      <td>0.0047</td>
-      <td>0.0098</td>
-    </tr>
-    <tr>
       <th>2023-01-24</th>
       <td>0.0101</td>
       <td>-0.0198</td>
@@ -780,49 +795,553 @@ title="Print to PDF"
       <td>-0.0448</td>
       <td>0.0307</td>
     </tr>
+    <tr>
+      <th>2023-01-27</th>
+      <td>0.0137</td>
+      <td>0.0156</td>
+      <td>-0.0004</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>2023-01-30</th>
+      <td>-0.0201</td>
+      <td>-0.0274</td>
+      <td>0.0068</td>
+      <td>-0.0220</td>
+    </tr>
   </tbody>
 </table>
-<p>4641 rows × 4 columns</p>
+<p>4643 rows × 4 columns</p>
 </div></div></div>
 </div>
-<section id="practice">
-<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
 <section id="what-are-the-mean-daily-returns-for-these-four-stocks">
 <h3>What are the mean daily returns for these four stocks?<a class="headerlink" href="#what-are-the-mean-daily-returns-for-these-four-stocks" title="Permalink to this headline">#</a></h3>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> method calculates means up-and-down columns (i.e., <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.0015
+GOOG   0.0010
+IBM    0.0003
+MSFT   0.0007
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We set <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> if we want to calculate means left-and-right across rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
+2004-08-20    0.0224
+2004-08-23    0.0041
+2004-08-24   -0.0032
+2004-08-25    0.0152
+2004-08-26    0.0146
+               ...  
+2023-01-24   -0.0036
+2023-01-25   -0.0102
+2023-01-26    0.0065
+2023-01-27    0.0074
+2023-01-30   -0.0157
+Length: 4643, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="what-are-the-standard-deviations-of-daily-returns-for-these-four-stocks">
 <h3>What are the standard deviations of daily returns for these four stocks?<a class="headerlink" href="#what-are-the-standard-deviations-of-daily-returns-for-these-four-stocks" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.0210
+GOOG   0.0194
+IBM    0.0145
+MSFT   0.0173
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>And the <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> is a great way to get common summary statistics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AAPL</th>
+      <th>GOOG</th>
+      <th>IBM</th>
+      <th>MSFT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4643.0000</td>
+      <td>4643.0000</td>
+      <td>4643.0000</td>
+      <td>4643.0000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.0015</td>
+      <td>0.0010</td>
+      <td>0.0003</td>
+      <td>0.0007</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.0210</td>
+      <td>0.0194</td>
+      <td>0.0145</td>
+      <td>0.0173</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-0.1792</td>
+      <td>-0.1161</td>
+      <td>-0.1285</td>
+      <td>-0.1474</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-0.0085</td>
+      <td>-0.0077</td>
+      <td>-0.0063</td>
+      <td>-0.0071</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>0.0011</td>
+      <td>0.0007</td>
+      <td>0.0004</td>
+      <td>0.0004</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.0121</td>
+      <td>0.0100</td>
+      <td>0.0074</td>
+      <td>0.0087</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>0.1390</td>
+      <td>0.1999</td>
+      <td>0.1152</td>
+      <td>0.1860</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="what-are-the-annualized-means-and-standard-deviations-of-daily-returns-for-these-four-stocks">
 <h3>What are the <em>annualized</em> means and standard deviations of daily returns for these four stocks?<a class="headerlink" href="#what-are-the-annualized-means-and-standard-deviations-of-daily-returns-for-these-four-stocks" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="c1"># multiply by the number of periods per year to annualize a mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3663
+GOOG   0.2462
+IBM    0.0823
+MSFT   0.1814
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">))</span> <span class="c1"># multiply by the SQUARE ROOT of the number of periods per year to annualize a std. dev.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3331
+GOOG   0.3077
+IBM    0.2294
+MSFT   0.2739
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>See the top of page 7 in <a class="reference external" href="https://book.ivo-welch.info/read/source5.mba/08-invchoice.pdf">chapter 8 of Ivo Welch’s <em>Corporate Finance</em> textbook</a>.</p>
 </section>
 <section id="plot-annualized-means-versus-standard-deviations-of-daily-returns-for-these-four-stocks">
 <h3>Plot <em>annualized</em> means versus standard deviations of daily returns for these four stocks<a class="headerlink" href="#plot-annualized-means-versus-standard-deviations-of-daily-returns-for-these-four-stocks" title="Permalink to this headline">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">plt.scatter()</span></code>, which expects arguments as <code class="docutils literal notranslate"><span class="pre">x</span></code> (standard deviations) then <code class="docutils literal notranslate"><span class="pre">y</span></code> (means).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">returns</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">252</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Annualized Std. Dev. (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Annualized Mean Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Return Versus Risk</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">returns</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">returns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> 
+        <span class="n">y</span><span class="o">=</span><span class="n">returns</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">252</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> 
+        <span class="n">s</span><span class="o">=</span><span class="n">i</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_05_practice_03_21_0.png" src="_images/mckinney_05_practice_03_21_0.png" />
+</div>
+</div>
 </section>
 <section id="repeat-the-previous-calculations-and-plot-for-the-stocks-in-the-dow-jones-industrial-index-djia">
 <h3>Repeat the previous calculations and plot for the stocks in the Dow-Jones Industrial Index (DJIA)<a class="headerlink" href="#repeat-the-previous-calculations-and-plot-for-the-stocks-in-the-dow-jones-industrial-index-djia" title="Permalink to this headline">#</a></h3>
 <p>We can find the current DJIA stocks on <a class="reference external" href="https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average">Wikipedia</a>.
 We will need to download new data, into <code class="docutils literal notranslate"><span class="pre">tickers2</span></code>, <code class="docutils literal notranslate"><span class="pre">prices2</span></code>, and <code class="docutils literal notranslate"><span class="pre">returns2</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbols</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers2</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="n">symbols</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+<span class="n">prices2</span> <span class="o">=</span> <span class="n">tickers2</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">prices2</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">prices2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">returns2</span> <span class="o">=</span> <span class="n">prices2</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># returns2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[***                    7%                       ]  2 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*****                 10%                       ]  3 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[******                13%                       ]  4 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[******                13%                       ]  4 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********            20%                       ]  6 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[***********           23%                       ]  7 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*************         27%                       ]  8 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**************        30%                       ]  9 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[****************      33%                       ]  10 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[******************    37%                       ]  11 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*******************   40%                       ]  12 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[********************* 43%                       ]  13 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************47%                       ]  14 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************50%                       ]  15 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************53%                       ]  16 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************57%**                     ]  17 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************60%****                   ]  18 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************63%*****                  ]  19 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************67%*******                ]  20 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************70%*********              ]  21 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************73%**********             ]  22 of 30 completed
+[**********************73%**********             ]  22 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************80%*************          ]  24 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************83%***************        ]  25 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************87%*****************      ]  26 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************90%******************     ]  27 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************93%********************   ]  28 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************97%********************** ]  29 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  30 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prices2</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DOW     3.8651
+V      14.8532
+CRM    18.5873
+GS     23.7103
+CSCO   32.9405
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">returns2</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">returns2</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">252</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Annualized Std. Dev. (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Annualized Mean Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Return Versus Risk for DJIA Stocks</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">returns2</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">returns2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> 
+        <span class="n">y</span><span class="o">=</span><span class="n">returns2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">252</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> 
+        <span class="n">s</span><span class="o">=</span><span class="n">i</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_05_practice_03_27_0.png" src="_images/mckinney_05_practice_03_27_0.png" />
+</div>
+</div>
 </section>
 <section id="calculate-total-returns-for-the-stocks-in-the-djia">
 <h3>Calculate total returns for the stocks in the DJIA<a class="headerlink" href="#calculate-total-returns-for-the-stocks-in-the-djia" title="Permalink to this headline">#</a></h3>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">.prod()</span></code> method to compound returns as <span class="math notranslate nohighlight">\(1 + R_T = \prod_{t=1}^T (1 + R_t)\)</span>.
 Technically, we should write <span class="math notranslate nohighlight">\(R_T\)</span> as <span class="math notranslate nohighlight">\(R_{0,T}\)</span>, but we typically omit the subscript <span class="math notranslate nohighlight">\(0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total</span> <span class="o">=</span> <span class="n">returns2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total_alt</span> <span class="o">=</span> <span class="p">(</span><span class="n">returns2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The two approaches above are correct and calculate the same values, as shown by <code class="docutils literal notranslate"><span class="pre">np.allclose()</span></code> below.
+Still, I prefer the first approach because chained code is typically easier to write, read, and troubleshoot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">returns2_total</span><span class="p">,</span> <span class="n">returns2_total_alt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="plot-the-distribution-of-total-returns-for-the-stocks-in-the-djia">
 <h3>Plot the distribution of total returns for the stocks in the DJIA<a class="headerlink" href="#plot-the-distribution-of-total-returns-for-the-stocks-in-the-djia" title="Permalink to this headline">#</a></h3>
 <p>We can plot a histogram, using either the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function or the <code class="docutils literal notranslate"><span class="pre">.plot(kind='hist')</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Total Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribution of Total Returns for DJIA Stocks</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">returns2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to  </span><span class="si">{</span><span class="n">returns2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_05_practice_03_36_0.png" src="_images/mckinney_05_practice_03_36_0.png" />
+</div>
+</div>
 </section>
 <section id="which-stocks-have-the-minimum-and-maximum-total-returns">
 <h3>Which stocks have the minimum and maximum total returns?<a class="headerlink" href="#which-stocks-have-the-minimum-and-maximum-total-returns" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;BA&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;AAPL&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BA     -0.4292
+AAPL    2.1362
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="plot-the-cumulative-returns-for-the-stocks-in-the-djia">
 <h3>Plot the cumulative returns for the stocks in the DJIA<a class="headerlink" href="#plot-the-cumulative-returns-for-the-stocks-in-the-djia" title="Permalink to this headline">#</a></h3>
 <p>We can use the cumulative product method <code class="docutils literal notranslate"><span class="pre">.cumprod()</span></code> to calculate the right hand side of the formula above.</p>
+<p>The following code works, but the cumulative returns of 30 stocks is typically too much to digest.
+Plus, the legend runs off the screen!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cumulative Returns for DJIA Stocks</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">returns2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to  </span><span class="si">{</span><span class="n">returns2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_05_practice_03_44_0.png" src="_images/mckinney_05_practice_03_44_0.png" />
+</div>
+</div>
 </section>
 <section id="repeat-the-plot-above-with-only-the-minimum-and-maximum-total-returns">
 <h3>Repeat the plot above with only the minimum and maximum total returns<a class="headerlink" href="#repeat-the-plot-above-with-only-the-minimum-and-maximum-total-returns" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns2_total</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;BA&#39;, &#39;AAPL&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">returns2</span><span class="p">[</span> <span class="c1"># daily returns for DJIA stocks</span>
+        <span class="n">returns2_total</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span><span class="o">.</span><span class="n">index</span> <span class="c1"># tickers of stocks with min and max total returns</span>
+        <span class="c1"># returns2.add(1).prod().sort_values()[[0, -1]].index # </span>
+    <span class="p">]</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># adds 1 to every daily return </span>
+    <span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># calculate cumulative returns for each stock</span>
+    <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># substracts 1 from every cumulative return</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># converts decimal to percent returns</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span> <span class="c1"># plots</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Minimum and Maximum Cumulative Returns DJIA Stocks</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">returns2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to  </span><span class="si">{</span><span class="n">returns2</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_05_practice_03_47_0.png" src="_images/mckinney_05_practice_03_47_0.png" />
+</div>
+</div>
 </section>
 </section>
 </section>
