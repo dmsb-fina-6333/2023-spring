@@ -3,6 +3,16 @@
 
 # # McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)
 
+# ## Announcements
+# 
+# - Due on Friday, 2/3, at 11:59 PM
+#     - 10,000 Total XP ***submited to Gradescope as a PDF***
+#     - Quiz 2
+# - On Monday, 2/6, at 9 AM I will open groups on Canvas
+# - I will close the groups on Monday, 2/13, and randomly assign anyone left over
+
+# ## Practice
+
 # In[1]:
 
 
@@ -30,39 +40,273 @@ tickers = yf.Tickers('AAPL IBM MSFT GOOG', session=session)
 prices = tickers.history(period='max', auto_adjust=False)
 prices.index = prices.index.tz_localize(None)
 returns = prices['Adj Close'].pct_change().dropna()
+returns.columns.name = 'Ticker'
+
+
+# In[4]:
+
+
 returns
 
 
-# ## Practice
-
 # ### What are the mean daily returns for these four stocks?
+
+# In[5]:
+
+
+returns.mean()
+
 
 # ### What are the standard deviations of daily returns for these four stocks?
 
+# In[6]:
+
+
+returns.std()
+
+
 # ### What are the *annualized* means and standard deviations of daily returns for these four stocks?
+
+# In[7]:
+
+
+returns.mean().mul(252)
+
+
+# In[8]:
+
+
+returns.std().mul(np.sqrt(252))
+
 
 # ### Plot *annualized* means versus standard deviations of daily returns for these four stocks
 
 # Use `plt.scatter()`, which expects arguments as `x` (standard deviations) then `y` (means).
 
-# ### Repeat the previous calculations and plot for the stocks in the Dow-Jones Industrial Index (DJIA)
+# In[9]:
+
+
+plt.scatter(
+    x=returns.std() * np.sqrt(252) * 100,
+    y=returns.mean() * 252 * 100
+)
+plt.xlabel('Annualized Standard Deviation of Daily Returns (%)')
+plt.ylabel('Annualized Mean of Daily Returns (%)')
+plt.title(f'Returns Versus Risk\n from {returns.index[0]:%B %Y} to {returns.index[-1]:%B %Y}')
+
+for i in returns:
+    plt.text(
+        x=returns[i].std() * np.sqrt(252) * 100,
+        y=returns[i].mean() * 252 * 100,
+        s=i
+    )
+    
+plt.show()
+
+
+# ### Repeat the previous calculations and plot for the stocks in the Dow-Jones Industrial Average (DJIA)
 
 # We can find the current DJIA stocks on [Wikipedia](https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average).
 # We will need to download new data, into `tickers2`, `prices2`, and `returns2`.
+
+# In[10]:
+
+
+def returns_many(x):
+    tickers = yf.Tickers(tickers=x, session=session)
+    prices = tickers.history(period='max', auto_adjust=False)
+    prices.index = prices.index.tz_localize(None)
+    returns = prices['Adj Close'].pct_change().dropna()
+    returns.columns.name = 'Ticker'
+    return returns
+
+
+# In[11]:
+
+
+def plot_many(x):
+    plt.scatter(
+        x=x.std() * np.sqrt(252) * 100,
+        y=x.mean() * 252 * 100
+    )
+    plt.xlabel('Annualized Standard Deviation of Daily Returns (%)')
+    plt.ylabel('Annualized Mean of Daily Returns (%)')
+    plt.title(f'Returns Versus Risk\n from {x.index[0]:%B %Y} to {x.index[-1]:%B %Y}')
+
+    for i in x:
+        plt.text(
+            x=x[i].std() * np.sqrt(252) * 100,
+            y=x[i].mean() * 252 * 100,
+            s=i
+        )
+
+    plt.show()
+
+
+# In[12]:
+
+
+wiki = pd.read_html('https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average')
+
+
+# In[13]:
+
+
+returns_2 = returns_many(wiki[1]['Symbol'].to_list())
+
+
+# In[14]:
+
+
+plot_many(returns_2)
+
+
+# ***THERE IS NO RELATION BETWEEN RETURNS AND RISK FOR SINGLE STOCKS!***
+
+# In[15]:
+
+
+np.corrcoef(returns_2.mean(), returns_2.std())
+
+
+# In[16]:
+
+
+returns_2.pipe(plot_many)
+
 
 # ### Calculate total returns for the stocks in the DJIA
 
 # We can use the `.prod()` method to compound returns as $1 + R_T = \prod_{t=1}^T (1 + R_t)$.
 # Technically, we should write $R_T$ as $R_{0,T}$, but we typically omit the subscript $0$.
 
+# In[17]:
+
+
+(
+    returns_2
+    .add(1)
+    .prod()
+    .sub(1)
+    .mul(100)
+    .sort_values()
+    .plot(kind='barh')
+)
+plt.xlabel('Total Return (%)')
+plt.title(f'Total Returns for DJIA Stocks \n from {returns.index[0]:%B %Y} to {returns.index[-1]:%B %Y}')
+plt.show()
+
+
 # ### Plot the distribution of total returns for the stocks in the DJIA
 
 # We can plot a histogram, using either the `plt.hist()` function or the `.plot(kind='hist')` method.
 
+# In[18]:
+
+
+(
+    returns_2
+    .add(1)
+    .prod()
+    .sub(1)
+    .mul(100)
+    .plot(kind='hist', bins=20)
+)
+plt.xlabel('Total Returns (%)')
+plt.title(f'Total Returns for DJIA Stocks \n from {returns.index[0]:%B %Y} to {returns.index[-1]:%B %Y}')
+plt.show()
+
+
 # ### Which stocks have the minimum and maximum total returns?
+
+# In[19]:
+
+
+returns_2_total = returns_2.add(1).prod().sub(1)
+
+
+# In[20]:
+
+
+returns_2_total.min()
+
+
+# In[21]:
+
+
+returns_2_total.idxmin()
+
+
+# In[22]:
+
+
+returns_2_total.max()
+
+
+# In[23]:
+
+
+returns_2_total.idxmax()
+
+
+# In[24]:
+
+
+returns_2_total.sort_values().iloc[[0, -1]]
+
+
+# In[25]:
+
+
+returns_2_total.nsmallest()
+
+
+# In[26]:
+
+
+returns_2_total.nlargest()
+
 
 # ### Plot the cumulative returns for the stocks in the DJIA
 
 # We can use the cumulative product method `.cumprod()` to calculate the right hand side of the formula above.
 
+# In[27]:
+
+
+(
+    returns_2
+    .add(1)
+    .cumprod()
+    .sub(1)
+    .mul(100)
+    .plot()
+)
+plt.ylabel('Cumulative Return (%)')
+plt.title(f'Cumulative Returns for DJIA Stocks \n from {returns.index[0]:%B %Y} to {returns.index[-1]:%B %Y}')
+plt.show()
+
+
 # ### Repeat the plot above with only the minimum and maximum total returns
+
+# In[28]:
+
+
+(
+    returns_2[[returns_2_total.idxmax(), returns_2_total.idxmin()]]
+    .add(1)
+    .cumprod()
+    .sub(1)
+    .mul(100)
+    .plot()
+)
+plt.ylabel('Cumulative Return (%)')
+plt.title(f'Cumulative Returns for Best and Worst DJIA Stocks \n from {returns.index[0]:%B %Y} to {returns.index[-1]:%B %Y}')
+plt.show()
+
+
+# In[ ]:
+
+
+
+
