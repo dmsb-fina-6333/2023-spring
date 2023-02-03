@@ -4,7 +4,7 @@
 # # McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)
 
 # ## Announcements
-# 
+
 # - Due on Friday, 2/3, at 11:59 PM
 #     - 10,000 Total XP ***submited to Gradescope as a PDF***
 #     - Quiz 2
@@ -78,6 +78,8 @@ returns.mean().mul(252)
 
 returns.std().mul(np.sqrt(252))
 
+
+# ***The best explanation I have found on why stock return volatility (the standard deviation of stocks returns) grows with the square root of time is at the bottom of page 7 of [chapter 8 of Ivo Welch's free corporate finance textbook](https://book.ivo-welch.info/read/source5.mba/08-invchoice.pdf).***
 
 # ### Plot *annualized* means versus standard deviations of daily returns for these four stocks
 

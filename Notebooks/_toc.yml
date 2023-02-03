@@ -26,6 +26,12 @@ parts:
       - file: mckinney_05_practice_03
       - file: mckinney_05_practice_04
       - file: mckinney_05_practice_02
+    - file: herron_01_lecture
+      sections:
+      - file: herron_01_practice
+      - file: herron_01_practice_03
+      - file: herron_01_practice_04
+      - file: herron_01_practice_02
   - caption: Quizzes
     chapters:
     - file: quiz_01

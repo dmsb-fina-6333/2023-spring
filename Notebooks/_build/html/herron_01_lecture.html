@@ -1,0 +1,1702 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math &#8212; FINA 6333 for Spring 2023</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Herron Topic 1 - Practice (Blank)" href="herron_01_practice.html" />
+    <link rel="prev" title="McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)" href="mckinney_05_practice_02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/DMSB_100th_LogoMark_CMYK_Horiz.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">FINA 6333 for Spring 2023</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="_introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures and Practice
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_02_lecture.html">
+   McKinney Chapter 2 - Python Language Basics, IPython, and Jupyter Notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice.html">
+     McKinney Chapter 2 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_03.html">
+     McKinney Chapter 2 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_04.html">
+     McKinney Chapter 2 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_02.html">
+     McKinney Chapter 2 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_03_lecture.html">
+   McKinney Chapter 3 - Built-In Data Structures, Functions, and Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice.html">
+     McKinney Chapter 3 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_04.html">
+     McKinney Chapter 3 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_02.html">
+     McKinney Chapter 3 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_04_lecture.html">
+   McKinney Chapter 4 - NumPy Basics: Arrays and Vectorized Computation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice.html">
+     McKinney Chapter 4 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_03.html">
+     McKinney Chapter 4 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_04.html">
+     McKinney Chapter 4 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_02.html">
+     McKinney Chapter 4 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_05_lecture.html">
+   McKinney Chapter 5 - Getting Started with pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice.html">
+     McKinney Chapter 5 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_03.html">
+     McKinney Chapter 5 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_04.html">
+     McKinney Chapter 5 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_02.html">
+     McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice.html">
+     Herron Topic 1 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_03.html">
+     Herron Topic 1 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_04.html">
+     Herron Topic 1 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_02.html">
+     Herron Topic 1 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Quizzes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_01.html">
+   Quiz 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_02.html">
+   Quiz 2
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/dmsb-fina-6333/2023-spring/main?urlpath=lab/tree/Notebooks/herron_01_lecture.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/dmsb-fina-6333/2023-spring"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/dmsb-fina-6333/2023-spring/issues/new?title=Issue%20on%20page%20%2Fherron_01_lecture.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/herron_01_lecture.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#web-data">
+   Web Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-yfinance-package">
+     The yfinance Package
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-pandas-datareader-package">
+     The pandas-datareader package
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#log-and-simple-returns">
+   Log and Simple Returns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-and-log-returns-are-similar-for-small-returns">
+     Simple and Log Returns are Similar for Small Returns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-return-advantage-portfolio-calculations">
+     Simple Return Advantage: Portfolio Calculations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-return-advantage-log-returns-are-additive">
+     Log Return Advantage: Log Returns are Additive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#portfolio-math">
+   Portfolio Math
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-1-n-portfolio">
+     The 1/N Portfolio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-more-general-solution">
+     A More General Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#web-data">
+   Web Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-yfinance-package">
+     The yfinance Package
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-pandas-datareader-package">
+     The pandas-datareader package
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#log-and-simple-returns">
+   Log and Simple Returns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-and-log-returns-are-similar-for-small-returns">
+     Simple and Log Returns are Similar for Small Returns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-return-advantage-portfolio-calculations">
+     Simple Return Advantage: Portfolio Calculations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#log-return-advantage-log-returns-are-additive">
+     Log Return Advantage: Log Returns are Additive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#portfolio-math">
+   Portfolio Math
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-1-n-portfolio">
+     The 1/N Portfolio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-more-general-solution">
+     A More General Solution
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="herron-topic-1-web-data-log-and-simple-returns-and-portfolio-math">
+<h1>Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math<a class="headerlink" href="#herron-topic-1-web-data-log-and-simple-returns-and-portfolio-math" title="Permalink to this headline">#</a></h1>
+<p>This notebook covers three topics:</p>
+<ol class="simple">
+<li><p>How to download web data with the yfinance, pandas-datareader, and requests-cache packages</p></li>
+<li><p>How to calculate log and simple returns</p></li>
+<li><p>How to calculate portfolio returns</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">precision</span> 4
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="web-data">
+<h2>Web Data<a class="headerlink" href="#web-data" title="Permalink to this headline">#</a></h2>
+<p>We will typically use the yfinance and pandas-datarader packages (combined with the requests-cache package) to download data from the web.</p>
+<ul class="simple">
+<li><p>If you followed my instructions to install Anaconda on your computer, you have already installed these packages</p></li>
+<li><p>If you use DataCamp Workspace or Binder, I have already installed these packages</p></li>
+<li><p>If you use Notheastern’s Open OnDemand, they are working on my request, and you will have to install these packages every login by running the following in a code cell: <code class="docutils literal notranslate"><span class="pre">%pip</span> <span class="pre">install</span> <span class="pre">yfinance</span> <span class="pre">pandas-datareader</span> <span class="pre">requests-cache</span></code></p></li>
+</ul>
+<section id="the-yfinance-package">
+<h3>The yfinance Package<a class="headerlink" href="#the-yfinance-package" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://github.com/ranaroussi/yfinance">yfinance package</a> provides “a reliable, threaded, and Pythonic way to download historical market data from Yahoo! finance.”
+Other packages provide similar functionality, but yfinance is best.
+We will use the <a class="reference external" href="https://github.com/requests-cache/requests-cache">requests-cache package</a> to cache our data downloads locally.
+This local cache lets us reduce the number of times we ask the Yahoo! Finance application programming interface (API).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">requests_cache</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">expire_after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can download data for the MATANA stocks (Microsoft, Alphabet, Tesla, Amazon, Nvidia, and Apple).
+We can pass tickers as either a space-delimited string or a list of strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;MSFT GOOG TSLA AMZN NVDA AAPL&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+<span class="n">histories</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">histories</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">histories</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">histories</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">Adj Close</th>
+      <th colspan="4" halign="left">Close</th>
+      <th>...</th>
+      <th colspan="4" halign="left">Stock Splits</th>
+      <th colspan="6" halign="left">Volume</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>AAPL</th>
+      <th>AMZN</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+      <th>NVDA</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>AMZN</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+      <th>...</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+      <th>NVDA</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>AMZN</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+      <th>NVDA</th>
+      <th>TSLA</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>0.0999</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>469033600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>0.0947</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1217</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>175884800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>0.0877</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1127</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>105728000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.0899</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>86441600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.0925</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>73449600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-01-30</th>
+      <td>143.0000</td>
+      <td>100.5500</td>
+      <td>97.9500</td>
+      <td>242.7100</td>
+      <td>191.6200</td>
+      <td>166.6600</td>
+      <td>143.0000</td>
+      <td>100.5500</td>
+      <td>97.9500</td>
+      <td>242.7100</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>64015300</td>
+      <td>70691900.0000</td>
+      <td>24365100.0000</td>
+      <td>25867400.0000</td>
+      <td>48861100.0000</td>
+      <td>230878800.0000</td>
+    </tr>
+    <tr>
+      <th>2023-01-31</th>
+      <td>144.2900</td>
+      <td>103.1300</td>
+      <td>99.8700</td>
+      <td>247.8100</td>
+      <td>195.3700</td>
+      <td>173.2200</td>
+      <td>144.2900</td>
+      <td>103.1300</td>
+      <td>99.8700</td>
+      <td>247.8100</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>65874500</td>
+      <td>66527300.0000</td>
+      <td>22306800.0000</td>
+      <td>26541100.0000</td>
+      <td>49801700.0000</td>
+      <td>196813500.0000</td>
+    </tr>
+    <tr>
+      <th>2023-02-01</th>
+      <td>145.4300</td>
+      <td>105.1500</td>
+      <td>101.4300</td>
+      <td>252.7500</td>
+      <td>209.4300</td>
+      <td>181.4100</td>
+      <td>145.4300</td>
+      <td>105.1500</td>
+      <td>101.4300</td>
+      <td>252.7500</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>77663600</td>
+      <td>80450100.0000</td>
+      <td>26392600.0000</td>
+      <td>31259900.0000</td>
+      <td>66047700.0000</td>
+      <td>213806300.0000</td>
+    </tr>
+    <tr>
+      <th>2023-02-02</th>
+      <td>150.8200</td>
+      <td>112.9100</td>
+      <td>108.8000</td>
+      <td>264.6000</td>
+      <td>217.0900</td>
+      <td>188.2700</td>
+      <td>150.8200</td>
+      <td>112.9100</td>
+      <td>108.8000</td>
+      <td>264.6000</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>118339000</td>
+      <td>158154200.0000</td>
+      <td>46622600.0000</td>
+      <td>39940400.0000</td>
+      <td>56427600.0000</td>
+      <td>217448300.0000</td>
+    </tr>
+    <tr>
+      <th>2023-02-03</th>
+      <td>154.5000</td>
+      <td>103.3900</td>
+      <td>105.2200</td>
+      <td>258.3500</td>
+      <td>211.0000</td>
+      <td>189.9800</td>
+      <td>154.5000</td>
+      <td>103.3900</td>
+      <td>105.2200</td>
+      <td>258.3500</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>149918017</td>
+      <td>141620435.0000</td>
+      <td>35664780.0000</td>
+      <td>27154308.0000</td>
+      <td>42114980.0000</td>
+      <td>229175706.0000</td>
+    </tr>
+  </tbody>
+</table>
+<p>10626 rows × 48 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span> <span class="c1"># Python ignores line breaks and white space inside ()</span>
+    <span class="n">histories</span> <span class="c1"># start with MATANA data frame</span>
+    <span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span> <span class="c1"># slice adjusted close columns</span>
+    <span class="o">.</span><span class="n">pct_change</span><span class="p">()</span> <span class="c1"># calculate simple returns</span>
+    <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span> <span class="c1"># select 2022 returns</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># add 1</span>
+    <span class="o">.</span><span class="n">cumprod</span><span class="p">()</span> <span class="c1"># compound cumulative returns</span>
+    <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># subtract 1</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># convert decimals to percent</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span> <span class="c1"># plot</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Year-to-Date Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Year-to-Date Returns for MATANA Stocks&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_01_lecture_10_0.png" src="_images/herron_01_lecture_10_0.png" />
+</div>
+</div>
+</section>
+<section id="the-pandas-datareader-package">
+<h3>The pandas-datareader package<a class="headerlink" href="#the-pandas-datareader-package" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://pandas-datareader.readthedocs.io/en/latest/index.html">pandas-datareader</a> package provides easy access to various data sources, including <a class="reference external" href="https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html">the Kenneth French Data Library</a> and <a class="reference external" href="https://fred.stlouisfed.org/">the Federal Reserve Economic Data (FRED)</a>.
+The pandas-datareader package also downloads Yahoo! Finance data, but the yfinance package has better documentation.
+We will use <code class="docutils literal notranslate"><span class="pre">pdr</span></code> as the abbreviated prefix for pandas-datareader.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we download the daily benchmark factors from Ken French’s Data Library.
+The <code class="docutils literal notranslate"><span class="pre">get_available_datasets()</span></code> function provides the exact names for all of Ken French’s data sets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdr</span><span class="o">.</span><span class="n">famafrench</span><span class="o">.</span><span class="n">get_available_datasets</span><span class="p">(</span><span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;F-F_Research_Data_Factors&#39;,
+ &#39;F-F_Research_Data_Factors_weekly&#39;,
+ &#39;F-F_Research_Data_Factors_daily&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3_daily&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For Fama and French data, pandas-datareader returns the most recent five years of data unless we specify a <code class="docutils literal notranslate"><span class="pre">start</span></code> date.
+French typically provides data back through the second half of 1926.
+pandas-datareader returns dictionaries of data frames, and the <code class="docutils literal notranslate"><span class="pre">'DESCR'</span></code> value describes these data frames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_all</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span><span class="p">,</span>
+    <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1900&#39;</span><span class="p">,</span> 
+    <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ff_all</span><span class="p">[</span><span class="s1">&#39;DESCR&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F-F Research Data Factors daily
+-------------------------------
+
+This file was created by CMPT_ME_BEME_RETS_DAILY using the 202212 CRSP database. The Tbill return is the simple daily rate that, over the number of trading days in the month, compounds to 1-month TBill rate from Ibbotson and Associates Inc. Copyright 2022 Kenneth R. French
+
+  0 : (25399 rows x 4 cols)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">ff_all</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Returns for the Daily Benchmark Factors (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">StrMethodFormatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{x:,.0f}</span><span class="s1">&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_01_lecture_19_0.png" src="_images/herron_01_lecture_19_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="log-and-simple-returns">
+<h2>Log and Simple Returns<a class="headerlink" href="#log-and-simple-returns" title="Permalink to this headline">#</a></h2>
+<p>We will typically use <em>simple</em> returns, calculated as <span class="math notranslate nohighlight">\(R_{simple,t} = \frac{P_t + D_t - P_{t-1}}{P_{t-1}} = \frac{P_t + D_t}{P_{t-1}} - 1\)</span>.
+The simple return is the return that investors receive on invested dollars.
+We can calculate simple returns from Yahoo Finance data with the <code class="docutils literal notranslate"><span class="pre">.pct_change()</span></code> method on the adjusted close column (i.e., <code class="docutils literal notranslate"><span class="pre">Adj</span> <span class="pre">Close</span></code>), which adjusts for dividends and splits.
+The adjusted close column is a reverse-engineered close price (i.e., end-of-trading-day price) that incorporates dividends and splits, making simple return calculations easy.</p>
+<p>However, we may see <em>log</em> returns elsewhere, which are the (natural) log of one plus simple returns:</p>
+<p><span class="math notranslate nohighlight">\(R_{log,t} = \log(1 + R_{simple,t}) = \log\left(1 +  \frac{P_t + D_t}{P_{t-1}} - 1 \right) = \log\left(\frac{P_t + D_t}{P_{t-1}} \right) = \log(P_t + D_t) - \log(P_{t-1})\)</span></p>
+<p>Therefore, we calculate log returns as either the log of one plus simple returns or the difference of the logs of the adjusted close column.
+Log returns are also known as <em>continuously-compounded</em> returns.</p>
+<p>We will typically use <em>simple</em> returns instead of <em>log</em> returns.
+However, this section explains the differences between simple and log returns and where each is appropriate.</p>
+<section id="simple-and-log-returns-are-similar-for-small-returns">
+<h3>Simple and Log Returns are Similar for Small Returns<a class="headerlink" href="#simple-and-log-returns-are-similar-for-small-returns" title="Permalink to this headline">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\log(1 + x) \approx x\)</span> for small values of <span class="math notranslate nohighlight">\(x\)</span>, so simple returns and log returns are similar for small returns.
+Returns are typically small at daily and monthly horizons, so the difference between simple and log returns is small at these horizons.
+The following figure shows <span class="math notranslate nohighlight">\(R_{simple,t} \approx R_{log,t}\)</span> for small <span class="math notranslate nohighlight">\(R\)</span>s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">logR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">logR</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Simple Return&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Return&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Versus Simple Returns&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Actual&#39;</span><span class="p">,</span> <span class="s1">&#39;If Log = Simple&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_01_lecture_27_0.png" src="_images/herron_01_lecture_27_0.png" />
+</div>
+</div>
+</section>
+<section id="simple-return-advantage-portfolio-calculations">
+<h3>Simple Return Advantage: Portfolio Calculations<a class="headerlink" href="#simple-return-advantage-portfolio-calculations" title="Permalink to this headline">#</a></h3>
+<p>We can only perform portfolio calculations with simple returns.
+For a portfolio of <span class="math notranslate nohighlight">\(N\)</span> assets with portfolio weights <span class="math notranslate nohighlight">\(w_i\)</span>, the portfolio return <span class="math notranslate nohighlight">\(R_{p}\)</span> is the weighted average of the returns of its assets, <span class="math notranslate nohighlight">\(R_{p} = \sum_{i=1}^N w_i R_{i}\)</span>.
+For two stocks with portfolio weights of 50%, our portfolio return is <span class="math notranslate nohighlight">\(R_{portfolio} = 0.5 R_1 + 0.5 R_2 = \frac{R_1 + R_2}{2}\)</span>.
+However, we cannot calculate portfolio returns with log returns because the sum of logs is the log of products.</p>
+<p><em><strong>We cannot calculate portfolio returns as the weighted average of log returns.</strong></em></p>
+</section>
+<section id="log-return-advantage-log-returns-are-additive">
+<h3>Log Return Advantage: Log Returns are Additive<a class="headerlink" href="#log-return-advantage-log-returns-are-additive" title="Permalink to this headline">#</a></h3>
+<p>The advantage of log returns is that we can compound log returns with addition.
+The additive property of log returns makes code simple, computations fast, and proofs easy when we compound returns over multiple periods.</p>
+<p>We compound returns from <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(t=T\)</span> as follows:</p>
+<p><span class="math notranslate nohighlight">\(1 + R_{0, T} = (1 + R_1) \times (1 + R_2) \times \dots \times (1 + R_T)\)</span></p>
+<p>Next, we take the log of both sides of the previous equation and use the property that the log of products is the sum of logs:</p>
+<p><span class="math notranslate nohighlight">\(\log(1 + R_{0, T}) = \log((1 + R_1) \times (1 + R_2) \times \dots \times (1 + R_T)) = \log(1 + R_1) + \log(1 + R_2) + \dots + \log(1 + R_T) = \sum_{t=1}^T \log(1 + R_t)\)</span></p>
+<p>Next, we exponentiate both sides of the previous equation:</p>
+<p><span class="math notranslate nohighlight">\(e^{\log(1 + R_{0, T})} = e^{\sum_{t=0}^T \log(1 + R_t)}\)</span></p>
+<p>Next, we use the property that <span class="math notranslate nohighlight">\(e^{\log(x)} = x\)</span> to simplify the previous equation:</p>
+<p><span class="math notranslate nohighlight">\(1 + R_{0,T} = e^{\sum_{t=0}^T \log(1 + R_t)}\)</span></p>
+<p>Finally, we subtract 1 from both sides:</p>
+<p><span class="math notranslate nohighlight">\(R_{0 ,T} = e^{\sum_{t=0}^T \log(1 + R_t)} - 1\)</span></p>
+<p>So, the return <span class="math notranslate nohighlight">\(R_{0,T}\)</span> from <span class="math notranslate nohighlight">\(t=0\)</span> to <span class="math notranslate nohighlight">\(t=T\)</span> is the exponentiated sum of log returns.
+The pandas developers assume users understand the math above and focus on optimizing sums.</p>
+<p>The following code generates 10,000 random log returns.
+The <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code> call generates normally distributed random numbers.
+To generate equivalent simple returns, we exponentiate these log returns, then subtract one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>R</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>10000.0000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>0.6529</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.1918</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-0.9802</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-0.4896</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-0.0026</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>0.9564</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>49.7158</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can time the calculation of 12-observation rolling returns.
+We use <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> for the simple return version because <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> does not have a product method.
+We find that <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> is slower with <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> than with <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> by a factor of 2,000.
+<em><strong>We will learn about <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> and <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> in a few weeks, but they provide the best example of when to use log returns.</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;R12_via_simple&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">prod</span><span class="p">())</span>
+    <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>647 ms ± 7.79 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;R12_via_log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>800 µs ± 15.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;R12_via_simple&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;R12_via_log&#39;</span><span class="p">],</span> <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>These two approaches calculate the same return, but the simple-return approach is 1,000 times slower than the log-return approach!</p>
+<p><em><strong>We can use log returns to calculate total or holding period returns very quickly!</strong></em></p>
+</section>
+</section>
+<section id="portfolio-math">
+<h2>Portfolio Math<a class="headerlink" href="#portfolio-math" title="Permalink to this headline">#</a></h2>
+<p>Portfolio return <span class="math notranslate nohighlight">\(R_{p}\)</span> is the weighted average of its asset returns, so <span class="math notranslate nohighlight">\(R_{p} = \sum_{i=1}^N w_i R_{i}\)</span>.
+Here <span class="math notranslate nohighlight">\(N\)</span> is the number of assets, and <span class="math notranslate nohighlight">\(w_i\)</span> is the weight on asset <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<section id="the-1-n-portfolio">
+<h3>The 1/N Portfolio<a class="headerlink" href="#the-1-n-portfolio" title="Permalink to this headline">#</a></h3>
+<p>The <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span> portfolio equally weights portfolio assets, so <span class="math notranslate nohighlight">\(w_1 = w_2 = \dots = w_N = \frac{1}{N}\)</span>.
+We typically rebalance the <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span> portfolio every period.
+If <span class="math notranslate nohighlight">\(w_i = \frac{1}{N}\)</span>, then <span class="math notranslate nohighlight">\(R_{p} = \sum_{i=1}^N \frac{1}{N} R_{i} = \frac{\sum_{i=1}^N R_i}{N} = \bar{R}\)</span>.
+Therefore, we can use <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> to calculate <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span> portfolio returns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span> <span class="o">=</span> <span class="n">histories</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AAPL</th>
+      <th>AMZN</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+      <th>NVDA</th>
+      <th>TSLA</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-03</th>
+      <td>0.0250</td>
+      <td>0.0221</td>
+      <td>0.0027</td>
+      <td>-0.0047</td>
+      <td>0.0241</td>
+      <td>0.1353</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>-0.0127</td>
+      <td>-0.0169</td>
+      <td>-0.0045</td>
+      <td>-0.0171</td>
+      <td>-0.0276</td>
+      <td>-0.0418</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>-0.0266</td>
+      <td>-0.0189</td>
+      <td>-0.0468</td>
+      <td>-0.0384</td>
+      <td>-0.0576</td>
+      <td>-0.0535</td>
+    </tr>
+    <tr>
+      <th>2022-01-06</th>
+      <td>-0.0167</td>
+      <td>-0.0067</td>
+      <td>-0.0007</td>
+      <td>-0.0079</td>
+      <td>0.0208</td>
+      <td>-0.0215</td>
+    </tr>
+    <tr>
+      <th>2022-01-07</th>
+      <td>0.0010</td>
+      <td>-0.0043</td>
+      <td>-0.0040</td>
+      <td>0.0005</td>
+      <td>-0.0330</td>
+      <td>-0.0354</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2022-12-23</th>
+      <td>-0.0028</td>
+      <td>0.0174</td>
+      <td>0.0176</td>
+      <td>0.0023</td>
+      <td>-0.0087</td>
+      <td>-0.0176</td>
+    </tr>
+    <tr>
+      <th>2022-12-27</th>
+      <td>-0.0139</td>
+      <td>-0.0259</td>
+      <td>-0.0209</td>
+      <td>-0.0074</td>
+      <td>-0.0714</td>
+      <td>-0.1141</td>
+    </tr>
+    <tr>
+      <th>2022-12-28</th>
+      <td>-0.0307</td>
+      <td>-0.0147</td>
+      <td>-0.0167</td>
+      <td>-0.0103</td>
+      <td>-0.0060</td>
+      <td>0.0331</td>
+    </tr>
+    <tr>
+      <th>2022-12-29</th>
+      <td>0.0283</td>
+      <td>0.0288</td>
+      <td>0.0288</td>
+      <td>0.0276</td>
+      <td>0.0404</td>
+      <td>0.0808</td>
+    </tr>
+    <tr>
+      <th>2022-12-30</th>
+      <td>0.0025</td>
+      <td>-0.0021</td>
+      <td>-0.0025</td>
+      <td>-0.0049</td>
+      <td>0.0008</td>
+      <td>0.0112</td>
+    </tr>
+  </tbody>
+</table>
+<p>251 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   -0.0010
+AMZN   -0.0022
+GOOG   -0.0016
+MSFT   -0.0011
+NVDA   -0.0020
+TSLA   -0.0033
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rp_1</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rp_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
+2022-01-03    0.0341
+2022-01-04   -0.0201
+2022-01-05   -0.0403
+2022-01-06   -0.0055
+2022-01-07   -0.0125
+               ...  
+2022-12-23    0.0014
+2022-12-27   -0.0423
+2022-12-28   -0.0075
+2022-12-29    0.0391
+2022-12-30    0.0008
+Length: 251, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Note that when we apply the same portfolio weights every period, we rebalance at the same frequency as the returns data.</strong></em>
+If we have daily data, rebalance daily.
+If we have monthly data, we rebalance monthly, and so on.</p>
+</section>
+<section id="a-more-general-solution">
+<h3>A More General Solution<a class="headerlink" href="#a-more-general-solution" title="Permalink to this headline">#</a></h3>
+<p>If we combine weights into vector <span class="math notranslate nohighlight">\(w\)</span> and the time series of asset returns into matrix <span class="math notranslate nohighlight">\(\bf{R}\)</span>, then we can calculate the time series of portfolio returns as <span class="math notranslate nohighlight">\(R_p = w^T \bf{R}\)</span>.
+The pandas version of this calculation is <code class="docutils literal notranslate"><span class="pre">R.dot(w)</span></code>, where <code class="docutils literal notranslate"><span class="pre">R</span></code> is a data frame of asset returns and <code class="docutils literal notranslate"><span class="pre">w</span></code> is a series of portfolio weights.
+We can use this approach to calculate <span class="math notranslate nohighlight">\(\frac{1}{N}\)</span> portfolio returns, too.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">returns</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">weights</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.1667, 0.1667, 0.1667, 0.1667, 0.1667, 0.1667])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rp_2</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+<span class="n">rp_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date
+2022-01-03    0.0341
+2022-01-04   -0.0201
+2022-01-05   -0.0403
+2022-01-06   -0.0055
+2022-01-07   -0.0125
+               ...  
+2022-12-23    0.0014
+2022-12-27   -0.0423
+2022-12-28   -0.0075
+2022-12-29    0.0391
+2022-12-30    0.0008
+Length: 251, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both approaches give the same answer!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">rp_1</span><span class="p">,</span> <span class="n">rp_2</span><span class="p">,</span> <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="mckinney_05_practice_02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="herron_01_practice.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Herron Topic 1 - Practice (Blank)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Richard Herron<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

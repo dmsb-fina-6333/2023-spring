@@ -4,7 +4,7 @@
 # # McKinney Chapter 5 - Practice (Section 3, Monday 2:45 PM)
 
 # ## Announcements
-# 
+
 # - Due soon
 #     - 11:59 PM on Friday, 2/3: Quiz 2
 #     - 11:59 PM on Friday, 2/3: 10,000 XP on DataCamp
@@ -92,7 +92,7 @@ returns.mean().mul(252) # multiply by the number of periods per year to annualiz
 returns.std().mul(np.sqrt(252)) # multiply by the SQUARE ROOT of the number of periods per year to annualize a std. dev.
 
 
-# See the top of page 7 in [chapter 8 of Ivo Welch's *Corporate Finance* textbook](https://book.ivo-welch.info/read/source5.mba/08-invchoice.pdf).
+# ***The best explanation I have found on why stock return volatility (the standard deviation of stocks returns) grows with the square root of time is at the bottom of page 7 of [chapter 8 of Ivo Welch's free corporate finance textbook](https://book.ivo-welch.info/read/source5.mba/08-invchoice.pdf).***
 
 # ### Plot *annualized* means versus standard deviations of daily returns for these four stocks
 
