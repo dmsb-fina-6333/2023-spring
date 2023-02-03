@@ -244,6 +244,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="herron_01_lecture.html">
+   Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice.html">
+     Herron Topic 1 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_03.html">
+     Herron Topic 1 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_04.html">
+     Herron Topic 1 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_02.html">
+     Herron Topic 1 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -254,6 +286,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="quiz_01.html">
    Quiz 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_02.html">
+   Quiz 2
   </a>
  </li>
 </ul>
@@ -775,20 +812,6 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-01-26</th>
-      <td>0.0148</td>
-      <td>0.0251</td>
-      <td>-0.0448</td>
-      <td>0.0307</td>
-    </tr>
-    <tr>
-      <th>2023-01-27</th>
-      <td>0.0137</td>
-      <td>0.0156</td>
-      <td>-0.0004</td>
-      <td>0.0006</td>
-    </tr>
-    <tr>
       <th>2023-01-30</th>
       <td>-0.0201</td>
       <td>-0.0274</td>
@@ -809,9 +832,23 @@ title="Print to PDF"
       <td>0.0027</td>
       <td>0.0199</td>
     </tr>
+    <tr>
+      <th>2023-02-02</th>
+      <td>0.0371</td>
+      <td>0.0727</td>
+      <td>0.0096</td>
+      <td>0.0469</td>
+    </tr>
+    <tr>
+      <th>2023-02-03</th>
+      <td>0.0274</td>
+      <td>-0.0344</td>
+      <td>-0.0032</td>
+      <td>-0.0240</td>
+    </tr>
   </tbody>
 </table>
-<p>4645 rows × 4 columns</p>
+<p>4647 rows × 4 columns</p>
 </div></div></div>
 </div>
 <section id="what-are-the-mean-daily-returns-for-these-four-stocks">
@@ -848,12 +885,12 @@ dtype: float64
 2004-08-25    0.0152
 2004-08-26    0.0146
                ...  
-2023-01-26    0.0065
-2023-01-27    0.0074
 2023-01-30   -0.0157
 2023-01-31    0.0114
 2023-02-01    0.0115
-Length: 4645, dtype: float64
+2023-02-02    0.0416
+2023-02-03   -0.0085
+Length: 4647, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -912,10 +949,10 @@ dtype: float64
   <tbody>
     <tr>
       <th>count</th>
-      <td>4645.0000</td>
-      <td>4645.0000</td>
-      <td>4645.0000</td>
-      <td>4645.0000</td>
+      <td>4647.0000</td>
+      <td>4647.0000</td>
+      <td>4647.0000</td>
+      <td>4647.0000</td>
     </tr>
     <tr>
       <th>mean</th>
@@ -980,10 +1017,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3670
-GOOG   0.2480
-IBM    0.0822
-MSFT   0.1836
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3704
+GOOG   0.2499
+IBM    0.0825
+MSFT   0.1847
 dtype: float64
 </pre></div>
 </div>
@@ -996,16 +1033,16 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3331
-GOOG   0.3077
-IBM    0.2294
-MSFT   0.2739
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3332
+GOOG   0.3082
+IBM    0.2293
+MSFT   0.2741
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>See the top of page 7 in <a class="reference external" href="https://book.ivo-welch.info/read/source5.mba/08-invchoice.pdf">chapter 8 of Ivo Welch’s <em>Corporate Finance</em> textbook</a>.</p>
+<p><em><strong>The best explanation I have found on why stock return volatility (the standard deviation of stocks returns) grows with the square root of time is at the bottom of page 7 of <a class="reference external" href="https://book.ivo-welch.info/read/source5.mba/08-invchoice.pdf">chapter 8 of Ivo Welch’s free corporate finance textbook</a>.</strong></em></p>
 </section>
 <section id="plot-annualized-means-versus-standard-deviations-of-daily-returns-for-these-four-stocks">
 <h3>Plot <em>annualized</em> means versus standard deviations of daily returns for these four stocks<a class="headerlink" href="#plot-annualized-means-versus-standard-deviations-of-daily-returns-for-these-four-stocks" title="Permalink to this headline">#</a></h3>
@@ -1032,7 +1069,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_05_practice_03_21_0.png" src="_images/mckinney_05_practice_03_21_0.png" />
+<img alt="_images/mckinney_05_practice_03_22_0.png" src="_images/mckinney_05_practice_03_22_0.png" />
 </div>
 </div>
 </section>
@@ -1076,7 +1113,7 @@ We will need to download new data, into <code class="docutils literal notranslat
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********            20%                       ]  6 of 30 completed
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********            20%                       ]  6 of 30 completed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[***********           23%                       ]  7 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*************         27%                       ]  8 of 30 completed
@@ -1160,11 +1197,11 @@ We will need to download new data, into <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DOW     3.8730
-V      14.8611
-CRM    18.5952
-GS     23.7183
-CSCO   32.9484
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DOW     3.8810
+V      14.8690
+CRM    18.6032
+GS     23.7262
+CSCO   32.9563
 dtype: float64
 </pre></div>
 </div>
@@ -1193,7 +1230,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_05_practice_03_27_0.png" src="_images/mckinney_05_practice_03_27_0.png" />
+<img alt="_images/mckinney_05_practice_03_28_0.png" src="_images/mckinney_05_practice_03_28_0.png" />
 </div>
 </div>
 </section>
@@ -1243,7 +1280,7 @@ Still, I prefer the first approach because chained code is typically easier to w
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_05_practice_03_36_0.png" src="_images/mckinney_05_practice_03_36_0.png" />
+<img alt="_images/mckinney_05_practice_03_37_0.png" src="_images/mckinney_05_practice_03_37_0.png" />
 </div>
 </div>
 </section>
@@ -1280,8 +1317,8 @@ Still, I prefer the first approach because chained code is typically easier to w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BA     -0.4154
-AAPL    2.1895
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BA     -0.4370
+AAPL    2.3981
 dtype: float64
 </pre></div>
 </div>
@@ -1303,7 +1340,7 @@ Plus, the legend runs off the screen!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_05_practice_03_44_0.png" src="_images/mckinney_05_practice_03_44_0.png" />
+<img alt="_images/mckinney_05_practice_03_45_0.png" src="_images/mckinney_05_practice_03_45_0.png" />
 </div>
 </div>
 </section>
@@ -1341,7 +1378,7 @@ Plus, the legend runs off the screen!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_05_practice_03_47_0.png" src="_images/mckinney_05_practice_03_47_0.png" />
+<img alt="_images/mckinney_05_practice_03_48_0.png" src="_images/mckinney_05_practice_03_48_0.png" />
 </div>
 </div>
 </section>
