@@ -276,6 +276,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_08_lecture.html">
+   McKinney Chapter 8 - Data Wrangling: Join, Combine, and Reshape
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice.html">
+     McKinney Chapter 8 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_03.html">
+     McKinney Chapter 8 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_04.html">
+     McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_02.html">
+     McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -291,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="quiz_02.html">
    Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_03.html">
+   Quiz 3
   </a>
  </li>
 </ul>
@@ -774,7 +811,7 @@ title="Print to PDF"
       <td>0.0029</td>
       <td>0.0794</td>
       <td>0.0042</td>
-      <td>0.0030</td>
+      <td>0.0029</td>
     </tr>
     <tr>
       <th>2004-08-23</th>
@@ -812,20 +849,6 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-01-31</th>
-      <td>0.0090</td>
-      <td>0.0196</td>
-      <td>-0.0042</td>
-      <td>0.0210</td>
-    </tr>
-    <tr>
-      <th>2023-02-01</th>
-      <td>0.0079</td>
-      <td>0.0156</td>
-      <td>0.0027</td>
-      <td>0.0199</td>
-    </tr>
-    <tr>
       <th>2023-02-02</th>
       <td>0.0371</td>
       <td>0.0727</td>
@@ -846,9 +869,23 @@ title="Print to PDF"
       <td>-0.0055</td>
       <td>-0.0061</td>
     </tr>
+    <tr>
+      <th>2023-02-07</th>
+      <td>0.0192</td>
+      <td>0.0442</td>
+      <td>-0.0025</td>
+      <td>0.0420</td>
+    </tr>
+    <tr>
+      <th>2023-02-08</th>
+      <td>-0.0177</td>
+      <td>-0.0744</td>
+      <td>0.0010</td>
+      <td>-0.0031</td>
+    </tr>
   </tbody>
 </table>
-<p>4648 rows × 4 columns</p>
+<p>4650 rows × 4 columns</p>
 </div></div></div>
 </div>
 <section id="what-are-the-mean-daily-returns-for-these-four-stocks">
@@ -885,12 +922,12 @@ dtype: float64
 2004-08-25    0.0152
 2004-08-26    0.0146
                ...  
-2023-01-31    0.0114
-2023-02-01    0.0115
 2023-02-02    0.0416
 2023-02-03   -0.0070
 2023-02-06   -0.0116
-Length: 4648, dtype: float64
+2023-02-07    0.0257
+2023-02-08   -0.0235
+Length: 4650, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -906,7 +943,7 @@ Length: 4648, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.0210
-GOOG   0.0194
+GOOG   0.0195
 IBM    0.0144
 MSFT   0.0173
 dtype: float64
@@ -949,10 +986,10 @@ dtype: float64
   <tbody>
     <tr>
       <th>count</th>
-      <td>4648.0000</td>
-      <td>4648.0000</td>
-      <td>4648.0000</td>
-      <td>4648.0000</td>
+      <td>4650.0000</td>
+      <td>4650.0000</td>
+      <td>4650.0000</td>
+      <td>4650.0000</td>
     </tr>
     <tr>
       <th>mean</th>
@@ -964,7 +1001,7 @@ dtype: float64
     <tr>
       <th>std</th>
       <td>0.0210</td>
-      <td>0.0194</td>
+      <td>0.0195</td>
       <td>0.0144</td>
       <td>0.0173</td>
     </tr>
@@ -1000,7 +1037,7 @@ dtype: float64
       <th>max</th>
       <td>0.1390</td>
       <td>0.1999</td>
-      <td>0.1151</td>
+      <td>0.1152</td>
       <td>0.1860</td>
     </tr>
   </tbody>
@@ -1017,10 +1054,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3692
-GOOG   0.2491
-IBM    0.0826
-MSFT   0.1844
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3691
+GOOG   0.2473
+IBM    0.0824
+MSFT   0.1864
 dtype: float64
 </pre></div>
 </div>
@@ -1033,10 +1070,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3332
-GOOG   0.3082
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3331
+GOOG   0.3088
 IBM    0.2293
-MSFT   0.2741
+MSFT   0.2742
 dtype: float64
 </pre></div>
 </div>
@@ -1164,7 +1201,7 @@ We will need to download new data, into <code class="docutils literal notranslat
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************77%************           ]  23 of 30 completed
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************77%************           ]  23 of 30 completed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************80%*************          ]  24 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************83%***************        ]  25 of 30 completed
@@ -1197,11 +1234,11 @@ We will need to download new data, into <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DOW     3.8849
-V      14.8730
-CRM    18.6071
-GS     23.7302
-CSCO   32.9603
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DOW     3.8929
+V      14.8810
+CRM    18.6151
+GS     23.7381
+CSCO   32.9683
 dtype: float64
 </pre></div>
 </div>
@@ -1317,8 +1354,8 @@ Still, I prefer the first approach because chained code is typically easier to w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BA     -0.4370
-AAPL    2.3277
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BA     -0.4188
+AAPL    2.3318
 dtype: float64
 </pre></div>
 </div>

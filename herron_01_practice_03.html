@@ -276,6 +276,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_08_lecture.html">
+   McKinney Chapter 8 - Data Wrangling: Join, Combine, and Reshape
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice.html">
+     McKinney Chapter 8 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_03.html">
+     McKinney Chapter 8 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_04.html">
+     McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_02.html">
+     McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -291,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="quiz_02.html">
    Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_03.html">
+   Quiz 3
   </a>
  </li>
 </ul>
@@ -1104,6 +1141,8 @@ title="Print to PDF"
 </section>
 <section id="calculate-all-available-daily-returns-and-save-to-data-frame-returns">
 <h3>Calculate all available daily returns and save to data frame <code class="docutils literal notranslate"><span class="pre">returns</span></code><a class="headerlink" href="#calculate-all-available-daily-returns-and-save-to-data-frame-returns" title="Permalink to this headline">#</a></h3>
+<p><em><strong>The following code assumes data are chronologically ordered!</strong></em>
+The yfinance package returns sorted data, and we can use <code class="docutils literal notranslate"><span class="pre">.sort_index()</span></code> to sort our data, if necessary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span> <span class="o">=</span> <span class="n">histories</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
@@ -1408,7 +1447,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/herron_01_practice_03_23_0.png" src="_images/herron_01_practice_03_23_0.png" />
+<img alt="_images/herron_01_practice_03_24_0.png" src="_images/herron_01_practice_03_24_0.png" />
 </div>
 </div>
 </section>
@@ -1425,7 +1464,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/herron_01_practice_03_25_0.png" src="_images/herron_01_practice_03_25_0.png" />
+<img alt="_images/herron_01_practice_03_26_0.png" src="_images/herron_01_practice_03_26_0.png" />
 </div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.cumprod()</span></code> and  <code class="docutils literal notranslate"><span class="pre">.cumsum()</span></code> solutions are the same!</p>
@@ -1449,7 +1488,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>143 µs ± 9.21 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>96.8 µs ± 902 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1461,7 +1500,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>255 µs ± 6.61 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>170 µs ± 448 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1587,7 +1626,7 @@ Name: 2019-12-31 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/herron_01_practice_03_35_0.png" src="_images/herron_01_practice_03_35_0.png" />
+<img alt="_images/herron_01_practice_03_36_0.png" src="_images/herron_01_practice_03_36_0.png" />
 </div>
 </div>
 <p>This solution is the same as the previous two!</p>
@@ -1636,12 +1675,25 @@ Recall the Sharpe Ratio is <span class="math notranslate nohighlight">\(\frac{\o
 </div>
 </div>
 </div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.pipe()</span></code> method to chain the previous calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_2020s</span><span class="p">[</span><span class="s1">&#39;TSLA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">sharpe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0386986513828833
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="calculate-the-market-beta-for-tsla">
 <h3>Calculate the market beta for TSLA<a class="headerlink" href="#calculate-the-market-beta-for-tsla" title="Permalink to this headline">#</a></h3>
 <p>Calculate the market beta with all available returns and 2020s returns.
 Recall we estimate market beta with the ordinary least squares (OLS) regression <span class="math notranslate nohighlight">\(R_i-R_f = \alpha + \beta (R_m-R_f) + \epsilon\)</span>.
-We can estimate market beta with the covariance formula above for a univariate regression if we do not need goodness of fit statistics.</p>
+We can estimate market beta with the covariance formula (i.e., <span class="math notranslate nohighlight">\(\beta_i = \frac{Cov(R_i - R_f, R_m - R_f)}{Var(R_m-R_f)}\)</span>) for a univariate regression if we do not need goodness of fit statistics.</p>
 <p><em><strong>I suggest you write a function named <code class="docutils literal notranslate"><span class="pre">beta()</span></code> to use for the rest of this notebook.</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1655,12 +1707,25 @@ We can estimate market beta with the covariance formula above for a univariate r
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span><span class="p">(</span><span class="n">ri</span><span class="o">=</span><span class="n">returns_2020s</span><span class="p">[</span><span class="s1">&#39;TSLA&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beta</span><span class="p">(</span><span class="n">returns_2020s</span><span class="p">[</span><span class="s1">&#39;TSLA&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5195611279688725
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.519561127968873
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, we can <code class="docutils literal notranslate"><span class="pre">.pipe()</span></code> this calculation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_2020s</span><span class="p">[</span><span class="s1">&#39;TSLA&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.519561127968873
 </pre></div>
 </div>
 </div>
@@ -2044,7 +2109,27 @@ First, we need to add a market excess return column to <code class="docutils lit
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/herron_01_practice_03_64_0.png" src="_images/herron_01_practice_03_64_0.png" />
+<img alt="_images/herron_01_practice_03_69_0.png" src="_images/herron_01_practice_03_69_0.png" />
+</div>
+</div>
+<p><em><strong>Note:</strong></em>
+In a few weeks we will learn the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method, which avoids the loop syntax.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_2020s</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
+AAPL   1.1649
+AMZN   1.0038
+F      1.2078
+META   1.2337
+TSLA   1.5196
+dtype: float64
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -2057,7 +2142,7 @@ First, we need to add a market excess return column to <code class="docutils lit
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6439558045498814
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6439557481829163
 </pre></div>
 </div>
 </div>
@@ -2075,7 +2160,35 @@ First, we need to add a market excess return column to <code class="docutils lit
 </div>
 </div>
 </div>
+<hr class="docutils" />
+<p>During another class someone asked about the portfolio variance notation from investments class (i.e., <span class="math notranslate nohighlight">\(w^T \Sigma w\)</span>).
+We typically will not use this formula because we can calculate the portfolio return series with <code class="docutils literal notranslate"><span class="pre">returns.dot(weights)</span></code>, then calculate the variance with <code class="docutils literal notranslate"><span class="pre">.var()</span></code>.
+Here is a comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">returns_2020s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="o">/</span> <span class="n">_</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span>
+    <span class="n">returns_2020s</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">weights</span><span class="p">),</span> <span class="c1"># from investments class</span>
+    <span class="n">returns_2020s</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">()</span> <span class="c1"># from this class</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 </section>
+<hr class="docutils" />
 <section id="calculate-the-market-beta-for-an-equally-weighted-portfolio-of-these-stocks-in-the-2020s">
 <h3>Calculate the market beta for an <em>equally weighted</em> portfolio of these stocks in the 2020s<a class="headerlink" href="#calculate-the-market-beta-for-an-equally-weighted-portfolio-of-these-stocks-in-the-2020s" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -2085,7 +2198,7 @@ First, we need to add a market excess return column to <code class="docutils lit
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.225936489441255
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2259364848332461
 </pre></div>
 </div>
 </div>
@@ -2214,7 +2327,7 @@ Our current Python knowledge limits us to a for-loop, but we will learn easier a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/herron_01_practice_03_77_0.png" src="_images/herron_01_practice_03_77_0.png" />
+<img alt="_images/herron_01_practice_03_88_0.png" src="_images/herron_01_practice_03_88_0.png" />
 </div>
 </div>
 </section>
