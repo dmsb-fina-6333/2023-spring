@@ -32,7 +32,14 @@ parts:
       - file: herron_01_practice_03
       - file: herron_01_practice_04
       - file: herron_01_practice_02
+    - file: mckinney_08_lecture
+      sections:
+      - file: mckinney_08_practice
+      - file: mckinney_08_practice_03
+      - file: mckinney_08_practice_04
+      - file: mckinney_08_practice_02
   - caption: Quizzes
     chapters:
     - file: quiz_01
     - file: quiz_02
+    - file: quiz_03

@@ -57,6 +57,9 @@ histories.head()
 
 # ### Calculate all available daily returns and save to data frame `returns`
 
+# ***The following code assumes data are chronologically ordered!***
+# The yfinance package returns sorted data, and we can use `.sort_index()` to sort our data, if necessary.
+
 # In[5]:
 
 
@@ -215,15 +218,23 @@ def sharpe(ri, rf=ff['RF']):
 sharpe(returns_2020s['TSLA'])
 
 
+# We can use the `.pipe()` method to chain the previous calculation.
+
+# In[21]:
+
+
+returns_2020s['TSLA'].pipe(sharpe)
+
+
 # ### Calculate the market beta for TSLA
 
 # Calculate the market beta with all available returns and 2020s returns.
 # Recall we estimate market beta with the ordinary least squares (OLS) regression $R_i-R_f = \alpha + \beta (R_m-R_f) + \epsilon$.
-# We can estimate market beta with the covariance formula above for a univariate regression if we do not need goodness of fit statistics.
+# We can estimate market beta with the covariance formula (i.e., $\beta_i = \frac{Cov(R_i - R_f, R_m - R_f)}{Var(R_m-R_f)}$) for a univariate regression if we do not need goodness of fit statistics.
 # 
 # ***I suggest you write a function named `beta()` to use for the rest of this notebook.***
 
-# In[21]:
+# In[22]:
 
 
 def beta(ri, rf=ff['RF'], rm_rf=ff['Mkt-RF']):
@@ -232,10 +243,18 @@ def beta(ri, rf=ff['RF'], rm_rf=ff['Mkt-RF']):
     return ri_rf.cov(rm_rf) / rm_rf.var()
 
 
-# In[22]:
+# In[23]:
 
 
-beta(ri=returns_2020s['TSLA'])
+beta(returns_2020s['TSLA'])
+
+
+# Again, we can `.pipe()` this calculation.
+
+# In[24]:
+
+
+returns_2020s['TSLA'].pipe(beta)
 
 
 # ### Guess the Sharpe Ratios for these stocks in the 2020s
@@ -246,7 +265,7 @@ beta(ri=returns_2020s['TSLA'])
 
 # We can loop over `returns_2020s`, but a loop solution is tedious.
 
-# In[23]:
+# In[25]:
 
 
 for i in returns_2020s:
@@ -257,7 +276,7 @@ for i in returns_2020s:
 # We can also use pandas notation to vectorize this calculation.
 # First calculate *excess* returns as $R_i - R_f$.
 
-# In[24]:
+# In[26]:
 
 
 returns_2020s_excess = returns_2020s.sub(ff['RF'], axis=0).dropna()
@@ -266,7 +285,7 @@ returns_2020s_excess.head()
 
 # Then use pandas notation to calculate means, standard deviations, and annualize.
 
-# In[25]:
+# In[27]:
 
 
 (
@@ -279,7 +298,7 @@ returns_2020s_excess.head()
 # ***Note:***
 # In a few weeks we will learn the `.apply()` method, which avoids the loop syntax.
 
-# In[26]:
+# In[28]:
 
 
 returns_2020s.apply(sharpe)
@@ -289,7 +308,7 @@ returns_2020s.apply(sharpe)
 
 # We can loop over `returns_2020s`, but a loop solution is tedious.
 
-# In[27]:
+# In[29]:
 
 
 for i in returns_2020s:
@@ -300,21 +319,21 @@ for i in returns_2020s:
 # Or we can follow out approach above to vectorize this calculation.
 # First, we need to add a market excess return column to `returns_2020s_excess`.
 
-# In[28]:
+# In[30]:
 
 
 returns_2020s_excess['Mkt-RF'] = ff['Mkt-RF']
 returns_2020s_excess.head()
 
 
-# In[29]:
+# In[31]:
 
 
 vcv = returns_2020s_excess.cov()
 vcv.head()
 
 
-# In[30]:
+# In[32]:
 
 
 vcv['Mkt-RF'].div(vcv.loc['Mkt-RF', 'Mkt-RF']).plot(kind='barh')
@@ -323,9 +342,18 @@ plt.title('CAPM Betas')
 plt.show()
 
 
+# ***Note:***
+# In a few weeks we will learn the `.apply()` method, which avoids the loop syntax.
+
+# In[33]:
+
+
+returns_2020s.apply(beta)
+
+
 # ### Calculate the Sharpe Ratio for an *equally weighted* portfolio of these stocks in the 2020s
 
-# In[31]:
+# In[34]:
 
 
 returns_2020s.mean(axis=1).pipe(sharpe)
@@ -333,15 +361,38 @@ returns_2020s.mean(axis=1).pipe(sharpe)
 
 # The Sharpe Ratio of the portfolio increases because diversification decreases the denominator (risk) more than the numerator (return)!
 
-# In[32]:
+# In[35]:
 
 
 returns_2020s.apply(sharpe).mean()
 
 
+# ---
+# During another class someone asked about the portfolio variance notation from investments class (i.e., $w^T \Sigma w$).
+# We typically will not use this formula because we can calculate the portfolio return series with `returns.dot(weights)`, then calculate the variance with `.var()`.
+# Here is a comparison.
+
+# In[36]:
+
+
+_ = returns_2020s.shape[1]
+weights = np.ones(_) / _
+
+
+# In[37]:
+
+
+np.allclose(
+    returns_2020s.cov().dot(weights).dot(weights), # from investments class
+    returns_2020s.mean(axis=1).var() # from this class
+)
+
+
+# ---
+
 # ### Calculate the market beta for an *equally weighted* portfolio of these stocks in the 2020s
 
-# In[33]:
+# In[38]:
 
 
 returns_2020s.mean(axis=1).pipe(beta)
@@ -349,7 +400,7 @@ returns_2020s.mean(axis=1).pipe(beta)
 
 # The portfolio beta is the mean of the portfolio stock betas!
 
-# In[34]:
+# In[39]:
 
 
 returns_2020s.apply(beta).mean()
@@ -360,7 +411,7 @@ returns_2020s.apply(beta).mean()
 # Save these market betas to data frame `betas`.
 # Our current Python knowledge limits us to a for-loop, but we will learn easier and faster approaches soon!
 
-# In[35]:
+# In[40]:
 
 
 betas = []
@@ -376,7 +427,7 @@ betas.head()
 
 # ### Plot the time series of market betas
 
-# In[36]:
+# In[41]:
 
 
 betas.plot()

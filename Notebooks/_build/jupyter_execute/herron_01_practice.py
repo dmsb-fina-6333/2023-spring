@@ -28,9 +28,9 @@ pd.options.display.float_format = '{:.4f}'.format
 session = requests_cache.CachedSession(expire_after=1)
 
 
-# ### Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame `prices`
+# ### Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame `histories`
 
-# Remove time zone information from the index and use `prices.columns.names` to label the variables and tickers as `Variable` and `Ticker`.
+# Remove time zone information from the index and use `histories.columns.names` to label the variables and tickers as `Variable` and `Ticker`.
 
 # ### Calculate all available daily returns and save to data frame `returns`
 

@@ -5,9 +5,22 @@
 
 # ## Announcements
 
+# - Quiz 2 - mean was $\approx 90%$
+# - Quiz 3 - due by 11:59 on Friday, 2/10
+# - Project groups open on Canvas under People - please sign up!
+# - Optional, anonymous survey on Canvas under "Quizzes" - I value your feedback
+
 # ## Practice
 
+# On Discovery, we need to install the following pacakges every time we log in:
+
 # In[1]:
+
+
+# %pip install yfinance pandas-datareader requests-cache
+
+
+# In[2]:
 
 
 import matplotlib.pyplot as plt
@@ -19,7 +32,7 @@ import pandas_datareader as pdr
 import requests_cache
 
 
-# In[2]:
+# In[3]:
 
 
 get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
@@ -28,31 +41,157 @@ pd.options.display.float_format = '{:.4f}'.format
 session = requests_cache.CachedSession(expire_after=1)
 
 
-# ### Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame `prices`
+# ### Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame `histories`
 
-# Remove time zone information from the index and use `prices.columns.names` to label the variables and tickers as `Variable` and `Ticker`.
+# Remove time zone information from the index and use `histories.columns.names` to label the variables and tickers as `Variable` and `Ticker`.
+
+# In[4]:
+
+
+tickers = yf.Tickers('TSLA F AAPL AMZN META', session=session)
+histories = tickers.history(period='max', auto_adjust=False)
+histories.index = histories.index.tz_localize(None)
+histories.columns.names = ['Variable', 'Ticker']
+histories.head()
+
+
+# Here is another way to get the same data.
+# However, it less flexible because it does create a `Tickers` object that we can use to get other data (e.g., earnings per share).
+# I use `_` as a temporary vaiable for data that I will not need elsewhere in the notebook.
+
+# In[5]:
+
+
+_ = yf.download('TSLA F AAPL AMZN META')
+_.head()
+
 
 # ### Calculate all available daily returns and save to data frame `returns`
 
+# ***The following code assumes data are chronologically ordered!***
+# The yfinance package returns sorted data, and we can use `.sort_index()` to sort our data, if necessary.
+
+# In[6]:
+
+
+returns = histories['Adj Close'].pct_change()
+returns.head()
+
+
 # ### Slices returns for the 2020s and assign to `returns_2020s`
+
+# In[7]:
+
+
+returns_2020s = returns.loc['2020':]
+returns_2020s.head()
+
 
 # ### Download all available data for the Fama and French daily benchmark factors to dictionary `ff_all`
 
 # I often use the following code snippet to find the exact name for the the daily benchmark factors file.
 
-# In[3]:
+# In[8]:
 
 
 pdr.famafrench.get_available_datasets()[:5]
 
 
+# Then I copy-and-paste that file name into `pdr.DataReader()`.
+
+# In[9]:
+
+
+ff_all = pdr.DataReader(
+    name='F-F_Research_Data_Factors_daily',
+    data_source='famafrench',
+    start='1900',
+    session=session
+)
+
+
 # ### Slice the daily benchmark factors, convert them to decimal returns, and assign to `ff`
+
+# In[10]:
+
+
+ff = ff_all[0].div(100)
+ff.head()
+
 
 # ### Use the `.cumprod()` method to plot cumulative returns for these stocks in the 2020s
 
+# In[11]:
+
+
+cumret_cumprod = returns_2020s.add(1).cumprod().sub(1).mul(100)
+cumret_cumprod.plot()
+plt.ylabel('Cumulative Return (%)')
+plt.title('Cumulative Returns')
+plt.show()
+
+
 # ### Use the `.cumsum()` method with log returns to plot cumulative returns for these stocks in the 2020s
 
+# In[12]:
+
+
+cumret_cumsum = returns_2020s.add(1).pipe(np.log).cumsum().pipe(np.exp).sub(1).mul(100)
+cumret_cumsum.plot()
+plt.ylabel('Cumulative Return (%)')
+plt.title('Cumulative Returns')
+plt.show()
+
+
+# The `.cumprod()` and  `.cumsum()` solutions are the same!
+
+# In[13]:
+
+
+np.allclose(cumret_cumprod, cumret_cumsum)
+
+
 # ### Use price data only to plot cumulative returns for these stocks in the 2020s
+
+# We can also calculate cumulative returns as the ratio of adjusted closed.
+# That is $R_{0,T} = \frac{AC_T}{AC_0} - 1$.
+
+# In[14]:
+
+
+histories.loc['2019', 'Adj Close'].iloc[-1]
+
+
+# In[15]:
+
+
+cumret_prices = (
+    histories['Adj Close']
+    .loc['2020':]
+    .div(
+        histories
+        .loc['2019', 'Adj Close']
+        .iloc[-1]
+    )
+    .sub(1)
+    .mul(100)
+)
+
+
+# In[16]:
+
+
+cumret_prices.plot()
+plt.ylabel('Cumulative Return (%)')
+plt.title('Cumulative Returns')
+plt.show()
+
+
+# In[17]:
+
+
+np.allclose(cumret_prices, cumret_cumprod)
+
 
 # ### Calculate the Sharpe Ratio for TSLA
 
@@ -61,13 +200,57 @@ pdr.famafrench.get_available_datasets()[:5]
 # 
 # ***I suggest you write a function named `sharpe()` to use for the rest of this notebook.***
 
+# In[18]:
+
+
+def sharpe(ri, rf=ff['RF'], ann_fac=np.sqrt(252)):
+    ri_rf = ri.sub(rf).dropna()
+    return ann_fac * ri_rf.mean() / ri_rf.std()
+
+
+# In[19]:
+
+
+sharpe(returns_2020s['TSLA'])
+
+
+# We can use the `.pipe()` method to chain the previous calculation.
+
+# In[20]:
+
+
+returns_2020s['TSLA'].pipe(sharpe)
+
+
 # ### Calculate the market beta for TSLA
 
 # Calculate the market beta with all available returns and 2020s returns.
 # Recall we estimate market beta with the ordinary least squares (OLS) regression $R_i-R_f = \alpha + \beta (R_m-R_f) + \epsilon$.
-# We can estimate market beta with the covariance formula above for a univariate regression if we do not need goodness of fit statistics.
+# We can estimate market beta with the covariance formula (i.e., $\beta_i = \frac{Cov(R_i - R_f, R_m - R_f)}{Var(R_m-R_f)}$) above for a univariate regression if we do not need goodness of fit statistics.
 # 
 # ***I suggest you write a function named `beta()` to use for the rest of this notebook.***
+
+# In[21]:
+
+
+def beta(ri, rf=ff['RF'], rm_rf=ff['Mkt-RF']):
+    ri_rf = ri.sub(rf).dropna()
+    return ri_rf.cov(rm_rf) / rm_rf.loc[ri_rf.index].var()
+
+
+# In[22]:
+
+
+beta(returns_2020s['TSLA'])
+
+
+# Again, we can `.pipe()` this calculation.
+
+# In[23]:
+
+
+returns_2020s['TSLA'].pipe(beta)
+
 
 # ### Guess the Sharpe Ratios for these stocks in the 2020s
 
@@ -75,23 +258,184 @@ pdr.famafrench.get_available_datasets()[:5]
 
 # ### Calculate the Sharpe Ratios for these stocks in the 2020s
 
-# How good were your guesses?
+# We can loop over `returns_2020s`, but a loop solution is tedious.
+
+# In[24]:
+
+
+for i in returns_2020s:
+    sharpe_i = sharpe(returns_2020s[i])
+    print(f'Sharpe Ratio for {i}:\t {sharpe_i:0.2f}')
+
+
+# We can also use pandas notation to vectorize this calculation.
+# First calculate *excess* returns as $R_i - R_f$.
+
+# In[25]:
+
+
+returns_2020s_excess = returns_2020s.sub(ff['RF'], axis=0).dropna()
+returns_2020s_excess.head()
+
+
+# Then use pandas notation to calculate means, standard deviations, and annualize.
+
+# In[26]:
+
+
+(
+    returns_2020s_excess.mean()
+    .div(returns_2020s_excess.std())
+    .mul(np.sqrt(252))
+)
+
+
+# ***Note:***
+# In a few weeks we will learn the `.apply()` method, which avoids the loop syntax.
+
+# In[27]:
+
+
+returns_2020s.apply(sharpe)
+
 
 # ### Calculate the market betas for these stocks in the 2020s
 
-# How good were your guesses?
+# We can loop over `returns_2020s`, but a loop solution is tedious.
+
+# In[28]:
+
+
+for i in returns_2020s:
+    beta_i = beta(returns_2020s[i])
+    print(f'Beta for {i}:\t {beta_i:0.2f}')
+
+
+# Or we can follow out approach above to vectorize this calculation.
+# First, we need to add a market excess return column to `returns_2020s_excess`.
+
+# In[29]:
+
+
+returns_2020s_excess['Mkt-RF'] = ff['Mkt-RF']
+returns_2020s_excess.head()
+
+
+# In[30]:
+
+
+vcv = returns_2020s_excess.cov()
+vcv.head()
+
+
+# In[31]:
+
+
+vcv['Mkt-RF'].div(vcv.loc['Mkt-RF', 'Mkt-RF']).plot(kind='barh')
+plt.xlabel('CAPM Beta')
+plt.title('CAPM Betas')
+plt.show()
+
+
+# ***Note:***
+# In a few weeks we will learn the `.apply()` method, which avoids the loop syntax.
+
+# In[32]:
+
+
+returns_2020s.apply(beta)
+
 
 # ### Calculate the Sharpe Ratio for an *equally weighted* portfolio of these stocks in the 2020s
 
-# What do you notice?
+# In[33]:
+
+
+returns_2020s.mean(axis=1).pipe(sharpe)
+
+
+# Later, we will use the notation from investments class (i.e., $R_P = w^T \bf{R}$), but `.mean(axis=1)` is simpler for equally weighted returns.
+
+# In[34]:
+
+
+_ = returns_2020s.shape[1]
+weights = np.ones(_) / _
+weights
+
+
+# In[35]:
+
+
+np.allclose(returns_2020s.dot(weights), returns_2020s.mean(axis=1))
+
+
+# ---
+# During class someone asked about the portfolio variance notation from investments class (i.e., $w^T \Sigma w$).
+# We typically will not use this formula because we can calculate the portfolio return series with `returns.dot(weights)`, then calculate the variance with `.var()`.
+# Here is a comparison.
+
+# In[36]:
+
+
+np.allclose(
+    returns_2020s.cov().dot(weights).dot(weights), # from investments class
+    returns_2020s.mean(axis=1).var() # from this class
+)
+
+
+# ---
+
+# Because diversification reduces portfolio standard deviation less than the sum of its parts, the Sharpe Ratio of the equally weighted portfolio is less than the equally weighted mean of the single-stock Sharpe Ratios.
+
+# In[37]:
+
+
+returns_2020s.apply(sharpe).mean()
+
 
 # ### Calculate the market beta for an *equally weighted* portfolio of these stocks in the 2020s
 
-# What do you notice?
+# Beta measures *non*diversifiable risk, so $\beta_P = \sum w_i \beta_i$!
+
+# In[38]:
+
+
+returns_2020s.mean(axis=1).pipe(beta)
+
+
+# In[39]:
+
+
+returns_2020s.apply(beta).mean()
+
 
 # ### Calculate the market betas for these stocks every calendar year for every possible year
 
 # Save these market betas to data frame `betas`.
 # Our current Python knowledge limits us to a for-loop, but we will learn easier and faster approaches soon!
 
+# In[40]:
+
+
+betas = []
+years = list(range(1973, 2023))
+for year in years:
+    betas.append(returns.loc[str(year)].apply(beta))
+    
+betas = pd.DataFrame(betas, index=years)
+betas.columns.name = 'Ticker'
+betas.index.name = 'Year'
+betas.head()
+
+
 # ### Plot the time series of market betas
+
+# In[41]:
+
+
+betas.plot()
+plt.ylabel('CAPM Beta')
+plt.title('CAPM Betas')
+plt.show()
+

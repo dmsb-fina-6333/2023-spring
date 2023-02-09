@@ -276,6 +276,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_08_lecture.html">
+   McKinney Chapter 8 - Data Wrangling: Join, Combine, and Reshape
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice.html">
+     McKinney Chapter 8 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_03.html">
+     McKinney Chapter 8 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_04.html">
+     McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_02.html">
+     McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -291,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="quiz_02.html">
    Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_03.html">
+   Quiz 3
   </a>
  </li>
 </ul>
@@ -924,54 +961,6 @@ We can pass tickers as either a space-delimited string or a list of strings.</p>
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-01-31</th>
-      <td>144.2900</td>
-      <td>103.1300</td>
-      <td>99.8700</td>
-      <td>247.8100</td>
-      <td>195.3700</td>
-      <td>173.2200</td>
-      <td>144.2900</td>
-      <td>103.1300</td>
-      <td>99.8700</td>
-      <td>247.8100</td>
-      <td>...</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>65874500</td>
-      <td>66527300.0000</td>
-      <td>22306800.0000</td>
-      <td>26541100.0000</td>
-      <td>49801700.0000</td>
-      <td>196813500.0000</td>
-    </tr>
-    <tr>
-      <th>2023-02-01</th>
-      <td>145.4300</td>
-      <td>105.1500</td>
-      <td>101.4300</td>
-      <td>252.7500</td>
-      <td>209.4300</td>
-      <td>181.4100</td>
-      <td>145.4300</td>
-      <td>105.1500</td>
-      <td>101.4300</td>
-      <td>252.7500</td>
-      <td>...</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>0.0000</td>
-      <td>77663600</td>
-      <td>80450100.0000</td>
-      <td>26392600.0000</td>
-      <td>31259900.0000</td>
-      <td>66047700.0000</td>
-      <td>213806300.0000</td>
-    </tr>
-    <tr>
       <th>2023-02-02</th>
       <td>150.8200</td>
       <td>112.9100</td>
@@ -1036,16 +1025,64 @@ We can pass tickers as either a space-delimited string or a list of strings.</p>
       <td>0.0000</td>
       <td>0.0000</td>
       <td>0.0000</td>
-      <td>67990412</td>
-      <td>81776626.0000</td>
-      <td>25526806.0000</td>
-      <td>19821050.0000</td>
-      <td>44672648.0000</td>
-      <td>184368254.0000</td>
+      <td>69858300</td>
+      <td>81945200.0000</td>
+      <td>25573000.0000</td>
+      <td>22518000.0000</td>
+      <td>45219700.0000</td>
+      <td>186188100.0000</td>
+    </tr>
+    <tr>
+      <th>2023-02-07</th>
+      <td>154.6500</td>
+      <td>102.1100</td>
+      <td>108.0400</td>
+      <td>267.5600</td>
+      <td>221.7300</td>
+      <td>196.8100</td>
+      <td>154.6500</td>
+      <td>102.1100</td>
+      <td>108.0400</td>
+      <td>267.5600</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>83322600</td>
+      <td>119501300.0000</td>
+      <td>33738800.0000</td>
+      <td>50841400.0000</td>
+      <td>66415000.0000</td>
+      <td>186010300.0000</td>
+    </tr>
+    <tr>
+      <th>2023-02-08</th>
+      <td>151.9200</td>
+      <td>100.0500</td>
+      <td>100.0000</td>
+      <td>266.7300</td>
+      <td>222.0500</td>
+      <td>201.2900</td>
+      <td>151.9200</td>
+      <td>100.0500</td>
+      <td>100.0000</td>
+      <td>266.7300</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+      <td>64120079</td>
+      <td>75878304.0000</td>
+      <td>73546029.0000</td>
+      <td>54686049.0000</td>
+      <td>55965122.0000</td>
+      <td>178512610.0000</td>
     </tr>
   </tbody>
 </table>
-<p>10627 rows × 48 columns</p>
+<p>10629 rows × 48 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1318,7 +1355,7 @@ We find that <code class="docutils literal notranslate"><span class="pre">.rolli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>553 ms ± 65.9 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>336 ms ± 4.96 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -1339,7 +1376,7 @@ We find that <code class="docutils literal notranslate"><span class="pre">.rolli
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>790 µs ± 151 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>405 µs ± 1.13 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>

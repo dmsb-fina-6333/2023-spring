@@ -276,6 +276,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_08_lecture.html">
+   McKinney Chapter 8 - Data Wrangling: Join, Combine, and Reshape
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice.html">
+     McKinney Chapter 8 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_03.html">
+     McKinney Chapter 8 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_04.html">
+     McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_02.html">
+     McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -291,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="quiz_02.html">
    Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_03.html">
+   Quiz 3
   </a>
  </li>
 </ul>
@@ -510,11 +547,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-prices">
+    <a class="reference internal nav-link" href="#download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-histories">
      Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame
      <code class="docutils literal notranslate">
       <span class="pre">
-       prices
+       histories
       </span>
      </code>
     </a>
@@ -676,11 +713,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-prices">
+    <a class="reference internal nav-link" href="#download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-histories">
      Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame
      <code class="docutils literal notranslate">
       <span class="pre">
-       prices
+       histories
       </span>
      </code>
     </a>
@@ -852,9 +889,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-prices">
-<h3>Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame <code class="docutils literal notranslate"><span class="pre">prices</span></code><a class="headerlink" href="#download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-prices" title="Permalink to this headline">#</a></h3>
-<p>Remove time zone information from the index and use <code class="docutils literal notranslate"><span class="pre">prices.columns.names</span></code> to label the variables and tickers as <code class="docutils literal notranslate"><span class="pre">Variable</span></code> and <code class="docutils literal notranslate"><span class="pre">Ticker</span></code>.</p>
+<section id="download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-histories">
+<h3>Download all available daily price data for tickers TSLA, F, AAPL, AMZN, and META to data frame <code class="docutils literal notranslate"><span class="pre">histories</span></code><a class="headerlink" href="#download-all-available-daily-price-data-for-tickers-tsla-f-aapl-amzn-and-meta-to-data-frame-histories" title="Permalink to this headline">#</a></h3>
+<p>Remove time zone information from the index and use <code class="docutils literal notranslate"><span class="pre">histories.columns.names</span></code> to label the variables and tickers as <code class="docutils literal notranslate"><span class="pre">Variable</span></code> and <code class="docutils literal notranslate"><span class="pre">Ticker</span></code>.</p>
 </section>
 <section id="calculate-all-available-daily-returns-and-save-to-data-frame-returns">
 <h3>Calculate all available daily returns and save to data frame <code class="docutils literal notranslate"><span class="pre">returns</span></code><a class="headerlink" href="#calculate-all-available-daily-returns-and-save-to-data-frame-returns" title="Permalink to this headline">#</a></h3>
