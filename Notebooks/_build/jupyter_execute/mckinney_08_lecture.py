@@ -101,9 +101,15 @@ data.loc[:, 2]
 data.unstack()
 
 
+# In[10]:
+
+
+data.unstack().stack()
+
+
 # We can create a data frame with hieracrhical indices or multi-indices on rows *and* columns.
 
-# In[10]:
+# In[11]:
 
 
 frame = pd.DataFrame(
@@ -111,20 +117,16 @@ frame = pd.DataFrame(
     index=[['a', 'a', 'b', 'b'], [1, 2, 1, 2]],
     columns=[['Ohio', 'Ohio', 'Colorado'], ['Green', 'Red', 'Green']]
 )
+frame
 
 
 # We can name these multi-indices but names are not required.
 
-# In[11]:
+# In[12]:
 
 
 frame.index.names = ['key1', 'key2']
 frame.columns.names = ['state', 'color']
-
-
-# In[12]:
-
-
 frame
 
 
@@ -142,7 +144,7 @@ frame['Ohio']
 # In[14]:
 
 
-frame.loc[:, [('Ohio', 'Green')]]
+frame[[('Ohio', 'Green')]]
 
 
 # We have to do a more work to slice the inner level of the column index.
@@ -186,12 +188,18 @@ frame.swaplevel('key1', 'key2')
 # In[19]:
 
 
+frame
+
+
+# In[20]:
+
+
 frame.sort_index(level=1)
 
 
 # Again, we can give index *names*, too.
 
-# In[20]:
+# In[21]:
 
 
 frame.sort_index(level='key2')
@@ -199,7 +207,7 @@ frame.sort_index(level='key2')
 
 # We can sort by two or more index levels by passing a list of index levels or names.
 
-# In[21]:
+# In[22]:
 
 
 frame.sort_index(level=[0, 1])
@@ -207,7 +215,7 @@ frame.sort_index(level=[0, 1])
 
 # We can chain these methods, too.
 
-# In[22]:
+# In[23]:
 
 
 frame.swaplevel(0, 1).sort_index(level=0)
@@ -217,7 +225,7 @@ frame.swaplevel(0, 1).sort_index(level=0)
 
 # We can convert a column into an index and an index into a column with the `.set_index()` and `.reset_index()` methods.
 
-# In[23]:
+# In[24]:
 
 
 frame = pd.DataFrame({
@@ -231,7 +239,7 @@ frame
 
 # The `.set_index()` method converts columns to indexes, and removes the columns from the data frame by default.
 
-# In[24]:
+# In[25]:
 
 
 frame2 = frame.set_index(['c', 'd'])
@@ -240,7 +248,7 @@ frame2
 
 # The `.reset_index()` method removes the indexes, adds them as columns, and sets in integer index.
 
-# In[25]:
+# In[26]:
 
 
 frame2.reset_index()
@@ -264,26 +272,26 @@ frame2.reset_index()
 # We will start with the `pd.merge()` syntax, but pandas also has `.merge()` and `.join()` methods.
 # Learning these other syntaxes is easy once we understand the `pd.merge()` syntax.
 
-# In[26]:
+# In[27]:
 
 
 df1 = pd.DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'a', 'b'], 'data1': range(7)})
 df2 = pd.DataFrame({'key': ['a', 'b', 'd'], 'data2': range(3)})
 
 
-# In[27]:
+# In[28]:
 
 
 df1
 
 
-# In[28]:
+# In[29]:
 
 
 df2
 
 
-# In[29]:
+# In[30]:
 
 
 pd.merge(df1, df2)
@@ -292,7 +300,7 @@ pd.merge(df1, df2)
 # The default `how` is `how='inner'`, so `pd.merge()` inner joins left and right data frames by default, keeping only rows that appear in both.
 # We can specify `how='outer'`, so `pd.merge()` outer joins left and right data frames, keeping all rows that appear in either.
 
-# In[30]:
+# In[31]:
 
 
 pd.merge(df1, df2, how='outer')
@@ -300,7 +308,7 @@ pd.merge(df1, df2, how='outer')
 
 # A left merge keeps only rows that appear in the left data frame.
 
-# In[31]:
+# In[32]:
 
 
 pd.merge(df1, df2, how='left')
@@ -308,7 +316,7 @@ pd.merge(df1, df2, how='left')
 
 # A rights merge keeps only rows that appear in the right data frame.
 
-# In[32]:
+# In[33]:
 
 
 pd.merge(df1, df2, how='right')
@@ -324,7 +332,7 @@ pd.merge(df1, df2, how='right')
 # Here `key` is the only common column between `df1` and `df2`.
 # We *should* specify `on` to avoid unexpected results.
 
-# In[33]:
+# In[34]:
 
 
 pd.merge(df1, df2, on='key')
@@ -332,32 +340,32 @@ pd.merge(df1, df2, on='key')
 
 # We *must* specify `left_on` and `right_on` if our left and right data frames do not have a common column.
 
-# In[34]:
+# In[35]:
 
 
 df3 = pd.DataFrame({'lkey': ['b', 'b', 'a', 'c', 'a', 'a', 'b'], 'data1': range(7)})
 df4 = pd.DataFrame({'rkey': ['a', 'b', 'd'], 'data2': range(3)})
 
 
-# In[35]:
+# In[36]:
 
 
 df3
 
 
-# In[36]:
+# In[37]:
 
 
 df4
 
 
-# In[37]:
+# In[38]:
 
 
 # pd.merge(df3, df4) # this code fails/errors because there are not common columns
 
 
-# In[38]:
+# In[39]:
 
 
 pd.merge(df3, df4, left_on='lkey', right_on='rkey')
@@ -369,7 +377,7 @@ pd.merge(df3, df4, left_on='lkey', right_on='rkey')
 # Further, rows `a` and `b` from `df4` appear three times to match `df3`.
 # If we want to keep rows `c` and `d`, we can *outer* join `df3` and `df4` with `how='outer'`.
 
-# In[39]:
+# In[40]:
 
 
 pd.merge(df1, df2, how='outer')
@@ -377,26 +385,26 @@ pd.merge(df1, df2, how='outer')
 
 # > Many-to-many merges have well-defined, though not necessarily intuitive, behavior.
 
-# In[40]:
+# In[41]:
 
 
 df1 = pd.DataFrame({'key': ['b', 'b', 'a', 'c', 'a', 'b'], 'data1': range(6)})
 df2 = pd.DataFrame({'key': ['a', 'b', 'a', 'b', 'd'], 'data2': range(5)})
 
 
-# In[41]:
+# In[42]:
 
 
 df1
 
 
-# In[42]:
+# In[43]:
 
 
 df2
 
 
-# In[43]:
+# In[44]:
 
 
 pd.merge(df1, df2, on='key')
@@ -411,7 +419,7 @@ pd.merge(df1, df2, on='key')
 # We can merge on more than one key.
 # For example, we may merge two data sets on ticker-date pairs or industry-date pairs.
 
-# In[44]:
+# In[45]:
 
 
 left = pd.DataFrame({'key1': ['foo', 'foo', 'bar'],
@@ -422,19 +430,19 @@ right = pd.DataFrame({'key1': ['foo', 'foo', 'bar', 'bar'],
                       'rval': [4, 5, 6, 7]})
 
 
-# In[45]:
+# In[46]:
 
 
 left
 
 
-# In[46]:
+# In[47]:
 
 
 right
 
 
-# In[47]:
+# In[48]:
 
 
 pd.merge(left, right, on=['key1', 'key2'], how='outer')
@@ -442,7 +450,7 @@ pd.merge(left, right, on=['key1', 'key2'], how='outer')
 
 # When column names overlap between the left and right data frames, `pd.merge()` appends `_x` and `_y` to the left and right versions of the overlapping column names.
 
-# In[48]:
+# In[49]:
 
 
 pd.merge(left, right, on='key1')
@@ -450,7 +458,7 @@ pd.merge(left, right, on='key1')
 
 # I typically specify suffixes to avoid later confusion.
 
-# In[49]:
+# In[50]:
 
 
 pd.merge(left, right, on='key1', suffixes=('_left', '_right'))
@@ -476,26 +484,26 @@ pd.merge(left, right, on='key1', suffixes=('_left', '_right'))
 
 # If we want to use `pd.merge()` to join on row indices, we can use the `left_index` and `right_index` arguments.
 
-# In[50]:
+# In[51]:
 
 
 left1 = pd.DataFrame({'key': ['a', 'b', 'a', 'a', 'b', 'c'], 'value': range(6)})
 right1 = pd.DataFrame({'group_val': [3.5, 7]}, index=['a', 'b'])
 
 
-# In[51]:
+# In[52]:
 
 
 left1
 
 
-# In[52]:
+# In[53]:
 
 
 right1
 
 
-# In[53]:
+# In[54]:
 
 
 pd.merge(left1, right1, left_on='key', right_index=True, how='outer')
@@ -503,7 +511,7 @@ pd.merge(left1, right1, left_on='key', right_index=True, how='outer')
 
 # The index arguments work for hierarchical indices (multi indices), too.
 
-# In[54]:
+# In[55]:
 
 
 lefth = pd.DataFrame({'key1': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada'],
@@ -515,13 +523,13 @@ righth = pd.DataFrame(np.arange(12).reshape((6, 2)),
                       columns=['event1', 'event2'])
 
 
-# In[55]:
+# In[56]:
 
 
 pd.merge(lefth, righth, left_on=['key1', 'key2'], right_index=True, how='outer')
 
 
-# In[56]:
+# In[57]:
 
 
 left2 = pd.DataFrame([[1., 2.], [3., 4.], [5., 6.]],
@@ -534,7 +542,7 @@ right2 = pd.DataFrame([[7., 8.], [9., 10.], [11., 12.], [13, 14]],
 
 # If we use both left and right indexes, `pd.merge()` will keep the index.
 
-# In[57]:
+# In[58]:
 
 
 pd.merge(left2, right2, how='outer', left_index=True, right_index=True)
@@ -544,19 +552,19 @@ pd.merge(left2, right2, how='outer', left_index=True, right_index=True)
 # 
 # If we have matching indices on left and right, we can use `.join()`.
 
-# In[58]:
+# In[59]:
 
 
 left2
 
 
-# In[59]:
+# In[60]:
 
 
 right2
 
 
-# In[60]:
+# In[61]:
 
 
 left2.join(right2, how='outer')
@@ -565,7 +573,7 @@ left2.join(right2, how='outer')
 # The `.join()` method left joins by default.
 # The `.join()` method uses indexes, so it requires few arguments and accepts a list of data frames.
 
-# In[61]:
+# In[62]:
 
 
 another = pd.DataFrame(
@@ -577,13 +585,13 @@ another = pd.DataFrame(
 another
 
 
-# In[62]:
+# In[63]:
 
 
 left2.join([right2, another])
 
 
-# In[63]:
+# In[64]:
 
 
 left2.join([right2, another], how='outer')
@@ -599,7 +607,7 @@ left2.join([right2, another], how='outer')
 # 
 # The first is handy if we have to read and combine a directory of .csv files.
 
-# In[64]:
+# In[65]:
 
 
 s1 = pd.Series([0, 1], index=['a', 'b'])
@@ -607,19 +615,19 @@ s2 = pd.Series([2, 3, 4], index=['c', 'd', 'e'])
 s3 = pd.Series([5, 6], index=['f', 'g'])
 
 
-# In[65]:
+# In[66]:
 
 
 pd.concat([s1, s2, s3])
 
 
-# In[66]:
+# In[67]:
 
 
 pd.concat([s1, s2, s3], axis=1)
 
 
-# In[67]:
+# In[68]:
 
 
 result = pd.concat([s1, s2, s3], keys=['one', 'two', 'three'])
@@ -627,32 +635,32 @@ result = pd.concat([s1, s2, s3], keys=['one', 'two', 'three'])
 result
 
 
-# In[68]:
+# In[69]:
 
 
 result.unstack()
 
 
-# In[69]:
+# In[70]:
 
 
 pd.concat([s1, s2, s3], axis=1, keys=['one', 'two', 'three'])
 
 
-# In[70]:
+# In[71]:
 
 
 df1 = pd.DataFrame(np.arange(6).reshape(3, 2), index=['a', 'b', 'c'], columns=['one', 'two'])
 df2 = pd.DataFrame(5 + np.arange(4).reshape(2, 2), index=['a', 'c'], columns=['three', 'four'])
 
 
-# In[71]:
+# In[72]:
 
 
 pd.concat([df1, df2], axis=1, keys=['level1', 'level2'])
 
 
-# In[72]:
+# In[73]:
 
 
 pd.concat([df1, df2], axis=1, keys=['level1', 'level2'], names=['upper', 'lower'])
@@ -671,7 +679,7 @@ pd.concat([df1, df2], axis=1, keys=['level1', 'level2'], names=['upper', 'lower'
 # > - stack: This "rotates" or pivots from the columns in the data to the rows
 # > - unstack: This pivots from the rows into the columns
 
-# In[73]:
+# In[74]:
 
 
 data = pd.DataFrame(np.arange(6).reshape((2, 3)),
@@ -682,7 +690,7 @@ data = pd.DataFrame(np.arange(6).reshape((2, 3)),
 data
 
 
-# In[74]:
+# In[75]:
 
 
 result = data.stack()
@@ -690,13 +698,13 @@ result = data.stack()
 result
 
 
-# In[75]:
+# In[76]:
 
 
 result.unstack()
 
 
-# In[76]:
+# In[77]:
 
 
 s1 = pd.Series([0, 1, 2, 3], index=['a', 'b', 'c', 'd'])
@@ -706,19 +714,13 @@ data2 = pd.concat([s1, s2], keys=['one', 'two'])
 data2
 
 
-# In[77]:
+# In[78]:
 
 
 data2.unstack()
 
 
 # Un-stacking may introduce missing values because data frames are rectangular.
-
-# In[78]:
-
-
-data2.unstack()
-
 
 # By default, stacking drops these missing values.
 

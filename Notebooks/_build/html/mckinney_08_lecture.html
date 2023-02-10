@@ -879,6 +879,27 @@ We can un-stack <code class="docutils literal notranslate"><span class="pre">dat
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a  1    0.4967
+   2   -0.1383
+   3    0.6477
+b  1    1.5230
+   3   -0.2342
+c  1   -0.2341
+   2    1.5792
+d  2    0.7674
+   3   -0.4695
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 <p>We can create a data frame with hieracrhical indices or multi-indices on rows <em>and</em> columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -887,22 +908,78 @@ We can un-stack <code class="docutils literal notranslate"><span class="pre">dat
     <span class="n">index</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
     <span class="n">columns</span><span class="o">=</span><span class="p">[[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Colorado&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Green&#39;</span><span class="p">,</span> <span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">]]</span>
 <span class="p">)</span>
+<span class="n">frame</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">Ohio</th>
+      <th>Colorado</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Green</th>
+      <th>Red</th>
+      <th>Green</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>1</th>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We can name these multi-indices but names are not required.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">]</span>
 <span class="n">frame</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span>
+<span class="n">frame</span>
 </pre></div>
 </div>
 </div>
@@ -1047,7 +1124,7 @@ Here <code class="docutils literal notranslate"><span class="pre">frame</span></
 <p>We can pass a tuple if we only want one column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[(</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">)]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="p">[[(</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">)]]</span>
 </pre></div>
 </div>
 </div>
@@ -1428,6 +1505,85 @@ The default arguments are <code class="docutils literal notranslate"><span class
 </div>
 <p>We can also sort on an index (or list of indices).
 After we swap levels, we may want to sort our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>state</th>
+      <th colspan="2" halign="left">Ohio</th>
+      <th>Colorado</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>color</th>
+      <th>Green</th>
+      <th>Red</th>
+      <th>Green</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th>key2</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>1</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>1</th>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -4885,59 +5041,6 @@ dtype: int64
 </div></div></div>
 </div>
 <p>Un-stacking may introduce missing values because data frames are rectangular.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-      <th>c</th>
-      <th>d</th>
-      <th>e</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>one</th>
-      <td>0.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.0000</td>
-      <td>5.0000</td>
-      <td>6.0000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <p>By default, stacking drops these missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
