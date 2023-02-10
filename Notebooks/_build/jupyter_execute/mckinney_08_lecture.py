@@ -7,7 +7,7 @@
 
 # Chapter 8 of Wes McKinney's [*Python for Data Analysis*](https://wesmckinney.com/book/) introduces a few important pandas concepts:
 # 
-# 1. Joining or merging is combining 2+ data frames on 1+ indices or columns into 1 data frame
+# 1. Joining or merging is combining 2+ data frames on 1+ indexes or columns into 1 data frame
 # 1. Reshaping is rearranging data frames so it has fewer columns and more rows (wide to long) or more columns and fewer rows (long to wide); we can also reshape a series to a data frame and vice versa
 # 
 # ***Note:*** 
@@ -107,7 +107,7 @@ data.unstack()
 data.unstack().stack()
 
 
-# We can create a data frame with hieracrhical indices or multi-indices on rows *and* columns.
+# We can create a data frame with hieracrhical indexes or multi-indexes on rows *and* columns.
 
 # In[11]:
 
@@ -120,7 +120,7 @@ frame = pd.DataFrame(
 frame
 
 
-# We can name these multi-indices but names are not required.
+# We can name these multi-indexes but names are not required.
 
 # In[12]:
 
@@ -182,7 +182,7 @@ frame.swaplevel()
 frame.swaplevel('key1', 'key2')
 
 
-# We can also sort on an index (or list of indices).
+# We can also sort on an index (or list of indexes).
 # After we swap levels, we may want to sort our data.
 
 # In[19]:
@@ -258,7 +258,7 @@ frame2.reset_index()
 
 # pandas provides several methods and functions to combine and merge data.
 # We can typically create the same output with any of these methods or functions, but one may be more efficient than the others.
-# If I want to combine data frames with similar indices, I try the `.join()` method first.
+# If I want to combine data frames with similar indexes, I try the `.join()` method first.
 # The `.join()` also lets use can combine more than two data frames at once.
 # Otherwise, I try the `.merge()` method, which has a function `pd.merge()`, too.
 # The `pd.merge()` function is more general than the `.join()` method, so we will start with `pd.merge()`.
@@ -482,7 +482,7 @@ pd.merge(left, right, on='key1', suffixes=('_left', '_right'))
 
 # ### Merging on Index
 
-# If we want to use `pd.merge()` to join on row indices, we can use the `left_index` and `right_index` arguments.
+# If we want to use `pd.merge()` to join on row indexes, we can use the `left_index` and `right_index` arguments.
 
 # In[51]:
 
@@ -509,7 +509,7 @@ right1
 pd.merge(left1, right1, left_on='key', right_index=True, how='outer')
 
 
-# The index arguments work for hierarchical indices (multi indices), too.
+# The index arguments work for hierarchical indexes (multi indexes), too.
 
 # In[55]:
 
@@ -550,7 +550,7 @@ pd.merge(left2, right2, how='outer', left_index=True, right_index=True)
 
 # > DataFrame has a convenient join instance for merging by index. It can also be used to combine together many DataFrame objects having the same or similar indexes but non-overlapping columns.
 # 
-# If we have matching indices on left and right, we can use `.join()`.
+# If we have matching indexes on left and right, we can use `.join()`.
 
 # In[59]:
 
@@ -673,7 +673,7 @@ pd.concat([df1, df2], axis=1, keys=['level1', 'level2'], names=['upper', 'lower'
 
 # ### Reshaping with Hierarchical Indexing
 
-# Hierarchical indices (multi-indices) help reshape data.
+# Hierarchical indexes (multi-indexes) help reshape data.
 # 
 # > There are two primary actions:
 # > - stack: This "rotates" or pivots from the columns in the data to the rows

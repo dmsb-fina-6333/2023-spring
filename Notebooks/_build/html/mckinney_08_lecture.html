@@ -681,7 +681,7 @@ title="Print to PDF"
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Chapter 8 of Wes McKinney’s <a class="reference external" href="https://wesmckinney.com/book/"><em>Python for Data Analysis</em></a> introduces a few important pandas concepts:</p>
 <ol class="simple">
-<li><p>Joining or merging is combining 2+ data frames on 1+ indices or columns into 1 data frame</p></li>
+<li><p>Joining or merging is combining 2+ data frames on 1+ indexes or columns into 1 data frame</p></li>
 <li><p>Reshaping is rearranging data frames so it has fewer columns and more rows (wide to long) or more columns and fewer rows (long to wide); we can also reshape a series to a data frame and vice versa</p></li>
 </ol>
 <p><em><strong>Note:</strong></em>
@@ -900,7 +900,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>We can create a data frame with hieracrhical indices or multi-indices on rows <em>and</em> columns.</p>
+<p>We can create a data frame with hieracrhical indexes or multi-indexes on rows <em>and</em> columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -974,7 +974,7 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>We can name these multi-indices but names are not required.</p>
+<p>We can name these multi-indexes but names are not required.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">]</span>
@@ -1503,7 +1503,7 @@ The default arguments are <code class="docutils literal notranslate"><span class
 </table>
 </div></div></div>
 </div>
-<p>We can also sort on an index (or list of indices).
+<p>We can also sort on an index (or list of indexes).
 After we swap levels, we may want to sort our data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2174,7 +2174,7 @@ After we swap levels, we may want to sort our data.</p>
 <h2>Combining and Merging Datasets<a class="headerlink" href="#combining-and-merging-datasets" title="Permalink to this headline">#</a></h2>
 <p>pandas provides several methods and functions to combine and merge data.
 We can typically create the same output with any of these methods or functions, but one may be more efficient than the others.
-If I want to combine data frames with similar indices, I try the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method first.
+If I want to combine data frames with similar indexes, I try the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method first.
 The <code class="docutils literal notranslate"><span class="pre">.join()</span></code> also lets use can combine more than two data frames at once.
 Otherwise, I try the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> method, which has a function <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code>, too.
 The <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> function is more general than the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method, so we will start with <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code>.</p>
@@ -3629,7 +3629,7 @@ For example, we may merge two data sets on ticker-date pairs or industry-date pa
 </section>
 <section id="merging-on-index">
 <h3>Merging on Index<a class="headerlink" href="#merging-on-index" title="Permalink to this headline">#</a></h3>
-<p>If we want to use <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> to join on row indices, we can use the <code class="docutils literal notranslate"><span class="pre">left_index</span></code> and <code class="docutils literal notranslate"><span class="pre">right_index</span></code> arguments.</p>
+<p>If we want to use <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> to join on row indexes, we can use the <code class="docutils literal notranslate"><span class="pre">left_index</span></code> and <code class="docutils literal notranslate"><span class="pre">right_index</span></code> arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)})</span>
@@ -3814,7 +3814,7 @@ For example, we may merge two data sets on ticker-date pairs or industry-date pa
 </table>
 </div></div></div>
 </div>
-<p>The index arguments work for hierarchical indices (multi indices), too.</p>
+<p>The index arguments work for hierarchical indexes (multi indexes), too.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lefth</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">],</span>
@@ -4008,7 +4008,7 @@ For example, we may merge two data sets on ticker-date pairs or industry-date pa
 <blockquote>
 <div><p>DataFrame has a convenient join instance for merging by index. It can also be used to combine together many DataFrame objects having the same or similar indexes but non-overlapping columns.</p>
 </div></blockquote>
-<p>If we have matching indices on left and right, we can use <code class="docutils literal notranslate"><span class="pre">.join()</span></code>.</p>
+<p>If we have matching indexes on left and right, we can use <code class="docutils literal notranslate"><span class="pre">.join()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left2</span>
@@ -4824,7 +4824,7 @@ dtype: int64
 Here we explore reshaping data more deeply.</p>
 <section id="reshaping-with-hierarchical-indexing">
 <h3>Reshaping with Hierarchical Indexing<a class="headerlink" href="#reshaping-with-hierarchical-indexing" title="Permalink to this headline">#</a></h3>
-<p>Hierarchical indices (multi-indices) help reshape data.</p>
+<p>Hierarchical indexes (multi-indexes) help reshape data.</p>
 <blockquote>
 <div><p>There are two primary actions:</p>
 <ul class="simple">
@@ -4906,7 +4906,7 @@ Ohio      one       0
 Colorado  one       3
           two       4
           three     5
-dtype: int64
+dtype: int32
 </pre></div>
 </div>
 </div>
