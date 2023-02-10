@@ -812,7 +812,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4,  7, -5,  3])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4,  7, -5,  3], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -2384,7 +2384,7 @@ dtype: float64
 Colorado     5
 Utah         9
 New York    13
-Name: two, dtype: int64
+Name: two, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -2456,7 +2456,7 @@ Name: two, dtype: int64
 Colorado     6
 Utah        10
 New York    14
-Name: three, dtype: int64
+Name: three, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -4138,7 +4138,7 @@ Here is an example of the speed costs of <code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.34 µs ± 182 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.6 µs ± 124 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -4150,7 +4150,7 @@ Here is an example of the speed costs of <code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.9 µs ± 891 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>40.8 µs ± 1.24 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -4478,35 +4478,35 @@ If we are running Python in the cloud, we may need to run the <code class="docut
       <th>1962-01-02</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.6330</td>
+      <td>1.6132</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1962-01-03</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.6473</td>
+      <td>1.6273</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1962-01-04</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.6309</td>
+      <td>1.6111</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1962-01-05</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.5988</td>
+      <td>1.5794</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1962-01-08</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>1.5688</td>
+      <td>1.5498</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -4520,28 +4520,28 @@ If we are running Python in the cloud, we may need to run the <code class="docut
       <th>2023-02-03</th>
       <td>154.5000</td>
       <td>105.2200</td>
-      <td>136.9400</td>
+      <td>135.2784</td>
       <td>258.3500</td>
     </tr>
     <tr>
       <th>2023-02-06</th>
       <td>151.7300</td>
       <td>103.4700</td>
-      <td>136.1800</td>
+      <td>134.5276</td>
       <td>256.7700</td>
     </tr>
     <tr>
       <th>2023-02-07</th>
       <td>154.6500</td>
       <td>108.0400</td>
-      <td>135.8400</td>
+      <td>134.1917</td>
       <td>267.5600</td>
     </tr>
     <tr>
       <th>2023-02-08</th>
       <td>151.9200</td>
       <td>100.0000</td>
-      <td>135.9800</td>
+      <td>134.3300</td>
       <td>266.7300</td>
     </tr>
     <tr>
@@ -4604,7 +4604,7 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <td>0.0029</td>
       <td>0.0794</td>
       <td>0.0042</td>
-      <td>0.0030</td>
+      <td>0.0029</td>
     </tr>
     <tr>
       <th>2004-08-23</th>
@@ -4673,7 +4673,7 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <th>2023-02-09</th>
       <td>-0.0069</td>
       <td>-0.0454</td>
-      <td>-0.0164</td>
+      <td>-0.0043</td>
       <td>-0.0117</td>
     </tr>
   </tbody>
@@ -4691,7 +4691,7 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3686
 GOOG   0.2448
-IBM    0.0815
+IBM    0.0822
 MSFT   0.1857
 dtype: float64
 </pre></div>
@@ -4708,7 +4708,7 @@ dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3331
 GOOG   0.3089
-IBM    0.2293
+IBM    0.2292
 MSFT   0.2742
 dtype: float64
 </pre></div>
@@ -4724,7 +4724,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058737972844084
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058118224082824
 </pre></div>
 </div>
 </div>
@@ -4766,28 +4766,28 @@ dtype: float64
       <th>AAPL</th>
       <td>1.0000</td>
       <td>0.5203</td>
-      <td>0.4341</td>
+      <td>0.4340</td>
       <td>0.5239</td>
     </tr>
     <tr>
       <th>GOOG</th>
       <td>0.5203</td>
       <td>1.0000</td>
-      <td>0.4048</td>
+      <td>0.4044</td>
       <td>0.5663</td>
     </tr>
     <tr>
       <th>IBM</th>
-      <td>0.4341</td>
-      <td>0.4048</td>
+      <td>0.4340</td>
+      <td>0.4044</td>
       <td>1.0000</td>
-      <td>0.5059</td>
+      <td>0.5058</td>
     </tr>
     <tr>
       <th>MSFT</th>
       <td>0.5239</td>
       <td>0.5663</td>
-      <td>0.5059</td>
+      <td>0.5058</td>
       <td>1.0000</td>
     </tr>
   </tbody>
@@ -4801,7 +4801,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058737972844092
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058118224082807
 </pre></div>
 </div>
 </div>
