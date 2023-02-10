@@ -4138,7 +4138,7 @@ Here is an example of the speed costs of <code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.52 µs ± 220 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.34 µs ± 182 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -4150,7 +4150,7 @@ Here is an example of the speed costs of <code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.8 µs ± 726 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.9 µs ± 891 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -4517,13 +4517,6 @@ If we are running Python in the cloud, we may need to run the <code class="docut
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-02-02</th>
-      <td>150.8200</td>
-      <td>108.8000</td>
-      <td>136.3900</td>
-      <td>264.6000</td>
-    </tr>
-    <tr>
       <th>2023-02-03</th>
       <td>154.5000</td>
       <td>105.2200</td>
@@ -4551,9 +4544,16 @@ If we are running Python in the cloud, we may need to run the <code class="docut
       <td>135.9800</td>
       <td>266.7300</td>
     </tr>
+    <tr>
+      <th>2023-02-09</th>
+      <td>150.8700</td>
+      <td>95.4600</td>
+      <td>133.7500</td>
+      <td>263.6200</td>
+    </tr>
   </tbody>
 </table>
-<p>15382 rows × 4 columns</p>
+<p>15383 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">prices</span></code> data frames contains daily data for AAPL, IBM, MSFT, and GOOG.
@@ -4604,7 +4604,7 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <td>0.0029</td>
       <td>0.0794</td>
       <td>0.0042</td>
-      <td>0.0029</td>
+      <td>0.0030</td>
     </tr>
     <tr>
       <th>2004-08-23</th>
@@ -4642,13 +4642,6 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-02-02</th>
-      <td>0.0371</td>
-      <td>0.0727</td>
-      <td>0.0096</td>
-      <td>0.0469</td>
-    </tr>
-    <tr>
       <th>2023-02-03</th>
       <td>0.0244</td>
       <td>-0.0329</td>
@@ -4676,9 +4669,16 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <td>0.0010</td>
       <td>-0.0031</td>
     </tr>
+    <tr>
+      <th>2023-02-09</th>
+      <td>-0.0069</td>
+      <td>-0.0454</td>
+      <td>-0.0164</td>
+      <td>-0.0117</td>
+    </tr>
   </tbody>
 </table>
-<p>4650 rows × 4 columns</p>
+<p>4651 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>We multiply by 252 to annualize mean daily returns because means grow linearly with time and there are (about) 252 trading days per year.</p>
@@ -4689,10 +4689,10 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3691
-GOOG   0.2473
-IBM    0.0824
-MSFT   0.1864
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3686
+GOOG   0.2448
+IBM    0.0815
+MSFT   0.1857
 dtype: float64
 </pre></div>
 </div>
@@ -4707,7 +4707,7 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3331
-GOOG   0.3088
+GOOG   0.3089
 IBM    0.2293
 MSFT   0.2742
 dtype: float64
@@ -4724,7 +4724,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5057960614119533
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058737972844084
 </pre></div>
 </div>
 </div>
@@ -4765,29 +4765,29 @@ dtype: float64
     <tr>
       <th>AAPL</th>
       <td>1.0000</td>
-      <td>0.5205</td>
-      <td>0.4340</td>
+      <td>0.5203</td>
+      <td>0.4341</td>
       <td>0.5239</td>
     </tr>
     <tr>
       <th>GOOG</th>
-      <td>0.5205</td>
+      <td>0.5203</td>
       <td>1.0000</td>
-      <td>0.4045</td>
+      <td>0.4048</td>
       <td>0.5663</td>
     </tr>
     <tr>
       <th>IBM</th>
-      <td>0.4340</td>
-      <td>0.4045</td>
+      <td>0.4341</td>
+      <td>0.4048</td>
       <td>1.0000</td>
-      <td>0.5058</td>
+      <td>0.5059</td>
     </tr>
     <tr>
       <th>MSFT</th>
       <td>0.5239</td>
       <td>0.5663</td>
-      <td>0.5058</td>
+      <td>0.5059</td>
       <td>1.0000</td>
     </tr>
   </tbody>
@@ -4801,7 +4801,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5057960614119531
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058737972844092
 </pre></div>
 </div>
 </div>
