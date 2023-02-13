@@ -331,6 +331,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="project_01.html">
+   Project 1
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -854,20 +866,6 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-02-03</th>
-      <td>0.0244</td>
-      <td>-0.0329</td>
-      <td>0.0040</td>
-      <td>-0.0236</td>
-    </tr>
-    <tr>
-      <th>2023-02-06</th>
-      <td>-0.0179</td>
-      <td>-0.0166</td>
-      <td>-0.0055</td>
-      <td>-0.0061</td>
-    </tr>
-    <tr>
       <th>2023-02-07</th>
       <td>0.0192</td>
       <td>0.0442</td>
@@ -888,9 +886,23 @@ title="Print to PDF"
       <td>-0.0043</td>
       <td>-0.0117</td>
     </tr>
+    <tr>
+      <th>2023-02-10</th>
+      <td>0.0025</td>
+      <td>-0.0063</td>
+      <td>0.0138</td>
+      <td>-0.0020</td>
+    </tr>
+    <tr>
+      <th>2023-02-13</th>
+      <td>0.0138</td>
+      <td>0.0000</td>
+      <td>0.0114</td>
+      <td>0.0400</td>
+    </tr>
   </tbody>
 </table>
-<p>4651 rows × 4 columns</p>
+<p>4653 rows × 4 columns</p>
 </div></div></div>
 </div>
 <section id="what-are-the-mean-daily-returns-for-these-four-stocks">
@@ -943,10 +955,10 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL   0.3686
-GOOG   0.2448
-IBM    0.0822
-MSFT   0.1857
+AAPL   0.3694
+GOOG   0.2443
+IBM    0.0835
+MSFT   0.1877
 dtype: float64
 </pre></div>
 </div>
@@ -960,10 +972,10 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL   0.3331
+AAPL   0.3330
 GOOG   0.3089
 IBM    0.2292
-MSFT   0.2742
+MSFT   0.2743
 dtype: float64
 </pre></div>
 </div>
@@ -1094,7 +1106,9 @@ We will need to download new data, into <code class="docutils literal notranslat
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************47%                       ]  14 of 30 completed
-[**********************47%                       ]  14 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************50%                       ]  15 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************53%                       ]  16 of 30 completed
@@ -1165,8 +1179,8 @@ We will need to download new data, into <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 0.0378],
-       [0.0378, 1.    ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 0.0332],
+       [0.0332, 1.    ]])
 </pre></div>
 </div>
 </div>
@@ -1248,7 +1262,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.4229
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.4120
 </pre></div>
 </div>
 </div>
@@ -1272,7 +1286,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3088
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3622
 </pre></div>
 </div>
 </div>
@@ -1297,8 +1311,8 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-BA     -0.4229
-AAPL    2.3088
+BA     -0.4120
+AAPL    2.3622
 dtype: float64
 </pre></div>
 </div>
@@ -1312,11 +1326,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-BA     -0.4229
-INTC   -0.4194
-MMM    -0.3791
-WBA    -0.3368
-VZ     -0.1677
+BA     -0.4120
+INTC   -0.4083
+MMM    -0.3671
+WBA    -0.3200
+VZ     -0.1633
 dtype: float64
 </pre></div>
 </div>
@@ -1330,11 +1344,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL   2.3088
-MSFT   1.3315
-GS     1.0589
-UNH    1.0507
-CAT    1.0461
+AAPL   2.3622
+MSFT   1.4200
+GS     1.0916
+UNH    1.0842
+CAT    1.0484
 dtype: float64
 </pre></div>
 </div>

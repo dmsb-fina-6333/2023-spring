@@ -331,6 +331,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="project_01.html">
+   Project 1
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -1017,7 +1029,7 @@ title="Print to PDF"
       <th>1972-06-01</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.2673</td>
+      <td>0.2515</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1041,7 +1053,7 @@ title="Print to PDF"
       <th>1972-06-02</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.2668</td>
+      <td>0.2510</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1065,7 +1077,7 @@ title="Print to PDF"
       <th>1972-06-05</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.2668</td>
+      <td>0.2510</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1089,7 +1101,7 @@ title="Print to PDF"
       <th>1972-06-06</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.2638</td>
+      <td>0.2481</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1113,7 +1125,7 @@ title="Print to PDF"
       <th>1972-06-07</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.2623</td>
+      <td>0.2467</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1488,7 +1500,7 @@ The yfinance package returns sorted data, and we can use <code class="docutils l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>143 µs ± 2.77 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>101 µs ± 218 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1500,7 +1512,7 @@ The yfinance package returns sorted data, and we can use <code class="docutils l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>276 µs ± 4.31 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>172 µs ± 3.92 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1519,9 +1531,9 @@ That is <span class="math notranslate nohighlight">\(R_{0,T} = \frac{AC_T}{AC_0}
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL    71.9206
+AAPL    71.8109
 AMZN    92.3920
-F        8.8114
+F        8.2889
 META   205.2500
 TSLA    27.8887
 Name: 2019-12-31 00:00:00, dtype: float64
@@ -1573,41 +1585,41 @@ Name: 2019-12-31 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2020-01-02</th>
-      <td>73.5615</td>
+      <td>73.4494</td>
       <td>94.9005</td>
-      <td>8.9251</td>
+      <td>8.3958</td>
       <td>209.7800</td>
       <td>28.6840</td>
     </tr>
     <tr>
       <th>2020-01-03</th>
-      <td>72.8464</td>
+      <td>72.7353</td>
       <td>93.7485</td>
-      <td>8.7261</td>
+      <td>8.2086</td>
       <td>208.6700</td>
       <td>29.5340</td>
     </tr>
     <tr>
       <th>2020-01-06</th>
-      <td>73.4268</td>
+      <td>73.3149</td>
       <td>95.1440</td>
-      <td>8.6788</td>
+      <td>8.1641</td>
       <td>212.6000</td>
       <td>30.1027</td>
     </tr>
     <tr>
       <th>2020-01-07</th>
-      <td>73.0815</td>
+      <td>72.9701</td>
       <td>95.3430</td>
-      <td>8.7640</td>
+      <td>8.2443</td>
       <td>213.0600</td>
       <td>31.2707</td>
     </tr>
     <tr>
       <th>2020-01-08</th>
-      <td>74.2571</td>
+      <td>74.1439</td>
       <td>94.5985</td>
-      <td>8.7640</td>
+      <td>8.2443</td>
       <td>215.2200</td>
       <td>32.8093</td>
     </tr>
@@ -1712,7 +1724,7 @@ We can estimate market beta with the covariance formula (i.e., <span class="math
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5195611279688725
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.519561127968873
 </pre></div>
 </div>
 </div>
@@ -1725,7 +1737,7 @@ We can estimate market beta with the covariance formula (i.e., <span class="math
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5195611279688725
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.519561127968873
 </pre></div>
 </div>
 </div>
@@ -2142,7 +2154,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6439557626989612
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6439557955143658
 </pre></div>
 </div>
 </div>
@@ -2198,7 +2210,7 @@ Here is a comparison.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2259364637232857
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2259363829244296
 </pre></div>
 </div>
 </div>
