@@ -652,6 +652,23 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combine-earnings-with-the-returns-from-stocks-long">
+     Combine
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       earnings
+      </span>
+     </code>
+     with the returns from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       stocks_long
+      </span>
+     </code>
+     .
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combine-add-earnings-to-stocks-long">
      Combine add
      <code class="docutils literal notranslate">
@@ -800,6 +817,23 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combine-earnings-with-the-returns-from-stocks-long">
+     Combine
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       earnings
+      </span>
+     </code>
+     with the returns from
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       stocks_long
+      </span>
+     </code>
+     .
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combine-add-earnings-to-stocks-long">
      Combine add
      <code class="docutils literal notranslate">
@@ -864,9 +898,24 @@ title="Print to PDF"
 </section>
 <section id="download-earnings-per-share-for-the-stocks-in-stocks-and-combine-to-a-long-data-frame-earnings">
 <h3>Download earnings per share for the stocks in <code class="docutils literal notranslate"><span class="pre">stocks</span></code> and combine to a long data frame <code class="docutils literal notranslate"><span class="pre">earnings</span></code>.<a class="headerlink" href="#download-earnings-per-share-for-the-stocks-in-stocks-and-combine-to-a-long-data-frame-earnings" title="Permalink to this headline">#</a></h3>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">.earnings_dates()</span></code> method described <a class="reference external" href="https://pypi.org/project/yfinance/">here</a>.
-Use <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> to combine the result of each <code class="docutils literal notranslate"><span class="pre">.earnings_date()</span></code> call and assign to data frame <code class="docutils literal notranslate"><span class="pre">earnings</span></code>.
+<p>Use the <code class="docutils literal notranslate"><span class="pre">.earnings_dates</span></code> method described <a class="reference external" href="https://pypi.org/project/yfinance/">here</a>.
+Use <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> to combine the result of each the <code class="docutils literal notranslate"><span class="pre">.earnings_date</span></code> data frames and assign them to a new data frame <code class="docutils literal notranslate"><span class="pre">earnings</span></code>.
 Name the row indexes <code class="docutils literal notranslate"><span class="pre">Ticker</span></code> and <code class="docutils literal notranslate"><span class="pre">Date</span></code> and swap to match the order of the row index in <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># some students had to update yfinance to use the .earnings_dates atrtibute</span>
+<span class="c1"># %pip install -U yfinance</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="combine-earnings-with-the-returns-from-stocks-long">
+<h3>Combine <code class="docutils literal notranslate"><span class="pre">earnings</span></code> with the returns from <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#combine-earnings-with-the-returns-from-stocks-long" title="Permalink to this headline">#</a></h3>
+<p><em><strong>It is easier to leave <code class="docutils literal notranslate"><span class="pre">stocks</span></code> and <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code> as-is and work with slices <code class="docutils literal notranslate"><span class="pre">returns</span></code> and <code class="docutils literal notranslate"><span class="pre">returns_long</span></code>.</strong></em>
+Use the <code class="docutils literal notranslate"><span class="pre">tz_localize('America/New_York')</span></code> method add time zone information back to <code class="docutils literal notranslate"><span class="pre">returns.index</span></code> and use <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta(16,</span> <span class="pre">unit='h')</span></code> to set time to the market close in New York City.
+Use <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge_asof.html"><code class="docutils literal notranslate"><span class="pre">pd.merge_asof()</span></code></a> to match earnings announcement dates and times to appropriate return periods.
+For example, if a firm announces earnings after the close at 5 PM on February 7, we want to match the return period from 4 PM on February 7 to 4 PM on February 8.</p>
 </section>
 <section id="combine-add-earnings-to-stocks-long">
 <h3>Combine add <code class="docutils literal notranslate"><span class="pre">earnings</span></code> to <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#combine-add-earnings-to-stocks-long" title="Permalink to this headline">#</a></h3>
