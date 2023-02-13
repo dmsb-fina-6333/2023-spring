@@ -28,16 +28,23 @@
 
 # ### Download earnings per share for the stocks in `stocks` and combine to a long data frame `earnings`.
 
-# Use the `.earnings_dates()` method described [here](https://pypi.org/project/yfinance/).
-# Use `pd.concat()` to combine the result of each `.earnings_date()` call and assign to data frame `earnings`.
+# Use the `.earnings_dates` method described [here](https://pypi.org/project/yfinance/).
+# Use `pd.concat()` to combine the result of each the `.earnings_date` data frames and assign them to a new data frame `earnings`.
 # Name the row indexes `Ticker` and `Date` and swap to match the order of the row index in `stocks_long`.
 
-# ### Combine add `earnings` to `stocks_long`.
+# In[1]:
 
-# Use the `tz_convert('US/Eastern')` method add time zone information back to `stocks_long.index` and use `pd.to_timedelta(16, units='h')` to set time to the market close in New York City.
+
+# some students had to update yfinance to use the .earnings_dates atrtibute
+# %pip install -U yfinance
+
+
+# ### Combine `earnings` with the returns from `stocks_long`.
+
+# ***It is easier to leave `stocks` and `stocks_long` as-is and work with slices `returns` and `returns_long`.***
+# Use the `tz_localize('America/New_York')` method add time zone information back to `returns.index` and use `pd.to_timedelta(16, unit='h')` to set time to the market close in New York City.
 # Use [`pd.merge_asof()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge_asof.html) to match earnings announcement dates and times to appropriate return periods.
 # For example, if a firm announces earnings after the close at 5 PM on February 7, we want to match the return period from 4 PM on February 7 to 4 PM on February 8.
-# 
 
 # ### Plot the relation between daily returns and earnings surprises
 
