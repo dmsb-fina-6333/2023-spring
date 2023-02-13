@@ -43,3 +43,6 @@ parts:
     - file: quiz_01
     - file: quiz_02
     - file: quiz_03
+  - caption: Projects
+    chapters:
+    - file: project_01
