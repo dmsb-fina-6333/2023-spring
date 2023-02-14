@@ -36,14 +36,14 @@ pd.options.display.float_format = '{:.4f}'.format
 import yfinance as yf
 import pandas_datareader as pdr
 import requests_cache
-session = requests_cache.CachedSession(expire_after=1)
+session = requests_cache.CachedSession()
 
 
 # In[4]:
 
 
 tickers = yf.Tickers('BAC C GS JPM MS PNC', session=session)
-stocks = tickers.history(period='max', auto_adjust=False)
+stocks = tickers.history(period='max', auto_adjust=False, progress=False)
 stocks.index = stocks.index.tz_localize(None)
 stocks.columns.names = ['Variable', 'Ticker']
 stocks.head()
@@ -143,7 +143,7 @@ stocks_long.head()
 def download(**kwargs):
     # get stocks data
     tickers = yf.Tickers(**kwargs)
-    stocks = tickers.history(period='max', auto_adjust=False)
+    stocks = tickers.history(period='max', auto_adjust=False, progress=False)
     stocks.index = stocks.index.tz_localize(None)
     stocks.columns.names = ['Variable', 'Ticker']
 
@@ -220,7 +220,7 @@ returns_long
 # In[17]:
 
 
-earnings_2 = (
+surprises = (
     pd.merge_asof(
         left=earnings.sort_index(level=['Date', 'Ticker']),
         right=returns_long.sort_index(level=['Date', 'Ticker']),
@@ -234,7 +234,7 @@ earnings_2 = (
     .set_index(['Date', 'Ticker'])
 )
 
-earnings_2.head()
+surprises.head()
 
 
 # ### Plot the relation between daily returns and earnings surprises
@@ -249,7 +249,7 @@ earnings_2.head()
 
 
 (
-    earnings_2
+    surprises
     [['Surprise(%)', 'Returns']]
     .mul(100)
     .plot(x='Surprise(%)', y='Returns', kind='scatter')
@@ -257,8 +257,8 @@ earnings_2.head()
 plt.xlabel('Earnings Suprise (%)')
 plt.ylabel('Announcement Return (%)')
 
-_ = ' '.join(earnings_2.index.get_level_values('Ticker').unique())
-__ = earnings_2.index.get_level_values('Date')
+_ = ' '.join(surprises.index.get_level_values('Ticker').unique())
+__ = surprises.index.get_level_values('Date')
 plt.title(f'Earnings Announcements\n for {_}\n from {__.min():%B %Y} to {__.max():%B %Y}')
 plt.show()
 
@@ -275,14 +275,14 @@ import seaborn as sns
 sns.regplot(
     x='Surprise(%)',
     y= 'Returns',
-    data=earnings_2[['Surprise(%)', 'Returns']].mul(100)
+    data=surprises[['Surprise(%)', 'Returns']].mul(100)
 )
 
 plt.xlabel('Earnings Suprise (%)')
 plt.ylabel('Announcement Return (%)')
 
-_ = ' '.join(earnings_2.index.get_level_values('Ticker').unique())
-__ = earnings_2.index.get_level_values('Date')
+_ = ' '.join(surprises.index.get_level_values('Ticker').unique())
+__ = surprises.index.get_level_values('Date')
 plt.title(f'Earnings Announcements\n for {_}\n from {__.min():%B %Y} to {__.max():%B %Y}')
 plt.show()
 
@@ -290,7 +290,7 @@ plt.show()
 # In[21]:
 
 
-earnings_2['ESQ'] = pd.qcut(x=earnings_2['Surprise(%)'], q=5, labels=False)
+surprises['ESQ'] = pd.qcut(x=surprises['Surprise(%)'], q=5, labels=False)
 
 
 # In[22]:
@@ -300,7 +300,7 @@ sns.barplot(
     x='ESQ',
     y= 'Returns',
     data=(
-        earnings_2
+        surprises
         [['Surprise(%)', 'Returns']]
         .mul(100)
         .assign(ESQ = lambda x: pd.qcut(x=x['Surprise(%)'], q=5, labels=False))
@@ -310,11 +310,204 @@ sns.barplot(
 plt.xlabel('Earnings Suprise Portfolio')
 plt.ylabel('Announcement Return (%)')
 
-_ = ' '.join(earnings_2.index.get_level_values('Ticker').unique())
-__ = earnings_2.index.get_level_values('Date')
+_ = ' '.join(surprises.index.get_level_values('Ticker').unique())
+__ = surprises.index.get_level_values('Date')
 plt.title(f'Earnings Announcements\n for {_}\n from {__.min():%B %Y} to {__.max():%B %Y}')
 plt.show()
 
 
 # ***There is a positive relation between announcment returns and earnings surprises!***
 # Of course, to say more we need more data and to control for market movements, but this analaysis is a start!
+
+# ### Repeat the earnings exercise with the S&P 100 stocks
+
+# In[23]:
+
+
+wiki = pd.read_html('https://en.wikipedia.org/wiki/S%26P_100')
+
+
+# In[24]:
+
+
+symbols = wiki[2]['Symbol'].str.replace('.', '-', regex=False).to_list()
+
+
+# In[25]:
+
+
+tickers_2 = yf.Tickers(tickers=symbols, session=session)
+
+
+# In[26]:
+
+
+returns_2 = (
+    tickers_2
+    .history(period='max', auto_adjust=False, progress=False)
+    .rename_axis(columns=['Variable', 'Ticker'])
+    ['Adj Close']
+    .pct_change()
+    .assign(Date=lambda x: x.index + pd.to_timedelta(16, unit='H'))
+    .set_index('Date')
+)
+
+returns_2.head()
+
+
+# In[27]:
+
+
+earnings_2 = (
+    pd.concat(
+        objs=[tickers_2.tickers[t].earnings_dates for t in tickers_2.tickers],
+        keys=tickers_2.tickers,
+        names=['Ticker', 'Date']
+    )
+    .rename_axis(columns='Variable')
+)
+
+
+# In[28]:
+
+
+surprises_2 = (
+    pd.merge_asof(
+        left=earnings_2.sort_index(level=['Date', 'Ticker']),
+        right=returns_2.stack().to_frame('Returns').swaplevel().sort_index(level=['Date', 'Ticker']),
+        on='Date',
+        by='Ticker',
+        direction='forward',
+        allow_exact_matches=False
+    )
+    .dropna()
+    .set_index(['Date', 'Ticker'])
+)
+
+
+# In[29]:
+
+
+sns.barplot(
+    x='ESQ',
+    y= 'Returns',
+    data=(
+        surprises_2
+        [['Surprise(%)', 'Returns']]
+        .mul(100)
+        .assign(ESQ = lambda x: pd.qcut(x=x['Surprise(%)'], q=5, labels=False))
+    )
+)
+
+plt.xlabel('Earnings Suprise Portfolio')
+plt.ylabel('Announcement Return (%)')
+
+__ = surprises_2.index.get_level_values('Date')
+plt.title(f'Earnings Announcements for S&P 100 Stocks \n from {__.min():%B %Y} to {__.max():%B %Y}')
+plt.show()
+
+
+# ### Repeat the earnings exercise with *excess returns* of the S&P 100 Stocks
+
+# Excess returns are returns minus market returns.
+# We need to add a timezone and the closing time to the market return from Fama and French.
+
+# In[30]:
+
+
+Mkt = ff['Mkt-RF'].add(ff['RF'])
+Mkt.index = Mkt.index.tz_localize('America/New_York') + pd.to_timedelta(16, unit='H')
+returns_3 = returns_2.sub(Mkt, axis=0)
+
+
+# In[31]:
+
+
+surprises_3 = (
+    pd.merge_asof(
+        left=earnings_2.sort_index(level=['Date', 'Ticker']),
+        right=returns_3.stack().to_frame('Excess Returns').swaplevel().sort_index(level=['Date', 'Ticker']),
+        on='Date',
+        by='Ticker',
+        direction='forward',
+        allow_exact_matches=False
+    )
+    .dropna()
+    .set_index(['Date', 'Ticker'])
+)
+
+
+# In[32]:
+
+
+sns.barplot(
+    x='ESQ',
+    y='Excess Returns',
+    data=(
+        surprises_3
+        [['Surprise(%)', 'Excess Returns']]
+        .mul(100)
+        .assign(ESQ = lambda x: pd.qcut(x=x['Surprise(%)'], q=5, labels=False))
+    )
+)
+
+plt.xlabel('Earnings Suprise Portfolio')
+plt.ylabel('Announcement Excess Return (%)')
+
+__ = surprises_3.index.get_level_values('Date')
+plt.title(f'Earnings Announcements for S&P 100 Stocks\n from {__.min():%B %Y} to {__.max():%B %Y}')
+plt.show()
+
+
+# ### Improve your `download()` function from above
+
+# Modify `download()` to accept one or more than one ticker.
+# Since we will not use the advanced functionality of the tickers object that `yf.Tickers()` creates, we will use `yf.download()`.
+# The current version of `yf.download()` does not accept a `session=` argument.
+
+# In[33]:
+
+
+def download(tickers):
+
+    histories = (
+        yf.download(tickers)
+        .assign(Date=lambda x: x.index.tz_localize(None))
+        .set_index('Date')
+    )
+
+    factors = (
+        pdr.DataReader(
+            name='F-F_Research_Data_Factors_daily',
+            data_source='famafrench',
+            start='1900',
+            session=session
+        )
+        [0]
+        .div(100)
+    )
+
+    if type(histories.columns) is pd.MultiIndex:
+        _ = pd.MultiIndex.from_product([['Returns'], histories['Adj Close'].columns])
+        histories[_] = histories['Adj Close'].pct_change()
+
+        _ = pd.MultiIndex.from_product([['Factors'], factors.columns])
+        histories[_] = factors
+
+        return histories.rename_axis(columns=['Variable', 'Ticker'])
+
+    elif type(histories.columns) is pd.Index:
+        return histories.join(ff).rename_axis(columns=['Variable'])
+
+
+# In[34]:
+
+
+download(tickers='AAPL').head()
+
+
+# In[35]:
+
+
+download(tickers='AAPL TSLA').head()
+

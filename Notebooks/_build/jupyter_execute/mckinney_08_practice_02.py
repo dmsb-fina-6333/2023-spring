@@ -53,3 +53,16 @@
 # 1. Scatter plot
 # 1. Scatter plot with a best-fit line using `regplot()` from the seaborn package
 # 1. Bar plot using `barplot()` from the seaborn package after using `pd.qcut()` to form five groups on earnings surprises
+
+# ### Repeat the earnings exercise with the S&P 100 stocks
+
+# ### Repeat the earnings exercise with *excess returns* of the S&P 100 Stocks
+
+# Excess returns are returns minus market returns.
+# We need to add a timezone and the closing time to the market return from Fama and French.
+
+# ### Improve your `download()` function from above
+
+# Modify `download()` to accept one or more than one ticker.
+# Since we will not use the advanced functionality of the tickers object that `yf.Tickers()` creates, we will use `yf.download()`.
+# The current version of `yf.download()` does not accept a `session=` argument.

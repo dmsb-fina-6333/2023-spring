@@ -828,7 +828,7 @@ title="Print to PDF"
       <td>0.0029</td>
       <td>0.0794</td>
       <td>0.0042</td>
-      <td>0.0030</td>
+      <td>0.0029</td>
     </tr>
     <tr>
       <th>2004-08-23</th>
@@ -866,13 +866,6 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-02-07</th>
-      <td>0.0192</td>
-      <td>0.0442</td>
-      <td>-0.0025</td>
-      <td>0.0420</td>
-    </tr>
-    <tr>
       <th>2023-02-08</th>
       <td>-0.0177</td>
       <td>-0.0744</td>
@@ -900,9 +893,16 @@ title="Print to PDF"
       <td>0.0129</td>
       <td>0.0312</td>
     </tr>
+    <tr>
+      <th>2023-02-14</th>
+      <td>-0.0163</td>
+      <td>-0.0191</td>
+      <td>-0.0125</td>
+      <td>-0.0045</td>
+    </tr>
   </tbody>
 </table>
-<p>4653 rows × 4 columns</p>
+<p>4654 rows × 4 columns</p>
 </div></div></div>
 </div>
 <section id="what-are-the-mean-daily-returns-for-these-four-stocks">
@@ -955,10 +955,10 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL   0.3696
-GOOG   0.2444
-IBM    0.0836
-MSFT   0.1872
+AAPL   0.3687
+GOOG   0.2433
+IBM    0.0829
+MSFT   0.1869
 dtype: float64
 </pre></div>
 </div>
@@ -1075,7 +1075,7 @@ We will need to download new data, into <code class="docutils literal notranslat
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*****                 10%                       ]  3 of 30 completed
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[******                13%                       ]  4 of 30 completed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*****                 10%                       ]  3 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[********              17%                       ]  5 of 30 completed
@@ -1108,7 +1108,7 @@ We will need to download new data, into <code class="docutils literal notranslat
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************47%                       ]  14 of 30 completed
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************50%                       ]  15 of 30 completed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************47%                       ]  14 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************53%                       ]  16 of 30 completed
@@ -1132,14 +1132,16 @@ We will need to download new data, into <code class="docutils literal notranslat
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************73%**********             ]  22 of 30 completed
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************77%************           ]  23 of 30 completed
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************73%**********             ]  22 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************80%*************          ]  24 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************83%***************        ]  25 of 30 completed
-[**********************83%***************        ]  25 of 30 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************87%*****************      ]  26 of 30 completed
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************90%******************     ]  27 of 30 completed
@@ -1177,8 +1179,8 @@ We will need to download new data, into <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 0.0324],
-       [0.0324, 1.    ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 0.0372],
+       [0.0372, 1.    ]])
 </pre></div>
 </div>
 </div>
@@ -1260,7 +1262,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.4130
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.4073
 </pre></div>
 </div>
 </div>
@@ -1309,7 +1311,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-BA     -0.4130
+BA     -0.4073
 AAPL    2.3793
 dtype: float64
 </pre></div>
@@ -1324,11 +1326,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-BA     -0.4130
+BA     -0.4073
 INTC   -0.4022
-MMM    -0.3662
-WBA    -0.3127
-VZ     -0.1570
+MMM    -0.3757
+WBA    -0.3205
+VZ     -0.1640
 dtype: float64
 </pre></div>
 </div>
@@ -1343,10 +1345,10 @@ dtype: float64
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
 AAPL   2.3793
-MSFT   1.3996
-GS     1.0926
-UNH    1.0913
-CAT    1.0616
+MSFT   1.3880
+UNH    1.0866
+GS     1.0849
+CAT    1.0197
 dtype: float64
 </pre></div>
 </div>

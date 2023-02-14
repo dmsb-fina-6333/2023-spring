@@ -690,6 +690,31 @@ title="Print to PDF"
      Plot the relation between daily returns and earnings surprises
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks">
+     Repeat the earnings exercise with the S&amp;P 100 stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
+     Repeat the earnings exercise with
+     <em>
+      excess returns
+     </em>
+     of the S&amp;P 100 Stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improve-your-download-function-from-above">
+     Improve your
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       download()
+      </span>
+     </code>
+     function from above
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -855,6 +880,31 @@ title="Print to PDF"
      Plot the relation between daily returns and earnings surprises
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks">
+     Repeat the earnings exercise with the S&amp;P 100 stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
+     Repeat the earnings exercise with
+     <em>
+      excess returns
+     </em>
+     of the S&amp;P 100 Stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improve-your-download-function-from-above">
+     Improve your
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       download()
+      </span>
+     </code>
+     function from above
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -931,6 +981,20 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <li><p>Scatter plot with a best-fit line using <code class="docutils literal notranslate"><span class="pre">regplot()</span></code> from the seaborn package</p></li>
 <li><p>Bar plot using <code class="docutils literal notranslate"><span class="pre">barplot()</span></code> from the seaborn package after using <code class="docutils literal notranslate"><span class="pre">pd.qcut()</span></code> to form five groups on earnings surprises</p></li>
 </ol>
+</section>
+<section id="repeat-the-earnings-exercise-with-the-s-p-100-stocks">
+<h3>Repeat the earnings exercise with the S&amp;P 100 stocks<a class="headerlink" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
+<h3>Repeat the earnings exercise with <em>excess returns</em> of the S&amp;P 100 Stocks<a class="headerlink" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks" title="Permalink to this headline">#</a></h3>
+<p>Excess returns are returns minus market returns.
+We need to add a timezone and the closing time to the market return from Fama and French.</p>
+</section>
+<section id="improve-your-download-function-from-above">
+<h3>Improve your <code class="docutils literal notranslate"><span class="pre">download()</span></code> function from above<a class="headerlink" href="#improve-your-download-function-from-above" title="Permalink to this headline">#</a></h3>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">download()</span></code> to accept one or more than one ticker.
+Since we will not use the advanced functionality of the tickers object that <code class="docutils literal notranslate"><span class="pre">yf.Tickers()</span></code> creates, we will use <code class="docutils literal notranslate"><span class="pre">yf.download()</span></code>.
+The current version of <code class="docutils literal notranslate"><span class="pre">yf.download()</span></code> does not accept a <code class="docutils literal notranslate"><span class="pre">session=</span></code> argument.</p>
 </section>
 </section>
 </section>
