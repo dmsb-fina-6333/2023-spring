@@ -675,6 +675,31 @@ title="Print to PDF"
      Plot the relation between daily returns and earnings surprises
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks">
+     Repeat the earnings exercise with the S&amp;P 100 stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
+     Repeat the earnings exercise with
+     <em>
+      excess returns
+     </em>
+     of the S&amp;P 100 Stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improve-your-download-function-from-above">
+     Improve your
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       download()
+      </span>
+     </code>
+     function from above
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -823,6 +848,31 @@ title="Print to PDF"
      Plot the relation between daily returns and earnings surprises
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks">
+     Repeat the earnings exercise with the S&amp;P 100 stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
+     Repeat the earnings exercise with
+     <em>
+      excess returns
+     </em>
+     of the S&amp;P 100 Stocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#improve-your-download-function-from-above">
+     Improve your
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       download()
+      </span>
+     </code>
+     function from above
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -872,7 +922,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
 <span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
 <span class="kn">import</span> <span class="nn">requests_cache</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">(</span><span class="n">expire_after</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -880,7 +930,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="s1">&#39;BAC C GS JPM MS PNC&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="n">stocks</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">stocks</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">stocks</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">stocks</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]</span>
 <span class="n">stocks</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -888,25 +938,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[****************      33%                       ]  2 of 6 completed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************50%                       ]  3 of 6 completed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************67%*******                ]  4 of 6 completed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************83%***************        ]  5 of 6 completed
-[*********************100%***********************]  6 of 6 completed
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1874,7 +1905,7 @@ We should be careful to run self joins only once!</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="c1"># get stocks data</span>
     <span class="n">tickers</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    <span class="n">stocks</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">stocks</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">stocks</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
     <span class="n">stocks</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]</span>
 
@@ -2082,34 +2113,34 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
       <td>...</td>
     </tr>
     <tr>
-      <th rowspan="5" valign="top">2023-02-13 16:00:00-05:00</th>
+      <th rowspan="5" valign="top">2023-02-14 16:00:00-05:00</th>
       <th>C</th>
-      <td>0.0178</td>
+      <td>-0.0008</td>
     </tr>
     <tr>
       <th>GS</th>
-      <td>0.0074</td>
+      <td>-0.0041</td>
     </tr>
     <tr>
       <th>JPM</th>
-      <td>0.0108</td>
+      <td>-0.0006</td>
     </tr>
     <tr>
       <th>MS</th>
-      <td>0.0101</td>
+      <td>0.0057</td>
     </tr>
     <tr>
       <th>PNC</th>
-      <td>0.0103</td>
+      <td>-0.0068</td>
     </tr>
   </tbody>
 </table>
-<p>60496 rows × 1 columns</p>
+<p>60502 rows × 1 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">earnings_2</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
         <span class="n">left</span><span class="o">=</span><span class="n">earnings</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
         <span class="n">right</span><span class="o">=</span><span class="n">returns_long</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
@@ -2123,7 +2154,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
 <span class="p">)</span>
 
-<span class="n">earnings_2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">surprises</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2225,7 +2256,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">earnings_2</span>
+    <span class="n">surprises</span>
     <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span>
     <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Returns&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
@@ -2233,8 +2264,8 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise (%)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
 
-<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">__</span> <span class="o">=</span> <span class="n">earnings_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements</span><span class="se">\n</span><span class="s1"> for </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -2256,14 +2287,14 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Returns&#39;</span><span class="p">,</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">earnings_2</span><span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">surprises</span><span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise (%)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
 
-<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">__</span> <span class="o">=</span> <span class="n">earnings_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements</span><span class="se">\n</span><span class="s1"> for </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -2275,7 +2306,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">earnings_2</span><span class="p">[</span><span class="s1">&#39;ESQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">earnings_2</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises</span><span class="p">[</span><span class="s1">&#39;ESQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">surprises</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2286,7 +2317,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ESQ&#39;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Returns&#39;</span><span class="p">,</span>
     <span class="n">data</span><span class="o">=</span><span class="p">(</span>
-        <span class="n">earnings_2</span>
+        <span class="n">surprises</span>
         <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span>
         <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
         <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ESQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
@@ -2296,8 +2327,8 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise Portfolio&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
 
-<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="n">__</span> <span class="o">=</span> <span class="n">earnings_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements</span><span class="se">\n</span><span class="s1"> for </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -2309,6 +2340,722 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 </div>
 <p><em><strong>There is a positive relation between announcment returns and earnings surprises!</strong></em>
 Of course, to say more we need more data and to control for market movements, but this analaysis is a start!</p>
+</section>
+<section id="repeat-the-earnings-exercise-with-the-s-p-100-stocks">
+<h3>Repeat the earnings exercise with the S&amp;P 100 stocks<a class="headerlink" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/S%26P_100&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbols</span> <span class="o">=</span> <span class="n">wiki</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers_2</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">tickers_2</span>
+    <span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+    <span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">returns_2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>ABBV</th>
+      <th>ABT</th>
+      <th>ACN</th>
+      <th>ADBE</th>
+      <th>AIG</th>
+      <th>AMD</th>
+      <th>AMGN</th>
+      <th>AMT</th>
+      <th>AMZN</th>
+      <th>...</th>
+      <th>UNH</th>
+      <th>UNP</th>
+      <th>UPS</th>
+      <th>USB</th>
+      <th>V</th>
+      <th>VZ</th>
+      <th>WBA</th>
+      <th>WFC</th>
+      <th>WMT</th>
+      <th>XOM</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1962-01-02 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1962-01-03 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0149</td>
+    </tr>
+    <tr>
+      <th>1962-01-04 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0024</td>
+    </tr>
+    <tr>
+      <th>1962-01-05 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0219</td>
+    </tr>
+    <tr>
+      <th>1962-01-08 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0025</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 101 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">earnings_2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+        <span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">tickers_2</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tickers_2</span><span class="o">.</span><span class="n">tickers</span><span class="p">],</span>
+        <span class="n">keys</span><span class="o">=</span><span class="n">tickers_2</span><span class="o">.</span><span class="n">tickers</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises_2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
+        <span class="n">left</span><span class="o">=</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">returns_2</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Returns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+        <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ESQ&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Returns&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+        <span class="n">surprises_2</span>
+        <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ESQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise Portfolio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements for S&amp;P 100 Stocks </span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_03_52_0.png" src="_images/mckinney_08_practice_03_52_0.png" />
+</div>
+</div>
+</section>
+<section id="repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
+<h3>Repeat the earnings exercise with <em>excess returns</em> of the S&amp;P 100 Stocks<a class="headerlink" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks" title="Permalink to this headline">#</a></h3>
+<p>Excess returns are returns minus market returns.
+We need to add a timezone and the closing time to the market return from Fama and French.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Mkt</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
+<span class="n">Mkt</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">Mkt</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<span class="n">returns_3</span> <span class="o">=</span> <span class="n">returns_2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">Mkt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises_3</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
+        <span class="n">left</span><span class="o">=</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">returns_3</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Excess Returns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+        <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ESQ&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Excess Returns&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+        <span class="n">surprises_3</span>
+        <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Excess Returns&#39;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ESQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise Portfolio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Excess Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises_3</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements for S&amp;P 100 Stocks</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_03_57_0.png" src="_images/mckinney_08_practice_03_57_0.png" />
+</div>
+</div>
+</section>
+<section id="improve-your-download-function-from-above">
+<h3>Improve your <code class="docutils literal notranslate"><span class="pre">download()</span></code> function from above<a class="headerlink" href="#improve-your-download-function-from-above" title="Permalink to this headline">#</a></h3>
+<p>Modify <code class="docutils literal notranslate"><span class="pre">download()</span></code> to accept one or more than one ticker.
+Since we will not use the advanced functionality of the tickers object that <code class="docutils literal notranslate"><span class="pre">yf.Tickers()</span></code> creates, we will use <code class="docutils literal notranslate"><span class="pre">yf.download()</span></code>.
+The current version of <code class="docutils literal notranslate"><span class="pre">yf.download()</span></code> does not accept a <code class="docutils literal notranslate"><span class="pre">session=</span></code> argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">):</span>
+
+    <span class="n">histories</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">factors</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">pdr</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span><span class="p">,</span>
+            <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span>
+            <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1900&#39;</span><span class="p">,</span>
+            <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+        <span class="p">)</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">histories</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="ow">is</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="p">:</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Returns&#39;</span><span class="p">],</span> <span class="n">histories</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+        <span class="n">histories</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">histories</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+        <span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Factors&#39;</span><span class="p">],</span> <span class="n">factors</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+        <span class="n">histories</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">factors</span>
+
+        <span class="k">return</span> <span class="n">histories</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">histories</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="ow">is</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">histories</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  1 of 1 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>0.1283</td>
+      <td>0.1289</td>
+      <td>0.1283</td>
+      <td>0.1283</td>
+      <td>0.0997</td>
+      <td>469033600</td>
+      <td>0.0138</td>
+      <td>-0.0001</td>
+      <td>-0.0105</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>0.1222</td>
+      <td>0.1222</td>
+      <td>0.1217</td>
+      <td>0.1217</td>
+      <td>0.0945</td>
+      <td>175884800</td>
+      <td>0.0011</td>
+      <td>0.0025</td>
+      <td>-0.0046</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>0.1133</td>
+      <td>0.1133</td>
+      <td>0.1127</td>
+      <td>0.1127</td>
+      <td>0.0876</td>
+      <td>105728000</td>
+      <td>0.0071</td>
+      <td>-0.0075</td>
+      <td>-0.0047</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.1155</td>
+      <td>0.1161</td>
+      <td>0.1155</td>
+      <td>0.1155</td>
+      <td>0.0897</td>
+      <td>86441600</td>
+      <td>0.0152</td>
+      <td>-0.0086</td>
+      <td>-0.0034</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.1189</td>
+      <td>0.1194</td>
+      <td>0.1189</td>
+      <td>0.1189</td>
+      <td>0.0924</td>
+      <td>73449600</td>
+      <td>0.0041</td>
+      <td>0.0022</td>
+      <td>0.0126</td>
+      <td>0.0006</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;AAPL TSLA&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  2 of 2 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th colspan="2" halign="left">Adj Close</th>
+      <th colspan="2" halign="left">Close</th>
+      <th colspan="2" halign="left">High</th>
+      <th colspan="2" halign="left">Low</th>
+      <th colspan="2" halign="left">Open</th>
+      <th colspan="2" halign="left">Volume</th>
+      <th colspan="2" halign="left">Returns</th>
+      <th colspan="4" halign="left">Factors</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>0.0997</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>0.1289</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>469033600.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0138</td>
+      <td>-0.0001</td>
+      <td>-0.0105</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>0.0945</td>
+      <td>NaN</td>
+      <td>0.1217</td>
+      <td>NaN</td>
+      <td>0.1222</td>
+      <td>NaN</td>
+      <td>0.1217</td>
+      <td>NaN</td>
+      <td>0.1222</td>
+      <td>NaN</td>
+      <td>175884800.0000</td>
+      <td>NaN</td>
+      <td>-0.0522</td>
+      <td>NaN</td>
+      <td>0.0011</td>
+      <td>0.0025</td>
+      <td>-0.0046</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>0.0876</td>
+      <td>NaN</td>
+      <td>0.1127</td>
+      <td>NaN</td>
+      <td>0.1133</td>
+      <td>NaN</td>
+      <td>0.1127</td>
+      <td>NaN</td>
+      <td>0.1133</td>
+      <td>NaN</td>
+      <td>105728000.0000</td>
+      <td>NaN</td>
+      <td>-0.0734</td>
+      <td>NaN</td>
+      <td>0.0071</td>
+      <td>-0.0075</td>
+      <td>-0.0047</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.0897</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>0.1161</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>86441600.0000</td>
+      <td>NaN</td>
+      <td>0.0248</td>
+      <td>NaN</td>
+      <td>0.0152</td>
+      <td>-0.0086</td>
+      <td>-0.0034</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.0924</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>0.1194</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>73449600.0000</td>
+      <td>NaN</td>
+      <td>0.0290</td>
+      <td>NaN</td>
+      <td>0.0041</td>
+      <td>0.0022</td>
+      <td>0.0126</td>
+      <td>0.0006</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 </section>
 </section>
