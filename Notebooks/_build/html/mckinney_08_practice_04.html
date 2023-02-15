@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)" href="mckinney_08_practice_02.html" />
@@ -302,6 +304,38 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="mckinney_08_practice_02.html">
      McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_10_lecture.html">
+   McKinney Chapter 10 - Data Aggregation and Group Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice.html">
+     McKinney Chapter 10 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_03.html">
+     McKinney Chapter 10 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_04.html">
+     McKinney Chapter 10 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_02.html">
+     McKinney Chapter 10 - Practice (Wednesday 2:45 PM, Section 2)
     </a>
    </li>
   </ul>
@@ -669,23 +703,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-add-earnings-to-stocks-long">
-     Combine add
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       earnings
-      </span>
-     </code>
-     to
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stocks_long
-      </span>
-     </code>
-     .
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plot-the-relation-between-daily-returns-and-earnings-surprises">
      Plot the relation between daily returns and earnings surprises
     </a>
@@ -859,23 +876,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#combine-add-earnings-to-stocks-long">
-     Combine add
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       earnings
-      </span>
-     </code>
-     to
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       stocks_long
-      </span>
-     </code>
-     .
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plot-the-relation-between-daily-returns-and-earnings-surprises">
      Plot the relation between daily returns and earnings surprises
     </a>
@@ -921,30 +921,1113 @@ title="Print to PDF"
 <h1>McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)<a class="headerlink" href="#mckinney-chapter-8-practice-wednesday-11-45-am-section-4" title="Permalink to this headline">#</a></h1>
 <section id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Quiz 3 mean was <span class="math notranslate nohighlight">\(80\%\)</span></p></li>
+<li><p>I posted project 1 to Canvas</p></li>
+</ul>
 </section>
 <section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
 <section id="download-data-from-yahoo-finance-for-bac-c-gs-jpm-ms-and-pnc-and-assign-to-data-frame-stocks">
 <h3>Download data from Yahoo! Finance for BAC, C, GS, JPM, MS, and PNC and assign to data frame <code class="docutils literal notranslate"><span class="pre">stocks</span></code>.<a class="headerlink" href="#download-data-from-yahoo-finance-for-bac-c-gs-jpm-ms-and-pnc-and-assign-to-data-frame-stocks" title="Permalink to this headline">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">stocks.columns.names</span></code> to assign the names <code class="docutils literal notranslate"><span class="pre">Variable</span></code> and <code class="docutils literal notranslate"><span class="pre">Ticker</span></code> to the column multi index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">precision</span> 4
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
+<span class="kn">import</span> <span class="nn">requests_cache</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;BAC C GS JPM MS PNC&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+<span class="n">stocks</span> <span class="o">=</span> <span class="n">tickers</span><span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[****************      33%                       ]  2 of 6 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************50%                       ]  3 of 6 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************67%*******                ]  4 of 6 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[**********************83%***************        ]  5 of 6 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  6 of 6 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th colspan="6" halign="left">Adj Close</th>
+      <th colspan="4" halign="left">Close</th>
+      <th>...</th>
+      <th colspan="4" halign="left">Stock Splits</th>
+      <th colspan="6" halign="left">Volume</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>...</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-02-21</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>99200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-22</th>
+      <td>1.6366</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6406</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>47200</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-23</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>133600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-26</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-27</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>41600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 48 columns</p>
+</div></div></div>
+</div>
 </section>
 <section id="reshape-stocks-from-wide-to-long-with-dates-and-tickers-as-row-indexes-and-assign-to-data-frame-stocks-long">
 <h3>Reshape <code class="docutils literal notranslate"><span class="pre">stocks</span></code> from wide to long with dates and tickers as row indexes and assign to data frame <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#reshape-stocks-from-wide-to-long-with-dates-and-tickers-as-row-indexes-and-assign-to-data-frame-stocks-long" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks_long</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="n">stocks_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variable</th>
+      <th>Adj Close</th>
+      <th>Close</th>
+      <th>Dividends</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Open</th>
+      <th>Stock Splits</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-02-21</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>99200.0000</td>
+    </tr>
+    <tr>
+      <th>1973-02-22</th>
+      <th>BAC</th>
+      <td>1.6366</td>
+      <td>4.6406</td>
+      <td>0.0000</td>
+      <td>4.6406</td>
+      <td>4.6406</td>
+      <td>4.6406</td>
+      <td>0.0000</td>
+      <td>47200.0000</td>
+    </tr>
+    <tr>
+      <th>1973-02-23</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>133600.0000</td>
+    </tr>
+    <tr>
+      <th>1973-02-26</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>24000.0000</td>
+    </tr>
+    <tr>
+      <th>1973-02-27</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>41600.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="add-daily-returns-for-each-stock-to-data-frames-stocks-and-stocks-long">
 <h3>Add daily returns for each stock to data frames <code class="docutils literal notranslate"><span class="pre">stocks</span></code> and <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#add-daily-returns-for-each-stock-to-data-frames-stocks-and-stocks-long" title="Permalink to this headline">#</a></h3>
 <p>Name the returns variable <code class="docutils literal notranslate"><span class="pre">Returns</span></code>, and maintain all multi indexes.
 <em>Hint:</em> Use <code class="docutils literal notranslate"><span class="pre">pd.MultiIndex()</span></code> to create a multi index for the the wide data frame <code class="docutils literal notranslate"><span class="pre">stocks</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Returns&#39;</span><span class="p">],</span> <span class="n">stocks</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]])</span>
+<span class="n">stocks</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">stocks</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th colspan="6" halign="left">Adj Close</th>
+      <th colspan="4" halign="left">Close</th>
+      <th>...</th>
+      <th colspan="4" halign="left">Volume</th>
+      <th colspan="6" halign="left">Returns</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>...</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-02-21</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-22</th>
+      <td>1.6366</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6406</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0034</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-23</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0034</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-26</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1973-02-27</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 54 columns</p>
+</div></div></div>
+</div>
+<p>The easiest way to add returns to long data frame <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code> is to <code class="docutils literal notranslate"><span class="pre">.stack()</span></code> wide data frame <code class="docutils literal notranslate"><span class="pre">stocks</span></code>!
+We could sort <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code> by ticker and date (to sort chronologically within each ticker), then use <code class="docutils literal notranslate"><span class="pre">.pct_change()</span></code>.
+However, this approach miscalculates the first return for every ticker except for the first ticker.
+The easiest and safest solution is to <code class="docutils literal notranslate"><span class="pre">.stack()</span></code> the wide data frame <code class="docutils literal notranslate"><span class="pre">stocks</span></code>!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># see that the first return for C is wrong</span>
+<span class="c1"># stocks_long[&#39;Adj Close&#39;].sort_index(level=[&#39;Ticker&#39;, &#39;Date&#39;]).pct_change().loc[(slice(None), &#39;C&#39;)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks_long</span> <span class="o">=</span> <span class="n">stocks</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="download-the-daily-benchmark-return-factors-from-ken-french-s-data-library">
 <h3>Download the daily benchmark return factors from Ken French’s data library.<a class="headerlink" href="#download-the-daily-benchmark-return-factors-from-ken-french-s-data-library" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdr</span><span class="o">.</span><span class="n">famafrench</span><span class="o">.</span><span class="n">get_available_datasets</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;F-F_Research_Data_Factors&#39;,
+ &#39;F-F_Research_Data_Factors_weekly&#39;,
+ &#39;F-F_Research_Data_Factors_daily&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3_daily&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pdr</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span><span class="p">,</span>
+        <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span>
+        <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1900&#39;</span><span class="p">,</span>
+        <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+    <span class="p">)</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">ff</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1926-07-01</th>
+      <td>0.0010</td>
+      <td>-0.0025</td>
+      <td>-0.0027</td>
+      <td>0.0001</td>
+    </tr>
+    <tr>
+      <th>1926-07-02</th>
+      <td>0.0045</td>
+      <td>-0.0033</td>
+      <td>-0.0006</td>
+      <td>0.0001</td>
+    </tr>
+    <tr>
+      <th>1926-07-06</th>
+      <td>0.0017</td>
+      <td>0.0030</td>
+      <td>-0.0039</td>
+      <td>0.0001</td>
+    </tr>
+    <tr>
+      <th>1926-07-07</th>
+      <td>0.0009</td>
+      <td>-0.0058</td>
+      <td>0.0002</td>
+      <td>0.0001</td>
+    </tr>
+    <tr>
+      <th>1926-07-08</th>
+      <td>0.0021</td>
+      <td>-0.0038</td>
+      <td>0.0019</td>
+      <td>0.0001</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="add-the-daily-benchmark-return-factors-to-stocks-and-stocks-long">
 <h3>Add the daily benchmark return factors to <code class="docutils literal notranslate"><span class="pre">stocks</span></code> and <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#add-the-daily-benchmark-return-factors-to-stocks-and-stocks-long" title="Permalink to this headline">#</a></h3>
 <p>For the wide data frame <code class="docutils literal notranslate"><span class="pre">stocks</span></code>, use the outer index name <code class="docutils literal notranslate"><span class="pre">Factors</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Factors&#39;</span><span class="p">],</span> <span class="n">ff</span><span class="p">])</span>
+<span class="n">stocks</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">ff</span>
+<span class="n">stocks</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th colspan="6" halign="left">Adj Close</th>
+      <th colspan="4" halign="left">Close</th>
+      <th>...</th>
+      <th colspan="6" halign="left">Returns</th>
+      <th colspan="4" halign="left">Factors</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>...</th>
+      <th>BAC</th>
+      <th>C</th>
+      <th>GS</th>
+      <th>JPM</th>
+      <th>MS</th>
+      <th>PNC</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-02-21</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0074</td>
+      <td>-0.0039</td>
+      <td>0.0054</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-22</th>
+      <td>1.6366</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6406</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.0034</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0030</td>
+      <td>-0.0037</td>
+      <td>0.0022</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-23</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>-0.0034</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0108</td>
+      <td>-0.0019</td>
+      <td>0.0054</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-26</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0088</td>
+      <td>-0.0050</td>
+      <td>0.0054</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-27</th>
+      <td>1.6311</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.6250</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0115</td>
+      <td>-0.0018</td>
+      <td>0.0064</td>
+      <td>0.0002</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 58 columns</p>
+</div></div></div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">.join()</span></code> even though <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code> has a multi index.
+<em><strong>Note that re-running a “self join” can create duplicate columns.</strong></em>
+We should be careful to run self joins only once!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stocks_long</span> <span class="o">=</span> <span class="n">stocks_long</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span>
+<span class="n">stocks_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Adj Close</th>
+      <th>Close</th>
+      <th>Dividends</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Open</th>
+      <th>Stock Splits</th>
+      <th>Volume</th>
+      <th>Returns</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-02-21</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>99200.0000</td>
+      <td>NaN</td>
+      <td>-0.0074</td>
+      <td>-0.0039</td>
+      <td>0.0054</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-22</th>
+      <th>BAC</th>
+      <td>1.6366</td>
+      <td>4.6406</td>
+      <td>0.0000</td>
+      <td>4.6406</td>
+      <td>4.6406</td>
+      <td>4.6406</td>
+      <td>0.0000</td>
+      <td>47200.0000</td>
+      <td>0.0034</td>
+      <td>-0.0030</td>
+      <td>-0.0037</td>
+      <td>0.0022</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-23</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>133600.0000</td>
+      <td>-0.0034</td>
+      <td>-0.0108</td>
+      <td>-0.0019</td>
+      <td>0.0054</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-26</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>24000.0000</td>
+      <td>0.0000</td>
+      <td>-0.0088</td>
+      <td>-0.0050</td>
+      <td>0.0054</td>
+      <td>0.0002</td>
+    </tr>
+    <tr>
+      <th>1973-02-27</th>
+      <th>BAC</th>
+      <td>1.6311</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>4.6250</td>
+      <td>0.0000</td>
+      <td>41600.0000</td>
+      <td>0.0000</td>
+      <td>-0.0115</td>
+      <td>-0.0018</td>
+      <td>0.0064</td>
+      <td>0.0002</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="write-a-function-download-that-accepts-tickers-and-returns-a-wide-data-frame-of-returns-with-the-daily-benchmark-return-factors">
 <h3>Write a function <code class="docutils literal notranslate"><span class="pre">download()</span></code> that accepts tickers and returns a wide data frame of returns with the daily benchmark return factors.<a class="headerlink" href="#write-a-function-download-that-accepts-tickers-and-returns-a-wide-data-frame-of-returns-with-the-daily-benchmark-return-factors" title="Permalink to this headline">#</a></h3>
+<p><em><strong>See advanced solution below.</strong></em>
+I had planned this as an in-class exercise, but decided to spend more time on the earnings surprise exercise.</p>
 </section>
 <section id="download-earnings-per-share-for-the-stocks-in-stocks-and-combine-to-a-long-data-frame-earnings">
 <h3>Download earnings per share for the stocks in <code class="docutils literal notranslate"><span class="pre">stocks</span></code> and combine to a long data frame <code class="docutils literal notranslate"><span class="pre">earnings</span></code>.<a class="headerlink" href="#download-earnings-per-share-for-the-stocks-in-stocks-and-combine-to-a-long-data-frame-earnings" title="Permalink to this headline">#</a></h3>
@@ -959,6 +2042,126 @@ Name the row indexes <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;BAC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+    </tr>
+    <tr>
+      <th>Earnings Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-01-11 08:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-10-17 08:00:00-04:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">earnings</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+        <span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">],</span>
+        <span class="n">keys</span><span class="o">=</span><span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">earnings</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Variable</th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-01-11 08:00:00-05:00</th>
+      <th>BAC</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-10-17 08:00:00-04:00</th>
+      <th>BAC</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="combine-earnings-with-the-returns-from-stocks-long">
 <h3>Combine <code class="docutils literal notranslate"><span class="pre">earnings</span></code> with the returns from <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#combine-earnings-with-the-returns-from-stocks-long" title="Permalink to this headline">#</a></h3>
@@ -966,12 +2169,347 @@ Name the row indexes <code class="docutils literal notranslate"><span class="pre
 Use the <code class="docutils literal notranslate"><span class="pre">tz_localize('America/New_York')</span></code> method add time zone information back to <code class="docutils literal notranslate"><span class="pre">returns.index</span></code> and use <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta(16,</span> <span class="pre">unit='h')</span></code> to set time to the market close in New York City.
 Use <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge_asof.html"><code class="docutils literal notranslate"><span class="pre">pd.merge_asof()</span></code></a> to match earnings announcement dates and times to appropriate return periods.
 For example, if a firm announces earnings after the close at 5 PM on February 7, we want to match the return period from 4 PM on February 7 to 4 PM on February 8.</p>
-</section>
-<section id="combine-add-earnings-to-stocks-long">
-<h3>Combine add <code class="docutils literal notranslate"><span class="pre">earnings</span></code> to <code class="docutils literal notranslate"><span class="pre">stocks_long</span></code>.<a class="headerlink" href="#combine-add-earnings-to-stocks-long" title="Permalink to this headline">#</a></h3>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">tz_convert('US/Eastern')</span></code> method add time zone information back to <code class="docutils literal notranslate"><span class="pre">stocks_long.index</span></code> and use <code class="docutils literal notranslate"><span class="pre">pd.to_timedelta(16,</span> <span class="pre">units='h')</span></code> to set time to the market close in New York City.
-Use <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge_asof.html"><code class="docutils literal notranslate"><span class="pre">pd.merge_asof()</span></code></a> to match earnings announcement dates and times to appropriate return periods.
-For example, if a firm announces earnings after the close at 5 PM on February 7, we want to match the return period from 4 PM on February 7 to 4 PM on February 8.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span> <span class="o">=</span> <span class="n">stocks</span><span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span>
+<span class="n">returns</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<span class="n">returns_long</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Returns&#39;</span><span class="p">)</span>
+<span class="n">returns_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>Returns</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Ticker</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-02-22 16:00:00-05:00</th>
+      <th>BAC</th>
+      <td>0.0034</td>
+    </tr>
+    <tr>
+      <th>1973-02-23 16:00:00-05:00</th>
+      <th>BAC</th>
+      <td>-0.0034</td>
+    </tr>
+    <tr>
+      <th>1973-02-26 16:00:00-05:00</th>
+      <th>BAC</th>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>1973-02-27 16:00:00-05:00</th>
+      <th>BAC</th>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>1973-02-28 16:00:00-05:00</th>
+      <th>BAC</th>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
+        <span class="n">left</span><span class="o">=</span><span class="n">earnings</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">returns_long</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+        <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">surprises</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+      <th>Returns</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th>Ticker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2021-04-14 03:00:00-04:00</th>
+      <th>GS</th>
+      <td>10.2200</td>
+      <td>18.6000</td>
+      <td>0.8194</td>
+      <td>0.0234</td>
+    </tr>
+    <tr>
+      <th>2021-04-16 03:00:00-04:00</th>
+      <th>MS</th>
+      <td>1.7000</td>
+      <td>2.1900</td>
+      <td>0.2890</td>
+      <td>-0.0276</td>
+    </tr>
+    <tr>
+      <th>2021-07-13 03:00:00-04:00</th>
+      <th>GS</th>
+      <td>10.2400</td>
+      <td>15.0200</td>
+      <td>0.4668</td>
+      <td>-0.0119</td>
+    </tr>
+    <tr>
+      <th>2021-07-15 03:00:00-04:00</th>
+      <th>MS</th>
+      <td>1.6500</td>
+      <td>1.8500</td>
+      <td>0.1185</td>
+      <td>0.0018</td>
+    </tr>
+    <tr>
+      <th>2021-10-14 03:00:00-04:00</th>
+      <th>MS</th>
+      <td>1.6900</td>
+      <td>1.9800</td>
+      <td>0.1751</td>
+      <td>0.0248</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+      <th>Returns</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>EPS Estimate</th>
+      <td>1.0000</td>
+      <td>0.9444</td>
+      <td>0.3620</td>
+      <td>-0.2239</td>
+    </tr>
+    <tr>
+      <th>Reported EPS</th>
+      <td>0.9444</td>
+      <td>1.0000</td>
+      <td>0.6171</td>
+      <td>-0.0615</td>
+    </tr>
+    <tr>
+      <th>Surprise(%)</th>
+      <td>0.3620</td>
+      <td>0.6171</td>
+      <td>1.0000</td>
+      <td>0.4397</td>
+    </tr>
+    <tr>
+      <th>Returns</th>
+      <td>-0.2239</td>
+      <td>-0.0615</td>
+      <td>0.4397</td>
+      <td>1.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+    </tr>
+    <tr>
+      <th>Earnings Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-01-17 11:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2024-01-17 08:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-10-13 11:00:00-04:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-10-13 08:00:00-04:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-07-14 11:00:00-04:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-07-14 08:00:00-04:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-04-14 11:00:00-04:00</th>
+      <td>1.6700</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-04-14 08:00:00-04:00</th>
+      <td>1.6700</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-01-13 03:00:00-05:00</th>
+      <td>1.1400</td>
+      <td>1.1600</td>
+      <td>0.0149</td>
+    </tr>
+    <tr>
+      <th>2022-10-14 04:00:00-04:00</th>
+      <td>1.4200</td>
+      <td>1.6300</td>
+      <td>0.1471</td>
+    </tr>
+    <tr>
+      <th>2022-07-15 04:00:00-04:00</th>
+      <td>1.6800</td>
+      <td>2.1900</td>
+      <td>0.3020</td>
+    </tr>
+    <tr>
+      <th>2022-04-14 04:00:00-04:00</th>
+      <td>1.5500</td>
+      <td>2.0200</td>
+      <td>0.3058</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="plot-the-relation-between-daily-returns-and-earnings-surprises">
 <h3>Plot the relation between daily returns and earnings surprises<a class="headerlink" href="#plot-the-relation-between-daily-returns-and-earnings-surprises" title="Permalink to this headline">#</a></h3>
@@ -981,20 +2519,809 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <li><p>Scatter plot with a best-fit line using <code class="docutils literal notranslate"><span class="pre">regplot()</span></code> from the seaborn package</p></li>
 <li><p>Bar plot using <code class="docutils literal notranslate"><span class="pre">barplot()</span></code> from the seaborn package after using <code class="docutils literal notranslate"><span class="pre">pd.qcut()</span></code> to form five groups on earnings surprises</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">surprises</span>
+    <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Returns&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements</span><span class="se">\n</span><span class="s1"> for </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_04_41_0.png" src="_images/mckinney_08_practice_04_41_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Returns&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">surprises</span><span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements</span><span class="se">\n</span><span class="s1"> for </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_04_43_0.png" src="_images/mckinney_08_practice_04_43_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises</span><span class="p">[</span><span class="s1">&#39;ESQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">surprises</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ESQ&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Returns&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+        <span class="n">surprises</span>
+        <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ESQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise Portfolio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements</span><span class="se">\n</span><span class="s1"> for </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_04_45_0.png" src="_images/mckinney_08_practice_04_45_0.png" />
+</div>
+</div>
+<p><em><strong>There is a positive relation between announcment returns and earnings surprises!</strong></em>
+Of course, to say more we need more data and to control for market movements, but this analaysis is a start!</p>
 </section>
 <section id="repeat-the-earnings-exercise-with-the-s-p-100-stocks">
 <h3>Repeat the earnings exercise with the S&amp;P 100 stocks<a class="headerlink" href="#repeat-the-earnings-exercise-with-the-s-p-100-stocks" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wiki</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/S%26P_100&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbols</span> <span class="o">=</span> <span class="n">wiki</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;Symbol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers_2</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">Tickers</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="n">symbols</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">tickers_2</span>
+    <span class="o">.</span><span class="n">history</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">auto_adjust</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+    <span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">returns_2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>ABBV</th>
+      <th>ABT</th>
+      <th>ACN</th>
+      <th>ADBE</th>
+      <th>AIG</th>
+      <th>AMD</th>
+      <th>AMGN</th>
+      <th>AMT</th>
+      <th>AMZN</th>
+      <th>...</th>
+      <th>UNH</th>
+      <th>UNP</th>
+      <th>UPS</th>
+      <th>USB</th>
+      <th>V</th>
+      <th>VZ</th>
+      <th>WBA</th>
+      <th>WFC</th>
+      <th>WMT</th>
+      <th>XOM</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1962-01-02 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1962-01-03 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0149</td>
+    </tr>
+    <tr>
+      <th>1962-01-04 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0024</td>
+    </tr>
+    <tr>
+      <th>1962-01-05 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0219</td>
+    </tr>
+    <tr>
+      <th>1962-01-08 16:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>-0.0025</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 101 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">earnings_2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+        <span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">tickers_2</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tickers_2</span><span class="o">.</span><span class="n">tickers</span><span class="p">],</span>
+        <span class="n">keys</span><span class="o">=</span><span class="n">tickers_2</span><span class="o">.</span><span class="n">tickers</span><span class="p">,</span>
+        <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span> <span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises_2</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
+        <span class="n">left</span><span class="o">=</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">returns_2</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Returns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+        <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ESQ&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;Returns&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+        <span class="n">surprises_2</span>
+        <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ESQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise Portfolio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises_2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements for S&amp;P 100 Stocks </span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_04_54_0.png" src="_images/mckinney_08_practice_04_54_0.png" />
+</div>
+</div>
 </section>
 <section id="repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks">
 <h3>Repeat the earnings exercise with <em>excess returns</em> of the S&amp;P 100 Stocks<a class="headerlink" href="#repeat-the-earnings-exercise-with-excess-returns-of-the-s-p-100-stocks" title="Permalink to this headline">#</a></h3>
 <p>Excess returns are returns minus market returns.
 We need to add a timezone and the closing time to the market return from Fama and French.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Mkt</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
+<span class="n">Mkt</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">Mkt</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+<span class="n">returns_3</span> <span class="o">=</span> <span class="n">returns_2</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">Mkt</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises_3</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">merge_asof</span><span class="p">(</span>
+        <span class="n">left</span><span class="o">=</span><span class="n">earnings_2</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">right</span><span class="o">=</span><span class="n">returns_3</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Excess Returns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">]),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+        <span class="n">by</span><span class="o">=</span><span class="s1">&#39;Ticker&#39;</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
+        <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;ESQ&#39;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Excess Returns&#39;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">(</span>
+        <span class="n">surprises_3</span>
+        <span class="p">[[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">,</span> <span class="s1">&#39;Excess Returns&#39;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ESQ</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Surprise(%)&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Earnings Suprise Portfolio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Announcement Excess Return (%)&#39;</span><span class="p">)</span>
+
+<span class="n">__</span> <span class="o">=</span> <span class="n">surprises_3</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Earnings Announcements for S&amp;P 100 Stocks</span><span class="se">\n</span><span class="s1"> from </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">__</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">%B %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_08_practice_04_59_0.png" src="_images/mckinney_08_practice_04_59_0.png" />
+</div>
+</div>
 </section>
 <section id="improve-your-download-function-from-above">
 <h3>Improve your <code class="docutils literal notranslate"><span class="pre">download()</span></code> function from above<a class="headerlink" href="#improve-your-download-function-from-above" title="Permalink to this headline">#</a></h3>
 <p>Modify <code class="docutils literal notranslate"><span class="pre">download()</span></code> to accept one or more than one ticker.
 Since we will not use the advanced functionality of the tickers object that <code class="docutils literal notranslate"><span class="pre">yf.Tickers()</span></code> creates, we will use <code class="docutils literal notranslate"><span class="pre">yf.download()</span></code>.
 The current version of <code class="docutils literal notranslate"><span class="pre">yf.download()</span></code> does not accept a <code class="docutils literal notranslate"><span class="pre">session=</span></code> argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">):</span>
+
+    <span class="n">histories</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">factors</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">pdr</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span><span class="p">,</span>
+            <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span>
+            <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1900&#39;</span><span class="p">,</span>
+            <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+        <span class="p">)</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">histories</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="ow">is</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="p">:</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Returns&#39;</span><span class="p">],</span> <span class="n">histories</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+        <span class="n">histories</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">histories</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+        <span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Factors&#39;</span><span class="p">],</span> <span class="n">factors</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+        <span class="n">histories</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">factors</span>
+
+        <span class="k">return</span> <span class="n">histories</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
+
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">histories</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="ow">is</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">histories</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ff</span><span class="p">)</span><span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;AAPL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  1 of 1 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>0.1283</td>
+      <td>0.1289</td>
+      <td>0.1283</td>
+      <td>0.1283</td>
+      <td>0.0997</td>
+      <td>469033600</td>
+      <td>0.0138</td>
+      <td>-0.0001</td>
+      <td>-0.0105</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>0.1222</td>
+      <td>0.1222</td>
+      <td>0.1217</td>
+      <td>0.1217</td>
+      <td>0.0945</td>
+      <td>175884800</td>
+      <td>0.0011</td>
+      <td>0.0025</td>
+      <td>-0.0046</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>0.1133</td>
+      <td>0.1133</td>
+      <td>0.1127</td>
+      <td>0.1127</td>
+      <td>0.0876</td>
+      <td>105728000</td>
+      <td>0.0071</td>
+      <td>-0.0075</td>
+      <td>-0.0047</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.1155</td>
+      <td>0.1161</td>
+      <td>0.1155</td>
+      <td>0.1155</td>
+      <td>0.0897</td>
+      <td>86441600</td>
+      <td>0.0152</td>
+      <td>-0.0086</td>
+      <td>-0.0034</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.1189</td>
+      <td>0.1194</td>
+      <td>0.1189</td>
+      <td>0.1189</td>
+      <td>0.0924</td>
+      <td>73449600</td>
+      <td>0.0041</td>
+      <td>0.0022</td>
+      <td>0.0126</td>
+      <td>0.0006</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;AAPL TSLA&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[                       0%                       ]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[*********************100%***********************]  2 of 2 completed
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th colspan="2" halign="left">Adj Close</th>
+      <th colspan="2" halign="left">Close</th>
+      <th colspan="2" halign="left">High</th>
+      <th colspan="2" halign="left">Low</th>
+      <th colspan="2" halign="left">Open</th>
+      <th colspan="2" halign="left">Volume</th>
+      <th colspan="2" halign="left">Returns</th>
+      <th colspan="4" halign="left">Factors</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>AAPL</th>
+      <th>TSLA</th>
+      <th>Mkt-RF</th>
+      <th>SMB</th>
+      <th>HML</th>
+      <th>RF</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>0.0997</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>0.1289</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>469033600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0138</td>
+      <td>-0.0001</td>
+      <td>-0.0105</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>0.0945</td>
+      <td>NaN</td>
+      <td>0.1217</td>
+      <td>NaN</td>
+      <td>0.1222</td>
+      <td>NaN</td>
+      <td>0.1217</td>
+      <td>NaN</td>
+      <td>0.1222</td>
+      <td>NaN</td>
+      <td>175884800</td>
+      <td>NaN</td>
+      <td>-0.0522</td>
+      <td>NaN</td>
+      <td>0.0011</td>
+      <td>0.0025</td>
+      <td>-0.0046</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>0.0876</td>
+      <td>NaN</td>
+      <td>0.1127</td>
+      <td>NaN</td>
+      <td>0.1133</td>
+      <td>NaN</td>
+      <td>0.1127</td>
+      <td>NaN</td>
+      <td>0.1133</td>
+      <td>NaN</td>
+      <td>105728000</td>
+      <td>NaN</td>
+      <td>-0.0734</td>
+      <td>NaN</td>
+      <td>0.0071</td>
+      <td>-0.0075</td>
+      <td>-0.0047</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.0897</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>0.1161</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>86441600</td>
+      <td>NaN</td>
+      <td>0.0248</td>
+      <td>NaN</td>
+      <td>0.0152</td>
+      <td>-0.0086</td>
+      <td>-0.0034</td>
+      <td>0.0006</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.0924</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>0.1194</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>73449600</td>
+      <td>NaN</td>
+      <td>0.0290</td>
+      <td>NaN</td>
+      <td>0.0041</td>
+      <td>0.0022</td>
+      <td>0.0126</td>
+      <td>0.0006</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 </section>
 </section>

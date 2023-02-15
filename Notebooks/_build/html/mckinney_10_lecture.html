@@ -1,0 +1,2865 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>McKinney Chapter 10 - Data Aggregation and Group Operations &#8212; FINA 6333 for Spring 2023</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="McKinney Chapter 10 - Practice (Blank)" href="mckinney_10_practice.html" />
+    <link rel="prev" title="McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)" href="mckinney_08_practice_02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/DMSB_100th_LogoMark_CMYK_Horiz.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">FINA 6333 for Spring 2023</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="_introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures and Practice
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_02_lecture.html">
+   McKinney Chapter 2 - Python Language Basics, IPython, and Jupyter Notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice.html">
+     McKinney Chapter 2 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_03.html">
+     McKinney Chapter 2 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_04.html">
+     McKinney Chapter 2 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_02.html">
+     McKinney Chapter 2 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_03_lecture.html">
+   McKinney Chapter 3 - Built-In Data Structures, Functions, and Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice.html">
+     McKinney Chapter 3 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_04.html">
+     McKinney Chapter 3 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_02.html">
+     McKinney Chapter 3 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_04_lecture.html">
+   McKinney Chapter 4 - NumPy Basics: Arrays and Vectorized Computation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice.html">
+     McKinney Chapter 4 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_03.html">
+     McKinney Chapter 4 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_04.html">
+     McKinney Chapter 4 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_02.html">
+     McKinney Chapter 4 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_05_lecture.html">
+   McKinney Chapter 5 - Getting Started with pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice.html">
+     McKinney Chapter 5 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_03.html">
+     McKinney Chapter 5 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_04.html">
+     McKinney Chapter 5 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_02.html">
+     McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="herron_01_lecture.html">
+   Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice.html">
+     Herron Topic 1 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_03.html">
+     Herron Topic 1 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_04.html">
+     Herron Topic 1 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_02.html">
+     Herron Topic 1 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_08_lecture.html">
+   McKinney Chapter 8 - Data Wrangling: Join, Combine, and Reshape
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice.html">
+     McKinney Chapter 8 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_03.html">
+     McKinney Chapter 8 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_04.html">
+     McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_02.html">
+     McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   McKinney Chapter 10 - Data Aggregation and Group Operations
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice.html">
+     McKinney Chapter 10 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_03.html">
+     McKinney Chapter 10 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_04.html">
+     McKinney Chapter 10 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_02.html">
+     McKinney Chapter 10 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Quizzes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_01.html">
+   Quiz 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_02.html">
+   Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_03.html">
+   Quiz 3
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="project_01.html">
+   Project 1
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/dmsb-fina-6333/2023-spring/main?urlpath=lab/tree/Notebooks/mckinney_10_lecture.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/dmsb-fina-6333/2023-spring"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/dmsb-fina-6333/2023-spring/issues/new?title=Issue%20on%20page%20%2Fmckinney_10_lecture.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/mckinney_10_lecture.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#groupby-mechanics">
+   GroupBy Mechanics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterating-over-groups">
+     Iterating Over Groups
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selecting-a-column-or-subset-of-columns">
+     Selecting a Column or Subset of Columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-with-functions">
+     Grouping with Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-by-index-levels">
+     Grouping by Index Levels
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-aggregation">
+   Data Aggregation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#column-wise-and-multiple-function-application">
+     Column-Wise and Multiple Function Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply-general-split-apply-combine">
+   Apply: General split-apply-combine
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivot-tables-and-cross-tabulation">
+   Pivot Tables and Cross-Tabulation
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>McKinney Chapter 10 - Data Aggregation and Group Operations</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#groupby-mechanics">
+   GroupBy Mechanics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterating-over-groups">
+     Iterating Over Groups
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selecting-a-column-or-subset-of-columns">
+     Selecting a Column or Subset of Columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-with-functions">
+     Grouping with Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-by-index-levels">
+     Grouping by Index Levels
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-aggregation">
+   Data Aggregation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#column-wise-and-multiple-function-application">
+     Column-Wise and Multiple Function Application
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#apply-general-split-apply-combine">
+   Apply: General split-apply-combine
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivot-tables-and-cross-tabulation">
+   Pivot Tables and Cross-Tabulation
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="mckinney-chapter-10-data-aggregation-and-group-operations">
+<h1>McKinney Chapter 10 - Data Aggregation and Group Operations<a class="headerlink" href="#mckinney-chapter-10-data-aggregation-and-group-operations" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Chapter 10 of Wes McKinney’s <a class="reference external" href="https://wesmckinney.com/book/"><em>Python for Data Analysis</em></a> discusses groupby operations, which are the pandas equivalent of Excel pivot tables.
+Pivot tables help us calculate statistics (e.g., sum, mean, and median) for one set of variables by groups of other variables (e.g., weekday or ticker).
+For example, we could use a pivot table to calculate mean daily stock returns by weekday.</p>
+<p>We will focus on:</p>
+<ol class="simple">
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> to group by columns, indexes, and functions</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> to aggregate multiple functions</p></li>
+<li><p>Using pivot tables as an alternative to <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code></p></li>
+</ol>
+<p><em><strong>Note:</strong></em>
+Indented block quotes are from McKinney unless otherwise indicated.
+The section numbers here differ from McKinney because we will only discuss some topics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">precision</span> 4
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
+<span class="kn">import</span> <span class="nn">requests_cache</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="groupby-mechanics">
+<h2>GroupBy Mechanics<a class="headerlink" href="#groupby-mechanics" title="Permalink to this headline">#</a></h2>
+<p>“Split-apply-combine” is an excellent way to describe and visualize pandas groupby operations.</p>
+<blockquote>
+<div><p>Hadley Wickham, an author of many popular packages for the R programming
+language, coined the term split-apply-combine for describing group operations. In the
+first stage of the process, data contained in a pandas object, whether a Series, DataFrame, or otherwise, is split into groups based on one or more keys that you provide.
+The splitting is performed on a particular axis of an object. For example, a DataFrame
+can be grouped on its rows (axis=0) or its columns (axis=1). Once this is done, a
+function is applied to each group, producing a new value. Finally, the results of all
+those function applications are combined into a result object. The form of the resulting object will usually depend on what’s being done to the data. See Figure 10-1 for a
+mockup of a simple group aggregation.</p>
+</div></blockquote>
+<p>Figure 10-1 visualizes a split-apply-combine operation that:</p>
+<ol class="simple">
+<li><p>Splits by the <code class="docutils literal notranslate"><span class="pre">key</span></code> column (i.e., “groups by <code class="docutils literal notranslate"><span class="pre">key</span></code>”)</p></li>
+<li><p>Applies the sum operation to the <code class="docutils literal notranslate"><span class="pre">data</span></code> column (i.e., “and sums <code class="docutils literal notranslate"><span class="pre">data</span></code>”)</p></li>
+<li><p>Combines the grouped sums</p></li>
+</ol>
+<p>I describe this operation as “sum the <code class="docutils literal notranslate"><span class="pre">data</span></code> column by groups formed on the <code class="docutils literal notranslate"><span class="pre">key</span></code> column.”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key1&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">],</span>
+                   <span class="s1">&#39;key2&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">],</span>
+                   <span class="s1">&#39;data1&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                   <span class="s1">&#39;data2&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)})</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>one</td>
+      <td>0.4967</td>
+      <td>-0.2341</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>two</td>
+      <td>-0.1383</td>
+      <td>1.5792</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>b</td>
+      <td>one</td>
+      <td>0.6477</td>
+      <td>0.7674</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>two</td>
+      <td>1.5230</td>
+      <td>-0.4695</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>a</td>
+      <td>one</td>
+      <td>-0.2342</td>
+      <td>0.5426</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Here is one way to calculate the means of <code class="docutils literal notranslate"><span class="pre">data1</span></code> by groups formed on <code class="docutils literal notranslate"><span class="pre">key1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0414
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0854
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can do this calculation more quickly!</p>
+<ol class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method to group by <code class="docutils literal notranslate"><span class="pre">key1</span></code></p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> method to sum <code class="docutils literal notranslate"><span class="pre">data1</span></code> within each value of <code class="docutils literal notranslate"><span class="pre">key1</span></code></p></li>
+</ol>
+<p>Note that without the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> method, pandas only sets up the grouped object, which can accept the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">])</span>
+<span class="n">grouped</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x000001441D906040&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1
+a   0.0414
+b   1.0854
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can can chain the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> methods!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1
+a   0.0414
+b   1.0854
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we prefer our result as a dataframe instead of a series, we can wrap <code class="docutils literal notranslate"><span class="pre">data1</span></code> with two sets of square brackets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;data1&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0414</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0854</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can group by more than one variable.
+We get a hierarchical row index (or row multi-index) when we group by more than one variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">means</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;key2&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">means</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1  key2
+a     one     0.1313
+      two    -0.1383
+b     one     0.6477
+      two     1.5230
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">.unstack()</span></code> method if we want to use both rows and columns to organize data.
+Recall the <code class="docutils literal notranslate"><span class="pre">.unstack()</span></code> method un-stacks the inner index level (i.e., <code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">=</span> <span class="pre">-1</span></code>) by default so that <code class="docutils literal notranslate"><span class="pre">key2</span></code> values become the columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">means</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>key2</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.1313</td>
+      <td>-0.1383</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>0.6477</td>
+      <td>1.5230</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The grouping variables can be columns in the data frame we want to group with the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method.
+Our grouping variables are typically columns in the data frame we want to group, so this syntax is more compact and easier to understand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0414</td>
+      <td>0.6292</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0854</td>
+      <td>0.1490</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th>key2</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>one</th>
+      <td>0.1313</td>
+      <td>0.1542</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.1383</td>
+      <td>1.5792</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>one</th>
+      <td>0.6477</td>
+      <td>0.7674</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>1.5230</td>
+      <td>-0.4695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use tab completion to reminder ourselves of methods we can apply to grouped series and data frames.</p>
+<section id="iterating-over-groups">
+<h3>Iterating Over Groups<a class="headerlink" href="#iterating-over-groups" title="Permalink to this headline">#</a></h3>
+<p>We can iterate over groups, too, because the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method generates a sequence of tuples.
+Each tuples contains the value(s) of the grouping variable(s) and its chunk of the dataframe.
+McKinney provides two loops to show how to iterate over groups.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+  key1 key2   data1   data2
+0    a  one  0.4967 -0.2341
+1    a  two -0.1383  1.5792
+4    a  one -0.2342  0.5426
+b
+  key1 key2  data1   data2
+2    b  one 0.6477  0.7674
+3    b  two 1.5230 -0.4695
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">),</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">),</span> <span class="n">group</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;a&#39;, &#39;one&#39;)
+  key1 key2   data1   data2
+0    a  one  0.4967 -0.2341
+4    a  one -0.2342  0.5426
+(&#39;a&#39;, &#39;two&#39;)
+  key1 key2   data1  data2
+1    a  two -0.1383 1.5792
+(&#39;b&#39;, &#39;one&#39;)
+  key1 key2  data1  data2
+2    b  one 0.6477 0.7674
+(&#39;b&#39;, &#39;two&#39;)
+  key1 key2  data1   data2
+3    b  two 1.5230 -0.4695
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selecting-a-column-or-subset-of-columns">
+<h3>Selecting a Column or Subset of Columns<a class="headerlink" href="#selecting-a-column-or-subset-of-columns" title="Permalink to this headline">#</a></h3>
+<p>We preview the idea of grouping an entire dataframe above.
+However, I want to explain McKinney’s use of the phrase “syntactic sugar.”
+Here is the context:</p>
+<blockquote>
+<div><p>Indexing a GroupBy object created from a DataFrame with a column name or array
+of column names has the effect of column subsetting for aggregation. This means
+that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[[</span><span class="s1">&#39;data2&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>are syntactic sugar for</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;data2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>“Syntactic sugar” makes code easier to type or read without adding functionality.
+It makes code “sweeter” for humans to type or read by making it more concise or clear.
+The implication is that syntactic sugar makes code faster to type/read but does make code faster to execute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;key2&#39;</span><span class="p">])[[</span><span class="s1">&#39;data2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th>key2</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>one</th>
+      <td>0.1542</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>1.5792</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>one</th>
+      <td>0.7674</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.4695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="grouping-with-functions">
+<h3>Grouping with Functions<a class="headerlink" href="#grouping-with-functions" title="Permalink to this headline">#</a></h3>
+<p>We can also group with functions.
+Below, we group with the <code class="docutils literal notranslate"><span class="pre">len</span></code> function, which calculates the length of the first names in the row index.
+We could instead add a helper column to <code class="docutils literal notranslate"><span class="pre">people</span></code>, but it is easier to pass a function to <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">people</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> 
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">],</span> 
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Joe&#39;</span><span class="p">,</span> <span class="s1">&#39;Steve&#39;</span><span class="p">,</span> <span class="s1">&#39;Wes&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">,</span> <span class="s1">&#39;Travis&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">people</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>0.4967</td>
+      <td>-0.1383</td>
+      <td>0.6477</td>
+      <td>1.5230</td>
+      <td>-0.2342</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>-0.2341</td>
+      <td>1.5792</td>
+      <td>0.7674</td>
+      <td>-0.4695</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>Wes</th>
+      <td>-0.4634</td>
+      <td>-0.4657</td>
+      <td>0.2420</td>
+      <td>-1.9133</td>
+      <td>-1.7249</td>
+    </tr>
+    <tr>
+      <th>Jim</th>
+      <td>-0.5623</td>
+      <td>-1.0128</td>
+      <td>0.3142</td>
+      <td>-0.9080</td>
+      <td>-1.4123</td>
+    </tr>
+    <tr>
+      <th>Travis</th>
+      <td>1.4656</td>
+      <td>-0.2258</td>
+      <td>0.0675</td>
+      <td>-1.4247</td>
+      <td>-0.5444</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>-0.5290</td>
+      <td>-1.6168</td>
+      <td>1.2039</td>
+      <td>-1.2983</td>
+      <td>-3.3714</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-0.2341</td>
+      <td>1.5792</td>
+      <td>0.7674</td>
+      <td>-0.4695</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.4656</td>
+      <td>-0.2258</td>
+      <td>0.0675</td>
+      <td>-1.4247</td>
+      <td>-0.5444</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can mix functions, lists, dictionaries, etc. that we pass to <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">]</span>
+<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">key_list</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">3</th>
+      <th>one</th>
+      <td>-0.4634</td>
+      <td>-0.4657</td>
+      <td>0.2420</td>
+      <td>-1.9133</td>
+      <td>-1.7249</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.5623</td>
+      <td>-1.0128</td>
+      <td>0.3142</td>
+      <td>-0.9080</td>
+      <td>-1.4123</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <th>one</th>
+      <td>-0.2341</td>
+      <td>1.5792</td>
+      <td>0.7674</td>
+      <td>-0.4695</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <th>two</th>
+      <td>1.4656</td>
+      <td>-0.2258</td>
+      <td>0.0675</td>
+      <td>-1.4247</td>
+      <td>-0.5444</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Joe&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">}</span>
+<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">d</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">3</th>
+      <th>a</th>
+      <td>0.4967</td>
+      <td>-0.1383</td>
+      <td>0.6477</td>
+      <td>1.5230</td>
+      <td>-0.2342</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>-0.5623</td>
+      <td>-1.0128</td>
+      <td>0.3142</td>
+      <td>-0.9080</td>
+      <td>-1.4123</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d_2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Joe&#39;</span><span class="p">:</span> <span class="s1">&#39;Cool&#39;</span><span class="p">,</span> <span class="s1">&#39;Jim&#39;</span><span class="p">:</span> <span class="s1">&#39;Nerd&#39;</span><span class="p">,</span> <span class="s1">&#39;Travis&#39;</span><span class="p">:</span> <span class="s1">&#39;Cool&#39;</span><span class="p">}</span>
+<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">d_2</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">3</th>
+      <th>Cool</th>
+      <td>0.4967</td>
+      <td>-0.1383</td>
+      <td>0.6477</td>
+      <td>1.5230</td>
+      <td>-0.2342</td>
+    </tr>
+    <tr>
+      <th>Nerd</th>
+      <td>-0.5623</td>
+      <td>-1.0128</td>
+      <td>0.3142</td>
+      <td>-0.9080</td>
+      <td>-1.4123</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <th>Cool</th>
+      <td>1.4656</td>
+      <td>-0.2258</td>
+      <td>0.0675</td>
+      <td>-1.4247</td>
+      <td>-0.5444</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="grouping-by-index-levels">
+<h3>Grouping by Index Levels<a class="headerlink" href="#grouping-by-index-levels" title="Permalink to this headline">#</a></h3>
+<p>We can also group by index levels.
+We can specify index levels by either level number or name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([[</span><span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;JP&#39;</span><span class="p">,</span> <span class="s1">&#39;JP&#39;</span><span class="p">],</span>
+                                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
+                                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cty&#39;</span><span class="p">,</span> <span class="s1">&#39;tenor&#39;</span><span class="p">])</span>
+<span class="n">hier_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">hier_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>cty</th>
+      <th colspan="3" halign="left">US</th>
+      <th colspan="2" halign="left">JP</th>
+    </tr>
+    <tr>
+      <th>tenor</th>
+      <th>1</th>
+      <th>3</th>
+      <th>5</th>
+      <th>1</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.1109</td>
+      <td>-1.1510</td>
+      <td>0.3757</td>
+      <td>-0.6006</td>
+      <td>-0.2917</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.6017</td>
+      <td>1.8523</td>
+      <td>-0.0135</td>
+      <td>-1.0577</td>
+      <td>0.8225</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-1.2208</td>
+      <td>0.2089</td>
+      <td>-1.9597</td>
+      <td>-1.3282</td>
+      <td>0.1969</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.7385</td>
+      <td>0.1714</td>
+      <td>-0.1156</td>
+      <td>-0.3011</td>
+      <td>-1.4785</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>cty</th>
+      <th>JP</th>
+      <th>US</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;cty&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>cty</th>
+      <th>JP</th>
+      <th>US</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;tenor&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>tenor</th>
+      <th>1</th>
+      <th>3</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="data-aggregation">
+<h2>Data Aggregation<a class="headerlink" href="#data-aggregation" title="Permalink to this headline">#</a></h2>
+<p>Table 10-1 provides the optimized groupby methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">count</span></code>: Number of non-NA values in the group</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sum</span></code>: Sum of non-NA values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mean</span></code>: Mean of non-NA values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">median</span></code>: Arithmetic median of non-NA values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std</span></code>, <code class="docutils literal notranslate"><span class="pre">var</span></code>: Unbiased (n – 1 denominator) standard deviation and variance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>: Minimum and maximum of non-NA values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prod</span></code>: Product of non-NA values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first</span></code>, <code class="docutils literal notranslate"><span class="pre">last</span></code>: First and last non-NA values</p></li>
+</ul>
+<p>These optimized methods are fast and efficient, but pandas lets us use other, non-optimized methods.
+First, any series method is available.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1
+a   0.3697
+b   1.4355
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second, we can write our own functions and pass them to the <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> method.
+These functions should accept an array and returns a single value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">max_minus_min</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">arr</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">max_minus_min</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1
+a   0.7309
+b   0.8753
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some other methods work, too, even if they are do not aggregate an array to a single value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>3.0000</td>
+      <td>0.0414</td>
+      <td>0.3972</td>
+      <td>-0.2342</td>
+      <td>-0.1862</td>
+      <td>-0.1383</td>
+      <td>0.1792</td>
+      <td>0.4967</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>2.0000</td>
+      <td>1.0854</td>
+      <td>0.6190</td>
+      <td>0.6477</td>
+      <td>0.8665</td>
+      <td>1.0854</td>
+      <td>1.3042</td>
+      <td>1.5230</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="column-wise-and-multiple-function-application">
+<h3>Column-Wise and Multiple Function Application<a class="headerlink" href="#column-wise-and-multiple-function-application" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> methods provides two more handy features:</p>
+<ol class="simple">
+<li><p>We can pass multiple functions to operate on all of the columns</p></li>
+<li><p>We can pass specific functions to operate on specific columns</p></li>
+</ol>
+<p>Here is an example with multiple functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean</th>
+      <th>median</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0414</td>
+      <td>-0.1383</td>
+      <td>-0.2342</td>
+      <td>0.4967</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0854</td>
+      <td>1.0854</td>
+      <td>0.6477</td>
+      <td>1.5230</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[[</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">data1</th>
+      <th colspan="4" halign="left">data2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>median</th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>median</th>
+      <th>min</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0414</td>
+      <td>-0.1383</td>
+      <td>-0.2342</td>
+      <td>0.4967</td>
+      <td>0.6292</td>
+      <td>0.5426</td>
+      <td>-0.2341</td>
+      <td>1.5792</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0854</td>
+      <td>1.0854</td>
+      <td>0.6477</td>
+      <td>1.5230</td>
+      <td>0.1490</td>
+      <td>0.1490</td>
+      <td>-0.4695</td>
+      <td>0.7674</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>What if I wanted to calculate the mean of <code class="docutils literal notranslate"><span class="pre">data1</span></code> and the median of <code class="docutils literal notranslate"><span class="pre">data2</span></code> by <code class="docutils literal notranslate"><span class="pre">key1</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0414</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0854</td>
+      <td>0.1490</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>What if I wanted to calculate the mean <em>and standard deviation</em> of <code class="docutils literal notranslate"><span class="pre">data1</span></code> and the median of <code class="docutils literal notranslate"><span class="pre">data2</span></code> by <code class="docutils literal notranslate"><span class="pre">key1</span></code>?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;data1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">],</span> <span class="s1">&#39;data2&#39;</span><span class="p">:</span> <span class="s1">&#39;median&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>median</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0414</td>
+      <td>0.3972</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.0854</td>
+      <td>0.6190</td>
+      <td>0.1490</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="apply-general-split-apply-combine">
+<h2>Apply: General split-apply-combine<a class="headerlink" href="#apply-general-split-apply-combine" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> method aggrates an array to a single value.
+We can use the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method for more general calculations.</p>
+<p>We can combine the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> methods to:</p>
+<ol class="simple">
+<li><p>Split a dataframe by grouping variables</p></li>
+<li><p>Call the applied function on each chunk of the original dataframe</p></li>
+<li><p>Recombine the output of the applied function</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>4</th>
+      <td>a</td>
+      <td>one</td>
+      <td>-0.2342</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>two</td>
+      <td>-0.1383</td>
+      <td>1.5792</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>2</th>
+      <td>b</td>
+      <td>one</td>
+      <td>0.6477</td>
+      <td>0.7674</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>two</td>
+      <td>1.5230</td>
+      <td>-0.4695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;data2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>0</th>
+      <td>a</td>
+      <td>one</td>
+      <td>0.4967</td>
+      <td>-0.2341</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>a</td>
+      <td>one</td>
+      <td>-0.2342</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>3</th>
+      <td>b</td>
+      <td>two</td>
+      <td>1.5230</td>
+      <td>-0.4695</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>b</td>
+      <td>one</td>
+      <td>0.6477</td>
+      <td>0.7674</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="pivot-tables-and-cross-tabulation">
+<h2>Pivot Tables and Cross-Tabulation<a class="headerlink" href="#pivot-tables-and-cross-tabulation" title="Permalink to this headline">#</a></h2>
+<p>Above we manually made pivot tables with the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>, <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>, <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.unstack()</span></code> methods.
+pandas provides a literal interpreation of Excel-style pivot tables with the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> method and the <code class="docutils literal notranslate"><span class="pre">pandas.pivot_table()</span></code> function.
+These also provide row and column totals via “margins”.
+It is worthwhile to read-through the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> docstring several times.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_7872</span>\<span class="mf">4138742815.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
+
+<span class="ne">TypeError</span>: download() got an unexpected keyword argument &#39;session&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The default aggregation function for <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> is <code class="docutils literal notranslate"><span class="pre">mean</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2015&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Adj Close</th>
+      <th>Close</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Open</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>^DJI</th>
+      <td>25101.3432</td>
+      <td>25101.3432</td>
+      <td>25237.9942</td>
+      <td>24951.1205</td>
+      <td>25100.2526</td>
+      <td>285484050.0511</td>
+    </tr>
+    <tr>
+      <th>^FTSE</th>
+      <td>6954.4094</td>
+      <td>6954.4094</td>
+      <td>6996.5218</td>
+      <td>6911.3324</td>
+      <td>6954.2785</td>
+      <td>807274505.2953</td>
+    </tr>
+    <tr>
+      <th>^GSPC</th>
+      <td>2956.2444</td>
+      <td>2956.2444</td>
+      <td>2972.1278</td>
+      <td>2938.3290</td>
+      <td>2956.1227</td>
+      <td>3850057242.0838</td>
+    </tr>
+    <tr>
+      <th>^HSI</th>
+      <td>25357.7610</td>
+      <td>25357.7610</td>
+      <td>25520.1852</td>
+      <td>25187.0815</td>
+      <td>25374.7283</td>
+      <td>1949267156.8894</td>
+    </tr>
+    <tr>
+      <th>^IXIC</th>
+      <td>8476.3727</td>
+      <td>8476.3727</td>
+      <td>8533.2029</td>
+      <td>8411.6777</td>
+      <td>8476.1848</td>
+      <td>2957712946.8846</td>
+    </tr>
+    <tr>
+      <th>^N225</th>
+      <td>22244.1858</td>
+      <td>22244.1858</td>
+      <td>22363.7705</td>
+      <td>22116.4795</td>
+      <td>22246.3437</td>
+      <td>96246287.5197</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can use
+<code class="docutils literal notranslate"><span class="pre">values</span></code> to select specific variables,
+<code class="docutils literal notranslate"><span class="pre">pd.Grouper()</span></code> to sample different date windows,
+and
+<code class="docutils literal notranslate"><span class="pre">aggfunc</span></code> to select specific aggregation functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">ind</span>
+    <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2015&#39;</span><span class="p">:]</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+        <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">),</span>
+        <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Index&#39;</span><span class="p">,</span>
+        <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="6" halign="left">min</th>
+      <th colspan="6" halign="left">max</th>
+    </tr>
+    <tr>
+      <th>Index</th>
+      <th>^DJI</th>
+      <th>^FTSE</th>
+      <th>^GSPC</th>
+      <th>^HSI</th>
+      <th>^IXIC</th>
+      <th>^N225</th>
+      <th>^DJI</th>
+      <th>^FTSE</th>
+      <th>^GSPC</th>
+      <th>^HSI</th>
+      <th>^IXIC</th>
+      <th>^N225</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2015-12-31</th>
+      <td>15666.4404</td>
+      <td>5874.1001</td>
+      <td>1867.6100</td>
+      <td>20556.5996</td>
+      <td>4506.4902</td>
+      <td>16795.9609</td>
+      <td>18312.3906</td>
+      <td>7104.0000</td>
+      <td>2130.8201</td>
+      <td>28442.7500</td>
+      <td>5218.8599</td>
+      <td>20868.0293</td>
+    </tr>
+    <tr>
+      <th>2016-12-31</th>
+      <td>15660.1797</td>
+      <td>5537.0000</td>
+      <td>1829.0800</td>
+      <td>18319.5801</td>
+      <td>4266.8398</td>
+      <td>14952.0195</td>
+      <td>19974.6191</td>
+      <td>7142.7998</td>
+      <td>2271.7200</td>
+      <td>24099.6992</td>
+      <td>5487.4399</td>
+      <td>19494.5293</td>
+    </tr>
+    <tr>
+      <th>2017-12-31</th>
+      <td>19732.4004</td>
+      <td>7099.2002</td>
+      <td>2257.8301</td>
+      <td>22134.4707</td>
+      <td>5429.0801</td>
+      <td>18335.6309</td>
+      <td>24837.5098</td>
+      <td>7687.7998</td>
+      <td>2690.1599</td>
+      <td>30003.4902</td>
+      <td>6994.7598</td>
+      <td>22939.1797</td>
+    </tr>
+    <tr>
+      <th>2018-12-31</th>
+      <td>21792.1992</td>
+      <td>6584.7002</td>
+      <td>2351.1001</td>
+      <td>24585.5293</td>
+      <td>6192.9199</td>
+      <td>19155.7402</td>
+      <td>26828.3906</td>
+      <td>7877.5000</td>
+      <td>2930.7500</td>
+      <td>33154.1211</td>
+      <td>8109.6899</td>
+      <td>24270.6191</td>
+    </tr>
+    <tr>
+      <th>2019-12-31</th>
+      <td>22686.2207</td>
+      <td>6692.7002</td>
+      <td>2447.8899</td>
+      <td>25064.3594</td>
+      <td>6463.5000</td>
+      <td>19561.9609</td>
+      <td>28645.2598</td>
+      <td>7686.6001</td>
+      <td>3240.0200</td>
+      <td>30157.4902</td>
+      <td>9022.3896</td>
+      <td>24066.1191</td>
+    </tr>
+    <tr>
+      <th>2020-12-31</th>
+      <td>18591.9297</td>
+      <td>4993.8999</td>
+      <td>2237.3999</td>
+      <td>21696.1309</td>
+      <td>6860.6699</td>
+      <td>16552.8301</td>
+      <td>30606.4805</td>
+      <td>7674.6001</td>
+      <td>3756.0701</td>
+      <td>29056.4199</td>
+      <td>12899.4199</td>
+      <td>27568.1504</td>
+    </tr>
+    <tr>
+      <th>2021-12-31</th>
+      <td>29982.6191</td>
+      <td>6407.5000</td>
+      <td>3700.6499</td>
+      <td>22744.8594</td>
+      <td>12609.1602</td>
+      <td>27013.2500</td>
+      <td>36488.6289</td>
+      <td>7420.7002</td>
+      <td>4793.0601</td>
+      <td>31084.9395</td>
+      <td>16057.4404</td>
+      <td>30670.0996</td>
+    </tr>
+    <tr>
+      <th>2022-12-31</th>
+      <td>28725.5098</td>
+      <td>6881.6001</td>
+      <td>3585.6201</td>
+      <td>16701.0293</td>
+      <td>10426.1904</td>
+      <td>24717.5293</td>
+      <td>36799.6484</td>
+      <td>7672.3999</td>
+      <td>4796.5601</td>
+      <td>24965.5508</td>
+      <td>15832.7998</td>
+      <td>29332.1602</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="mckinney_08_practice_02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="mckinney_10_practice.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">McKinney Chapter 10 - Practice (Blank)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Richard Herron<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

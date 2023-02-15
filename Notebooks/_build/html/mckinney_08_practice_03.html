@@ -308,6 +308,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_10_lecture.html">
+   McKinney Chapter 10 - Data Aggregation and Group Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice.html">
+     McKinney Chapter 10 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_03.html">
+     McKinney Chapter 10 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_04.html">
+     McKinney Chapter 10 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_02.html">
+     McKinney Chapter 10 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -1950,6 +1982,59 @@ Name the row indexes <code class="docutils literal notranslate"><span class="pre
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="s1">&#39;BAC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+    </tr>
+    <tr>
+      <th>Earnings Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-01-11 08:00:00-05:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2023-10-17 08:00:00-04:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">earnings</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
         <span class="n">objs</span><span class="o">=</span><span class="p">[</span><span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">.</span><span class="n">earnings_dates</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tickers</span><span class="o">.</span><span class="n">tickers</span><span class="p">],</span>
@@ -1960,7 +2045,7 @@ Name the row indexes <code class="docutils literal notranslate"><span class="pre
     <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">earnings</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<span class="n">earnings</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1998,39 +2083,18 @@ Name the row indexes <code class="docutils literal notranslate"><span class="pre
   </thead>
   <tbody>
     <tr>
-      <th>2023-04-14 08:00:00-04:00</th>
-      <th>PNC</th>
-      <td>3.7100</td>
+      <th>2024-01-11 08:00:00-05:00</th>
+      <th>BAC</th>
       <td>NaN</td>
       <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>2023-01-18 01:00:00-05:00</th>
-      <th>PNC</th>
-      <td>3.9500</td>
-      <td>3.4700</td>
-      <td>-0.1206</td>
-    </tr>
-    <tr>
-      <th>2022-10-14 02:00:00-04:00</th>
-      <th>PNC</th>
-      <td>3.6900</td>
-      <td>3.7800</td>
-      <td>0.0247</td>
-    </tr>
-    <tr>
-      <th>2022-07-15 02:00:00-04:00</th>
-      <th>PNC</th>
-      <td>3.1200</td>
-      <td>3.3900</td>
-      <td>0.0869</td>
-    </tr>
-    <tr>
-      <th>2022-04-14 02:00:00-04:00</th>
-      <th>PNC</th>
-      <td>2.7300</td>
-      <td>3.2300</td>
-      <td>0.1836</td>
+      <th>2023-10-17 08:00:00-04:00</th>
+      <th>BAC</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -2049,7 +2113,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 <span class="n">returns</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;America/New_York&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
 <span class="n">returns_long</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;Returns&#39;</span><span class="p">)</span>
 <span class="n">returns_long</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Variable&#39;</span>
-<span class="n">returns_long</span>
+<span class="n">returns_long</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2107,35 +2171,8 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
       <th>BAC</th>
       <td>0.0000</td>
     </tr>
-    <tr>
-      <th>...</th>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th rowspan="5" valign="top">2023-02-14 16:00:00-05:00</th>
-      <th>C</th>
-      <td>-0.0008</td>
-    </tr>
-    <tr>
-      <th>GS</th>
-      <td>-0.0041</td>
-    </tr>
-    <tr>
-      <th>JPM</th>
-      <td>-0.0006</td>
-    </tr>
-    <tr>
-      <th>MS</th>
-      <td>0.0057</td>
-    </tr>
-    <tr>
-      <th>PNC</th>
-      <td>-0.0068</td>
-    </tr>
   </tbody>
 </table>
-<p>60502 rows × 1 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2149,8 +2186,6 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
         <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;forward&#39;</span><span class="p">,</span>
         <span class="n">allow_exact_matches</span><span class="o">=</span><span class="kc">False</span>
     <span class="p">)</span>
-    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
 <span class="p">)</span>
 
@@ -2178,7 +2213,6 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <tr style="text-align: right;">
       <th></th>
       <th>Variable</th>
-      <th>index</th>
       <th>EPS Estimate</th>
       <th>Reported EPS</th>
       <th>Surprise(%)</th>
@@ -2191,14 +2225,12 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2021-04-14 03:00:00-04:00</th>
       <th>GS</th>
-      <td>0</td>
       <td>10.2200</td>
       <td>18.6000</td>
       <td>0.8194</td>
@@ -2207,7 +2239,6 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <tr>
       <th>2021-04-16 03:00:00-04:00</th>
       <th>MS</th>
-      <td>1</td>
       <td>1.7000</td>
       <td>2.1900</td>
       <td>0.2890</td>
@@ -2216,7 +2247,6 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <tr>
       <th>2021-07-13 03:00:00-04:00</th>
       <th>GS</th>
-      <td>2</td>
       <td>10.2400</td>
       <td>15.0200</td>
       <td>0.4668</td>
@@ -2225,7 +2255,6 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <tr>
       <th>2021-07-15 03:00:00-04:00</th>
       <th>MS</th>
-      <td>3</td>
       <td>1.6500</td>
       <td>1.8500</td>
       <td>0.1185</td>
@@ -2234,11 +2263,81 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
     <tr>
       <th>2021-10-14 03:00:00-04:00</th>
       <th>MS</th>
-      <td>4</td>
       <td>1.6900</td>
       <td>1.9800</td>
       <td>0.1751</td>
       <td>0.0248</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">surprises</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>EPS Estimate</th>
+      <th>Reported EPS</th>
+      <th>Surprise(%)</th>
+      <th>Returns</th>
+    </tr>
+    <tr>
+      <th>Variable</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>EPS Estimate</th>
+      <td>1.0000</td>
+      <td>0.9444</td>
+      <td>0.3620</td>
+      <td>-0.2239</td>
+    </tr>
+    <tr>
+      <th>Reported EPS</th>
+      <td>0.9444</td>
+      <td>1.0000</td>
+      <td>0.6171</td>
+      <td>-0.0615</td>
+    </tr>
+    <tr>
+      <th>Surprise(%)</th>
+      <td>0.3620</td>
+      <td>0.6171</td>
+      <td>1.0000</td>
+      <td>0.4397</td>
+    </tr>
+    <tr>
+      <th>Returns</th>
+      <td>-0.2239</td>
+      <td>-0.0615</td>
+      <td>0.4397</td>
+      <td>1.0000</td>
     </tr>
   </tbody>
 </table>
@@ -2272,7 +2371,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_08_practice_03_39_0.png" src="_images/mckinney_08_practice_03_39_0.png" />
+<img alt="_images/mckinney_08_practice_03_41_0.png" src="_images/mckinney_08_practice_03_41_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2301,7 +2400,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_08_practice_03_41_0.png" src="_images/mckinney_08_practice_03_41_0.png" />
+<img alt="_images/mckinney_08_practice_03_43_0.png" src="_images/mckinney_08_practice_03_43_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2335,7 +2434,7 @@ For example, if a firm announces earnings after the close at 5 PM on February 7,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_08_practice_03_43_0.png" src="_images/mckinney_08_practice_03_43_0.png" />
+<img alt="_images/mckinney_08_practice_03_45_0.png" src="_images/mckinney_08_practice_03_45_0.png" />
 </div>
 </div>
 <p><em><strong>There is a positive relation between announcment returns and earnings surprises!</strong></em>
@@ -2627,7 +2726,7 @@ Of course, to say more we need more data and to control for market movements, bu
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_08_practice_03_52_0.png" src="_images/mckinney_08_practice_03_52_0.png" />
+<img alt="_images/mckinney_08_practice_03_54_0.png" src="_images/mckinney_08_practice_03_54_0.png" />
 </div>
 </div>
 </section>
@@ -2685,7 +2784,7 @@ We need to add a timezone and the closing time to the market return from Fama an
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_08_practice_03_57_0.png" src="_images/mckinney_08_practice_03_57_0.png" />
+<img alt="_images/mckinney_08_practice_03_59_0.png" src="_images/mckinney_08_practice_03_59_0.png" />
 </div>
 </div>
 </section>
@@ -2959,7 +3058,7 @@ The current version of <code class="docutils literal notranslate"><span class="p
       <td>NaN</td>
       <td>0.1283</td>
       <td>NaN</td>
-      <td>469033600.0000</td>
+      <td>469033600</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2980,7 +3079,7 @@ The current version of <code class="docutils literal notranslate"><span class="p
       <td>NaN</td>
       <td>0.1222</td>
       <td>NaN</td>
-      <td>175884800.0000</td>
+      <td>175884800</td>
       <td>NaN</td>
       <td>-0.0522</td>
       <td>NaN</td>
@@ -3001,7 +3100,7 @@ The current version of <code class="docutils literal notranslate"><span class="p
       <td>NaN</td>
       <td>0.1133</td>
       <td>NaN</td>
-      <td>105728000.0000</td>
+      <td>105728000</td>
       <td>NaN</td>
       <td>-0.0734</td>
       <td>NaN</td>
@@ -3022,7 +3121,7 @@ The current version of <code class="docutils literal notranslate"><span class="p
       <td>NaN</td>
       <td>0.1155</td>
       <td>NaN</td>
-      <td>86441600.0000</td>
+      <td>86441600</td>
       <td>NaN</td>
       <td>0.0248</td>
       <td>NaN</td>
@@ -3043,7 +3142,7 @@ The current version of <code class="docutils literal notranslate"><span class="p
       <td>NaN</td>
       <td>0.1189</td>
       <td>NaN</td>
-      <td>73449600.0000</td>
+      <td>73449600</td>
       <td>NaN</td>
       <td>0.0290</td>
       <td>NaN</td>

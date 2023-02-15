@@ -187,6 +187,12 @@ def download(**kwargs):
 # In[15]:
 
 
+tickers.tickers['BAC'].earnings_dates.head(2)
+
+
+# In[16]:
+
+
 earnings = (
     pd.concat(
         objs=[tickers.tickers[t].earnings_dates for t in tickers.tickers],
@@ -197,7 +203,7 @@ earnings = (
     .rename_axis(columns='Variable')
 )
 
-earnings.tail()
+earnings.head(2)
 
 
 # ### Combine `earnings` with the returns from `stocks_long`.
@@ -207,17 +213,17 @@ earnings.tail()
 # Use [`pd.merge_asof()`](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.merge_asof.html) to match earnings announcement dates and times to appropriate return periods.
 # For example, if a firm announces earnings after the close at 5 PM on February 7, we want to match the return period from 4 PM on February 7 to 4 PM on February 8.
 
-# In[16]:
+# In[17]:
 
 
 returns = stocks['Returns']
 returns.index = returns.index.tz_localize('America/New_York') + pd.to_timedelta(16, unit='h')
 returns_long = returns.stack().to_frame('Returns')
 returns_long.columns.name = 'Variable'
-returns_long
+returns_long.head()
 
 
-# In[17]:
+# In[18]:
 
 
 surprises = (
@@ -229,12 +235,16 @@ surprises = (
         direction='forward',
         allow_exact_matches=False
     )
-    .dropna()
-    .reset_index()
     .set_index(['Date', 'Ticker'])
 )
 
 surprises.head()
+
+
+# In[19]:
+
+
+surprises.corr()
 
 
 # ### Plot the relation between daily returns and earnings surprises
@@ -245,7 +255,7 @@ surprises.head()
 # 1. Scatter plot with a best-fit line using `regplot()` from the seaborn package
 # 1. Bar plot using `barplot()` from the seaborn package after using `pd.qcut()` to form five groups on earnings surprises
 
-# In[18]:
+# In[20]:
 
 
 (
@@ -263,13 +273,13 @@ plt.title(f'Earnings Announcements\n for {_}\n from {__.min():%B %Y} to {__.max(
 plt.show()
 
 
-# In[19]:
+# In[21]:
 
 
 import seaborn as sns
 
 
-# In[20]:
+# In[22]:
 
 
 sns.regplot(
@@ -287,13 +297,13 @@ plt.title(f'Earnings Announcements\n for {_}\n from {__.min():%B %Y} to {__.max(
 plt.show()
 
 
-# In[21]:
+# In[23]:
 
 
 surprises['ESQ'] = pd.qcut(x=surprises['Surprise(%)'], q=5, labels=False)
 
 
-# In[22]:
+# In[24]:
 
 
 sns.barplot(
@@ -321,25 +331,25 @@ plt.show()
 
 # ### Repeat the earnings exercise with the S&P 100 stocks
 
-# In[23]:
+# In[25]:
 
 
 wiki = pd.read_html('https://en.wikipedia.org/wiki/S%26P_100')
 
 
-# In[24]:
+# In[26]:
 
 
 symbols = wiki[2]['Symbol'].str.replace('.', '-', regex=False).to_list()
 
 
-# In[25]:
+# In[27]:
 
 
 tickers_2 = yf.Tickers(tickers=symbols, session=session)
 
 
-# In[26]:
+# In[28]:
 
 
 returns_2 = (
@@ -355,7 +365,7 @@ returns_2 = (
 returns_2.head()
 
 
-# In[27]:
+# In[29]:
 
 
 earnings_2 = (
@@ -368,7 +378,7 @@ earnings_2 = (
 )
 
 
-# In[28]:
+# In[30]:
 
 
 surprises_2 = (
@@ -385,7 +395,7 @@ surprises_2 = (
 )
 
 
-# In[29]:
+# In[31]:
 
 
 sns.barplot(
@@ -412,7 +422,7 @@ plt.show()
 # Excess returns are returns minus market returns.
 # We need to add a timezone and the closing time to the market return from Fama and French.
 
-# In[30]:
+# In[32]:
 
 
 Mkt = ff['Mkt-RF'].add(ff['RF'])
@@ -420,7 +430,7 @@ Mkt.index = Mkt.index.tz_localize('America/New_York') + pd.to_timedelta(16, unit
 returns_3 = returns_2.sub(Mkt, axis=0)
 
 
-# In[31]:
+# In[33]:
 
 
 surprises_3 = (
@@ -437,7 +447,7 @@ surprises_3 = (
 )
 
 
-# In[32]:
+# In[34]:
 
 
 sns.barplot(
@@ -465,7 +475,7 @@ plt.show()
 # Since we will not use the advanced functionality of the tickers object that `yf.Tickers()` creates, we will use `yf.download()`.
 # The current version of `yf.download()` does not accept a `session=` argument.
 
-# In[33]:
+# In[35]:
 
 
 def download(tickers):
@@ -500,13 +510,13 @@ def download(tickers):
         return histories.join(ff).rename_axis(columns=['Variable'])
 
 
-# In[34]:
+# In[36]:
 
 
 download(tickers='AAPL').head()
 
 
-# In[35]:
+# In[37]:
 
 
 download(tickers='AAPL TSLA').head()
