@@ -30,14 +30,14 @@ import requests_cache
 get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 get_ipython().run_line_magic('precision', '4')
 pd.options.display.float_format = '{:.4f}'.format
-session = requests_cache.CachedSession(expire_after='1D')
+session = requests_cache.CachedSession()
 
 
 # In[3]:
 
 
 tickers = yf.Tickers('AAPL IBM MSFT GOOG', session=session)
-prices = tickers.history(period='max', auto_adjust=False)
+prices = tickers.history(period='max', auto_adjust=False, progress=False)
 prices.index = prices.index.tz_localize(None)
 returns = prices['Adj Close'].pct_change().dropna()
 returns.columns.name = 'Ticker'
@@ -116,7 +116,7 @@ plt.show()
 
 def returns_many(x):
     tickers = yf.Tickers(tickers=x, session=session)
-    prices = tickers.history(period='max', auto_adjust=False)
+    prices = tickers.history(period='max', auto_adjust=False, progress=False)
     prices.index = prices.index.tz_localize(None)
     returns = prices['Adj Close'].pct_change().dropna()
     returns.columns.name = 'Ticker'

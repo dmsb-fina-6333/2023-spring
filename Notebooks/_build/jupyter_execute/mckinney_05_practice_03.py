@@ -31,14 +31,14 @@ import requests_cache
 get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
 get_ipython().run_line_magic('precision', '4')
 pd.options.display.float_format = '{:.4f}'.format
-session = requests_cache.CachedSession(expire_after='1D')
+session = requests_cache.CachedSession()
 
 
 # In[3]:
 
 
 tickers = yf.Tickers('AAPL IBM MSFT GOOG', session=session) # initiates a tickers object
-prices = tickers.history(period='max', auto_adjust=False) # downloads history data
+prices = tickers.history(period='max', auto_adjust=False, progress=False) # downloads history data
 prices.index = prices.index.tz_localize(None) # removes time zone data from index
 returns = prices['Adj Close'].pct_change().dropna() # calculates returns and drops dates with missing returns
 returns
@@ -134,7 +134,7 @@ symbols = pd.read_html('https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Avera
 
 
 tickers2 = yf.Tickers(tickers=symbols.to_list(), session=session)
-prices2 = tickers2.history(period='max', auto_adjust=False)
+prices2 = tickers2.history(period='max', auto_adjust=False, progress=False)
 prices2.index = prices2.index.tz_localize(None)
 returns2 = prices2['Adj Close'].pct_change().dropna()
 # returns2

@@ -36,7 +36,7 @@ pd.options.display.float_format = '{:.4f}'.format
 import yfinance as yf
 import pandas_datareader as pdr
 import requests_cache
-session = requests_cache.CachedSession(expire_after=1)
+session = requests_cache.CachedSession()
 
 
 # ## Hierarchical Indexing

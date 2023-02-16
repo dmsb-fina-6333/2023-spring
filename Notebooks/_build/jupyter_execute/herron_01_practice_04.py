@@ -49,7 +49,7 @@ session = requests_cache.CachedSession(expire_after=1)
 
 
 tickers = yf.Tickers('TSLA F AAPL AMZN META', session=session)
-histories = tickers.history(period='max', auto_adjust=False)
+histories = tickers.history(period='max', auto_adjust=False, progress=False)
 histories.index = histories.index.tz_localize(None)
 histories.columns.names = ['Variable', 'Ticker']
 histories.head()
@@ -62,7 +62,7 @@ histories.head()
 # In[5]:
 
 
-_ = yf.download('TSLA F AAPL AMZN META')
+_ = yf.download('TSLA F AAPL AMZN META', progress=False)
 _.head()
 
 

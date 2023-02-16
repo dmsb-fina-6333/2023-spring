@@ -43,7 +43,7 @@ session = requests_cache.CachedSession()
 
 
 tickers = yf.Tickers(tickers='BAC C GS JPM MS PNC', session=session)
-stocks = tickers.history(period='max', auto_adjust=False)
+stocks = tickers.history(period='max', auto_adjust=False, progress=False)
 stocks.index = stocks.index.tz_localize(None)
 stocks.columns.names = ['Variable', 'Ticker']
 stocks.head()

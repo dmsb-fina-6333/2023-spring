@@ -481,7 +481,7 @@ plt.show()
 def download(tickers):
 
     histories = (
-        yf.download(tickers)
+        yf.download(tickers, progress=False)
         .assign(Date=lambda x: x.index.tz_localize(None))
         .set_index('Date')
     )

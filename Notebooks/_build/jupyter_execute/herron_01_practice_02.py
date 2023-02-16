@@ -55,7 +55,7 @@ session = requests_cache.CachedSession(expire_after=1)
 
 
 tickers = yf.Tickers(tickers='TSLA F AAPL AMZN META', session=session)
-histories = tickers.history(period='max', auto_adjust=False)
+histories = tickers.history(period='max', auto_adjust=False, progress=False)
 histories.index = histories.index.tz_localize(None)
 histories.columns.names = ['Variable', 'Ticker']
 histories.head()

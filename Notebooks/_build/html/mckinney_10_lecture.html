@@ -896,7 +896,7 @@ mockup of a simple group aggregation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x000001441D906040&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7fbd0ac92cd0&gt;
 </pre></div>
 </div>
 </div>
@@ -2464,24 +2464,10 @@ It is worthwhile to read-through the <code class="docutils literal notranslate">
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span>\<span class="n">ipykernel_7872</span>\<span class="mf">4138742815.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="p">)</span>
-
-<span class="ne">TypeError</span>: download() got an unexpected keyword argument &#39;session&#39;
 </pre></div>
 </div>
 </div>
@@ -2532,57 +2518,57 @@ It is worthwhile to read-through the <code class="docutils literal notranslate">
   <tbody>
     <tr>
       <th>^DJI</th>
-      <td>25101.3432</td>
-      <td>25101.3432</td>
-      <td>25237.9942</td>
-      <td>24951.1205</td>
-      <td>25100.2526</td>
-      <td>285484050.0511</td>
+      <td>25448.9203</td>
+      <td>25448.9203</td>
+      <td>25588.6550</td>
+      <td>25293.7818</td>
+      <td>25446.0673</td>
+      <td>309452945.4565</td>
     </tr>
     <tr>
       <th>^FTSE</th>
-      <td>6954.4094</td>
-      <td>6954.4094</td>
-      <td>6996.5218</td>
-      <td>6911.3324</td>
-      <td>6954.2785</td>
-      <td>807274505.2953</td>
+      <td>6977.6046</td>
+      <td>6977.6046</td>
+      <td>7019.3036</td>
+      <td>6934.4892</td>
+      <td>6976.9303</td>
+      <td>805063364.4423</td>
     </tr>
     <tr>
       <th>^GSPC</th>
-      <td>2956.2444</td>
-      <td>2956.2444</td>
-      <td>2972.1278</td>
-      <td>2938.3290</td>
-      <td>2956.1227</td>
-      <td>3850057242.0838</td>
+      <td>2997.9901</td>
+      <td>2997.9901</td>
+      <td>3014.4023</td>
+      <td>2979.3600</td>
+      <td>2997.6505</td>
+      <td>4017817294.2326</td>
     </tr>
     <tr>
       <th>^HSI</th>
-      <td>25357.7610</td>
-      <td>25357.7610</td>
-      <td>25520.1852</td>
-      <td>25187.0815</td>
-      <td>25374.7283</td>
-      <td>1949267156.8894</td>
+      <td>25088.7320</td>
+      <td>25088.7320</td>
+      <td>25252.9794</td>
+      <td>24915.4318</td>
+      <td>25104.2906</td>
+      <td>1986187303.1484</td>
     </tr>
     <tr>
       <th>^IXIC</th>
-      <td>8476.3727</td>
-      <td>8476.3727</td>
-      <td>8533.2029</td>
-      <td>8411.6777</td>
-      <td>8476.1848</td>
-      <td>2957712946.8846</td>
+      <td>8587.1464</td>
+      <td>8587.1464</td>
+      <td>8645.9589</td>
+      <td>8519.9610</td>
+      <td>8586.2742</td>
+      <td>3063981315.2493</td>
     </tr>
     <tr>
       <th>^N225</th>
-      <td>22244.1858</td>
-      <td>22244.1858</td>
-      <td>22363.7705</td>
-      <td>22116.4795</td>
-      <td>22246.3437</td>
-      <td>96246287.5197</td>
+      <td>22461.8920</td>
+      <td>22461.8920</td>
+      <td>22581.1481</td>
+      <td>22334.8007</td>
+      <td>22464.0279</td>
+      <td>95197984.8866</td>
     </tr>
   </tbody>
 </table>
@@ -2668,7 +2654,7 @@ and
   </thead>
   <tbody>
     <tr>
-      <th>2015-12-31</th>
+      <th>2015-12-31 00:00:00+00:00</th>
       <td>15666.4404</td>
       <td>5874.1001</td>
       <td>1867.6100</td>
@@ -2683,7 +2669,7 @@ and
       <td>20868.0293</td>
     </tr>
     <tr>
-      <th>2016-12-31</th>
+      <th>2016-12-31 00:00:00+00:00</th>
       <td>15660.1797</td>
       <td>5537.0000</td>
       <td>1829.0800</td>
@@ -2698,7 +2684,7 @@ and
       <td>19494.5293</td>
     </tr>
     <tr>
-      <th>2017-12-31</th>
+      <th>2017-12-31 00:00:00+00:00</th>
       <td>19732.4004</td>
       <td>7099.2002</td>
       <td>2257.8301</td>
@@ -2713,7 +2699,7 @@ and
       <td>22939.1797</td>
     </tr>
     <tr>
-      <th>2018-12-31</th>
+      <th>2018-12-31 00:00:00+00:00</th>
       <td>21792.1992</td>
       <td>6584.7002</td>
       <td>2351.1001</td>
@@ -2728,7 +2714,7 @@ and
       <td>24270.6191</td>
     </tr>
     <tr>
-      <th>2019-12-31</th>
+      <th>2019-12-31 00:00:00+00:00</th>
       <td>22686.2207</td>
       <td>6692.7002</td>
       <td>2447.8899</td>
@@ -2743,7 +2729,7 @@ and
       <td>24066.1191</td>
     </tr>
     <tr>
-      <th>2020-12-31</th>
+      <th>2020-12-31 00:00:00+00:00</th>
       <td>18591.9297</td>
       <td>4993.8999</td>
       <td>2237.3999</td>
@@ -2758,7 +2744,7 @@ and
       <td>27568.1504</td>
     </tr>
     <tr>
-      <th>2021-12-31</th>
+      <th>2021-12-31 00:00:00+00:00</th>
       <td>29982.6191</td>
       <td>6407.5000</td>
       <td>3700.6499</td>
@@ -2773,12 +2759,12 @@ and
       <td>30670.0996</td>
     </tr>
     <tr>
-      <th>2022-12-31</th>
+      <th>2022-12-31 00:00:00+00:00</th>
       <td>28725.5098</td>
-      <td>6881.6001</td>
-      <td>3585.6201</td>
-      <td>16701.0293</td>
-      <td>10426.1904</td>
+      <td>6826.2002</td>
+      <td>3577.0300</td>
+      <td>14687.0195</td>
+      <td>10213.2900</td>
       <td>24717.5293</td>
       <td>36799.6484</td>
       <td>7672.3999</td>
@@ -2786,6 +2772,21 @@ and
       <td>24965.5508</td>
       <td>15832.7998</td>
       <td>29332.1602</td>
+    </tr>
+    <tr>
+      <th>2023-12-31 00:00:00+00:00</th>
+      <td>32930.0781</td>
+      <td>7554.1001</td>
+      <td>3808.1001</td>
+      <td>20145.2891</td>
+      <td>10305.2402</td>
+      <td>25716.8594</td>
+      <td>34302.6094</td>
+      <td>8012.5298</td>
+      <td>4179.7598</td>
+      <td>22688.9004</td>
+      <td>12200.8203</td>
+      <td>27696.4395</td>
     </tr>
   </tbody>
 </table>

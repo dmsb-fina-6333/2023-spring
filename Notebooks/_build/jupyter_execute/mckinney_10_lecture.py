@@ -421,7 +421,7 @@ df.groupby('key1').apply(top, col='data2', n=2)
 
 
 ind = (
-    yf.download(tickers='^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI', session=session)
+    yf.download(tickers='^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI', progress=False)
     .rename_axis(columns=['Variable', 'Index'])
     .stack()
 )
@@ -429,7 +429,7 @@ ind = (
 
 # The default aggregation function for `.pivot_table()` is `mean`.
 
-# In[42]:
+# In[39]:
 
 
 ind.loc['2015':].pivot_table(index='Index')
@@ -441,7 +441,7 @@ ind.loc['2015':].pivot_table(index='Index')
 #     and 
 #     `aggfunc` to select specific aggregation functions.
 
-# In[43]:
+# In[40]:
 
 
 (

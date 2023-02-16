@@ -974,7 +974,7 @@ tickers = yf.Tickers('AAPL IBM MSFT GOOG', session=session)
 # In[117]:
 
 
-prices = tickers.history(period='max', auto_adjust=False)
+prices = tickers.history(period='max', auto_adjust=False, progress=False)
 
 
 # In[118]:
