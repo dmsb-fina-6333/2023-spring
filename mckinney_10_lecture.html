@@ -322,11 +322,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="mckinney_10_practice_03.html">
-     McKinney Chapter 10 - Practice (Monday 2:45 PM, Section 3)
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="mckinney_10_practice_04.html">
      McKinney Chapter 10 - Practice (Wednesday 11:45 AM, Section 4)
     </a>
@@ -896,7 +891,7 @@ mockup of a simple group aggregation.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7fbd0ac92cd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7fa28a269e50&gt;
 </pre></div>
 </div>
 </div>
@@ -1937,6 +1932,77 @@ These functions should accept an array and returns a single value.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;key1&#39;</span><span class="p">,</span> <span class="s1">&#39;data1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>a</td>
+      <td>one</td>
+      <td>-0.2342</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>two</td>
+      <td>-0.1383</td>
+      <td>1.5792</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>one</td>
+      <td>0.4967</td>
+      <td>-0.2341</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>b</td>
+      <td>one</td>
+      <td>0.6477</td>
+      <td>0.7674</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>two</td>
+      <td>1.5230</td>
+      <td>-0.4695</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)[</span><span class="s1">&#39;data1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">max_minus_min</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2306,6 +2372,67 @@ We can use the <code class="docutils literal notranslate"><span class="pre">.app
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;data1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <th>4</th>
+      <td>a</td>
+      <td>one</td>
+      <td>-0.2342</td>
+      <td>0.5426</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <th>2</th>
+      <td>b</td>
+      <td>one</td>
+      <td>0.6477</td>
+      <td>0.7674</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;data1&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2379,9 +2506,25 @@ We can use the <code class="docutils literal notranslate"><span class="pre">.app
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="pivot-tables-and-cross-tabulation">
+<h2>Pivot Tables and Cross-Tabulation<a class="headerlink" href="#pivot-tables-and-cross-tabulation" title="Permalink to this headline">#</a></h2>
+<p>Above we manually made pivot tables with the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>, <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>, <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.unstack()</span></code> methods.
+pandas provides a literal interpreation of Excel-style pivot tables with the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> method and the <code class="docutils literal notranslate"><span class="pre">pandas.pivot_table()</span></code> function.
+These also provide row and column totals via “margins”.
+It is worthwhile to read-through the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> docstring several times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;data2&#39;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span>
+        <span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span>
+        <span class="n">progress</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">ind</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2404,14 +2547,18 @@ We can use the <code class="docutils literal notranslate"><span class="pre">.app
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th></th>
-      <th>key1</th>
-      <th>key2</th>
-      <th>data1</th>
-      <th>data2</th>
+      <th>Variable</th>
+      <th>Adj Close</th>
+      <th>Close</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Open</th>
+      <th>Volume</th>
     </tr>
     <tr>
-      <th>key1</th>
+      <th>Date</th>
+      <th>Index</th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -2421,56 +2568,58 @@ We can use the <code class="docutils literal notranslate"><span class="pre">.app
   </thead>
   <tbody>
     <tr>
-      <th rowspan="2" valign="top">a</th>
-      <th>0</th>
-      <td>a</td>
-      <td>one</td>
-      <td>0.4967</td>
-      <td>-0.2341</td>
+      <th>1927-12-30 05:00:00+00:00</th>
+      <th>^GSPC</th>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>0.0000</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>a</td>
-      <td>one</td>
-      <td>-0.2342</td>
-      <td>0.5426</td>
+      <th>1928-01-03 05:00:00+00:00</th>
+      <th>^GSPC</th>
+      <td>17.7600</td>
+      <td>17.7600</td>
+      <td>17.7600</td>
+      <td>17.7600</td>
+      <td>17.7600</td>
+      <td>0.0000</td>
     </tr>
     <tr>
-      <th rowspan="2" valign="top">b</th>
-      <th>3</th>
-      <td>b</td>
-      <td>two</td>
-      <td>1.5230</td>
-      <td>-0.4695</td>
+      <th>1928-01-04 05:00:00+00:00</th>
+      <th>^GSPC</th>
+      <td>17.7200</td>
+      <td>17.7200</td>
+      <td>17.7200</td>
+      <td>17.7200</td>
+      <td>17.7200</td>
+      <td>0.0000</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>b</td>
-      <td>one</td>
-      <td>0.6477</td>
-      <td>0.7674</td>
+      <th>1928-01-05 05:00:00+00:00</th>
+      <th>^GSPC</th>
+      <td>17.5500</td>
+      <td>17.5500</td>
+      <td>17.5500</td>
+      <td>17.5500</td>
+      <td>17.5500</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>1928-01-06 05:00:00+00:00</th>
+      <th>^GSPC</th>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>17.6600</td>
+      <td>0.0000</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
-</div>
-</section>
-<section id="pivot-tables-and-cross-tabulation">
-<h2>Pivot Tables and Cross-Tabulation<a class="headerlink" href="#pivot-tables-and-cross-tabulation" title="Permalink to this headline">#</a></h2>
-<p>Above we manually made pivot tables with the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>, <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>, <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> and <code class="docutils literal notranslate"><span class="pre">.unstack()</span></code> methods.
-pandas provides a literal interpreation of Excel-style pivot tables with the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> method and the <code class="docutils literal notranslate"><span class="pre">pandas.pivot_table()</span></code> function.
-These also provide row and column totals via “margins”.
-It is worthwhile to read-through the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> docstring several times.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
 </div>
 <p>The default aggregation function for <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> is <code class="docutils literal notranslate"><span class="pre">mean</span></code>.</p>
 <div class="cell docutils container">
@@ -2518,57 +2667,158 @@ It is worthwhile to read-through the <code class="docutils literal notranslate">
   <tbody>
     <tr>
       <th>^DJI</th>
-      <td>25448.9203</td>
-      <td>25448.9203</td>
-      <td>25588.6550</td>
-      <td>25293.7818</td>
-      <td>25446.0673</td>
-      <td>309452945.4565</td>
+      <td>25452.9456</td>
+      <td>25452.9456</td>
+      <td>25592.6645</td>
+      <td>25297.7994</td>
+      <td>25450.0882</td>
+      <td>309387742.9595</td>
     </tr>
     <tr>
       <th>^FTSE</th>
-      <td>6977.6046</td>
-      <td>6977.6046</td>
-      <td>7019.3036</td>
-      <td>6934.4892</td>
-      <td>6976.9303</td>
-      <td>805063364.4423</td>
+      <td>6978.1045</td>
+      <td>6978.1045</td>
+      <td>7019.7872</td>
+      <td>6934.9874</td>
+      <td>6977.4345</td>
+      <td>805027770.8861</td>
     </tr>
     <tr>
       <th>^GSPC</th>
-      <td>2997.9901</td>
-      <td>2997.9901</td>
-      <td>3014.4023</td>
-      <td>2979.3600</td>
-      <td>2997.6505</td>
-      <td>4017817294.2326</td>
+      <td>2998.5095</td>
+      <td>2998.5095</td>
+      <td>3014.9221</td>
+      <td>2979.8820</td>
+      <td>2998.1779</td>
+      <td>4017423895.9453</td>
     </tr>
     <tr>
       <th>^HSI</th>
-      <td>25088.7320</td>
-      <td>25088.7320</td>
-      <td>25252.9794</td>
-      <td>24915.4318</td>
-      <td>25104.2906</td>
-      <td>1986187303.1484</td>
+      <td>25086.5497</td>
+      <td>25086.5497</td>
+      <td>25250.8833</td>
+      <td>24913.3281</td>
+      <td>25102.2198</td>
+      <td>1986284344.3556</td>
     </tr>
     <tr>
       <th>^IXIC</th>
-      <td>8587.1464</td>
-      <td>8587.1464</td>
-      <td>8645.9589</td>
-      <td>8519.9610</td>
-      <td>8586.2742</td>
-      <td>3063981315.2493</td>
+      <td>8588.6760</td>
+      <td>8588.6760</td>
+      <td>8647.5013</td>
+      <td>8521.5014</td>
+      <td>8587.8332</td>
+      <td>3064215089.3991</td>
     </tr>
     <tr>
       <th>^N225</th>
-      <td>22461.8920</td>
-      <td>22461.8920</td>
-      <td>22581.1481</td>
-      <td>22334.8007</td>
-      <td>22464.0279</td>
-      <td>95197984.8866</td>
+      <td>22464.4354</td>
+      <td>22464.4354</td>
+      <td>22583.6795</td>
+      <td>22337.3847</td>
+      <td>22466.5559</td>
+      <td>95184340.3827</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2015&#39;</span><span class="p">:]</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Index&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Adj Close</th>
+      <th>Close</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Open</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>^DJI</th>
+      <td>25410.0293</td>
+      <td>25410.0293</td>
+      <td>25551.5605</td>
+      <td>25243.8809</td>
+      <td>25388.0801</td>
+      <td>295530000.0000</td>
+    </tr>
+    <tr>
+      <th>^FTSE</th>
+      <td>7117.8999</td>
+      <td>7117.8999</td>
+      <td>7157.6001</td>
+      <td>7075.3000</td>
+      <td>7117.2500</td>
+      <td>761379050.0000</td>
+    </tr>
+    <tr>
+      <th>^GSPC</th>
+      <td>2808.4800</td>
+      <td>2808.4800</td>
+      <td>2821.2400</td>
+      <td>2794.9900</td>
+      <td>2809.3999</td>
+      <td>3811730000.0000</td>
+    </tr>
+    <tr>
+      <th>^HSI</th>
+      <td>25246.0049</td>
+      <td>25246.0049</td>
+      <td>25426.9102</td>
+      <td>25065.5693</td>
+      <td>25274.1494</td>
+      <td>1823411600.0000</td>
+    </tr>
+    <tr>
+      <th>^IXIC</th>
+      <td>7725.5898</td>
+      <td>7725.5898</td>
+      <td>7760.8301</td>
+      <td>7665.2998</td>
+      <td>7702.0498</td>
+      <td>2263640000.0000</td>
+    </tr>
+    <tr>
+      <th>^N225</th>
+      <td>21847.0352</td>
+      <td>21847.0352</td>
+      <td>21955.6143</td>
+      <td>21732.5146</td>
+      <td>21863.8301</td>
+      <td>80850000.0000</td>
     </tr>
   </tbody>
 </table>
@@ -2782,7 +3032,7 @@ and
       <td>10305.2402</td>
       <td>25716.8594</td>
       <td>34302.6094</td>
-      <td>8012.5298</td>
+      <td>8012.5000</td>
       <td>4179.7598</td>
       <td>22688.9004</td>
       <td>12200.8203</td>
