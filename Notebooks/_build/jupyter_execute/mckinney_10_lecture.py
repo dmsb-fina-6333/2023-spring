@@ -4,7 +4,7 @@
 # # McKinney Chapter 10 - Data Aggregation and Group Operations
 
 # ## Introduction
-# 
+
 # Chapter 10 of Wes McKinney's [*Python for Data Analysis*](https://wesmckinney.com/book/) discusses groupby operations, which are the pandas equivalent of Excel pivot tables.
 # Pivot tables help us calculate statistics (e.g., sum, mean, and median) for one set of variables by groups of other variables (e.g., weekday or ticker).
 # For example, we could use a pivot table to calculate mean daily stock returns by weekday.
@@ -332,12 +332,18 @@ def max_minus_min(arr):
 # In[29]:
 
 
+df.sort_values(by=['key1', 'data1'])
+
+
+# In[30]:
+
+
 df.groupby('key1')['data1'].agg(max_minus_min)
 
 
 # Some other methods work, too, even if they are do not aggregate an array to a single value.
 
-# In[30]:
+# In[31]:
 
 
 df.groupby('key1')['data1'].describe()
@@ -352,13 +358,13 @@ df.groupby('key1')['data1'].describe()
 
 # Here is an example with multiple functions:
 
-# In[31]:
+# In[32]:
 
 
 df.groupby('key1')['data1'].agg(['mean', 'median', 'min', 'max'])
 
 
-# In[32]:
+# In[33]:
 
 
 df.groupby('key1')[['data1', 'data2']].agg(['mean', 'median', 'min', 'max'])
@@ -366,7 +372,7 @@ df.groupby('key1')[['data1', 'data2']].agg(['mean', 'median', 'min', 'max'])
 
 # What if I wanted to calculate the mean of `data1` and the median of `data2` by `key1`?
 
-# In[33]:
+# In[34]:
 
 
 df.groupby('key1').agg({'data1': 'mean', 'data2': 'median'})
@@ -374,14 +380,14 @@ df.groupby('key1').agg({'data1': 'mean', 'data2': 'median'})
 
 # What if I wanted to calculate the mean *and standard deviation* of `data1` and the median of `data2` by `key1`?
 
-# In[34]:
+# In[35]:
 
 
 df.groupby('key1').agg({'data1': ['mean', 'std'], 'data2': 'median'})
 
 
 # ## Apply: General split-apply-combine
-# 
+
 # The `.agg()` method aggrates an array to a single value.
 # We can use the `.apply()` method for more general calculations.
 # 
@@ -391,48 +397,59 @@ df.groupby('key1').agg({'data1': ['mean', 'std'], 'data2': 'median'})
 # 2. Call the applied function on each chunk of the original dataframe
 # 3. Recombine the output of the applied function
 
-# In[35]:
+# In[36]:
 
 
 def top(x, col, n=1):
     return x.sort_values(col).head(n)
 
 
-# In[36]:
+# In[37]:
+
+
+df.groupby('key1').apply(top, col='data1')
+
+
+# In[38]:
 
 
 df.groupby('key1').apply(top, col='data1', n=2)
 
 
-# In[37]:
-
-
-df.groupby('key1').apply(top, col='data2', n=2)
-
-
 # ## Pivot Tables and Cross-Tabulation
-# 
+
 # Above we manually made pivot tables with the `groupby()`, `.agg()`, `.apply()` and `.unstack()` methods.
 # pandas provides a literal interpreation of Excel-style pivot tables with the `.pivot_table()` method and the `pandas.pivot_table()` function.
 # These also provide row and column totals via "margins".
 # It is worthwhile to read-through the `.pivot_table()` docstring several times.
 
-# In[38]:
+# In[39]:
 
 
 ind = (
-    yf.download(tickers='^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI', progress=False)
+    yf.download(
+        tickers='^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI',
+        progress=False
+    )
     .rename_axis(columns=['Variable', 'Index'])
     .stack()
 )
 
+ind.head()
+
 
 # The default aggregation function for `.pivot_table()` is `mean`.
 
-# In[39]:
+# In[40]:
 
 
 ind.loc['2015':].pivot_table(index='Index')
+
+
+# In[41]:
+
+
+ind.loc['2015':].pivot_table(index='Index', aggfunc='median')
 
 
 # We can use 
@@ -441,7 +458,7 @@ ind.loc['2015':].pivot_table(index='Index')
 #     and 
 #     `aggfunc` to select specific aggregation functions.
 
-# In[40]:
+# In[42]:
 
 
 (
@@ -455,4 +472,10 @@ ind.loc['2015':].pivot_table(index='Index')
         aggfunc=['min', 'max']
     )
 )
+
+
+# In[ ]:
+
+
+
 
