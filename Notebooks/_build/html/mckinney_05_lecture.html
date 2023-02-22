@@ -324,18 +324,25 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="mckinney_10_practice_03.html">
-     McKinney Chapter 10 - Practice (Monday 2:45 PM, Section 3)
+    <a class="reference internal" href="mckinney_10_practice_all.html">
+     McKinney Chapter 10 - Practice (All Sections)
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_11_lecture.html">
+   McKinney Chapter 11 - Time Series
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="mckinney_10_practice_04.html">
-     McKinney Chapter 10 - Practice (Wednesday 11:45 AM, Section 4)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mckinney_10_practice_02.html">
-     McKinney Chapter 10 - Practice (Wednesday 2:45 PM, Section 2)
+    <a class="reference internal" href="mckinney_11_practice.html">
+     McKinney Chapter 11 - Practice (Blank)
     </a>
    </li>
   </ul>
@@ -360,6 +367,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="quiz_03.html">
    Quiz 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_04.html">
+   Quiz 4
   </a>
  </li>
 </ul>
@@ -4182,7 +4194,7 @@ Here is an example of the speed costs of <code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.58 µs ± 245 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.4 µs ± 1.38 µs per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 </pre></div>
 </div>
 </div>
@@ -4194,7 +4206,7 @@ Here is an example of the speed costs of <code class="docutils literal notransla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26.8 µs ± 459 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33.2 µs ± 3.29 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
 </pre></div>
 </div>
 </div>
@@ -4544,27 +4556,6 @@ If we are running Python in the cloud, we may need to run the <code class="docut
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-02-10</th>
-      <td>151.0100</td>
-      <td>94.8600</td>
-      <td>135.6000</td>
-      <td>262.4427</td>
-    </tr>
-    <tr>
-      <th>2023-02-13</th>
-      <td>153.8500</td>
-      <td>95.0000</td>
-      <td>137.3500</td>
-      <td>270.6421</td>
-    </tr>
-    <tr>
-      <th>2023-02-14</th>
-      <td>153.2000</td>
-      <td>94.9500</td>
-      <td>136.0100</td>
-      <td>271.4900</td>
-    </tr>
-    <tr>
       <th>2023-02-15</th>
       <td>155.3300</td>
       <td>97.1000</td>
@@ -4578,9 +4569,30 @@ If we are running Python in the cloud, we may need to run the <code class="docut
       <td>135.0000</td>
       <td>262.1500</td>
     </tr>
+    <tr>
+      <th>2023-02-17</th>
+      <td>152.5500</td>
+      <td>94.5900</td>
+      <td>135.0200</td>
+      <td>258.0600</td>
+    </tr>
+    <tr>
+      <th>2023-02-21</th>
+      <td>148.4800</td>
+      <td>92.0500</td>
+      <td>131.7100</td>
+      <td>252.6700</td>
+    </tr>
+    <tr>
+      <th>2023-02-22</th>
+      <td>148.9100</td>
+      <td>91.8000</td>
+      <td>130.9700</td>
+      <td>251.5100</td>
+    </tr>
   </tbody>
 </table>
-<p>15388 rows × 4 columns</p>
+<p>15391 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">prices</span></code> data frames contains daily data for AAPL, IBM, MSFT, and GOOG.
@@ -4651,7 +4663,7 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <th>2004-08-25</th>
       <td>0.0344</td>
       <td>0.0108</td>
-      <td>0.0042</td>
+      <td>0.0043</td>
       <td>0.0114</td>
     </tr>
     <tr>
@@ -4669,27 +4681,6 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <td>...</td>
     </tr>
     <tr>
-      <th>2023-02-10</th>
-      <td>0.0025</td>
-      <td>-0.0063</td>
-      <td>0.0138</td>
-      <td>-0.0020</td>
-    </tr>
-    <tr>
-      <th>2023-02-13</th>
-      <td>0.0188</td>
-      <td>0.0015</td>
-      <td>0.0129</td>
-      <td>0.0312</td>
-    </tr>
-    <tr>
-      <th>2023-02-14</th>
-      <td>-0.0042</td>
-      <td>-0.0005</td>
-      <td>-0.0098</td>
-      <td>0.0031</td>
-    </tr>
-    <tr>
       <th>2023-02-15</th>
       <td>0.0139</td>
       <td>0.0226</td>
@@ -4703,9 +4694,30 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
       <td>-0.0103</td>
       <td>-0.0266</td>
     </tr>
+    <tr>
+      <th>2023-02-17</th>
+      <td>-0.0075</td>
+      <td>-0.0124</td>
+      <td>0.0001</td>
+      <td>-0.0156</td>
+    </tr>
+    <tr>
+      <th>2023-02-21</th>
+      <td>-0.0267</td>
+      <td>-0.0269</td>
+      <td>-0.0245</td>
+      <td>-0.0209</td>
+    </tr>
+    <tr>
+      <th>2023-02-22</th>
+      <td>0.0029</td>
+      <td>-0.0027</td>
+      <td>-0.0056</td>
+      <td>-0.0046</td>
+    </tr>
   </tbody>
 </table>
-<p>4656 rows × 4 columns</p>
+<p>4659 rows × 4 columns</p>
 </div></div></div>
 </div>
 <p>We multiply by 252 to annualize mean daily returns because means grow linearly with time and there are (about) 252 trading days per year.</p>
@@ -4716,10 +4728,10 @@ As a result, the <code class="docutils literal notranslate"><span class="pre">.p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3694
-GOOG   0.2447
-IBM    0.0826
-MSFT   0.1854
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3674
+GOOG   0.2423
+IBM    0.0809
+MSFT   0.1831
 dtype: float64
 </pre></div>
 </div>
@@ -4733,7 +4745,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3330
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   0.3329
 GOOG   0.3088
 IBM    0.2292
 MSFT   0.2742
@@ -4751,7 +4763,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.505852309299553
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5060358283375822
 </pre></div>
 </div>
 </div>
@@ -4792,29 +4804,29 @@ dtype: float64
     <tr>
       <th>AAPL</th>
       <td>1.0000</td>
-      <td>0.5204</td>
-      <td>0.4342</td>
-      <td>0.5239</td>
+      <td>0.5206</td>
+      <td>0.4344</td>
+      <td>0.5241</td>
     </tr>
     <tr>
       <th>GOOG</th>
-      <td>0.5204</td>
+      <td>0.5206</td>
       <td>1.0000</td>
-      <td>0.4043</td>
-      <td>0.5660</td>
+      <td>0.4046</td>
+      <td>0.5662</td>
     </tr>
     <tr>
       <th>IBM</th>
-      <td>0.4342</td>
-      <td>0.4043</td>
+      <td>0.4344</td>
+      <td>0.4046</td>
       <td>1.0000</td>
-      <td>0.5059</td>
+      <td>0.5060</td>
     </tr>
     <tr>
       <th>MSFT</th>
-      <td>0.5239</td>
-      <td>0.5660</td>
-      <td>0.5059</td>
+      <td>0.5241</td>
+      <td>0.5662</td>
+      <td>0.5060</td>
       <td>1.0000</td>
     </tr>
   </tbody>
@@ -4828,7 +4840,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5058523092995527
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5060358283375835
 </pre></div>
 </div>
 </div>

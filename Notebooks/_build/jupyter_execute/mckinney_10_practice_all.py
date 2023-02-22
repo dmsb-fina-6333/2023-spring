@@ -249,6 +249,40 @@ dj['Volatility'].tail()
 
 # ***I ran out of time before our first class! I will continue the video and exercise tomorrow (Thursday, 2/23)!***
 
+# In[24]:
+
+
+_ = pd.MultiIndex.from_product([['Portfolio'], dj['Adj Close']])
+dj[_] = dj['Volatility'].apply(pd.qcut, q=5, labels=False, axis=1)
+
+
+# In[25]:
+
+
+dj['Portfolio']
+
+
+# In[26]:
+
+
+(
+    dj
+    .stack()
+    .groupby(['Date', 'Portfolio'])
+    ['Returns']
+    .mean()
+    .reset_index('Portfolio')
+    .groupby([pd.Grouper(freq='M'), 'Portfolio'])
+    .std()
+    .reset_index('Portfolio')
+    .assign(Portfolio = lambda x: x['Portfolio'].add(1).astype(int))
+    .set_index('Portfolio', append=True)
+    .unstack()
+    ['Returns']
+    .plot()
+)
+
+
 # ### Plot the time-series volatilities of these five portfolios
 
 # How do these portfolio volatilies compare to (1) each other and (2) the mean volatility of their constituent stocks?
@@ -256,6 +290,20 @@ dj['Volatility'].tail()
 # ### Calculate the *mean* monthly correlation between the Dow Jones stocks
 
 # Drop duplicate correlations and self correlations (i.e., correlation between AAPL and AAPL), which are 1, by definition.
+
+# In[27]:
+
+
+def rho_mu(x):
+    rhos = x.dropna(axis=1).dropna().corr()
+    return rhos.values[(np.tril(rhos) != 0.) & (np.tril(rhos) != 1.)].mean()
+
+
+# In[28]:
+
+
+dj.loc[:, 'Returns'].groupby(pd.Grouper(freq='m')).apply(rho_mu).describe()
+
 
 # ### Is market volatility higher during wars?
 

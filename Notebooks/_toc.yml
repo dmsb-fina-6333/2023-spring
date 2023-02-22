@@ -42,11 +42,15 @@ parts:
       sections:
       - file: mckinney_10_practice
       - file: mckinney_10_practice_all
+    - file: mckinney_11_lecture
+      sections:
+      - file: mckinney_11_practice
   - caption: Quizzes
     chapters:
     - file: quiz_01
     - file: quiz_02
     - file: quiz_03
+    - file: quiz_04
   - caption: Projects
     chapters:
     - file: project_01
