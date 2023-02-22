@@ -41,8 +41,7 @@ parts:
     - file: mckinney_10_lecture
       sections:
       - file: mckinney_10_practice
-      - file: mckinney_10_practice_04
-      - file: mckinney_10_practice_02
+      - file: mckinney_10_practice_all
   - caption: Quizzes
     chapters:
     - file: quiz_01
