@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>McKinney Chapter 10 - Practice (Blank) &#8212; FINA 6333 for Spring 2023</title>
+    <title>McKinney Chapter 11 - Practice (Blank) &#8212; FINA 6333 for Spring 2023</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="McKinney Chapter 10 - Practice (All Sections)" href="mckinney_10_practice_all.html" />
-    <link rel="prev" title="McKinney Chapter 10 - Data Aggregation and Group Operations" href="mckinney_10_lecture.html" />
+    <link rel="next" title="Quiz 1" href="quiz_01.html" />
+    <link rel="prev" title="McKinney Chapter 11 - Time Series" href="mckinney_11_lecture.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -308,18 +308,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="mckinney_10_lecture.html">
    McKinney Chapter 10 - Data Aggregation and Group Operations
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice.html">
      McKinney Chapter 10 - Practice (Blank)
     </a>
    </li>
@@ -330,18 +330,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="mckinney_11_lecture.html">
    McKinney Chapter 11 - Time Series
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="mckinney_11_practice.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      McKinney Chapter 11 - Practice (Blank)
     </a>
    </li>
@@ -445,7 +445,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/dmsb-fina-6333/2023-spring/main?urlpath=lab/tree/Notebooks/mckinney_10_practice.ipynb"
+        <a href="https://mybinder.org/v2/gh/dmsb-fina-6333/2023-spring/main?urlpath=lab/tree/Notebooks/mckinney_11_practice.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -505,7 +505,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/dmsb-fina-6333/2023-spring/issues/new?title=Issue%20on%20page%20%2Fmckinney_10_practice.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/dmsb-fina-6333/2023-spring/issues/new?title=Issue%20on%20page%20%2Fmckinney_11_practice.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -533,7 +533,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/mckinney_10_practice.ipynb"
+        <a href="_sources/mckinney_11_practice.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -593,8 +593,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#announcements">
-   Announcements
+  <a class="reference internal nav-link" href="#announcement">
+   Announcement
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -603,63 +603,23 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#replicate-the-following-pivot-table-output-with-groupby">
-     Replicate the following
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .pivot_table()
-      </span>
-     </code>
-     output with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .groupby()
-      </span>
-     </code>
+    <a class="reference internal nav-link" href="#which-are-larger-overnight-or-intraday-returns">
+     Which are larger, overnight or intraday returns?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calulate-the-mean-and-standard-deviation-of-returns-by-ticker-for-the-matana-msft-aapl-tsla-amzn-nvda-and-goog-stocks">
-     Calulate the mean and standard deviation of returns by ticker for the MATANA (MSFT, AAPL, TSLA, AMZN, NVDA, and GOOG) stocks
+    <a class="reference internal nav-link" href="#calculate-rolling-betas">
+     Calculate rolling betas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-the-mean-and-standard-deviation-of-returns-and-the-maximum-of-closing-prices-by-ticker-for-the-matana-stocks">
-     Calculate the mean and standard deviation of returns and the maximum of closing prices by ticker for the MATANA stocks
+    <a class="reference internal nav-link" href="#calculate-rolling-sharpe-ratios">
+     Calculate rolling Sharpe Ratios
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-monthly-means-and-volatilities-for-spy-and-goog-returns">
-     Calculate monthly means and volatilities for SPY and GOOG returns
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-monthly-means-and-volatilities-from-the-previous-exercise">
-     Plot the monthly means and volatilities from the previous exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assign-the-dow-jones-stocks-to-five-portfolios-based-on-their-monthly-volatility">
-     Assign the Dow Jones stocks to five portfolios based on their monthly volatility
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-time-series-volatilities-of-these-five-portfolios">
-     Plot the time-series volatilities of these five portfolios
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-the-mean-monthly-correlation-between-the-dow-jones-stocks">
-     Calculate the
-     <em>
-      mean
-     </em>
-     monthly correlation between the Dow Jones stocks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#is-market-volatility-higher-during-wars">
-     Is market volatility higher during wars?
+    <a class="reference internal nav-link" href="#does-more-frequent-rebalancing-increase-or-decrease-returns">
+     Does more frequent rebalancing increase or decrease returns?
     </a>
    </li>
   </ul>
@@ -673,7 +633,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>McKinney Chapter 10 - Practice (Blank)</h1>
+                <h1>McKinney Chapter 11 - Practice (Blank)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -684,8 +644,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#announcements">
-   Announcements
+  <a class="reference internal nav-link" href="#announcement">
+   Announcement
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -694,63 +654,23 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#replicate-the-following-pivot-table-output-with-groupby">
-     Replicate the following
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .pivot_table()
-      </span>
-     </code>
-     output with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .groupby()
-      </span>
-     </code>
+    <a class="reference internal nav-link" href="#which-are-larger-overnight-or-intraday-returns">
+     Which are larger, overnight or intraday returns?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calulate-the-mean-and-standard-deviation-of-returns-by-ticker-for-the-matana-msft-aapl-tsla-amzn-nvda-and-goog-stocks">
-     Calulate the mean and standard deviation of returns by ticker for the MATANA (MSFT, AAPL, TSLA, AMZN, NVDA, and GOOG) stocks
+    <a class="reference internal nav-link" href="#calculate-rolling-betas">
+     Calculate rolling betas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-the-mean-and-standard-deviation-of-returns-and-the-maximum-of-closing-prices-by-ticker-for-the-matana-stocks">
-     Calculate the mean and standard deviation of returns and the maximum of closing prices by ticker for the MATANA stocks
+    <a class="reference internal nav-link" href="#calculate-rolling-sharpe-ratios">
+     Calculate rolling Sharpe Ratios
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-monthly-means-and-volatilities-for-spy-and-goog-returns">
-     Calculate monthly means and volatilities for SPY and GOOG returns
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-monthly-means-and-volatilities-from-the-previous-exercise">
-     Plot the monthly means and volatilities from the previous exercise
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assign-the-dow-jones-stocks-to-five-portfolios-based-on-their-monthly-volatility">
-     Assign the Dow Jones stocks to five portfolios based on their monthly volatility
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-the-time-series-volatilities-of-these-five-portfolios">
-     Plot the time-series volatilities of these five portfolios
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-the-mean-monthly-correlation-between-the-dow-jones-stocks">
-     Calculate the
-     <em>
-      mean
-     </em>
-     monthly correlation between the Dow Jones stocks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#is-market-volatility-higher-during-wars">
-     Is market volatility higher during wars?
+    <a class="reference internal nav-link" href="#does-more-frequent-rebalancing-increase-or-decrease-returns">
+     Does more frequent rebalancing increase or decrease returns?
     </a>
    </li>
   </ul>
@@ -765,318 +685,53 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="mckinney-chapter-10-practice-blank">
-<h1>McKinney Chapter 10 - Practice (Blank)<a class="headerlink" href="#mckinney-chapter-10-practice-blank" title="Permalink to this headline">#</a></h1>
-<section id="announcements">
-<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="mckinney-chapter-11-practice-blank">
+<h1>McKinney Chapter 11 - Practice (Blank)<a class="headerlink" href="#mckinney-chapter-11-practice-blank" title="Permalink to this headline">#</a></h1>
+<section id="announcement">
+<h2>Announcement<a class="headerlink" href="#announcement" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
-<span class="o">%</span><span class="k">precision</span> 4
-<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
-<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
-<span class="kn">import</span> <span class="nn">requests_cache</span>
-<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="replicate-the-following-pivot-table-output-with-groupby">
-<h3>Replicate the following <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> output with <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code><a class="headerlink" href="#replicate-the-following-pivot-table-output-with-groupby" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span>
-        <span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;^GSPC ^DJI ^IXIC ^FTSE ^N225 ^HSI&#39;</span><span class="p">,</span>
-        <span class="n">progress</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Index&#39;</span><span class="p">])</span>
-    <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
-    <span class="n">ind</span>
-    <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2015&#39;</span><span class="p">:]</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-    <span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
-        <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Close&#39;</span><span class="p">,</span>
-        <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">),</span>
-        <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Index&#39;</span><span class="p">,</span>
-        <span class="n">aggfunc</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]</span>
-    <span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-
-    .dataframe thead tr:last-of-type th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="6" halign="left">min</th>
-      <th colspan="6" halign="left">max</th>
-    </tr>
-    <tr>
-      <th>Index</th>
-      <th>^DJI</th>
-      <th>^FTSE</th>
-      <th>^GSPC</th>
-      <th>^HSI</th>
-      <th>^IXIC</th>
-      <th>^N225</th>
-      <th>^DJI</th>
-      <th>^FTSE</th>
-      <th>^GSPC</th>
-      <th>^HSI</th>
-      <th>^IXIC</th>
-      <th>^N225</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2015-12-31 00:00:00+00:00</th>
-      <td>15666.4404</td>
-      <td>5874.1001</td>
-      <td>1867.6100</td>
-      <td>20556.5996</td>
-      <td>4506.4902</td>
-      <td>16795.9609</td>
-      <td>18312.3906</td>
-      <td>7104.0000</td>
-      <td>2130.8201</td>
-      <td>28442.7500</td>
-      <td>5218.8599</td>
-      <td>20868.0293</td>
-    </tr>
-    <tr>
-      <th>2016-12-31 00:00:00+00:00</th>
-      <td>15660.1797</td>
-      <td>5537.0000</td>
-      <td>1829.0800</td>
-      <td>18319.5801</td>
-      <td>4266.8398</td>
-      <td>14952.0195</td>
-      <td>19974.6191</td>
-      <td>7142.7998</td>
-      <td>2271.7200</td>
-      <td>24099.6992</td>
-      <td>5487.4399</td>
-      <td>19494.5293</td>
-    </tr>
-    <tr>
-      <th>2017-12-31 00:00:00+00:00</th>
-      <td>19732.4004</td>
-      <td>7099.2002</td>
-      <td>2257.8301</td>
-      <td>22134.4707</td>
-      <td>5429.0801</td>
-      <td>18335.6309</td>
-      <td>24837.5098</td>
-      <td>7687.7998</td>
-      <td>2690.1599</td>
-      <td>30003.4902</td>
-      <td>6994.7598</td>
-      <td>22939.1797</td>
-    </tr>
-    <tr>
-      <th>2018-12-31 00:00:00+00:00</th>
-      <td>21792.1992</td>
-      <td>6584.7002</td>
-      <td>2351.1001</td>
-      <td>24585.5293</td>
-      <td>6192.9199</td>
-      <td>19155.7402</td>
-      <td>26828.3906</td>
-      <td>7877.5000</td>
-      <td>2930.7500</td>
-      <td>33154.1211</td>
-      <td>8109.6899</td>
-      <td>24270.6191</td>
-    </tr>
-    <tr>
-      <th>2019-12-31 00:00:00+00:00</th>
-      <td>22686.2207</td>
-      <td>6692.7002</td>
-      <td>2447.8899</td>
-      <td>25064.3594</td>
-      <td>6463.5000</td>
-      <td>19561.9609</td>
-      <td>28645.2598</td>
-      <td>7686.6001</td>
-      <td>3240.0200</td>
-      <td>30157.4902</td>
-      <td>9022.3896</td>
-      <td>24066.1191</td>
-    </tr>
-    <tr>
-      <th>2020-12-31 00:00:00+00:00</th>
-      <td>18591.9297</td>
-      <td>4993.8999</td>
-      <td>2237.3999</td>
-      <td>21696.1309</td>
-      <td>6860.6699</td>
-      <td>16552.8301</td>
-      <td>30606.4805</td>
-      <td>7674.6001</td>
-      <td>3756.0701</td>
-      <td>29056.4199</td>
-      <td>12899.4199</td>
-      <td>27568.1504</td>
-    </tr>
-    <tr>
-      <th>2021-12-31 00:00:00+00:00</th>
-      <td>29982.6191</td>
-      <td>6407.5000</td>
-      <td>3700.6499</td>
-      <td>22744.8594</td>
-      <td>12609.1602</td>
-      <td>27013.2500</td>
-      <td>36488.6289</td>
-      <td>7420.7002</td>
-      <td>4793.0601</td>
-      <td>31084.9395</td>
-      <td>16057.4404</td>
-      <td>30670.0996</td>
-    </tr>
-    <tr>
-      <th>2022-12-31 00:00:00+00:00</th>
-      <td>28725.5098</td>
-      <td>6826.2002</td>
-      <td>3577.0300</td>
-      <td>14687.0195</td>
-      <td>10213.2900</td>
-      <td>24717.5293</td>
-      <td>36799.6484</td>
-      <td>7672.3999</td>
-      <td>4796.5601</td>
-      <td>24965.5508</td>
-      <td>15832.7998</td>
-      <td>29332.1602</td>
-    </tr>
-    <tr>
-      <th>2023-12-31 00:00:00+00:00</th>
-      <td>32930.0781</td>
-      <td>7554.1001</td>
-      <td>3808.1001</td>
-      <td>20145.2891</td>
-      <td>10305.2402</td>
-      <td>25716.8594</td>
-      <td>34302.6094</td>
-      <td>8014.2998</td>
-      <td>4179.7598</td>
-      <td>22688.9004</td>
-      <td>12200.8203</td>
-      <td>27696.4395</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-<section id="calulate-the-mean-and-standard-deviation-of-returns-by-ticker-for-the-matana-msft-aapl-tsla-amzn-nvda-and-goog-stocks">
-<h3>Calulate the mean and standard deviation of returns by ticker for the MATANA (MSFT, AAPL, TSLA, AMZN, NVDA, and GOOG) stocks<a class="headerlink" href="#calulate-the-mean-and-standard-deviation-of-returns-by-ticker-for-the-matana-msft-aapl-tsla-amzn-nvda-and-goog-stocks" title="Permalink to this headline">#</a></h3>
-<p>Consider only dates with complete returns data.
-Try this calculation with wide and long data frames, and confirm your results are the same.</p>
-</section>
-<section id="calculate-the-mean-and-standard-deviation-of-returns-and-the-maximum-of-closing-prices-by-ticker-for-the-matana-stocks">
-<h3>Calculate the mean and standard deviation of returns and the maximum of closing prices by ticker for the MATANA stocks<a class="headerlink" href="#calculate-the-mean-and-standard-deviation-of-returns-and-the-maximum-of-closing-prices-by-ticker-for-the-matana-stocks" title="Permalink to this headline">#</a></h3>
-<p>Again, consider only dates with complete returns data.
-Try this calculation with wide and long data frames, and confirm your results are the same.</p>
-</section>
-<section id="calculate-monthly-means-and-volatilities-for-spy-and-goog-returns">
-<h3>Calculate monthly means and volatilities for SPY and GOOG returns<a class="headerlink" href="#calculate-monthly-means-and-volatilities-for-spy-and-goog-returns" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="plot-the-monthly-means-and-volatilities-from-the-previous-exercise">
-<h3>Plot the monthly means and volatilities from the previous exercise<a class="headerlink" href="#plot-the-monthly-means-and-volatilities-from-the-previous-exercise" title="Permalink to this headline">#</a></h3>
-</section>
-<section id="assign-the-dow-jones-stocks-to-five-portfolios-based-on-their-monthly-volatility">
-<h3>Assign the Dow Jones stocks to five portfolios based on their monthly volatility<a class="headerlink" href="#assign-the-dow-jones-stocks-to-five-portfolios-based-on-their-monthly-volatility" title="Permalink to this headline">#</a></h3>
-<p>First, we need to download Dow Jones stock data and calculate daily returns.
-Use data from 2019 through today.</p>
-</section>
-<section id="plot-the-time-series-volatilities-of-these-five-portfolios">
-<h3>Plot the time-series volatilities of these five portfolios<a class="headerlink" href="#plot-the-time-series-volatilities-of-these-five-portfolios" title="Permalink to this headline">#</a></h3>
-<p>How do these portfolio volatilies compare to (1) each other and (2) the mean volatility of their constituent stocks?</p>
-</section>
-<section id="calculate-the-mean-monthly-correlation-between-the-dow-jones-stocks">
-<h3>Calculate the <em>mean</em> monthly correlation between the Dow Jones stocks<a class="headerlink" href="#calculate-the-mean-monthly-correlation-between-the-dow-jones-stocks" title="Permalink to this headline">#</a></h3>
-<p>Drop duplicate correlations and self correlations (i.e., correlation between AAPL and AAPL), which are 1, by definition.</p>
-</section>
-<section id="is-market-volatility-higher-during-wars">
-<h3>Is market volatility higher during wars?<a class="headerlink" href="#is-market-volatility-higher-during-wars" title="Permalink to this headline">#</a></h3>
-<p>Here is some guidance:</p>
+<section id="which-are-larger-overnight-or-intraday-returns">
+<h3>Which are larger, overnight or intraday returns?<a class="headerlink" href="#which-are-larger-overnight-or-intraday-returns" title="Permalink to this headline">#</a></h3>
+<p>Yahoo! Finance provides easy acces to high-quality open, high, low, close (OHLC) and adjusted close price data.
+However, Yahoo! Finance does not provide overnight or instraday returns directly.
+Therefore, we need to use math to decompose daily returns into overnight and intraday returns.</p>
+<p>Daily returns are defined as (adjusted) closing price to (adjusted) closing price returns.
+Therefore, daily returns consist of overnight returns compounded with the intraday returns from the next day <span class="math notranslate nohighlight">\((1 + R_{daily}) = (1 + R_{overnight}) \times (1 + R_{intraday})\)</span> which we can rearrange to calculate overnight returns as <span class="math notranslate nohighlight">\(\frac{1 + R_{daily}}{1 + R_{intraday}} - 1 = R_{overnight}\)</span>.</p>
+<p>We can calculate daily and intraday returns from Yahoo! Finance data as <span class="math notranslate nohighlight">\(R_{daily} = \frac{Adj\ Close_{t} - Adj\ Close_{t-1}}{Adj\ Close_{t-1}}\)</span> and <span class="math notranslate nohighlight">\(R_{intraday} = \frac{Close - Open}{Open}\)</span>.</p>
+<p>Compare the following for the SPY ETF:</p>
 <ol class="simple">
-<li><p>Download the daily factor data from Ken French’s website</p></li>
-<li><p>Calculate daily market returns by summing the market risk premium and risk-free rates (<code class="docutils literal notranslate"><span class="pre">Mkt-RF</span></code> and <code class="docutils literal notranslate"><span class="pre">RF</span></code>, respectively)</p></li>
-<li><p>Calculate the volatility (standard deviation) of daily returns <em>every month</em> by combining <code class="docutils literal notranslate"><span class="pre">pd.Grouper()</span></code> and <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code>)</p></li>
-<li><p>Multiply by <span class="math notranslate nohighlight">\(\sqrt{252}\)</span> to annualize these volatilities of daily returns</p></li>
-<li><p>Plot these annualized volatilities</p></li>
+<li><p>Cumulative returns with all available data</p></li>
+<li><p>Total returns for each calendar year</p></li>
+<li><p>Total returns over rolling 252-trading-day windows</p></li>
+<li><p>Total returns over rolling 12-months windows after calculating monthly returns</p></li>
+<li><p>Sharpe Ratios for each calendar year</p></li>
 </ol>
-<p>Is market volatility higher during wars?
-Consider the following dates:</p>
+</section>
+<section id="calculate-rolling-betas">
+<h3>Calculate rolling betas<a class="headerlink" href="#calculate-rolling-betas" title="Permalink to this headline">#</a></h3>
+<p>Calculate rolling capital asset pricing model (CAPM) betas for the MATANA stocks.
+The CAPM says the risk premium on a stock depends on the risk-free rate, beta, and the risk premium on the market: <span class="math notranslate nohighlight">\(E(R_{stock}) = R_f + \beta_{stock} \times (E(R_{market}) - R_f)\)</span>.
+We can calculate CAPM betas as: <span class="math notranslate nohighlight">\(\beta_{stock} = \frac{Cov(R_{stock} - R_f, R_{market} - R_f)}{Var(R_{market} - R_f)}\)</span>.</p>
+</section>
+<section id="calculate-rolling-sharpe-ratios">
+<h3>Calculate rolling Sharpe Ratios<a class="headerlink" href="#calculate-rolling-sharpe-ratios" title="Permalink to this headline">#</a></h3>
+<p>The Sharpe Ratio is often used to evaluate fund managers.
+The Sharpe Ratio is <span class="math notranslate nohighlight">\(SR_i = \frac{\overline{R_i - R_f}}{\sigma}\)</span>, where <span class="math notranslate nohighlight">\(\overline{R_i-R_f}\)</span> is mean fund return relative to the risk-free rate over some period and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of <span class="math notranslate nohighlight">\(R_i-R_f\)</span> over the same period.
+While the Sharpe Ratio is typically used for funds, we can apply it to a single stock to test our knowledge of the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method.
+Calculate and plot the one-year rolling Sharpe Ratio for GME using all available daily data.
+Download GME data from Yahoo! Finance and risk-free rate data from Ken French.</p>
+</section>
+<section id="does-more-frequent-rebalancing-increase-or-decrease-returns">
+<h3>Does more frequent rebalancing increase or decrease returns?<a class="headerlink" href="#does-more-frequent-rebalancing-increase-or-decrease-returns" title="Permalink to this headline">#</a></h3>
+<p>Use equally-weighted portfolios of industry-level daily returns from French’s website: <code class="docutils literal notranslate"><span class="pre">'17_Industry_Portfolios_daily'</span></code>.
+Compare decade-total returns for the following rebalancing frequencies:</p>
 <ol class="simple">
-<li><p>WWII: December 1941 to September 1945</p></li>
-<li><p>Korean War: 1950 to 1953</p></li>
-<li><p>Viet Nam War: 1959 to 1975</p></li>
-<li><p>Gulf War: 1990 to 1991</p></li>
-<li><p>War in Afghanistan: 2001 to 2021</p></li>
+<li><p>Daily rebalancing</p></li>
+<li><p>Monthly rebalancing</p></li>
+<li><p>Annual rebalancing</p></li>
+<li><p>Decade rebalancing</p></li>
 </ol>
 </section>
 </section>
@@ -1109,17 +764,17 @@ Consider the following dates:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="mckinney_10_lecture.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="mckinney_11_lecture.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">McKinney Chapter 10 - Data Aggregation and Group Operations</p>
+            <p class="prev-next-title">McKinney Chapter 11 - Time Series</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="mckinney_10_practice_all.html" title="next page">
+    <a class='right-next' id="next-link" href="quiz_01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">McKinney Chapter 10 - Practice (All Sections)</p>
+        <p class="prev-next-title">Quiz 1</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
