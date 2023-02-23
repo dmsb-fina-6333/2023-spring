@@ -345,6 +345,21 @@ const thebe_selector_output = ".output, .cell_output"
      McKinney Chapter 11 - Practice (Blank)
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_03.html">
+     McKinney Chapter 11 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_04.html">
+     McKinney Chapter 11 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_02.html">
+     McKinney Chapter 11 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -1407,7 +1422,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>0.0208</td>
       <td>0.0172</td>
       <td>0.0165</td>
-      <td>0.0282</td>
+      <td>0.0281</td>
       <td>0.0362</td>
     </tr>
   </tbody>
@@ -1463,7 +1478,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>0.0208</td>
       <td>0.0172</td>
       <td>0.0165</td>
-      <td>0.0282</td>
+      <td>0.0281</td>
       <td>0.0362</td>
     </tr>
   </tbody>
@@ -1494,362 +1509,19 @@ Try this calculation with wide and long data frames, and confirm your results ar
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Returns&#39;</span><span class="p">],</span> <span class="n">matana</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]])</span>
 <span class="n">matana</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">matana</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-
-<span class="n">matana</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-
-    .dataframe thead tr:last-of-type th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th>Variable</th>
-      <th colspan="6" halign="left">Adj Close</th>
-      <th colspan="4" halign="left">Close</th>
-      <th>...</th>
-      <th colspan="4" halign="left">Volume</th>
-      <th colspan="6" halign="left">Returns</th>
-    </tr>
-    <tr>
-      <th>Ticker</th>
-      <th>AAPL</th>
-      <th>AMZN</th>
-      <th>GOOG</th>
-      <th>MSFT</th>
-      <th>NVDA</th>
-      <th>TSLA</th>
-      <th>AAPL</th>
-      <th>AMZN</th>
-      <th>GOOG</th>
-      <th>MSFT</th>
-      <th>...</th>
-      <th>GOOG</th>
-      <th>MSFT</th>
-      <th>NVDA</th>
-      <th>TSLA</th>
-      <th>AAPL</th>
-      <th>AMZN</th>
-      <th>GOOG</th>
-      <th>MSFT</th>
-      <th>NVDA</th>
-      <th>TSLA</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1980-12-12 00:00:00-05:00</th>
-      <td>0.0997</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.1283</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1980-12-15 00:00:00-05:00</th>
-      <td>0.0945</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.1217</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>-0.0522</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1980-12-16 00:00:00-05:00</th>
-      <td>0.0876</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.1127</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>-0.0734</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1980-12-17 00:00:00-05:00</th>
-      <td>0.0897</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.1155</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0248</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1980-12-18 00:00:00-05:00</th>
-      <td>0.0924</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.1189</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0290</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2023-02-15 00:00:00-05:00</th>
-      <td>155.3300</td>
-      <td>101.1600</td>
-      <td>97.1000</td>
-      <td>269.3200</td>
-      <td>227.6400</td>
-      <td>214.2400</td>
-      <td>155.3300</td>
-      <td>101.1600</td>
-      <td>97.1000</td>
-      <td>269.3200</td>
-      <td>...</td>
-      <td>37029900.0000</td>
-      <td>28962200.0000</td>
-      <td>42118800.0000</td>
-      <td>182108600.0000</td>
-      <td>0.0139</td>
-      <td>0.0146</td>
-      <td>0.0226</td>
-      <td>-0.0080</td>
-      <td>-0.0090</td>
-      <td>0.0238</td>
-    </tr>
-    <tr>
-      <th>2023-02-16 00:00:00-05:00</th>
-      <td>153.7100</td>
-      <td>98.1500</td>
-      <td>95.7800</td>
-      <td>262.1500</td>
-      <td>220.0200</td>
-      <td>202.0400</td>
-      <td>153.7100</td>
-      <td>98.1500</td>
-      <td>95.7800</td>
-      <td>262.1500</td>
-      <td>...</td>
-      <td>35642100.0000</td>
-      <td>29603600.0000</td>
-      <td>41202600.0000</td>
-      <td>229586500.0000</td>
-      <td>-0.0104</td>
-      <td>-0.0298</td>
-      <td>-0.0136</td>
-      <td>-0.0266</td>
-      <td>-0.0335</td>
-      <td>-0.0569</td>
-    </tr>
-    <tr>
-      <th>2023-02-17 00:00:00-05:00</th>
-      <td>152.5500</td>
-      <td>97.2000</td>
-      <td>94.5900</td>
-      <td>258.0600</td>
-      <td>213.8800</td>
-      <td>208.3100</td>
-      <td>152.5500</td>
-      <td>97.2000</td>
-      <td>94.5900</td>
-      <td>258.0600</td>
-      <td>...</td>
-      <td>31074100.0000</td>
-      <td>29979600.0000</td>
-      <td>46495700.0000</td>
-      <td>213080200.0000</td>
-      <td>-0.0075</td>
-      <td>-0.0097</td>
-      <td>-0.0124</td>
-      <td>-0.0156</td>
-      <td>-0.0279</td>
-      <td>0.0310</td>
-    </tr>
-    <tr>
-      <th>2023-02-21 00:00:00-05:00</th>
-      <td>148.4800</td>
-      <td>94.5800</td>
-      <td>92.0500</td>
-      <td>252.6700</td>
-      <td>206.5500</td>
-      <td>197.3700</td>
-      <td>148.4800</td>
-      <td>94.5800</td>
-      <td>92.0500</td>
-      <td>252.6700</td>
-      <td>...</td>
-      <td>28367200.0000</td>
-      <td>28397400.0000</td>
-      <td>41001500.0000</td>
-      <td>180018600.0000</td>
-      <td>-0.0267</td>
-      <td>-0.0270</td>
-      <td>-0.0269</td>
-      <td>-0.0209</td>
-      <td>-0.0343</td>
-      <td>-0.0525</td>
-    </tr>
-    <tr>
-      <th>2023-02-22 00:00:00-05:00</th>
-      <td>148.9100</td>
-      <td>95.7900</td>
-      <td>91.8000</td>
-      <td>251.5100</td>
-      <td>207.5400</td>
-      <td>200.8600</td>
-      <td>148.9100</td>
-      <td>95.7900</td>
-      <td>91.8000</td>
-      <td>251.5100</td>
-      <td>...</td>
-      <td>29809714.0000</td>
-      <td>22350331.0000</td>
-      <td>46705738.0000</td>
-      <td>189173903.0000</td>
-      <td>0.0029</td>
-      <td>0.0128</td>
-      <td>-0.0027</td>
-      <td>-0.0046</td>
-      <td>0.0048</td>
-      <td>0.0177</td>
-    </tr>
-  </tbody>
-</table>
-<p>10638 rows × 54 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matana</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Returns&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">],</span> <span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">matana</span>
+    <span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">returns</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">stack</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;Returns&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">],</span> <span class="s1">&#39;Close&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]})</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1920,7 +1592,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
     <tr>
       <th>NVDA</th>
       <td>0.0018</td>
-      <td>0.0282</td>
+      <td>0.0281</td>
       <td>333.7600</td>
     </tr>
     <tr>
@@ -2041,7 +1713,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>NaN</td>
       <td>0.0000</td>
       <td>NaN</td>
-      <td>1003200</td>
+      <td>1003200.0000</td>
     </tr>
     <tr>
       <th>1993-02-01 00:00:00-05:00</th>
@@ -2061,7 +1733,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>NaN</td>
       <td>0.0000</td>
       <td>NaN</td>
-      <td>480500</td>
+      <td>480500.0000</td>
     </tr>
     <tr>
       <th>1993-02-02 00:00:00-05:00</th>
@@ -2081,7 +1753,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>NaN</td>
       <td>0.0000</td>
       <td>NaN</td>
-      <td>201300</td>
+      <td>201300.0000</td>
     </tr>
     <tr>
       <th>1993-02-03 00:00:00-05:00</th>
@@ -2101,12 +1773,12 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>NaN</td>
       <td>0.0000</td>
       <td>NaN</td>
-      <td>529400</td>
+      <td>529400.0000</td>
     </tr>
     <tr>
       <th>1993-02-04 00:00:00-05:00</th>
       <td>NaN</td>
-      <td>25.8281</td>
+      <td>25.8280</td>
       <td>0.0000</td>
       <td>NaN</td>
       <td>45.0000</td>
@@ -2121,7 +1793,7 @@ Try this calculation with wide and long data frames, and confirm your results ar
       <td>NaN</td>
       <td>0.0000</td>
       <td>NaN</td>
-      <td>531500</td>
+      <td>531500.0000</td>
     </tr>
   </tbody>
 </table>
@@ -2291,9 +1963,9 @@ I suggest ou pick up these tricks as you go instead of trying to read and memori
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">spy_goog_m</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Mean of Daily Return&#39;</span><span class="p">)</span>
-<span class="n">spy_goog_m</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Std. Dev. of Daily Returns&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Mean and Standard Deviation of Daily Returns&#39;</span><span class="p">)</span>
+<span class="n">spy_goog_m</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Mean of Daily Returns (%)&#39;</span><span class="p">)</span>
+<span class="n">spy_goog_m</span><span class="o">.</span><span class="n">swaplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;SD of Daily Returns (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Means and Standard Deviations of Daily Returns&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2334,762 +2006,40 @@ Use data from 2020 through today.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Ticker</th>
-      <th>AAPL</th>
-      <th>AMGN</th>
-      <th>AXP</th>
-      <th>BA</th>
-      <th>CAT</th>
-      <th>CRM</th>
-      <th>CSCO</th>
-      <th>CVX</th>
-      <th>DIS</th>
-      <th>DOW</th>
-      <th>...</th>
-      <th>MRK</th>
-      <th>MSFT</th>
-      <th>NKE</th>
-      <th>PG</th>
-      <th>TRV</th>
-      <th>UNH</th>
-      <th>V</th>
-      <th>VZ</th>
-      <th>WBA</th>
-      <th>WMT</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2023-02-15 00:00:00-05:00</th>
-      <td>0.0139</td>
-      <td>-0.0040</td>
-      <td>-0.0019</td>
-      <td>-0.0046</td>
-      <td>0.0178</td>
-      <td>0.0067</td>
-      <td>0.0157</td>
-      <td>-0.0105</td>
-      <td>0.0147</td>
-      <td>0.0000</td>
-      <td>...</td>
-      <td>-0.0097</td>
-      <td>-0.0080</td>
-      <td>0.0101</td>
-      <td>-0.0023</td>
-      <td>0.0059</td>
-      <td>-0.0032</td>
-      <td>-0.0020</td>
-      <td>0.0012</td>
-      <td>0.0069</td>
-      <td>0.0074</td>
-    </tr>
-    <tr>
-      <th>2023-02-16 00:00:00-05:00</th>
-      <td>-0.0104</td>
-      <td>-0.0244</td>
-      <td>-0.0151</td>
-      <td>-0.0241</td>
-      <td>-0.0088</td>
-      <td>-0.0175</td>
-      <td>0.0524</td>
-      <td>-0.0144</td>
-      <td>-0.0312</td>
-      <td>-0.0181</td>
-      <td>...</td>
-      <td>-0.0109</td>
-      <td>-0.0266</td>
-      <td>-0.0243</td>
-      <td>-0.0131</td>
-      <td>-0.0117</td>
-      <td>-0.0079</td>
-      <td>-0.0135</td>
-      <td>-0.0134</td>
-      <td>-0.0055</td>
-      <td>-0.0157</td>
-    </tr>
-    <tr>
-      <th>2023-02-17 00:00:00-05:00</th>
-      <td>-0.0075</td>
-      <td>0.0269</td>
-      <td>-0.0036</td>
-      <td>-0.0026</td>
-      <td>0.0052</td>
-      <td>-0.0175</td>
-      <td>-0.0043</td>
-      <td>-0.0223</td>
-      <td>-0.0058</td>
-      <td>-0.0094</td>
-      <td>...</td>
-      <td>0.0283</td>
-      <td>-0.0156</td>
-      <td>0.0037</td>
-      <td>0.0209</td>
-      <td>0.0147</td>
-      <td>0.0241</td>
-      <td>-0.0101</td>
-      <td>0.0095</td>
-      <td>0.0121</td>
-      <td>0.0150</td>
-    </tr>
-    <tr>
-      <th>2023-02-21 00:00:00-05:00</th>
-      <td>-0.0267</td>
-      <td>-0.0095</td>
-      <td>-0.0215</td>
-      <td>-0.0290</td>
-      <td>-0.0286</td>
-      <td>-0.0215</td>
-      <td>-0.0213</td>
-      <td>-0.0114</td>
-      <td>-0.0297</td>
-      <td>-0.0222</td>
-      <td>...</td>
-      <td>-0.0041</td>
-      <td>-0.0209</td>
-      <td>-0.0300</td>
-      <td>-0.0007</td>
-      <td>-0.0027</td>
-      <td>-0.0156</td>
-      <td>-0.0132</td>
-      <td>-0.0254</td>
-      <td>-0.0163</td>
-      <td>0.0061</td>
-    </tr>
-    <tr>
-      <th>2023-02-22 00:00:00-05:00</th>
-      <td>0.0029</td>
-      <td>-0.0087</td>
-      <td>0.0070</td>
-      <td>0.0012</td>
-      <td>-0.0117</td>
-      <td>0.0108</td>
-      <td>-0.0076</td>
-      <td>-0.0040</td>
-      <td>-0.0040</td>
-      <td>0.0030</td>
-      <td>...</td>
-      <td>0.0008</td>
-      <td>-0.0046</td>
-      <td>-0.0099</td>
-      <td>0.0042</td>
-      <td>0.0047</td>
-      <td>-0.0049</td>
-      <td>-0.0027</td>
-      <td>0.0020</td>
-      <td>-0.0022</td>
-      <td>-0.0210</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 30 columns</p>
-</div></div></div>
-</div>
 <p>Here I add the monthly volatility to all the days in each month for each ticker.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">],</span> <span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">],</span> <span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]])</span>
 <span class="n">dj</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Here I assign stocks to portfolios based on their volatility.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Ticker</th>
-      <th>AAPL</th>
-      <th>AMGN</th>
-      <th>AXP</th>
-      <th>BA</th>
-      <th>CAT</th>
-      <th>CRM</th>
-      <th>CSCO</th>
-      <th>CVX</th>
-      <th>DIS</th>
-      <th>DOW</th>
-      <th>...</th>
-      <th>MRK</th>
-      <th>MSFT</th>
-      <th>NKE</th>
-      <th>PG</th>
-      <th>TRV</th>
-      <th>UNH</th>
-      <th>V</th>
-      <th>VZ</th>
-      <th>WBA</th>
-      <th>WMT</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2023-02-15 00:00:00-05:00</th>
-      <td>0.0178</td>
-      <td>0.0128</td>
-      <td>0.0131</td>
-      <td>0.0175</td>
-      <td>0.0131</td>
-      <td>0.0198</td>
-      <td>0.0191</td>
-      <td>0.0144</td>
-      <td>0.0181</td>
-      <td>0.0110</td>
-      <td>...</td>
-      <td>0.0147</td>
-      <td>0.0232</td>
-      <td>0.0151</td>
-      <td>0.0100</td>
-      <td>0.0144</td>
-      <td>0.0175</td>
-      <td>0.0068</td>
-      <td>0.0104</td>
-      <td>0.0143</td>
-      <td>0.0117</td>
-    </tr>
-    <tr>
-      <th>2023-02-16 00:00:00-05:00</th>
-      <td>0.0178</td>
-      <td>0.0128</td>
-      <td>0.0131</td>
-      <td>0.0175</td>
-      <td>0.0131</td>
-      <td>0.0198</td>
-      <td>0.0191</td>
-      <td>0.0144</td>
-      <td>0.0181</td>
-      <td>0.0110</td>
-      <td>...</td>
-      <td>0.0147</td>
-      <td>0.0232</td>
-      <td>0.0151</td>
-      <td>0.0100</td>
-      <td>0.0144</td>
-      <td>0.0175</td>
-      <td>0.0068</td>
-      <td>0.0104</td>
-      <td>0.0143</td>
-      <td>0.0117</td>
-    </tr>
-    <tr>
-      <th>2023-02-17 00:00:00-05:00</th>
-      <td>0.0178</td>
-      <td>0.0128</td>
-      <td>0.0131</td>
-      <td>0.0175</td>
-      <td>0.0131</td>
-      <td>0.0198</td>
-      <td>0.0191</td>
-      <td>0.0144</td>
-      <td>0.0181</td>
-      <td>0.0110</td>
-      <td>...</td>
-      <td>0.0147</td>
-      <td>0.0232</td>
-      <td>0.0151</td>
-      <td>0.0100</td>
-      <td>0.0144</td>
-      <td>0.0175</td>
-      <td>0.0068</td>
-      <td>0.0104</td>
-      <td>0.0143</td>
-      <td>0.0117</td>
-    </tr>
-    <tr>
-      <th>2023-02-21 00:00:00-05:00</th>
-      <td>0.0178</td>
-      <td>0.0128</td>
-      <td>0.0131</td>
-      <td>0.0175</td>
-      <td>0.0131</td>
-      <td>0.0198</td>
-      <td>0.0191</td>
-      <td>0.0144</td>
-      <td>0.0181</td>
-      <td>0.0110</td>
-      <td>...</td>
-      <td>0.0147</td>
-      <td>0.0232</td>
-      <td>0.0151</td>
-      <td>0.0100</td>
-      <td>0.0144</td>
-      <td>0.0175</td>
-      <td>0.0068</td>
-      <td>0.0104</td>
-      <td>0.0143</td>
-      <td>0.0117</td>
-    </tr>
-    <tr>
-      <th>2023-02-22 00:00:00-05:00</th>
-      <td>0.0178</td>
-      <td>0.0128</td>
-      <td>0.0131</td>
-      <td>0.0175</td>
-      <td>0.0131</td>
-      <td>0.0198</td>
-      <td>0.0191</td>
-      <td>0.0144</td>
-      <td>0.0181</td>
-      <td>0.0110</td>
-      <td>...</td>
-      <td>0.0147</td>
-      <td>0.0232</td>
-      <td>0.0151</td>
-      <td>0.0100</td>
-      <td>0.0144</td>
-      <td>0.0175</td>
-      <td>0.0068</td>
-      <td>0.0104</td>
-      <td>0.0143</td>
-      <td>0.0117</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 30 columns</p>
-</div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 2, 2, 3, 3, 4, 4, 5, 5])
+</pre></div>
 </div>
-<p><em><strong>I ran out of time before our first class! I will continue the video and exercise tomorrow (Thursday, 2/23)!</strong></em></p>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">],</span> <span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_product</span><span class="p">([[</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">],</span> <span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">]])</span>
 <span class="n">dj</span><span class="p">[</span><span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dj</span><span class="p">[</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>Ticker</th>
-      <th>AAPL</th>
-      <th>AMGN</th>
-      <th>AXP</th>
-      <th>BA</th>
-      <th>CAT</th>
-      <th>CRM</th>
-      <th>CSCO</th>
-      <th>CVX</th>
-      <th>DIS</th>
-      <th>DOW</th>
-      <th>...</th>
-      <th>MRK</th>
-      <th>MSFT</th>
-      <th>NKE</th>
-      <th>PG</th>
-      <th>TRV</th>
-      <th>UNH</th>
-      <th>V</th>
-      <th>VZ</th>
-      <th>WBA</th>
-      <th>WMT</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1962-01-02 00:00:00-05:00</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>3.0000</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>4.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1962-01-03 00:00:00-05:00</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>3.0000</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>4.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1962-01-04 00:00:00-05:00</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>3.0000</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>4.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1962-01-05 00:00:00-05:00</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>3.0000</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>4.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1962-01-08 00:00:00-05:00</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>3.0000</td>
-      <td>NaN</td>
-      <td>...</td>
-      <td>4.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2023-02-15 00:00:00-05:00</th>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>4.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>1.0000</td>
-      <td>...</td>
-      <td>3.0000</td>
-      <td>4.0000</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>0.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>1.0000</td>
-    </tr>
-    <tr>
-      <th>2023-02-16 00:00:00-05:00</th>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>4.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>1.0000</td>
-      <td>...</td>
-      <td>3.0000</td>
-      <td>4.0000</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>0.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>1.0000</td>
-    </tr>
-    <tr>
-      <th>2023-02-17 00:00:00-05:00</th>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>4.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>1.0000</td>
-      <td>...</td>
-      <td>3.0000</td>
-      <td>4.0000</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>0.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>1.0000</td>
-    </tr>
-    <tr>
-      <th>2023-02-21 00:00:00-05:00</th>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>4.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>1.0000</td>
-      <td>...</td>
-      <td>3.0000</td>
-      <td>4.0000</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>0.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>1.0000</td>
-    </tr>
-    <tr>
-      <th>2023-02-22 00:00:00-05:00</th>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>4.0000</td>
-      <td>2.0000</td>
-      <td>4.0000</td>
-      <td>1.0000</td>
-      <td>...</td>
-      <td>3.0000</td>
-      <td>4.0000</td>
-      <td>3.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>3.0000</td>
-      <td>0.0000</td>
-      <td>1.0000</td>
-      <td>2.0000</td>
-      <td>1.0000</td>
-    </tr>
-  </tbody>
-</table>
-<p>15391 rows × 30 columns</p>
-</div></div></div>
-</div>
+</section>
+<section id="plot-the-time-series-volatilities-of-these-five-portfolios">
+<h3>Plot the time-series volatilities of these five portfolios<a class="headerlink" href="#plot-the-time-series-volatilities-of-these-five-portfolios" title="Permalink to this headline">#</a></h3>
+<p>How do these portfolio volatilies compare to (1) each other and (2) the mean volatility of their constituent stocks?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
@@ -3101,64 +2051,59 @@ Use data from 2020 through today.</p>
     <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">),</span> <span class="s1">&#39;Portfolio&#39;</span><span class="p">])</span>
     <span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Returns&#39;</span><span class="p">:</span> <span class="s1">&#39;Volatility&#39;</span><span class="p">})</span>
     <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Portfolio</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span> <span class="c1"># drop missing port.</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Portfolio</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span> <span class="c1"># w/o missing portf., can convert to integer</span>
     <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Portfolio&#39;</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
-    <span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span>
+    <span class="p">[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Volatility of Daily Returns (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Volatility of Five Portfolios Formed on Volatility&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Date&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/mckinney_10_practice_all_43_1.png" src="_images/mckinney_10_practice_all_43_1.png" />
+<img alt="_images/mckinney_10_practice_all_43_0.png" src="_images/mckinney_10_practice_all_43_0.png" />
 </div>
 </div>
-</section>
-<section id="plot-the-time-series-volatilities-of-these-five-portfolios">
-<h3>Plot the time-series volatilities of these five portfolios<a class="headerlink" href="#plot-the-time-series-volatilities-of-these-five-portfolios" title="Permalink to this headline">#</a></h3>
-<p>How do these portfolio volatilies compare to (1) each other and (2) the mean volatility of their constituent stocks?</p>
 </section>
 <section id="calculate-the-mean-monthly-correlation-between-the-dow-jones-stocks">
 <h3>Calculate the <em>mean</em> monthly correlation between the Dow Jones stocks<a class="headerlink" href="#calculate-the-mean-monthly-correlation-between-the-dow-jones-stocks" title="Permalink to this headline">#</a></h3>
 <p>Drop duplicate correlations and self correlations (i.e., correlation between AAPL and AAPL), which are 1, by definition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rho_mu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">rhos</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">rhos</span><span class="o">.</span><span class="n">values</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">rhos</span><span class="p">)</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">rhos</span><span class="p">)</span> <span class="o">!=</span> <span class="mf">1.</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mu_rho</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">rhos</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+    <span class="n">tril</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tril</span><span class="p">(</span><span class="n">rhos</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">rhos</span><span class="o">.</span><span class="n">values</span><span class="p">[(</span><span class="n">tril</span> <span class="o">!=</span> <span class="mf">0.</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tril</span> <span class="o">!=</span> <span class="mf">1.</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dj</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Returns&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">rho_mu</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">dj</span>
+    <span class="p">[</span><span class="s1">&#39;Returns&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;Q&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">mu_rho</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Correlation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Correlations of Dow-Jones Stocks&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_247917/4166103032.py:3: RuntimeWarning: Mean of empty slice.
-  return rhos.values[(np.tril(rhos) != 0.) &amp; (np.tril(rhos) != 1.)].mean()
-/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/numpy/core/_methods.py:189: RuntimeWarning: invalid value encountered in double_scalars
-  ret = ret.dtype.type(ret / rcount)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count   733.0000
-mean      0.2923
-std       0.1486
-min      -0.0358
-25%       0.1860
-50%       0.2728
-75%       0.3857
-max       0.8027
-dtype: float64
-</pre></div>
-</div>
+<img alt="_images/mckinney_10_practice_all_47_0.png" src="_images/mckinney_10_practice_all_47_0.png" />
 </div>
 </div>
 </section>
@@ -3181,6 +2126,75 @@ Consider the following dates:</p>
 <li><p>Gulf War: 1990 to 1991</p></li>
 <li><p>War in Afghanistan: 2001 to 2021</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdr</span><span class="o">.</span><span class="n">famafrench</span><span class="o">.</span><span class="n">get_available_datasets</span><span class="p">()[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;F-F_Research_Data_Factors&#39;,
+ &#39;F-F_Research_Data_Factors_weekly&#39;,
+ &#39;F-F_Research_Data_Factors_daily&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3&#39;,
+ &#39;F-F_Research_Data_5_Factors_2x3_daily&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_all</span> <span class="o">=</span> <span class="n">pdr</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span><span class="p">,</span>
+    <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1900&#39;</span><span class="p">,</span>
+    <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">ff_all</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Mkt</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">])</span>
+    <span class="p">[</span><span class="s1">&#39;Mkt&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># adds vertical bands for U.S. wars</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="s1">&#39;1941-12&#39;</span><span class="p">,</span> <span class="s1">&#39;1945-09&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;WWII&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;1941-12&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="s1">&#39;1950&#39;</span><span class="p">,</span> <span class="s1">&#39;1953&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Korean&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;1950&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="s1">&#39;1959&#39;</span><span class="p">,</span> <span class="s1">&#39;1975&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Vietnam&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;1959&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="s1">&#39;1990&#39;</span><span class="p">,</span> <span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Gulf I&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;1990&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;2021&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Afghanistan&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Annualized Volatility of Daily Returns (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Volatility of U.S. Market&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_10_practice_all_53_0.png" src="_images/mckinney_10_practice_all_53_0.png" />
+</div>
+</div>
 </section>
 </section>
 </section>

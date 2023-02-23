@@ -94,19 +94,21 @@ dates = [
 np.random.seed(42)
 ts = pd.Series(np.random.randn(6), index=dates)
 
-
-# In[5]:
-
-
 ts
 
 
 # Note that pandas converts the `datetime` objects to a pandas `DatetimeIndex` object and a single index value is a `Timestamp` object.
 
-# In[6]:
+# In[5]:
 
 
 ts.index
+
+
+# In[6]:
+
+
+ts.index[0]
 
 
 # Recall that arithmetic operations between pandas objects automatically align on indexes.
@@ -387,7 +389,7 @@ ts.pct_change()
 
 np.allclose(
     a=ts.pct_change(),
-    b=ts.sub(ts.shift()).div(ts.shift()),
+    b=(ts - ts.shift()) / ts.shift(),
     equal_nan=True
 )
 
@@ -421,7 +423,7 @@ ts.shift(2, freq='M')
 ts.shift(3, freq='D')
 
 
-# `M` was already months, so `T` is minutes.
+# `M` is already months, so `T` is minutes.
 
 # In[43]:
 
@@ -577,16 +579,12 @@ frame = pd.DataFrame(np.random.randn(2, 4),
                      index=pd.date_range('1/1/2000', periods=2, freq='W-WED'),
                      columns=['Colorado', 'Texas', 'New York', 'Ohio'])
 
-
-# In[57]:
-
-
 frame
 
 
 # We can use the `.asfreq()` method to convert to the new frequency "as is".
 
-# In[58]:
+# In[57]:
 
 
 df_daily = frame.resample('D').asfreq()
@@ -596,19 +594,19 @@ df_daily
 
 # We do not *have* to choose an aggregation (disaggregation?) method, but we may want to choose a method to fill in the missing values.
 
-# In[59]:
+# In[58]:
 
 
 frame.resample('D').ffill()
 
 
-# In[60]:
+# In[59]:
 
 
 frame.resample('D').ffill(limit=2)
 
 
-# In[61]:
+# In[60]:
 
 
 frame.resample('W-THU').ffill()
@@ -618,9 +616,9 @@ frame.resample('W-THU').ffill()
 
 # ***Moving window (or rolling window) functions are one of the neatest features of pandas, and we will frequently use moving window functions.***
 # We will use data similar, but not identical, to the book data.
-# ***We must remove the timezone if (1) we are on Windows and (2) want to merge the Fama-French data.***
+# ***We must remove the timezone if we want to merge with Fama-French data.***
 
-# In[62]:
+# In[61]:
 
 
 df = (
@@ -631,12 +629,14 @@ df = (
     .rename_axis(columns=['Variable', 'Ticker'])
 )
 
+df.head()
+
 
 # The `.rolling()` method is similar to the `.groupby()` and `.resample()` methods.
 # The `.rolling()` method accepts a window-width and requires an aggregation method.
 # The next example calculates and plots the 252-trading day moving average of AAPL's price alongside the daily price.
 
-# In[63]:
+# In[62]:
 
 
 aapl = df.loc['2012':, ('Adj Close', 'AAPL')]
@@ -664,13 +664,15 @@ plt.show()
 # Binary moving window functions accept two inputs.
 # The most common example is the rolling correlation between two returns series.
 
-# In[64]:
+# In[63]:
 
 
 returns = df['Adj Close'].pct_change()
 
+returns.head()
 
-# In[65]:
+
+# In[64]:
 
 
 returns['AAPL'].rolling(126, min_periods=100).corr(returns['SPY']).plot()
@@ -679,7 +681,7 @@ plt.title('Rolling Correlation between AAPL and SPY\n (126-Day Window w/ 100-Day
 plt.show()
 
 
-# In[66]:
+# In[65]:
 
 
 returns[['AAPL', 'MSFT']].rolling(126, min_periods=100).corr(returns['SPY']).plot()
@@ -696,7 +698,7 @@ plt.show()
 # McKinney provides an abstract example here, but we will discuss a simpler example that calculates rolling volatility.
 # Also, calculating rolling volatility with the `.apply()` method provides us a chance to benchmark it against the optimized version.
 
-# In[67]:
+# In[66]:
 
 
 returns['AAPL'].rolling(252).apply(np.std).mul(np.sqrt(252) * 100).plot() # annualize and convert to percent
@@ -707,14 +709,20 @@ plt.show()
 
 # Do not be afraid to use `.apply()`, but realize that `.apply()` is typically 1000-times slower than the pre-built method.
 
-# In[68]:
+# In[67]:
 
 
 get_ipython().run_line_magic('timeit', "returns['AAPL'].rolling(252).apply(np.std)")
 
 
-# In[69]:
+# In[68]:
 
 
 get_ipython().run_line_magic('timeit', "returns['AAPL'].rolling(252).std()")
+
+
+# In[ ]:
+
+
+
 

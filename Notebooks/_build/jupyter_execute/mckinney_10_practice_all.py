@@ -134,13 +134,17 @@ np.allclose(
 _ = pd.MultiIndex.from_product([['Returns'], matana['Adj Close']])
 matana[_] = matana['Adj Close'].pct_change()
 
-matana
-
 
 # In[13]:
 
 
-matana.loc[returns.index].stack().groupby('Ticker').agg({'Returns': ['mean', 'std'], 'Close': ['max']})
+(
+    matana
+    .loc[returns.index]
+    .stack()
+    .groupby('Ticker')
+    .agg({'Returns': ['mean', 'std'], 'Close': ['max']})
+)
 
 
 # ### Calculate monthly means and volatilities for SPY and GOOG returns
@@ -190,9 +194,9 @@ spy_goog_m.plot(subplots=True)
 
 
 fig, ax = plt.subplots(2, 1, sharex=True)
-spy_goog_m.swaplevel(axis=1)['mean'].plot(ax=ax[0], ylabel='Mean of Daily Return')
-spy_goog_m.swaplevel(axis=1)['std'].plot(ax=ax[1], ylabel='Std. Dev. of Daily Returns')
-plt.suptitle('Mean and Standard Deviation of Daily Returns')
+spy_goog_m.swaplevel(axis=1)['mean'].mul(100).plot(ax=ax[0], ylabel='Mean of Daily Returns (%)')
+spy_goog_m.swaplevel(axis=1)['std'].mul(100).plot(ax=ax[1], ylabel='SD of Daily Returns (%)')
+plt.suptitle('Means and Standard Deviations of Daily Returns')
 plt.show()
 
 
@@ -226,43 +230,35 @@ _ = pd.MultiIndex.from_product([['Returns'], dj['Adj Close']])
 dj[_] = dj['Adj Close'].pct_change()
 
 
+# Here I add the monthly volatility to all the days in each month for each ticker.
+
 # In[21]:
 
 
-dj['Returns'].tail()
+_ = pd.MultiIndex.from_product([['Volatility'], dj['Returns']])
+dj[_] = dj['Returns'].groupby(pd.Grouper(freq='M')).transform('std')
 
 
-# Here I add the monthly volatility to all the days in each month for each ticker.
+# Here I assign stocks to portfolios based on their volatility.
 
 # In[22]:
 
 
-_ = pd.MultiIndex.from_product([['Volatility'], dj['Adj Close']])
-dj[_] = dj['Returns'].groupby(pd.Grouper(freq='M')).transform('std')
+1 + pd.qcut(np.arange(10), q=5, labels=False)
 
 
 # In[23]:
 
 
-dj['Volatility'].tail()
-
-
-# ***I ran out of time before our first class! I will continue the video and exercise tomorrow (Thursday, 2/23)!***
-
-# In[24]:
-
-
-_ = pd.MultiIndex.from_product([['Portfolio'], dj['Adj Close']])
+_ = pd.MultiIndex.from_product([['Portfolio'], dj['Volatility']])
 dj[_] = dj['Volatility'].apply(pd.qcut, q=5, labels=False, axis=1)
 
 
-# In[25]:
+# ### Plot the time-series volatilities of these five portfolios
 
+# How do these portfolio volatilies compare to (1) each other and (2) the mean volatility of their constituent stocks?
 
-dj['Portfolio']
-
-
-# In[26]:
+# In[24]:
 
 
 (
@@ -274,35 +270,49 @@ dj['Portfolio']
     .reset_index('Portfolio')
     .groupby([pd.Grouper(freq='M'), 'Portfolio'])
     .std()
+    .rename(columns={'Returns': 'Volatility'})
     .reset_index('Portfolio')
-    .assign(Portfolio = lambda x: x['Portfolio'].add(1).astype(int))
+    .dropna() # drop missing port.
+    .assign(Portfolio = lambda x: 1 + x['Portfolio'].astype(int)) # w/o missing portf., can convert to integer
     .set_index('Portfolio', append=True)
     .unstack()
-    ['Returns']
+    ['Volatility']
+    .mul(100)
     .plot()
 )
 
+plt.ylabel('Volatility of Daily Returns (%)')
+plt.title('Volatility of Five Portfolios Formed on Volatility')
+plt.show()
 
-# ### Plot the time-series volatilities of these five portfolios
-
-# How do these portfolio volatilies compare to (1) each other and (2) the mean volatility of their constituent stocks?
 
 # ### Calculate the *mean* monthly correlation between the Dow Jones stocks
 
 # Drop duplicate correlations and self correlations (i.e., correlation between AAPL and AAPL), which are 1, by definition.
 
-# In[27]:
+# In[25]:
 
 
-def rho_mu(x):
-    rhos = x.dropna(axis=1).dropna().corr()
-    return rhos.values[(np.tril(rhos) != 0.) & (np.tril(rhos) != 1.)].mean()
+def mu_rho(x):
+    rhos = x.corr()
+    tril = np.tril(rhos)
+    return np.nanmean(rhos.values[(tril != 0.) & (tril != 1.)])
 
 
-# In[28]:
+# In[26]:
 
 
-dj.loc[:, 'Returns'].groupby(pd.Grouper(freq='m')).apply(rho_mu).describe()
+(
+    dj
+    ['Returns']
+    .groupby(pd.Grouper(freq='Q'))
+    .apply(mu_rho)
+    .plot()
+)
+
+plt.ylabel('Mean Correlation')
+plt.title('Mean Correlations of Dow-Jones Stocks')
+plt.show()
 
 
 # ### Is market volatility higher during wars?
@@ -323,3 +333,56 @@ dj.loc[:, 'Returns'].groupby(pd.Grouper(freq='m')).apply(rho_mu).describe()
 # 1. Viet Nam War: 1959 to 1975
 # 1. Gulf War: 1990 to 1991
 # 1. War in Afghanistan: 2001 to 2021
+
+# In[27]:
+
+
+import pandas_datareader as pdr
+
+
+# In[28]:
+
+
+pdr.famafrench.get_available_datasets()[:5]
+
+
+# In[29]:
+
+
+ff_all = pdr.DataReader(
+    name='F-F_Research_Data_Factors_daily',
+    data_source='famafrench',
+    start='1900',
+    session=session
+)
+
+
+# In[30]:
+
+
+(
+    ff_all[0]
+    .assign(Mkt = lambda x: x['Mkt-RF'] + x['RF'])
+    ['Mkt']
+    .groupby(pd.Grouper(freq='M'))
+    .std()
+    .mul(np.sqrt(252))
+    .plot()
+)
+
+# adds vertical bands for U.S. wars
+plt.axvspan('1941-12', '1945-09', alpha=0.25)
+plt.annotate('WWII', ('1941-12', 90))
+plt.axvspan('1950', '1953', alpha=0.25)
+plt.annotate('Korean', ('1950', 80))
+plt.axvspan('1959', '1975', alpha=0.25)
+plt.annotate('Vietnam', ('1959', 90))
+plt.axvspan('1990', '1991', alpha=0.25)
+plt.annotate('Gulf I', ('1990', 80))
+plt.axvspan('2001', '2021', alpha=0.25)
+plt.annotate('Afghanistan', ('2001', 90))
+
+plt.ylabel('Annualized Volatility of Daily Returns (%)')
+plt.title('Volatility of U.S. Market')
+plt.show()
+

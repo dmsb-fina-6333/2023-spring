@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # McKinney Chapter 11 - Practice (Blank)
+# # McKinney Chapter 11 - Practice (Wednesday 2:45 PM, Section 2)
 
 # ## Announcements
 

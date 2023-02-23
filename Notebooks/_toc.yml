@@ -45,6 +45,9 @@ parts:
     - file: mckinney_11_lecture
       sections:
       - file: mckinney_11_practice
+      - file: mckinney_11_practice_03
+      - file: mckinney_11_practice_04
+      - file: mckinney_11_practice_02
   - caption: Quizzes
     chapters:
     - file: quiz_01
