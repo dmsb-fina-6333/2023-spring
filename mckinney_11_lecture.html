@@ -345,6 +345,21 @@ const thebe_selector_output = ".output, .cell_output"
      McKinney Chapter 11 - Practice (Blank)
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_03.html">
+     McKinney Chapter 11 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_04.html">
+     McKinney Chapter 11 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_02.html">
+     McKinney Chapter 11 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -859,13 +874,8 @@ analyze server log data, too.</p>
 <span class="p">]</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span>
+
+<span class="n">ts</span>
 </pre></div>
 </div>
 </div>
@@ -892,6 +902,18 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2011-01-02&#39;, &#39;2011-01-05&#39;, &#39;2011-01-07&#39;, &#39;2011-01-08&#39;,
                &#39;2011-01-10&#39;, &#39;2011-01-12&#39;],
               dtype=&#39;datetime64[ns]&#39;, freq=None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2011-01-02 00:00:00&#39;)
 </pre></div>
 </div>
 </div>
@@ -1169,7 +1191,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_247998/1099700163.py:1: FutureWarning: Value based partial slicing on non-monotonic DatetimeIndexes with non-existing keys is deprecated and will raise a KeyError in a future Version.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_263360/1099700163.py:1: FutureWarning: Value based partial slicing on non-monotonic DatetimeIndexes with non-existing keys is deprecated and will raise a KeyError in a future Version.
   ts2[&#39;1/6/2011&#39;:&#39;1/11/2011&#39;]
 </pre></div>
 </div>
@@ -1467,7 +1489,7 @@ Freq: M, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span>
     <span class="n">a</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(),</span>
-    <span class="n">b</span><span class="o">=</span><span class="n">ts</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">shift</span><span class="p">())</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">shift</span><span class="p">()),</span>
+    <span class="n">b</span><span class="o">=</span><span class="p">(</span><span class="n">ts</span> <span class="o">-</span> <span class="n">ts</span><span class="o">.</span><span class="n">shift</span><span class="p">())</span> <span class="o">/</span> <span class="n">ts</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span>
     <span class="n">equal_nan</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
@@ -1537,7 +1559,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">M</span></code> was already months, so <code class="docutils literal notranslate"><span class="pre">T</span></code> is minutes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">M</span></code> is already months, so <code class="docutils literal notranslate"><span class="pre">T</span></code> is minutes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;90T&#39;</span><span class="p">)</span>
@@ -1792,13 +1814,8 @@ To upsample (i.e., resample from lower frequency to higher frequency), we do not
 <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
                      <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;1/1/2000&#39;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;W-WED&#39;</span><span class="p">),</span>
                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span>
+
+<span class="n">frame</span>
 </pre></div>
 </div>
 </div>
@@ -2182,7 +2199,7 @@ To upsample (i.e., resample from lower frequency to higher frequency), we do not
 <h2>Moving Window Functions<a class="headerlink" href="#moving-window-functions" title="Permalink to this headline">#</a></h2>
 <p><em><strong>Moving window (or rolling window) functions are one of the neatest features of pandas, and we will frequently use moving window functions.</strong></em>
 We will use data similar, but not identical, to the book data.
-<em><strong>We must remove the timezone if (1) we are on Windows and (2) want to merge the Fama-French data.</strong></em></p>
+<em><strong>We must remove the timezone if we want to merge with Fama-French data.</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
@@ -2192,9 +2209,218 @@ We will use data similar, but not identical, to the book data.
     <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Variable&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticker&#39;</span><span class="p">])</span>
 <span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th colspan="3" halign="left">Adj Close</th>
+      <th>Capital Gains</th>
+      <th colspan="3" halign="left">Close</th>
+      <th colspan="3" halign="left">Dividends</th>
+      <th>...</th>
+      <th>Low</th>
+      <th colspan="3" halign="left">Open</th>
+      <th colspan="3" halign="left">Stock Splits</th>
+      <th colspan="3" halign="left">Volume</th>
+    </tr>
+    <tr>
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+      <th>SPY</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+      <th>...</th>
+      <th>SPY</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>0.0997</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.1283</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>469033600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>0.0945</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1217</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.1222</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>175884800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>0.0876</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1127</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.1133</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>105728000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.0897</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.1155</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>86441600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.0924</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>0.1189</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>73449600</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div></div></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method is similar to the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> and <code class="docutils literal notranslate"><span class="pre">.resample()</span></code> methods.
 The <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method accepts a window-width and requires an aggregation method.
@@ -2214,7 +2440,7 @@ The next example calculates and plots the 252-trading day moving average of AAPL
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_11_lecture_114_0.png" src="_images/mckinney_11_lecture_114_0.png" />
+<img alt="_images/mckinney_11_lecture_113_0.png" src="_images/mckinney_11_lecture_113_0.png" />
 </div>
 </div>
 <p>Two observations:</p>
@@ -2232,9 +2458,75 @@ The most common example is the rolling correlation between two returns series.</
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+
+<span class="n">returns</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>MSFT</th>
+      <th>SPY</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>-0.0522</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>-0.0734</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.0248</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.0290</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2246,7 +2538,7 @@ The most common example is the rolling correlation between two returns series.</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_11_lecture_119_0.png" src="_images/mckinney_11_lecture_119_0.png" />
+<img alt="_images/mckinney_11_lecture_118_0.png" src="_images/mckinney_11_lecture_118_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2259,7 +2551,7 @@ The most common example is the rolling correlation between two returns series.</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_11_lecture_120_0.png" src="_images/mckinney_11_lecture_120_0.png" />
+<img alt="_images/mckinney_11_lecture_119_0.png" src="_images/mckinney_11_lecture_119_0.png" />
 </div>
 </div>
 </section>
@@ -2279,7 +2571,7 @@ Also, calculating rolling volatility with the <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/mckinney_11_lecture_123_0.png" src="_images/mckinney_11_lecture_123_0.png" />
+<img alt="_images/mckinney_11_lecture_122_0.png" src="_images/mckinney_11_lecture_122_0.png" />
 </div>
 </div>
 <p>Do not be afraid to use <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>, but realize that <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> is typically 1000-times slower than the pre-built method.</p>
@@ -2290,7 +2582,7 @@ Also, calculating rolling volatility with the <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>444 ms ± 43.7 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>483 ms ± 54.5 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2302,7 +2594,7 @@ Also, calculating rolling volatility with the <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>225 µs ± 5.63 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>235 µs ± 9.32 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
