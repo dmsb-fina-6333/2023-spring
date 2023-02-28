@@ -26,6 +26,16 @@
 # 1. Total returns over rolling 12-months windows after calculating monthly returns
 # 1. Sharpe Ratios for each calendar year
 
+# #### Cumulative returns with all available data
+
+# #### Total returns for each calendar year
+
+# #### Total returns over rolling 252-trading-day windows
+
+# #### Total returns over rolling 12-months windows after calculating monthly returns
+
+# #### Sharpe Ratios for each calendar year
+
 # ### Calculate rolling betas
 # 
 # Calculate rolling capital asset pricing model (CAPM) betas for the MATANA stocks.
@@ -40,8 +50,7 @@
 # The Sharpe Ratio is often used to evaluate fund managers.
 # The Sharpe Ratio is $SR_i = \frac{\overline{R_i - R_f}}{\sigma}$, where $\overline{R_i-R_f}$ is mean fund return relative to the risk-free rate over some period and $\sigma$ is the standard deviation of $R_i-R_f$ over the same period.
 # While the Sharpe Ratio is typically used for funds, we can apply it to a single stock to test our knowledge of the `.rolling()` method.
-# Calculate and plot the one-year rolling Sharpe Ratio for GME using all available daily data.
-# Download GME data from Yahoo! Finance and risk-free rate data from Ken French.
+# Calculate and plot the one-year rolling Sharpe Ratio for the MATANA stocks using all available daily data.
 
 # ### Does more frequent rebalancing increase or decrease returns?
 

@@ -621,6 +621,33 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#which-are-larger-overnight-or-intraday-returns">
      Which are larger, overnight or intraday returns?
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cumulative-returns-with-all-available-data">
+       Cumulative returns with all available data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#total-returns-for-each-calendar-year">
+       Total returns for each calendar year
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#total-returns-over-rolling-252-trading-day-windows">
+       Total returns over rolling 252-trading-day windows
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#total-returns-over-rolling-12-months-windows-after-calculating-monthly-returns">
+       Total returns over rolling 12-months windows after calculating monthly returns
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sharpe-ratios-for-each-calendar-year">
+       Sharpe Ratios for each calendar year
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#calculate-rolling-betas">
@@ -672,6 +699,33 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#which-are-larger-overnight-or-intraday-returns">
      Which are larger, overnight or intraday returns?
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cumulative-returns-with-all-available-data">
+       Cumulative returns with all available data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#total-returns-for-each-calendar-year">
+       Total returns for each calendar year
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#total-returns-over-rolling-252-trading-day-windows">
+       Total returns over rolling 252-trading-day windows
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#total-returns-over-rolling-12-months-windows-after-calculating-monthly-returns">
+       Total returns over rolling 12-months windows after calculating monthly returns
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sharpe-ratios-for-each-calendar-year">
+       Sharpe Ratios for each calendar year
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#calculate-rolling-betas">
@@ -720,9 +774,24 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 <li><p>Cumulative returns with all available data</p></li>
 <li><p>Total returns for each calendar year</p></li>
 <li><p>Total returns over rolling 252-trading-day windows</p></li>
-<li><p>Total returns over rolling 12-months windows after calculating monthly returns</p></li>
-<li><p>Sharpe Ratios for each calendar year</p></li>
+<li><p>Total returns over rolling 12-months windows after calculating monthly returns
+. Sharpe Ratios for each calendar year</p></li>
 </ol>
+<section id="cumulative-returns-with-all-available-data">
+<h4>Cumulative returns with all available data<a class="headerlink" href="#cumulative-returns-with-all-available-data" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="total-returns-for-each-calendar-year">
+<h4>Total returns for each calendar year<a class="headerlink" href="#total-returns-for-each-calendar-year" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="total-returns-over-rolling-252-trading-day-windows">
+<h4>Total returns over rolling 252-trading-day windows<a class="headerlink" href="#total-returns-over-rolling-252-trading-day-windows" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="total-returns-over-rolling-12-months-windows-after-calculating-monthly-returns">
+<h4>Total returns over rolling 12-months windows after calculating monthly returns<a class="headerlink" href="#total-returns-over-rolling-12-months-windows-after-calculating-monthly-returns" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="sharpe-ratios-for-each-calendar-year">
+<h4>Sharpe Ratios for each calendar year<a class="headerlink" href="#sharpe-ratios-for-each-calendar-year" title="Permalink to this headline">#</a></h4>
+</section>
 </section>
 <section id="calculate-rolling-betas">
 <h3>Calculate rolling betas<a class="headerlink" href="#calculate-rolling-betas" title="Permalink to this headline">#</a></h3>
@@ -736,8 +805,7 @@ We can calculate CAPM betas as: <span class="math notranslate nohighlight">\(\be
 <p>The Sharpe Ratio is often used to evaluate fund managers.
 The Sharpe Ratio is <span class="math notranslate nohighlight">\(SR_i = \frac{\overline{R_i - R_f}}{\sigma}\)</span>, where <span class="math notranslate nohighlight">\(\overline{R_i-R_f}\)</span> is mean fund return relative to the risk-free rate over some period and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of <span class="math notranslate nohighlight">\(R_i-R_f\)</span> over the same period.
 While the Sharpe Ratio is typically used for funds, we can apply it to a single stock to test our knowledge of the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method.
-Calculate and plot the one-year rolling Sharpe Ratio for GME using all available daily data.
-Download GME data from Yahoo! Finance and risk-free rate data from Ken French.</p>
+Calculate and plot the one-year rolling Sharpe Ratio for the MATANA stocks using all available daily data.</p>
 </section>
 <section id="does-more-frequent-rebalancing-increase-or-decrease-returns">
 <h3>Does more frequent rebalancing increase or decrease returns?<a class="headerlink" href="#does-more-frequent-rebalancing-increase-or-decrease-returns" title="Permalink to this headline">#</a></h3>
