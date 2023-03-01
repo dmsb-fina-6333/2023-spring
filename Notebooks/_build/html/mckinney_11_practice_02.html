@@ -758,9 +758,41 @@ title="Print to PDF"
 <h1>McKinney Chapter 11 - Practice (Wednesday 2:45 PM, Section 2)<a class="headerlink" href="#mckinney-chapter-11-practice-wednesday-2-45-pm-section-2" title="Permalink to this headline">#</a></h1>
 <section id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Quiz 4 mean was <span class="math notranslate nohighlight">\(87\%\)</span></p></li>
+<li><p>Project 1 and Teammates Review 1 at due Friday at 11:59 PM</p></li>
+</ul>
 </section>
 <section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">precision</span> 4
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+<span class="kn">import</span> <span class="nn">pandas_datareader</span> <span class="k">as</span> <span class="nn">pdr</span>
+<span class="kn">import</span> <span class="nn">requests_cache</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">requests_cache</span><span class="o">.</span><span class="n">CachedSession</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="which-are-larger-overnight-or-intraday-returns">
 <h3>Which are larger, overnight or intraday returns?<a class="headerlink" href="#which-are-larger-overnight-or-intraday-returns" title="Permalink to this headline">#</a></h3>
 <p>Yahoo! Finance provides easy acces to high-quality open, high, low, close (OHLC) and adjusted close price data.
@@ -779,18 +811,441 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 </ol>
 <section id="cumulative-returns-with-all-available-data">
 <h4>Cumulative returns with all available data<a class="headerlink" href="#cumulative-returns-with-all-available-data" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spy</span> <span class="o">=</span> <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;spy&#39;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">spy</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+        <span class="n">Total</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(),</span>
+        <span class="n">Intraday</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Close&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Open&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">Overnight</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">((</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Intraday&#39;</span><span class="p">]))</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="p">[[</span><span class="s1">&#39;Intraday&#39;</span><span class="p">,</span> <span class="s1">&#39;Overnight&#39;</span><span class="p">,</span> <span class="s1">&#39;Total&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Return&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">returns</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Return</th>
+      <th>Intraday</th>
+      <th>Overnight</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1993-02-01</th>
+      <td>0.0064</td>
+      <td>0.0007</td>
+      <td>0.0071</td>
+    </tr>
+    <tr>
+      <th>1993-02-02</th>
+      <td>0.0028</td>
+      <td>-0.0007</td>
+      <td>0.0021</td>
+    </tr>
+    <tr>
+      <th>1993-02-03</th>
+      <td>0.0091</td>
+      <td>0.0014</td>
+      <td>0.0106</td>
+    </tr>
+    <tr>
+      <th>1993-02-04</th>
+      <td>0.0007</td>
+      <td>0.0035</td>
+      <td>0.0042</td>
+    </tr>
+    <tr>
+      <th>1993-02-05</th>
+      <td>0.0000</td>
+      <td>-0.0007</td>
+      <td>-0.0007</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Return
+Intraday       1.2913
+Overnight   1445.3407
+Total       1465.2960
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Return
+Intraday    0.0049
+Overnight   0.0384
+Total       0.0434
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cumprod</span><span class="p">()</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Intraday and Overnight Return Decomposition</span><span class="se">\n</span><span class="s1">Cumulative Returns&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_14_0.png" src="_images/mckinney_11_practice_02_14_0.png" />
+</div>
+</div>
 </section>
 <section id="total-returns-for-each-calendar-year">
 <h4>Total returns for each calendar year<a class="headerlink" href="#total-returns-for-each-calendar-year" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">totret</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_a</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;period&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">totret</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to remove years with too few observations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">counts_a</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;period&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_a</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">counts_a</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">250</span> <span class="p">]</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Intraday and Overnight Return Decomposition</span><span class="se">\n</span><span class="s1">Calendar Year Total Returns&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_20_0.png" src="_images/mckinney_11_practice_02_20_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">returns_a</span><span class="p">[</span><span class="s1">&#39;Overnight&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">returns_a</span><span class="p">[</span><span class="s1">&#39;Intraday&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7096774193548387
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="total-returns-over-rolling-252-trading-day-windows">
 <h4>Total returns over rolling 252-trading-day windows<a class="headerlink" href="#total-returns-over-rolling-252-trading-day-windows" title="Permalink to this headline">#</a></h4>
+<p>We can repeat the total return calculation for 252-trading-day rolling windows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_r</span> <span class="o">=</span> <span class="n">returns</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">totret</span><span class="p">)</span>
+
+<span class="n">returns_r</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Return</th>
+      <th>Intraday</th>
+      <th>Overnight</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1993-02-01</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1993-02-02</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1993-02-03</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1993-02-04</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1993-02-05</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_r</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Intraday and Overnight Return Decomposition</span><span class="se">\n</span><span class="s1">252-Trading-Day Rolling Windows&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_25_0.png" src="_images/mckinney_11_practice_02_25_0.png" />
+</div>
+</div>
 </section>
 <section id="total-returns-over-rolling-12-months-windows-after-calculating-monthly-returns">
 <h4>Total returns over rolling 12-months windows after calculating monthly returns<a class="headerlink" href="#total-returns-over-rolling-12-months-windows-after-calculating-monthly-returns" title="Permalink to this headline">#</a></h4>
+<p>We can chain this operation!
+Note the plot has the same general appearance, but is less noisy because we aggregate to monthly total returns first!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_mr</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">returns</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;period&#39;</span><span class="p">)</span> <span class="c1"># aggregate from daily to monthly</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">totret</span><span class="p">)</span> <span class="c1"># ...calculate total returns</span>
+    <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="c1"># aggregate into 12-month rolling windows</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">totret</span><span class="p">)</span> <span class="c1"># ...calculate total returns</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_mr</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Return (%)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Intraday and Overnight Return Decomposition</span><span class="se">\n</span><span class="s1">12-Month Rolling Windows&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_29_0.png" src="_images/mckinney_11_practice_02_29_0.png" />
+</div>
+</div>
 </section>
 <section id="sharpe-ratios-for-each-calendar-year">
 <h4>Sharpe Ratios for each calendar year<a class="headerlink" href="#sharpe-ratios-for-each-calendar-year" title="Permalink to this headline">#</a></h4>
+<p>We need the risk-free rate <code class="docutils literal notranslate"><span class="pre">RF</span></code> from Ken French’s daily benchmark factors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pdr</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;F-F_Research_Data_Factors_daily&#39;</span><span class="p">,</span>
+        <span class="n">data_source</span><span class="o">=</span><span class="s1">&#39;famafrench&#39;</span><span class="p">,</span>
+        <span class="n">start</span><span class="o">=</span><span class="s1">&#39;1900&#39;</span><span class="p">,</span>
+        <span class="n">session</span><span class="o">=</span><span class="n">session</span>
+    <span class="p">)</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I think this easiest (and fastest approach) is to:</p>
+<ol class="simple">
+<li><p>Calculate a data frame of excess returns</p></li>
+<li><p>Use an anonymous (lambda) function</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns_excess</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">returns</span>
+    <span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># note axis=0 for column-wise subtraction</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sharpes_a</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">returns_excess</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">rule</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;period&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<span class="p">)</span>
+
+<span class="n">sharpes_a</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Return</th>
+      <th>Intraday</th>
+      <th>Overnight</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1993</th>
+      <td>-0.9172</td>
+      <td>2.8057</td>
+      <td>0.7233</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>-1.1871</td>
+      <td>0.8819</td>
+      <td>-0.2732</td>
+    </tr>
+    <tr>
+      <th>1995</th>
+      <td>2.5275</td>
+      <td>0.4197</td>
+      <td>3.1844</td>
+    </tr>
+    <tr>
+      <th>1996</th>
+      <td>-0.1691</td>
+      <td>1.6658</td>
+      <td>1.2247</td>
+    </tr>
+    <tr>
+      <th>1997</th>
+      <td>-0.1781</td>
+      <td>2.5565</td>
+      <td>1.2796</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sharpes_a</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Intraday and Overnight Return Decomposition</span><span class="se">\n</span><span class="s1">Calendar Year Sharpe Ratios&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_36_0.png" src="_images/mckinney_11_practice_02_36_0.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="calculate-rolling-betas">
@@ -798,6 +1253,184 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 <p>Calculate rolling capital asset pricing model (CAPM) betas for the MATANA stocks.</p>
 <p>The CAPM says the risk premium on a stock depends on the risk-free rate, beta, and the risk premium on the market: <span class="math notranslate nohighlight">\(E(R_{stock}) = R_f + \beta_{stock} \times (E(R_{market}) - R_f)\)</span>.
 We can calculate CAPM betas as: <span class="math notranslate nohighlight">\(\beta_{stock} = \frac{Cov(R_{stock} - R_f, R_{market} - R_f)}{Var(R_{market} - R_f)}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matana</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;MSFT AAPL TSLA AMZN NVDA GOOG&#39;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Ticker&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">matana</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Ticker</th>
+      <th>AAPL</th>
+      <th>AMZN</th>
+      <th>GOOG</th>
+      <th>MSFT</th>
+      <th>NVDA</th>
+      <th>TSLA</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1980-12-12</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-15</th>
+      <td>-0.0522</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-16</th>
+      <td>-0.0734</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-17</th>
+      <td>0.0248</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1980-12-18</th>
+      <td>0.0290</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">beta</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span> <span class="n">rm_rf</span><span class="o">=</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]):</span>
+    <span class="n">ri_rf</span> <span class="o">=</span> <span class="n">ri</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">rf</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ri_rf</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">rm_rf</span><span class="p">)</span> <span class="o">/</span> <span class="n">rm_rf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ri_rf</span><span class="o">.</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A few notes:</p>
+<ol class="simple">
+<li><p>Here the <code class="docutils literal notranslate"><span class="pre">beta()</span></code> function is too smart for the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method.
+Our <code class="docutils literal notranslate"><span class="pre">beta()</span></code> function matches stock and market data, but may not use 252 trading days at the end of the sample.
+For example, in February 2023, we can slice a 252-trading-day window from the <code class="docutils literal notranslate"><span class="pre">matana</span></code> data frame.
+However, the <code class="docutils literal notranslate"><span class="pre">beta()</span></code> function does not use January and Februrary 2023 data because they are missing from the <code class="docutils literal notranslate"><span class="pre">ff</span></code> data frame.
+The easiest fix is to slice the <code class="docutils literal notranslate"><span class="pre">matana</span></code> data frame to remove 2023 data before we apply the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method and <code class="docutils literal notranslate"><span class="pre">beta()</span></code> function are <em>very slow</em> because they slice inefficiently!
+We will write faster—but uglier—code below.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">betas_1</span> <span class="o">=</span> <span class="n">matana</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wall time: 24.5 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is the fast solution, which uses the optimized <code class="docutils literal notranslate"><span class="pre">.cov()</span></code> and <code class="docutils literal notranslate"><span class="pre">.var()</span></code> to calculate the numerator and denominator for <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">cov_2</span> <span class="o">=</span> <span class="n">matana</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">])</span>
+<span class="n">var_2</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="s1">&#39;Mkt-RF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="n">betas_2</span> <span class="o">=</span> <span class="n">cov_2</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">var_2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wall time: 31.3 ms
+</pre></div>
+</div>
+</div>
+</div>
+<p>These solutions are identical!
+Even though <code class="docutils literal notranslate"><span class="pre">beta_2</span></code> is 1000 times faster than <code class="docutils literal notranslate"><span class="pre">beta_1</span></code>, you should use the approach that makes the most sense to you!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">betas_1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">betas_2</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">betas_1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Beta&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Betas from Daily Returns</span><span class="se">\n</span><span class="s1">252-Trading-Day Rolling Windows&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_47_0.png" src="_images/mckinney_11_practice_02_47_0.png" />
+</div>
+</div>
 </section>
 <section id="calculate-rolling-sharpe-ratios">
 <h3>Calculate rolling Sharpe Ratios<a class="headerlink" href="#calculate-rolling-sharpe-ratios" title="Permalink to this headline">#</a></h3>
@@ -806,6 +1439,69 @@ We can calculate CAPM betas as: <span class="math notranslate nohighlight">\(\be
 The Sharpe Ratio is <span class="math notranslate nohighlight">\(SR_i = \frac{\overline{R_i - R_f}}{\sigma}\)</span>, where <span class="math notranslate nohighlight">\(\overline{R_i-R_f}\)</span> is mean fund return relative to the risk-free rate over some period and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of <span class="math notranslate nohighlight">\(R_i-R_f\)</span> over the same period.
 While the Sharpe Ratio is typically used for funds, we can apply it to a single stock to test our knowledge of the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method.
 Calculate and plot the one-year rolling Sharpe Ratio for the MATANA stocks using all available daily data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sharpe</span><span class="p">(</span><span class="n">ri</span><span class="p">,</span> <span class="n">rf</span><span class="o">=</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span> <span class="n">ann_fac</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">)):</span>
+    <span class="n">ri_rf</span> <span class="o">=</span> <span class="n">ri</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">rf</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ann_fac</span> <span class="o">*</span> <span class="n">ri_rf</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">/</span> <span class="n">ri_rf</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>See the discussion in the beta exercise above about how we can end up with a result based on fewer than 252 trading days of data because the <code class="docutils literal notranslate"><span class="pre">sharpe()</span></code> function matches the <code class="docutils literal notranslate"><span class="pre">matana</span></code> and <code class="docutils literal notranslate"><span class="pre">ff</span></code> data frames <em>after</em> the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> mehtod slices a 252 trading day window.
+The simplest solution is the remove the 2023 data from the <code class="docutils literal notranslate"><span class="pre">matana</span></code> data frame before we apply the <code class="docutils literal notranslate"><span class="pre">.rolling()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="n">sharpes_1</span> <span class="o">=</span> <span class="n">matana</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">sharpe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wall time: 11.7 s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is the fast solution, which:</p>
+<ol class="simple">
+<li><p>Uses the <code class="docutils literal notranslate"><span class="pre">.sub()</span></code> method to calculate excess returns</p></li>
+<li><p>Then uses the optimized <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">.std()</span></code> methods to calculate the numerator and denominator for the Sharpe Ratios</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_2</span> <span class="o">=</span> <span class="n">matana</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_2</span> <span class="o">=</span> <span class="n">matana</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;2022&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">ff</span><span class="p">[</span><span class="s1">&#39;RF&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">252</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">sharpes_2</span> <span class="o">=</span> <span class="n">mean_2</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">std_2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">252</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">sharpes_1</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">sharpes_2</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sharpes_1</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratio&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sharpe Ratios from Daily Returns</span><span class="se">\n</span><span class="s1">252-Trading-Day Rolling Windows&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/mckinney_11_practice_02_56_0.png" src="_images/mckinney_11_practice_02_56_0.png" />
+</div>
+</div>
 </section>
 <section id="does-more-frequent-rebalancing-increase-or-decrease-returns">
 <h3>Does more frequent rebalancing increase or decrease returns?<a class="headerlink" href="#does-more-frequent-rebalancing-increase-or-decrease-returns" title="Permalink to this headline">#</a></h3>
@@ -817,6 +1513,7 @@ Calculate and plot the one-year rolling Sharpe Ratio for the MATANA stocks using
 <li><p>Decade rebalancing</p></li>
 </ol>
 <p>Use equally-weighted portfolios of industry-level daily returns from French’s website: <code class="docutils literal notranslate"><span class="pre">'17_Industry_Portfolios_daily'</span></code>.</p>
+<p><em><strong>This exercise is a little early, and we will revisit later in the course!</strong></em></p>
 </section>
 </section>
 </section>
