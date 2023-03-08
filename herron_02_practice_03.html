@@ -1,0 +1,881 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Herron Topic 2 - Practice (Monday 2:45 PM, Section 3) &#8212; FINA 6333 for Spring 2023</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Herron Topic 2 - Practice (Monday 11:45 AM, Section 4)" href="herron_02_practice_04.html" />
+    <link rel="prev" title="Herron Topic 2 - Practice (Blank)" href="herron_02_practice.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/DMSB_100th_LogoMark_CMYK_Horiz.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">FINA 6333 for Spring 2023</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="_introduction.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Lectures and Practice
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_02_lecture.html">
+   McKinney Chapter 2 - Python Language Basics, IPython, and Jupyter Notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice.html">
+     McKinney Chapter 2 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_03.html">
+     McKinney Chapter 2 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_04.html">
+     McKinney Chapter 2 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_02_practice_02.html">
+     McKinney Chapter 2 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_03_lecture.html">
+   McKinney Chapter 3 - Built-In Data Structures, Functions, and Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice.html">
+     McKinney Chapter 3 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_04.html">
+     McKinney Chapter 3 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_03_practice_02.html">
+     McKinney Chapter 3 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_04_lecture.html">
+   McKinney Chapter 4 - NumPy Basics: Arrays and Vectorized Computation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice.html">
+     McKinney Chapter 4 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_03.html">
+     McKinney Chapter 4 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_04.html">
+     McKinney Chapter 4 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_04_practice_02.html">
+     McKinney Chapter 4 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_05_lecture.html">
+   McKinney Chapter 5 - Getting Started with pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice.html">
+     McKinney Chapter 5 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_03.html">
+     McKinney Chapter 5 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_04.html">
+     McKinney Chapter 5 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_05_practice_02.html">
+     McKinney Chapter 5 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="herron_01_lecture.html">
+   Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice.html">
+     Herron Topic 1 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_03.html">
+     Herron Topic 1 - Practice (Section 3, Monday 2:45 PM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_04.html">
+     Herron Topic 1 - Practice (Section 4, Wednesday 11:45 AM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_01_practice_02.html">
+     Herron Topic 1 - Practice (Section 2, Wednesday 2:45 PM)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_08_lecture.html">
+   McKinney Chapter 8 - Data Wrangling: Join, Combine, and Reshape
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice.html">
+     McKinney Chapter 8 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_03.html">
+     McKinney Chapter 8 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_04.html">
+     McKinney Chapter 8 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_08_practice_02.html">
+     McKinney Chapter 8 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_10_lecture.html">
+   McKinney Chapter 10 - Data Aggregation and Group Operations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice.html">
+     McKinney Chapter 10 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_10_practice_all.html">
+     McKinney Chapter 10 - Practice (All Sections)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="mckinney_11_lecture.html">
+   McKinney Chapter 11 - Time Series
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice.html">
+     McKinney Chapter 11 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_03.html">
+     McKinney Chapter 11 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_04.html">
+     McKinney Chapter 11 - Practice (Wednesday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="mckinney_11_practice_02.html">
+     McKinney Chapter 11 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="herron_02_lecture.html">
+   Herron Topic 2 - Trading Strategies
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice.html">
+     Herron Topic 2 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Herron Topic 2 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice_04.html">
+     Herron Topic 2 - Practice (Monday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice_02.html">
+     Herron Topic 2 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Quizzes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_01.html">
+   Quiz 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_02.html">
+   Quiz 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_03.html">
+   Quiz 3
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quiz_04.html">
+   Quiz 4
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="project_01.html">
+   Project 1
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/dmsb-fina-6333/2023-spring/main?urlpath=lab/tree/Notebooks/herron_02_practice_03.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/dmsb-fina-6333/2023-spring"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/dmsb-fina-6333/2023-spring/issues/new?title=Issue%20on%20page%20%2Fherron_02_practice_03.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/herron_02_practice_03.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#announcements">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-the-sma-20-strategy-with-bitcoin-from-the-lecture-notebook">
+     Implement the SMA(20) strategy with Bitcoin from the lecture notebook
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-sma-20-outperform-buy-and-hold-with-this-sample">
+     How does SMA(20) outperform buy-and-hold with this sample?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-the-sma-20-strategy-with-the-market-factor-from-french">
+     Implement the SMA(20) strategy with the market factor from French
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-often-does-sma-20-outperform-buy-and-hold-with-10-year-rolling-windows">
+     How often does SMA(20) outperform buy-and-hold with 10-year rolling windows?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-a-long-only-bb-20-2-strategy-with-bitcoin">
+     Implement a long-only BB(20, 2) strategy with Bitcoin
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-a-long-short-rsi-14-strategy-with-bitcoin">
+     Implement a long-short RSI(14) strategy with Bitcoin
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Herron Topic 2 - Practice (Monday 2:45 PM, Section 3)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#announcements">
+   Announcements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-the-sma-20-strategy-with-bitcoin-from-the-lecture-notebook">
+     Implement the SMA(20) strategy with Bitcoin from the lecture notebook
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-does-sma-20-outperform-buy-and-hold-with-this-sample">
+     How does SMA(20) outperform buy-and-hold with this sample?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-the-sma-20-strategy-with-the-market-factor-from-french">
+     Implement the SMA(20) strategy with the market factor from French
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-often-does-sma-20-outperform-buy-and-hold-with-10-year-rolling-windows">
+     How often does SMA(20) outperform buy-and-hold with 10-year rolling windows?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-a-long-only-bb-20-2-strategy-with-bitcoin">
+     Implement a long-only BB(20, 2) strategy with Bitcoin
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implement-a-long-short-rsi-14-strategy-with-bitcoin">
+     Implement a long-short RSI(14) strategy with Bitcoin
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="herron-topic-2-practice-monday-2-45-pm-section-3">
+<h1>Herron Topic 2 - Practice (Monday 2:45 PM, Section 3)<a class="headerlink" href="#herron-topic-2-practice-monday-2-45-pm-section-3" title="Permalink to this headline">#</a></h1>
+<section id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="practice">
+<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<section id="implement-the-sma-20-strategy-with-bitcoin-from-the-lecture-notebook">
+<h3>Implement the SMA(20) strategy with Bitcoin from the lecture notebook<a class="headerlink" href="#implement-the-sma-20-strategy-with-bitcoin-from-the-lecture-notebook" title="Permalink to this headline">#</a></h3>
+<p>Try to create the <code class="docutils literal notranslate"><span class="pre">btc</span></code> data frame in one code cell with one assignment (i.e., one <code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
+</section>
+<section id="how-does-sma-20-outperform-buy-and-hold-with-this-sample">
+<h3>How does SMA(20) outperform buy-and-hold with this sample?<a class="headerlink" href="#how-does-sma-20-outperform-buy-and-hold-with-this-sample" title="Permalink to this headline">#</a></h3>
+<p>Consider the following:</p>
+<ol class="simple">
+<li><p>Does SMA(20) avoid the worst performing days? How many of the worst 20 days does SMA(20) avoid? Try the <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code> or <code class="docutils literal notranslate"><span class="pre">.nlargest()</span></code> method.</p></li>
+<li><p>Does SMA(20) preferentially avoid low-return days? Try to combine the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method and <code class="docutils literal notranslate"><span class="pre">pd.qcut()</span></code> function.</p></li>
+<li><p>Does SMA(20) preferentially avoid high-volatility days? Try to combine the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method and <code class="docutils literal notranslate"><span class="pre">pd.qcut()</span></code> function.</p></li>
+</ol>
+</section>
+<section id="implement-the-sma-20-strategy-with-the-market-factor-from-french">
+<h3>Implement the SMA(20) strategy with the market factor from French<a class="headerlink" href="#implement-the-sma-20-strategy-with-the-market-factor-from-french" title="Permalink to this headline">#</a></h3>
+<p>We need to impute a market price before we calculate SMA(20).</p>
+</section>
+<section id="how-often-does-sma-20-outperform-buy-and-hold-with-10-year-rolling-windows">
+<h3>How often does SMA(20) outperform buy-and-hold with 10-year rolling windows?<a class="headerlink" href="#how-often-does-sma-20-outperform-buy-and-hold-with-10-year-rolling-windows" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="implement-a-long-only-bb-20-2-strategy-with-bitcoin">
+<h3>Implement a long-only BB(20, 2) strategy with Bitcoin<a class="headerlink" href="#implement-a-long-only-bb-20-2-strategy-with-bitcoin" title="Permalink to this headline">#</a></h3>
+<p>More on Bollinger Bands <a class="reference external" href="https://www.bollingerbands.com/bollinger-bands">here</a> and <a class="reference external" href="https://www.bollingerbands.com/bollinger-band-rules">here</a>.
+In short, Bollinger Bands are bands around a trend, typically defined in terms of simple moving averages and volatilities.
+Here, long-only BB(20, 2) implies we have upper and lower bands at 2 standard deviations above and below SMA(20):</p>
+<ol class="simple">
+<li><p>Buy when the closing price crosses LB(20) from below, where LB(20) is SMA(20) minus 2 sigma</p></li>
+<li><p>Sell when the closing price crosses UB(20) from above, where UB(20) is SMA(20) plus 2 sigma</p></li>
+<li><p>No short-selling</p></li>
+</ol>
+<p>The long-only BB(20, 2) is more difficult to implement than the long-only SMA(20) because we need to track buys and sells.
+For example, if the closing price is between LB(20) and BB(20), we need to know if our last trade was a buy or a sell.
+Further, if the closing price is below LB(20), we can still be long because we sell when the closing price crosses UB(20) from above.</p>
+</section>
+<section id="implement-a-long-short-rsi-14-strategy-with-bitcoin">
+<h3>Implement a long-short RSI(14) strategy with Bitcoin<a class="headerlink" href="#implement-a-long-short-rsi-14-strategy-with-bitcoin" title="Permalink to this headline">#</a></h3>
+<p>From <a class="reference external" href="https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/rsi">Fidelity</a>:</p>
+<blockquote>
+<div><p>The Relative Strength Index (RSI), developed by J. Welles Wilder, is a momentum oscillator that measures the speed and change of price movements. The RSI oscillates between zero and 100. Traditionally the RSI is considered overbought when above 70 and oversold when below 30. Signals can be generated by looking for divergences and failure swings. RSI can also be used to identify the general trend.</p>
+</div></blockquote>
+<p>Here is the RSI formula: <span class="math notranslate nohighlight">\(RSI(n) = 100 - \frac{100}{1 + RS(n)}\)</span>, where <span class="math notranslate nohighlight">\(RS(n) = \frac{SMA(U, n)}{SMA(D, n)}\)</span>.
+For “up days”, <span class="math notranslate nohighlight">\(U = \Delta Adj\ Close\)</span> and <span class="math notranslate nohighlight">\(D = 0\)</span>, and, for “down days”, <span class="math notranslate nohighlight">\(U = 0\)</span> and <span class="math notranslate nohighlight">\(D = - \Delta Adj\ Close\)</span>.
+Therefore, <span class="math notranslate nohighlight">\(U\)</span> and <span class="math notranslate nohighlight">\(D\)</span> are always non-negative.
+We can learn more about RSI <a class="reference external" href="https://en.wikipedia.org/wiki/Relative_strength_index">here</a>.</p>
+<p>We will implement a long-short RSI(14) as follows:</p>
+<ol class="simple">
+<li><p>Enter a long position when  the RSI crosses 30 from below, and exit the position when the RSI crosses 50 from below</p></li>
+<li><p>Enter a short position when the RSI crosses 70 from above, and exit the position when the RSI crosses 50 from above</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="herron_02_practice.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Herron Topic 2 - Practice (Blank)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="herron_02_practice_04.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Herron Topic 2 - Practice (Monday 11:45 AM, Section 4)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Richard Herron<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
