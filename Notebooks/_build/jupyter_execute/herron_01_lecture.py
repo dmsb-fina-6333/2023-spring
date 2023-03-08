@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # # Herron Topic 1 - Web Data, Log and Simple Returns, and Portfolio Math
-# 
+
 # This notebook covers three topics:
 # 
 # 1. How to download web data with the yfinance, pandas-datareader, and requests-cache packages

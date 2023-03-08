@@ -362,6 +362,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="herron_02_lecture.html">
+   Herron Topic 2 - Trading Strategies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice.html">
+     Herron Topic 2 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice_03.html">
+     Herron Topic 2 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice_04.html">
+     Herron Topic 2 - Practice (Monday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_02_practice_02.html">
+     Herron Topic 2 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -952,8 +984,8 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
   <tbody>
     <tr>
       <th>Intraday</th>
-      <td>7575.0000</td>
-      <td>0.0000</td>
+      <td>7580.0000</td>
+      <td>0.0001</td>
       <td>0.0097</td>
       <td>-0.0899</td>
       <td>-0.0042</td>
@@ -963,7 +995,7 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
     </tr>
     <tr>
       <th>Overnight</th>
-      <td>7575.0000</td>
+      <td>7580.0000</td>
       <td>0.0004</td>
       <td>0.0068</td>
       <td>-0.1045</td>
@@ -974,13 +1006,13 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
     </tr>
     <tr>
       <th>Total</th>
-      <td>7575.0000</td>
+      <td>7580.0000</td>
       <td>0.0004</td>
       <td>0.0119</td>
       <td>-0.1094</td>
       <td>-0.0045</td>
       <td>0.0007</td>
-      <td>0.0059</td>
+      <td>0.0060</td>
       <td>0.1452</td>
     </tr>
   </tbody>
@@ -1069,7 +1101,7 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.652963397660768
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.81871863894375
 </pre></div>
 </div>
 </div>
@@ -1089,12 +1121,12 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 1993-02-04    0.0242
 1993-02-05    0.0235
                ...  
-2023-02-23   14.8877
-2023-02-24   14.7180
-2023-02-27   14.7715
-2023-02-28   14.7132
-2023-03-01   14.6530
-Name: Total, Length: 7575, dtype: float64
+2023-03-02   14.7747
+2023-03-03   15.0277
+2023-03-06   15.0388
+2023-03-07   14.7929
+2023-03-08   14.8187
+Name: Total, Length: 7580, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1484,7 +1516,8 @@ We will write faster—but uglier—code below.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wall time: 25.7 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13.7 s, sys: 0 ns, total: 13.7 s
+Wall time: 13.7 s
 </pre></div>
 </div>
 </div>
@@ -1500,7 +1533,8 @@ We will write faster—but uglier—code below.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wall time: 25.9 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.62 ms, sys: 0 ns, total: 8.62 ms
+Wall time: 8.51 ms
 </pre></div>
 </div>
 </div>
@@ -1559,7 +1593,8 @@ The simplest solution is the remove the 2023 data from the <code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wall time: 11.7 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.44 s, sys: 0 ns, total: 6.44 s
+Wall time: 6.44 s
 </pre></div>
 </div>
 </div>

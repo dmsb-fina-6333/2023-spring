@@ -48,6 +48,12 @@ parts:
       - file: mckinney_11_practice_03
       - file: mckinney_11_practice_04
       - file: mckinney_11_practice_02
+    - file: herron_02_lecture
+      sections:
+      - file: herron_02_practice
+      - file: herron_02_practice_03
+      - file: herron_02_practice_04
+      - file: herron_02_practice_02
   - caption: Quizzes
     chapters:
     - file: quiz_01
