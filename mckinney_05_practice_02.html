@@ -394,6 +394,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="herron_03_lecture.html">
+   Herron Topic 3 - Multifactor Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice.html">
+     Herron Topic 3 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice_03.html">
+     Herron Topic 3 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice_04.html">
+     Herron Topic 3 - Practice (Monday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice_02.html">
+     Herron Topic 3 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -922,7 +954,7 @@ title="Print to PDF"
       <th>2004-08-25</th>
       <td>0.0344</td>
       <td>0.0108</td>
-      <td>0.0043</td>
+      <td>0.0042</td>
       <td>0.0114</td>
     </tr>
     <tr>
@@ -938,13 +970,6 @@ title="Print to PDF"
       <td>...</td>
       <td>...</td>
       <td>...</td>
-    </tr>
-    <tr>
-      <th>2023-03-02</th>
-      <td>0.0041</td>
-      <td>0.0199</td>
-      <td>0.0058</td>
-      <td>0.0197</td>
     </tr>
     <tr>
       <th>2023-03-03</th>
@@ -974,9 +999,16 @@ title="Print to PDF"
       <td>-0.0016</td>
       <td>-0.0018</td>
     </tr>
+    <tr>
+      <th>2023-03-09</th>
+      <td>-0.0149</td>
+      <td>-0.0210</td>
+      <td>-0.0148</td>
+      <td>-0.0054</td>
+    </tr>
   </tbody>
 </table>
-<p>4669 rows × 4 columns</p>
+<p>4670 rows × 4 columns</p>
 </div></div></div>
 </div>
 <section id="what-are-the-mean-daily-returns-for-these-four-stocks">
@@ -1029,10 +1061,10 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL   0.3681
-GOOG   0.2435
-IBM    0.0796
-MSFT   0.1832
+AAPL   0.3672
+GOOG   0.2423
+IBM    0.0788
+MSFT   0.1828
 dtype: float64
 </pre></div>
 </div>
@@ -1158,8 +1190,8 @@ We will need to download new data, into <code class="docutils literal notranslat
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 0.0347],
-       [0.0347, 1.    ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.    , 0.0265],
+       [0.0265, 1.    ]])
 </pre></div>
 </div>
 </div>
@@ -1241,7 +1273,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.4560
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.4522
 </pre></div>
 </div>
 </div>
@@ -1253,7 +1285,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;INTC&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;BA&#39;
 </pre></div>
 </div>
 </div>
@@ -1265,7 +1297,7 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3578
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3077
 </pre></div>
 </div>
 </div>
@@ -1290,8 +1322,8 @@ Technically, we should write <span class="math notranslate nohighlight">\(R_T\)<
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-INTC   -0.4560
-AAPL    2.3578
+BA     -0.4522
+AAPL    2.3077
 dtype: float64
 </pre></div>
 </div>
@@ -1305,11 +1337,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-INTC   -0.4560
-BA     -0.4360
-MMM    -0.4030
-WBA    -0.3530
-VZ     -0.2153
+BA     -0.4522
+INTC   -0.4464
+MMM    -0.4122
+WBA    -0.3753
+VZ     -0.2358
 dtype: float64
 </pre></div>
 </div>
@@ -1323,11 +1355,11 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ticker
-AAPL   2.3578
-MSFT   1.2494
-CAT    1.0664
-UNH    0.9868
-GS     0.9683
+AAPL   2.3077
+MSFT   1.2372
+CAT    1.0019
+UNH    0.9628
+GS     0.9277
 dtype: float64
 </pre></div>
 </div>

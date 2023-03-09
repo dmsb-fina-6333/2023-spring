@@ -394,6 +394,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="herron_03_lecture.html">
+   Herron Topic 3 - Multifactor Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice.html">
+     Herron Topic 3 - Practice (Blank)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice_03.html">
+     Herron Topic 3 - Practice (Monday 2:45 PM, Section 3)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice_04.html">
+     Herron Topic 3 - Practice (Monday 11:45 AM, Section 4)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="herron_03_practice_02.html">
+     Herron Topic 3 - Practice (Wednesday 2:45 PM, Section 2)
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -984,8 +1016,8 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
   <tbody>
     <tr>
       <th>Intraday</th>
-      <td>7580.0000</td>
-      <td>0.0001</td>
+      <td>7581.0000</td>
+      <td>0.0000</td>
       <td>0.0097</td>
       <td>-0.0899</td>
       <td>-0.0042</td>
@@ -995,7 +1027,7 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
     </tr>
     <tr>
       <th>Overnight</th>
-      <td>7580.0000</td>
+      <td>7581.0000</td>
       <td>0.0004</td>
       <td>0.0068</td>
       <td>-0.1045</td>
@@ -1006,13 +1038,13 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
     </tr>
     <tr>
       <th>Total</th>
-      <td>7580.0000</td>
+      <td>7581.0000</td>
       <td>0.0004</td>
       <td>0.0119</td>
       <td>-0.1094</td>
       <td>-0.0045</td>
       <td>0.0007</td>
-      <td>0.0060</td>
+      <td>0.0059</td>
       <td>0.1452</td>
     </tr>
   </tbody>
@@ -1101,7 +1133,7 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.81871863894375
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.526867943702184
 </pre></div>
 </div>
 </div>
@@ -1121,12 +1153,12 @@ Therefore, daily returns consist of overnight returns compounded with the intrad
 1993-02-04    0.0242
 1993-02-05    0.0235
                ...  
-2023-03-02   14.7747
 2023-03-03   15.0277
 2023-03-06   15.0388
 2023-03-07   14.7929
 2023-03-08   14.8187
-Name: Total, Length: 7580, dtype: float64
+2023-03-09   14.5269
+Name: Total, Length: 7581, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1335,7 +1367,7 @@ Note the plot has the same general appearance, but is less noisy because we aggr
     <tr>
       <th>1993</th>
       <td>-0.9172</td>
-      <td>2.8058</td>
+      <td>2.8057</td>
       <td>0.7233</td>
     </tr>
     <tr>
@@ -1516,8 +1548,8 @@ We will write faster—but uglier—code below.</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 13.7 s, sys: 0 ns, total: 13.7 s
-Wall time: 13.7 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14 s, sys: 134 µs, total: 14 s
+Wall time: 14 s
 </pre></div>
 </div>
 </div>
@@ -1533,8 +1565,8 @@ Wall time: 13.7 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 8.62 ms, sys: 0 ns, total: 8.62 ms
-Wall time: 8.51 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 7.41 ms, sys: 1.24 ms, total: 8.65 ms
+Wall time: 8.57 ms
 </pre></div>
 </div>
 </div>
@@ -1593,8 +1625,8 @@ The simplest solution is the remove the 2023 data from the <code class="docutils
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.44 s, sys: 0 ns, total: 6.44 s
-Wall time: 6.44 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.49 s, sys: 18 µs, total: 6.49 s
+Wall time: 6.49 s
 </pre></div>
 </div>
 </div>
