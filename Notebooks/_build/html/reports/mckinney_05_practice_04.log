@@ -1,0 +1,70 @@
+Traceback (most recent call last):
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/richard/anaconda3/envs/fina-6333/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+plt.scatter(
+    returns_2.std().mul(np.sqrt(252)).mul(100),
+    returns_2.mean().mul(252).mul(100)
+)
+plt.xlabel('Annualized Standard Deviation of Returns (%)')
+plt.ylabel('Annualized Mean of Returns (%)')
+plt.title(f'Return Versus Risk for DJIA Stocks\n from {returns_2.index[0]:%B %Y} to {returns_2.index[-1]:%B %Y}')
+plt.grid()
+
+for i in returns_2:
+    plt.text(
+        x=returns_2[i].std() * np.sqrt(252) * 100,
+        y=returns_2[i].mean() * 252 * 100,
+        s=i
+    )
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mIndexError[0m                                Traceback (most recent call last)
+[0;32m/tmp/ipykernel_74086/895263277.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0mplt[0m[0;34m.[0m[0mxlabel[0m[0;34m([0m[0;34m'Annualized Standard Deviation of Returns (%)'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mplt[0m[0;34m.[0m[0mylabel[0m[0;34m([0m[0;34m'Annualized Mean of Returns (%)'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mplt[0m[0;34m.[0m[0mtitle[0m[0;34m([0m[0;34mf'Return Versus Risk for DJIA Stocks\n from {returns_2.index[0]:%B %Y} to {returns_2.index[-1]:%B %Y}'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0mplt[0m[0;34m.[0m[0mgrid[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/fina-6333/lib/python3.9/site-packages/pandas/core/indexes/base.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m   5051[0m             [0;31m# GH#44051 exclude bool, which would return a 2d ndarray[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   5052[0m             [0mkey[0m [0;34m=[0m [0mcom[0m[0;34m.[0m[0mcast_scalar_indexer[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mwarn_float[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 5053[0;31m             [0;32mreturn[0m [0mgetitem[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   5054[0m [0;34m[0m[0m
+[1;32m   5055[0m         [0;32mif[0m [0misinstance[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mslice[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/fina-6333/lib/python3.9/site-packages/pandas/core/arrays/datetimelike.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m    339[0m         [0;31m# (see https://github.com/pandas-dev/pandas/pull/44624)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    340[0m         result = cast(
+[0;32m--> 341[0;31m             [0;34m"Union[DatetimeLikeArrayT, DTScalarOrNaT]"[0m[0;34m,[0m [0msuper[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0m__getitem__[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    342[0m         )
+[1;32m    343[0m         [0;32mif[0m [0mlib[0m[0;34m.[0m[0mis_scalar[0m[0;34m([0m[0mresult[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/envs/fina-6333/lib/python3.9/site-packages/pandas/core/arrays/_mixins.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
+[1;32m    270[0m         [0;32mif[0m [0mlib[0m[0;34m.[0m[0mis_integer[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    271[0m             [0;31m# fast-path[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 272[0;31m             [0mresult[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_ndarray[0m[0;34m[[0m[0mkey[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    273[0m             [0;32mif[0m [0mself[0m[0;34m.[0m[0mndim[0m [0;34m==[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    274[0m                 [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_box_func[0m[0;34m([0m[0mresult[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mIndexError[0m: index 0 is out of bounds for axis 0 with size 0
+IndexError: index 0 is out of bounds for axis 0 with size 0
+
