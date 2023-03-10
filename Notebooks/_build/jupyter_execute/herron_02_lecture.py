@@ -9,6 +9,7 @@
 # 1. Why might trading strategies based on technical analysis work (or not work)?
 # 1. Implement a simple moving average (SMA) trading strategy
 # 
+# I based this lecture notebook on [chapter 12 of Ivo Welch's (free) *Corporate Finance* textbook](https://book.ivo-welch.info/read/source5.mba/12-effbehav.pdf) and chapter 2 of [Eryk Lewinson's *Python for Finance Cookbook*](https://onesearch.library.northeastern.edu/permalink/01NEU_INST/i2gqis/alma9952082522901401).
 # The practice notebook will cover several other trading strategies based on technical analysis.
 
 # In[1]:
@@ -31,7 +32,7 @@ pd.options.display.float_format = '{:.4f}'.format
 
 # [Technical analysis](https://en.wikipedia.org/wiki/Technical_analysis) is a methodology that analyzes past market data (e.g., past prices and volume) in an attempt to forecast future price movements.
 # If technical analysis can predict future price movements, the market is not weak-form efficient.
-# Ivo Welch provides the three degrees of market efficiency in section 12.2 of [chapter 12 of his free *Corporate Finance* textbook](https://book.ivo-welch.info/read/source5.mba/12-effbehav.pdf):
+# Ivo Welch provides the three degrees of market efficiency in section 12.2 of [chapter 12 of his (free) *Corporate Finance* textbook](https://book.ivo-welch.info/read/source5.mba/12-effbehav.pdf):
 # 
 # > The Traditional Classification
 # The traditional definition of market efficiency focuses on information. In the traditional classification, market efficiency comes in one of three primary degrees: weak,
@@ -82,7 +83,7 @@ pd.options.display.float_format = '{:.4f}'.format
 # #### A Random Walk
 
 # In a random walk, the price tomorrow equals the price today plus a tiny drift plus noise.
-# In math terms, a random walk is $P_{t} = \rho P_{t-1} + m P_{t-1} + \varepsilon$, where $E[\varepsilon] = 0$.
+# In math terms, a random walk is $P_{t} = \rho P_{t-1} + m P_{t-1} + \varepsilon$, where $m$ is a small drift term and $E[\varepsilon] = 0$.
 # If $\rho > 1$, prices would quickly increase, and, if $\rho < 1$, prices would quickly decrease.
 # Let us examine the historical record.
 
@@ -109,6 +110,8 @@ ff = (
     .div(100)
 )
 
+ff.head()
+
 
 # We can use market returns to impute market prices relative to the last day of June 1926.
 
@@ -116,6 +119,8 @@ ff = (
 
 
 price = ff['Mkt'].add(1).cumprod()
+
+price.tail()
 
 
 # In[6]:
@@ -142,6 +147,8 @@ price_lags = (
         axis=1,
     )
 )
+
+price_lags.head()
 
 
 # In[8]:
@@ -304,6 +311,8 @@ btc = (
         Strategy = lambda x: x['Position'] * x['Return']
     )
 )
+
+btc.tail()
 
 
 # I find it helpful to plot `Adj Close`, `SMA20`, and `Position` for a sort window with one or more crossings.
