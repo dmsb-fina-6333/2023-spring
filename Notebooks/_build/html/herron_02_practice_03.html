@@ -788,12 +788,211 @@ title="Print to PDF"
 <h1>Herron Topic 2 - Practice (Monday 2:45 PM, Section 3)<a class="headerlink" href="#herron-topic-2-practice-monday-2-45-pm-section-3" title="Permalink to this headline">#</a></h1>
 <section id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>I will finish grading projects this week/weekend</p></li>
+<li><p>Quiz 5 due Friday at 11:59 PM</p>
+<ul>
+<li><p>A handful of students have submitted identical quizzes</p></li>
+<li><p>Quizzes are individual efforts</p></li>
+<li><p>Do not assume it is hard to for me to compare quiz and project submissions</p></li>
+</ul>
+</li>
+<li><p>DataCamp 20,000 XP due <em>next</em> Friday at 11:59 PM</p></li>
+<li><p>Attendance and participation account for 5% of your grade</p></li>
+</ul>
 </section>
 <section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
 <section id="implement-the-sma-20-strategy-with-bitcoin-from-the-lecture-notebook">
 <h3>Implement the SMA(20) strategy with Bitcoin from the lecture notebook<a class="headerlink" href="#implement-the-sma-20-strategy-with-bitcoin-from-the-lecture-notebook" title="Permalink to this headline">#</a></h3>
 <p>Try to create the <code class="docutils literal notranslate"><span class="pre">btc</span></code> data frame in one code cell with one assignment (i.e., one <code class="docutils literal notranslate"><span class="pre">=</span></code>).</p>
+<p><em><strong>After class, I wrapped this chained operation into a function named <code class="docutils literal notranslate"><span class="pre">sma()</span></code>.</strong></em>
+This will make it easier to try different windows and separate the trading strategies in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+<span class="o">%</span><span class="k">precision</span> 4
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="nn">yf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">yf</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">tickers</span><span class="o">=</span><span class="s1">&#39;BTC-USD&#39;</span><span class="p">,</span> <span class="n">progress</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Variable&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sma</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">df</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">Return</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(),</span>
+            <span class="n">SMA20</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+            <span class="n">Position</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+                <span class="n">condlist</span><span class="o">=</span><span class="p">[</span>
+                    <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMA20&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(),</span> 
+                    <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMA20&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
+                <span class="p">],</span>
+                <span class="n">choicelist</span><span class="o">=</span><span class="p">[</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="mi">0</span>
+                <span class="p">],</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="p">),</span>
+            <span class="n">Strategy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Position&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc_sma</span> <span class="o">=</span> <span class="n">btc</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">sma</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">btc_sma</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+      <th>Return</th>
+      <th>SMA20</th>
+      <th>Position</th>
+      <th>Strategy</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2023-03-09</th>
+      <td>21720.0801</td>
+      <td>21802.7168</td>
+      <td>20210.3066</td>
+      <td>20363.0215</td>
+      <td>20363.0215</td>
+      <td>30364664171</td>
+      <td>-0.0624</td>
+      <td>23198.9943</td>
+      <td>0.0000</td>
+      <td>-0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>20367.0020</td>
+      <td>20370.5957</td>
+      <td>19628.2539</td>
+      <td>20187.2441</td>
+      <td>20187.2441</td>
+      <td>39578257695</td>
+      <td>-0.0086</td>
+      <td>22976.2927</td>
+      <td>0.0000</td>
+      <td>-0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-11</th>
+      <td>20187.8770</td>
+      <td>20792.5254</td>
+      <td>20068.6602</td>
+      <td>20632.4102</td>
+      <td>20632.4102</td>
+      <td>30180288176</td>
+      <td>0.0221</td>
+      <td>22791.5311</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>20628.0293</td>
+      <td>22185.0312</td>
+      <td>20448.8066</td>
+      <td>22163.9492</td>
+      <td>22163.9492</td>
+      <td>29279035521</td>
+      <td>0.0742</td>
+      <td>22658.2711</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-13</th>
+      <td>22178.5801</td>
+      <td>24427.3906</td>
+      <td>21918.1992</td>
+      <td>24229.8164</td>
+      <td>24229.8164</td>
+      <td>54919491584</td>
+      <td>0.0932</td>
+      <td>22647.9442</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="how-does-sma-20-outperform-buy-and-hold-with-this-sample">
 <h3>How does SMA(20) outperform buy-and-hold with this sample?<a class="headerlink" href="#how-does-sma-20-outperform-buy-and-hold-with-this-sample" title="Permalink to this headline">#</a></h3>
@@ -803,6 +1002,349 @@ title="Print to PDF"
 <li><p>Does SMA(20) preferentially avoid low-return days? Try to combine the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method and <code class="docutils literal notranslate"><span class="pre">pd.qcut()</span></code> function.</p></li>
 <li><p>Does SMA(20) preferentially avoid high-volatility days? Try to combine the <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> method and <code class="docutils literal notranslate"><span class="pre">pd.qcut()</span></code> function.</p></li>
 </ol>
+<p>By change, the SMA(20) strategy avoids all but three of the worst days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc_sma</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Return&#39;</span><span class="p">)[[</span><span class="s1">&#39;Position&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Position
+0.0000      17
+1.0000       3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, SMA(20) does not avoid the best days, again by chance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc_sma</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Return&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[[</span><span class="s1">&#39;Position&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Position
+0.0000      10
+1.0000      10
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc_sma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+      <th>Return</th>
+      <th>SMA20</th>
+      <th>Position</th>
+      <th>Strategy</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2014-09-17</th>
+      <td>465.8640</td>
+      <td>468.1740</td>
+      <td>452.4220</td>
+      <td>457.3340</td>
+      <td>457.3340</td>
+      <td>21056800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2014-09-18</th>
+      <td>456.8600</td>
+      <td>456.8600</td>
+      <td>413.1040</td>
+      <td>424.4400</td>
+      <td>424.4400</td>
+      <td>34483200</td>
+      <td>-0.0719</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2014-09-19</th>
+      <td>424.1030</td>
+      <td>427.8350</td>
+      <td>384.5320</td>
+      <td>394.7960</td>
+      <td>394.7960</td>
+      <td>37919700</td>
+      <td>-0.0698</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2014-09-20</th>
+      <td>394.6730</td>
+      <td>423.2960</td>
+      <td>389.8830</td>
+      <td>408.9040</td>
+      <td>408.9040</td>
+      <td>36863600</td>
+      <td>0.0357</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2014-09-21</th>
+      <td>408.0850</td>
+      <td>412.4260</td>
+      <td>393.1810</td>
+      <td>398.8210</td>
+      <td>398.8210</td>
+      <td>26580100</td>
+      <td>-0.0247</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2023-03-09</th>
+      <td>21720.0801</td>
+      <td>21802.7168</td>
+      <td>20210.3066</td>
+      <td>20363.0215</td>
+      <td>20363.0215</td>
+      <td>30364664171</td>
+      <td>-0.0624</td>
+      <td>23198.9943</td>
+      <td>0.0000</td>
+      <td>-0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>20367.0020</td>
+      <td>20370.5957</td>
+      <td>19628.2539</td>
+      <td>20187.2441</td>
+      <td>20187.2441</td>
+      <td>39578257695</td>
+      <td>-0.0086</td>
+      <td>22976.2927</td>
+      <td>0.0000</td>
+      <td>-0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-11</th>
+      <td>20187.8770</td>
+      <td>20792.5254</td>
+      <td>20068.6602</td>
+      <td>20632.4102</td>
+      <td>20632.4102</td>
+      <td>30180288176</td>
+      <td>0.0221</td>
+      <td>22791.5311</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>20628.0293</td>
+      <td>22185.0312</td>
+      <td>20448.8066</td>
+      <td>22163.9492</td>
+      <td>22163.9492</td>
+      <td>29279035521</td>
+      <td>0.0742</td>
+      <td>22658.2711</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <th>2023-03-13</th>
+      <td>22178.5801</td>
+      <td>24427.3906</td>
+      <td>21918.1992</td>
+      <td>24229.8164</td>
+      <td>24229.8164</td>
+      <td>54919491584</td>
+      <td>0.0932</td>
+      <td>22647.9442</td>
+      <td>0.0000</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3100 rows × 10 columns</p>
+</div></div></div>
+</div>
+<p>The SMA(20) strategy has a slight edge in picking high-return days, again by chance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">btc_sma</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">q5_return</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;q5_return&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s1">&#39;Position&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Return Bin (1 is Lowest, 5 is Highest)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of Days Strategy is Long Bitcoin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Position by Return Bin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_02_practice_03_21_0.png" src="_images/herron_02_practice_03_21_0.png" />
+</div>
+</div>
+<p>However, the SMA(20) <em>does</em> avoid the high volatility days that create <a class="reference external" href="https://www.kitces.com/blog/volatility-drag-variance-drain-mean-arithmetic-vs-geometric-average-investment-returns/">volatility drag</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">btc_sma</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">Volatility</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">63</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+        <span class="n">q5_volatility</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Volatility&#39;</span><span class="p">],</span> <span class="n">q</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;q5_volatility&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s1">&#39;Position&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;63-Day Rolling Volatility Bin (1 is Lowest, 5 is Highest)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction of Days Strategy is Long Bitcoin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Position by 63-Day Rolling Volatility Bin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_02_practice_03_23_0.png" src="_images/herron_02_practice_03_23_0.png" />
+</div>
+</div>
+<p>Recall that <span class="math notranslate nohighlight">\(Arith\ Mean \approx Geom\ Mean + \frac{\sigma^2}{2}\)</span>, so avoiding high volatility (high variance) days, reduced the drag on the  cumulative returns that intermediate-term and long-term investors care about!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">btc_sma</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;std&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">prod</span><span class="p">()</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="s1">&#39;Volatility&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="s1">&#39;Arith Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;lambda_0&gt;&#39;</span><span class="p">:</span> <span class="s1">&#39;Geom Mean&#39;</span><span class="p">})</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Volatility</th>
+      <th>Arith Mean</th>
+      <th>Geom Mean</th>
+    </tr>
+    <tr>
+      <th>Position</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.0000</th>
+      <td>4.1520</td>
+      <td>0.0434</td>
+      <td>-0.0451</td>
+    </tr>
+    <tr>
+      <th>1.0000</th>
+      <td>3.4918</td>
+      <td>0.3547</td>
+      <td>0.2945</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="implement-the-sma-20-strategy-with-the-market-factor-from-french">
 <h3>Implement the SMA(20) strategy with the market factor from French<a class="headerlink" href="#implement-the-sma-20-strategy-with-the-market-factor-from-french" title="Permalink to this headline">#</a></h3>
@@ -824,6 +1366,219 @@ Here, long-only BB(20, 2) implies we have upper and lower bands at 2 standard de
 <p>The long-only BB(20, 2) is more difficult to implement than the long-only SMA(20) because we need to track buys and sells.
 For example, if the closing price is between LB(20) and BB(20), we need to know if our last trade was a buy or a sell.
 Further, if the closing price is below LB(20), we can still be long because we sell when the closing price crosses UB(20) from above.</p>
+<p><em><strong>After class, I wrapped this chained operation into a function named <code class="docutils literal notranslate"><span class="pre">bb()</span></code>.</strong></em>
+This will make it easier to try different windows and separate the trading strategies in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bb</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">df</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">Date</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span>
+            <span class="n">Return</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(),</span>
+            <span class="n">SMA</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+            <span class="n">SMV</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span>
+            <span class="n">LB</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMA&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMV&#39;</span><span class="p">],</span>
+            <span class="n">UB</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMA&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMV&#39;</span><span class="p">],</span>
+            <span class="n">Position_with_nan</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+                <span class="n">condlist</span><span class="o">=</span><span class="p">[</span>
+                    <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;LB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;LB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> 
+                    <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;UB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;UB&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span>
+                <span class="p">],</span>
+                <span class="n">choicelist</span><span class="o">=</span><span class="p">[</span>
+                    <span class="mi">1</span><span class="p">,</span> 
+                    <span class="mi">0</span>
+                <span class="p">],</span>
+                <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+            <span class="p">),</span>
+            <span class="n">Position</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Position_with_nan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">),</span>
+            <span class="n">Strategy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Position&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc_bb</span> <span class="o">=</span> <span class="n">btc</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">bb</span><span class="p">)</span>
+
+<span class="n">btc_bb</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+      <th>Date</th>
+      <th>Return</th>
+      <th>SMA</th>
+      <th>SMV</th>
+      <th>LB</th>
+      <th>UB</th>
+      <th>Position_with_nan</th>
+      <th>Position</th>
+      <th>Strategy</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2023-03-09</th>
+      <td>21720.0801</td>
+      <td>21802.7168</td>
+      <td>20210.3066</td>
+      <td>20363.0215</td>
+      <td>20363.0215</td>
+      <td>30364664171</td>
+      <td>2023-03-09</td>
+      <td>-0.0624</td>
+      <td>23198.9943</td>
+      <td>1109.3502</td>
+      <td>20980.2939</td>
+      <td>25417.6948</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>-0.0624</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>20367.0020</td>
+      <td>20370.5957</td>
+      <td>19628.2539</td>
+      <td>20187.2441</td>
+      <td>20187.2441</td>
+      <td>39578257695</td>
+      <td>2023-03-10</td>
+      <td>-0.0086</td>
+      <td>22976.2927</td>
+      <td>1243.5315</td>
+      <td>20489.2298</td>
+      <td>25463.3556</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>-0.0086</td>
+    </tr>
+    <tr>
+      <th>2023-03-11</th>
+      <td>20187.8770</td>
+      <td>20792.5254</td>
+      <td>20068.6602</td>
+      <td>20632.4102</td>
+      <td>20632.4102</td>
+      <td>30180288176</td>
+      <td>2023-03-11</td>
+      <td>0.0221</td>
+      <td>22791.5311</td>
+      <td>1305.1707</td>
+      <td>20181.1896</td>
+      <td>25401.8725</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>0.0221</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>20628.0293</td>
+      <td>22185.0312</td>
+      <td>20448.8066</td>
+      <td>22163.9492</td>
+      <td>22163.9492</td>
+      <td>29279035521</td>
+      <td>2023-03-12</td>
+      <td>0.0742</td>
+      <td>22658.2711</td>
+      <td>1219.4207</td>
+      <td>20219.4297</td>
+      <td>25097.1125</td>
+      <td>1.0000</td>
+      <td>1.0000</td>
+      <td>0.0742</td>
+    </tr>
+    <tr>
+      <th>2023-03-13</th>
+      <td>22178.5801</td>
+      <td>24427.3906</td>
+      <td>21918.1992</td>
+      <td>24229.8164</td>
+      <td>24229.8164</td>
+      <td>54919491584</td>
+      <td>2023-03-13</td>
+      <td>0.0932</td>
+      <td>22647.9442</td>
+      <td>1204.3517</td>
+      <td>20239.2409</td>
+      <td>25056.6476</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>0.0932</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">btc_bb</span><span class="p">[[</span><span class="s1">&#39;Return&#39;</span><span class="p">,</span> <span class="s1">&#39;Strategy&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="p">(</span>
+    <span class="n">_</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Strategy&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Return&#39;</span><span class="p">:</span> <span class="s1">&#39;Buy-And-Hold&#39;</span><span class="p">,</span> <span class="s1">&#39;Strategy&#39;</span><span class="p">:</span> <span class="s1">&#39;BB(20, 2)&#39;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value ($)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of $1 Invested at Close on </span><span class="si">{</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">Day</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s1">%B %d, %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_02_practice_03_34_0.png" src="_images/herron_02_practice_03_34_0.png" />
+</div>
+</div>
+<p>For an asset that we know has large positive returns over the sample, “time in the market” beats “timing the market”.</p>
 </section>
 <section id="implement-a-long-short-rsi-14-strategy-with-bitcoin">
 <h3>Implement a long-short RSI(14) strategy with Bitcoin<a class="headerlink" href="#implement-a-long-short-rsi-14-strategy-with-bitcoin" title="Permalink to this headline">#</a></h3>
@@ -840,6 +1595,284 @@ We can learn more about RSI <a class="reference external" href="https://en.wikip
 <li><p>Enter a long position when  the RSI crosses 30 from below, and exit the position when the RSI crosses 50 from below</p></li>
 <li><p>Enter a short position when the RSI crosses 70 from above, and exit the position when the RSI crosses 50 from above</p></li>
 </ol>
+<p><em><strong>After class, I replace the <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> for <code class="docutils literal notranslate"><span class="pre">U</span></code> and <code class="docutils literal notranslate"><span class="pre">D</span></code> with <code class="docutils literal notranslate"><span class="pre">np.select()</span></code> for (1) consistency and (2) to better handle missing observations.</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rsi</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">lb</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">mb</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">ub</span><span class="o">=</span><span class="mi">70</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">Return</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(),</span>
+        <span class="n">Diff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Adj Close&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">diff</span><span class="p">(),</span>
+        <span class="n">U</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+            <span class="n">condlist</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Diff&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Diff&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">choicelist</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Diff&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="p">),</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+            <span class="n">condlist</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;Diff&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Diff&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">choicelist</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Diff&#39;</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="p">),</span>
+        <span class="n">SMAU</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="n">SMAD</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;D&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="n">RS</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMAU&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;SMAD&#39;</span><span class="p">],</span>
+        <span class="n">RSI</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">100</span> <span class="o">-</span> <span class="mi">100</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;RS&#39;</span><span class="p">]),</span>
+        <span class="n">Position_with_nan</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+            <span class="n">condlist</span><span class="o">=</span><span class="p">[</span>
+                <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">lb</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">lb</span><span class="p">),</span> 
+                <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">mb</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">mb</span><span class="p">),</span>
+                <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">ub</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">ub</span><span class="p">),</span> 
+                <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">mb</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;RSI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">mb</span><span class="p">),</span>
+            <span class="p">],</span>
+            <span class="n">choicelist</span><span class="o">=</span><span class="p">[</span>
+                <span class="mi">1</span><span class="p">,</span> 
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="mi">0</span>
+            <span class="p">],</span>
+            <span class="n">default</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+        <span class="p">),</span>
+        <span class="n">Position</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Position_with_nan&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">),</span>
+        <span class="n">Strategy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Position&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;Return&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">btc_rsi</span> <span class="o">=</span> <span class="n">rsi</span><span class="p">(</span><span class="n">btc</span><span class="p">)</span>
+
+<span class="n">btc_rsi</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Adj Close</th>
+      <th>Volume</th>
+      <th>Return</th>
+      <th>Diff</th>
+      <th>U</th>
+      <th>D</th>
+      <th>SMAU</th>
+      <th>SMAD</th>
+      <th>RS</th>
+      <th>RSI</th>
+      <th>Position_with_nan</th>
+      <th>Position</th>
+      <th>Strategy</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2023-03-09</th>
+      <td>21720.0801</td>
+      <td>21802.7168</td>
+      <td>20210.3066</td>
+      <td>20363.0215</td>
+      <td>20363.0215</td>
+      <td>30364664171</td>
+      <td>-0.0624</td>
+      <td>-1355.0586</td>
+      <td>0.0000</td>
+      <td>1355.0586</td>
+      <td>69.0857</td>
+      <td>325.1193</td>
+      <td>0.2125</td>
+      <td>17.5253</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>-0.0624</td>
+    </tr>
+    <tr>
+      <th>2023-03-10</th>
+      <td>20367.0020</td>
+      <td>20370.5957</td>
+      <td>19628.2539</td>
+      <td>20187.2441</td>
+      <td>20187.2441</td>
+      <td>39578257695</td>
+      <td>-0.0086</td>
+      <td>-175.7773</td>
+      <td>0.0000</td>
+      <td>175.7773</td>
+      <td>69.0857</td>
+      <td>284.1487</td>
+      <td>0.2431</td>
+      <td>19.5580</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>-0.0086</td>
+    </tr>
+    <tr>
+      <th>2023-03-11</th>
+      <td>20187.8770</td>
+      <td>20792.5254</td>
+      <td>20068.6602</td>
+      <td>20632.4102</td>
+      <td>20632.4102</td>
+      <td>30180288176</td>
+      <td>0.0221</td>
+      <td>445.1660</td>
+      <td>445.1660</td>
+      <td>0.0000</td>
+      <td>100.8832</td>
+      <td>282.5236</td>
+      <td>0.3571</td>
+      <td>26.3123</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>0.0221</td>
+    </tr>
+    <tr>
+      <th>2023-03-12</th>
+      <td>20628.0293</td>
+      <td>22185.0312</td>
+      <td>20448.8066</td>
+      <td>22163.9492</td>
+      <td>22163.9492</td>
+      <td>29279035521</td>
+      <td>0.0742</td>
+      <td>1531.5391</td>
+      <td>1531.5391</td>
+      <td>0.0000</td>
+      <td>182.7190</td>
+      <td>282.5236</td>
+      <td>0.6467</td>
+      <td>39.2739</td>
+      <td>NaN</td>
+      <td>1.0000</td>
+      <td>0.0742</td>
+    </tr>
+    <tr>
+      <th>2023-03-13</th>
+      <td>22178.5801</td>
+      <td>24427.3906</td>
+      <td>21918.1992</td>
+      <td>24229.8164</td>
+      <td>24229.8164</td>
+      <td>54919491584</td>
+      <td>0.0932</td>
+      <td>2065.8672</td>
+      <td>2065.8672</td>
+      <td>0.0000</td>
+      <td>330.2810</td>
+      <td>279.7849</td>
+      <td>1.1805</td>
+      <td>54.1386</td>
+      <td>1.0000</td>
+      <td>1.0000</td>
+      <td>0.0932</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">btc_rsi</span><span class="p">[[</span><span class="s1">&#39;Return&#39;</span><span class="p">,</span> <span class="s1">&#39;Strategy&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="p">(</span>
+    <span class="n">_</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Strategy&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Return&#39;</span><span class="p">:</span> <span class="s1">&#39;Buy-And-Hold&#39;</span><span class="p">,</span> <span class="s1">&#39;Strategy&#39;</span><span class="p">:</span> <span class="s1">&#39;RSI(14)&#39;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value ($)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of $1 Invested at Close on </span><span class="si">{</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">Day</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s1">%B %d, %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_02_practice_03_41_0.png" src="_images/herron_02_practice_03_41_0.png" />
+</div>
+</div>
+<p>We can compare all three!
+Shorting Bitcoin has been dangerous, as the poor returns on RSI(14) show!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">btc_sma</span><span class="p">[[</span><span class="s1">&#39;Return&#39;</span><span class="p">,</span> <span class="s1">&#39;Strategy&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">btc_bb</span><span class="p">[[</span><span class="s1">&#39;Strategy&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_BB&#39;</span><span class="p">),</span> 
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">btc_rsi</span><span class="p">[[</span><span class="s1">&#39;Strategy&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">add_suffix</span><span class="p">(</span><span class="s1">&#39;_RSI&#39;</span><span class="p">),</span> 
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="p">)</span>
+
+
+<span class="p">(</span>
+    <span class="n">_</span>
+    <span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">cumprod</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename_axis</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Strategy&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;Return&#39;</span><span class="p">:</span> <span class="s1">&#39;Buy-And-Hold&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;Strategy&#39;</span><span class="p">:</span> <span class="s1">&#39;SMA(20)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Strategy_BB&#39;</span><span class="p">:</span> <span class="s1">&#39;BB(20, 2)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Strategy_RSI&#39;</span><span class="p">:</span> <span class="s1">&#39;RSI(14)&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+           <span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value ($)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Value of $1 Invested at Close on </span><span class="si">{</span><span class="n">_</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">offsets</span><span class="o">.</span><span class="n">Day</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">:</span><span class="s1">%B %d, %Y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/herron_02_practice_03_43_0.png" src="_images/herron_02_practice_03_43_0.png" />
+</div>
+</div>
 </section>
 </section>
 </section>

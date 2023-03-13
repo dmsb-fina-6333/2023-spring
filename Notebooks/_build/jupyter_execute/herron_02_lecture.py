@@ -383,3 +383,9 @@ plt.show()
 
 
 # In the practice notebook, we will dig deeper on this strategy and others.
+
+# In[ ]:
+
+
+
+
