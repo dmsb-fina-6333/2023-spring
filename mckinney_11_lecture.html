@@ -1255,7 +1255,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_77476/1099700163.py:1: FutureWarning: Value based partial slicing on non-monotonic DatetimeIndexes with non-existing keys is deprecated and will raise a KeyError in a future Version.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\r.herron\AppData\Local\Temp\ipykernel_8344\1099700163.py:1: FutureWarning: Value based partial slicing on non-monotonic DatetimeIndexes with non-existing keys is deprecated and will raise a KeyError in a future Version.
   ts2[&#39;1/6/2011&#39;:&#39;1/11/2011&#39;]
 </pre></div>
 </div>
@@ -1326,7 +1326,7 @@ The toy data in series <code class="docutils literal notranslate"><span class="p
 2000-01-02    2
 2000-01-02    3
 2000-01-03    4
-dtype: int64
+dtype: int32
 </pre></div>
 </div>
 </div>
@@ -1366,7 +1366,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000-01-02    1
 2000-01-02    2
 2000-01-02    3
-dtype: int64
+dtype: int32
 </pre></div>
 </div>
 </div>
@@ -1406,7 +1406,7 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000-01-01    0
 2000-01-02    3
 2000-01-03    4
-dtype: int64
+dtype: int32
 </pre></div>
 </div>
 </div>
@@ -1797,7 +1797,7 @@ There are a couple things to think about when using resample to downsample data:
 2000-01-01 00:09:00     9
 2000-01-01 00:10:00    10
 2000-01-01 00:11:00    11
-Freq: T, dtype: int64
+Freq: T, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -1814,7 +1814,7 @@ Resampling requires and aggregation method, and here McKinney chooses the <code 
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2000-01-01 00:00:00    10
 2000-01-01 00:05:00    35
 2000-01-01 00:10:00    21
-Freq: 5T, dtype: int64
+Freq: 5T, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -1838,7 +1838,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">clos
 2000-01-01 00:05:00    15
 2000-01-01 00:10:00    40
 2000-01-01 00:15:00    11
-Freq: 5T, dtype: int64
+Freq: 5T, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -1855,7 +1855,7 @@ Freq: 5T, dtype: int64
 2000-01-01 00:00:00    15
 2000-01-01 00:05:00    40
 2000-01-01 00:10:00    11
-Freq: 5T, dtype: int64
+Freq: 5T, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -2646,7 +2646,7 @@ Also, calculating rolling volatility with the <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>392 ms ± 5.38 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>673 ms ± 75.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
@@ -2658,7 +2658,7 @@ Also, calculating rolling volatility with the <code class="docutils literal notr
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>215 µs ± 424 ns per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>358 µs ± 22.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 </pre></div>
 </div>
 </div>
